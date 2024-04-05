@@ -1,0 +1,50 @@
+---
+title: "Microbiome tutorial"
+format: html
+editor: visual
+---
+
+## 
+
+```{r}
+# Example data
+library(microbiome)
+library(dplyr)
+data(dietswap)
+
+# Make sure we use functions from correct package
+transform <- microbiome::transform
+
+# Merge rare taxa to speed up examples
+pseq <- transform(dietswap, "compositional")
+pseq <- aggregate_rare(pseq, level = "Genus", detection = 1/100, prevalence = 50/100)
+
+# Pick sample subset
+library(phyloseq)
+pseq2 <- subset_samples(pseq, group == "DI" & nationality == "AFR" & timepoint.within.group == 1)
+
+# Normal western adults
+data(atlas1006)
+pseq3 <- atlas1006 %>%
+  subset_samples(DNA_extraction_method == "r") %>%
+  aggregate_taxa(level = "Phylum") %>%  
+  microbiome::transform(transform = "compositional")
+```
+
+```{r}
+# Try another theme
+# from https://github.com/hrbrmstr/hrbrthemes
+library(hrbrthemes)
+library(gcookbook)
+library(tidyverse)
+#theme_set(theme_bw(21))
+p <- pseq3 %>%
+  plot_composition(sample.sort = "Firmicutes", otu.sort = "abundance") +
+  # Set custom colors
+  scale_fill_manual("Phylum",values = default_colors("Phylum")[taxa(pseq3)]) +
+  scale_y_continuous(label = scales::percent) + 
+  theme_ipsum(grid="Y") +
+  # Removes sample names and ticks
+  theme(axis.text.x=element_blank(), axis.ticks.x=element_blank())
+print(p)
+```

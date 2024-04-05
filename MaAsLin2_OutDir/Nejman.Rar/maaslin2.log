@@ -1,0 +1,94 @@
+2024-03-11 14:23:09.556476 INFO::Writing function arguments to log file
+2024-03-11 14:23:09.559473 DEBUG::Function arguments
+2024-03-11 14:23:09.56096 DEBUG::Output folder: MaAsLin2_OutDir/Nejman.Rar
+2024-03-11 14:23:09.562082 DEBUG::Min Abundance: 0.000000
+2024-03-11 14:23:09.563257 DEBUG::Min Prevalence: 0.000000
+2024-03-11 14:23:09.564348 DEBUG::Normalization: NONE
+2024-03-11 14:23:09.56545 DEBUG::Transform: LOG
+2024-03-11 14:23:09.566589 DEBUG::Analysis method: LM
+2024-03-11 14:23:09.567693 DEBUG::Max significance: 0.250000
+2024-03-11 14:23:09.568807 DEBUG::Random effects:
+2024-03-11 14:23:09.569907 DEBUG::Fixed effects: Treatment
+2024-03-11 14:23:09.571082 DEBUG::Correction method: BH
+2024-03-11 14:23:09.572194 DEBUG::Standardize: TRUE
+2024-03-11 14:23:09.573339 DEBUG::Cores: 1
+2024-03-11 14:23:09.574445 INFO::Verifying options selected are valid
+2024-03-11 14:23:09.57706 INFO::Determining format of input files
+2024-03-11 14:23:09.579729 INFO::Input format is data samples as rows and metadata samples as rows
+2024-03-11 14:23:09.582425 DEBUG::A total of 8 samples were found in both the data and metadata
+2024-03-11 14:23:09.583566 DEBUG::Reordering data/metadata to use same sample ordering
+2024-03-11 14:23:09.585348 INFO::Formula for fixed effects: expr ~  Treatment
+2024-03-11 14:23:09.588617 INFO::Filter data based on min abundance and min prevalence
+2024-03-11 14:23:09.591447 INFO::Total samples in data: 8
+2024-03-11 14:23:09.594152 INFO::Min samples required with min abundance for a feature not to be filtered: 0.000000
+2024-03-11 14:23:09.59751 INFO::Total filtered features: 0
+2024-03-11 14:23:09.600324 INFO::Filtered feature names from abundance and prevalence filtering:
+2024-03-11 14:23:09.604313 INFO::Total filtered features with variance filtering: 0
+2024-03-11 14:23:09.607044 INFO::Filtered feature names from variance filtering:
+2024-03-11 14:23:09.609591 INFO::Running selected normalization method: NONE
+2024-03-11 14:23:09.612195 INFO::Applying z-score to standardize continuous metadata
+2024-03-11 14:23:09.617916 INFO::Running selected transform method: LOG
+2024-03-11 14:23:09.621492 INFO::Running selected analysis method: LM
+2024-03-11 14:23:09.62949 INFO::Fitting model to feature number 1, X470
+2024-03-11 14:23:09.639679 INFO::Fitting model to feature number 2, X569
+2024-03-11 14:23:09.64923 INFO::Fitting model to feature number 3, X1282
+2024-03-11 14:23:09.655314 INFO::Fitting model to feature number 4, X1283
+2024-03-11 14:23:09.664079 INFO::Fitting model to feature number 5, X1290
+2024-03-11 14:23:09.673165 INFO::Fitting model to feature number 6, X1598
+2024-03-11 14:23:09.682331 INFO::Fitting model to feature number 7, X29486
+2024-03-11 14:23:09.691418 INFO::Fitting model to feature number 8, X40324
+2024-03-11 14:23:09.700905 INFO::Fitting model to feature number 9, X41202
+2024-03-11 14:23:09.710368 INFO::Fitting model to feature number 10, X47884
+2024-03-11 14:23:09.723158 INFO::Fitting model to feature number 11, X261164
+2024-03-11 14:23:09.737231 INFO::Fitting model to feature number 12, X308354
+2024-03-11 14:23:09.751748 INFO::Fitting model to feature number 13, X349967
+2024-03-11 14:23:09.765104 INFO::Fitting model to feature number 14, X756892
+2024-03-11 14:23:09.778664 INFO::Fitting model to feature number 15, X768493
+2024-03-11 14:23:09.792446 INFO::Fitting model to feature number 16, X1032069
+2024-03-11 14:23:09.806936 INFO::Fitting model to feature number 17, X1408186
+2024-03-11 14:23:09.821019 INFO::Fitting model to feature number 18, X1699624
+2024-03-11 14:23:09.834399 INFO::Fitting model to feature number 19, X2546450
+2024-03-11 14:23:09.847739 INFO::Fitting model to feature number 20, X495
+2024-03-11 14:23:09.861072 INFO::Fitting model to feature number 21, X1622
+2024-03-11 14:23:09.874164 INFO::Fitting model to feature number 22, X74426
+2024-03-11 14:23:09.887588 INFO::Fitting model to feature number 23, X324831
+2024-03-11 14:23:09.901725 INFO::Fitting model to feature number 24, X490
+2024-03-11 14:23:09.917 INFO::Fitting model to feature number 25, X33033
+2024-03-11 14:23:09.931136 INFO::Fitting model to feature number 26, X334413
+2024-03-11 14:23:09.944914 INFO::Fitting model to feature number 27, X535289
+2024-03-11 14:23:09.959134 INFO::Fitting model to feature number 28, X1662285
+2024-03-11 14:23:09.973409 INFO::Fitting model to feature number 29, X2231055
+2024-03-11 14:23:09.98759 INFO::Fitting model to feature number 30, X1633
+2024-03-11 14:23:10.001634 INFO::Fitting model to feature number 31, X182773
+2024-03-11 14:23:10.0154 INFO::Fitting model to feature number 32, X679935
+2024-03-11 14:23:10.024951 INFO::Fitting model to feature number 33, X929102
+2024-03-11 14:23:10.034225 INFO::Fitting model to feature number 34, X1712675
+2024-03-11 14:23:10.043492 INFO::Fitting model to feature number 35, X1796646
+2024-03-11 14:23:10.053154 INFO::Fitting model to feature number 36, X1834205
+2024-03-11 14:23:10.063422 INFO::Fitting model to feature number 37, X2107999
+2024-03-11 14:23:10.073087 INFO::Fitting model to feature number 38, X2576606
+2024-03-11 14:23:10.083217 INFO::Fitting model to feature number 39, X2585119
+2024-03-11 14:23:10.092947 INFO::Fitting model to feature number 40, X2724150
+2024-03-11 14:23:10.102859 INFO::Fitting model to feature number 41, X42858
+2024-03-11 14:23:10.153193 INFO::Fitting model to feature number 42, X53458
+2024-03-11 14:23:10.163537 INFO::Fitting model to feature number 43, X157687
+2024-03-11 14:23:10.173579 INFO::Fitting model to feature number 44, X767453
+2024-03-11 14:23:10.193643 INFO::Counting total values for each feature
+2024-03-11 14:23:10.199167 INFO::Writing filtered data to file MaAsLin2_OutDir/Nejman.Rar/features/filtered_data.tsv
+2024-03-11 14:23:10.205365 INFO::Writing filtered, normalized data to file MaAsLin2_OutDir/Nejman.Rar/features/filtered_data_norm.tsv
+2024-03-11 14:23:10.210627 INFO::Writing filtered, normalized, transformed data to file MaAsLin2_OutDir/Nejman.Rar/features/filtered_data_norm_transformed.tsv
+2024-03-11 14:23:10.216782 INFO::Writing residuals to file MaAsLin2_OutDir/Nejman.Rar/fits/residuals.rds
+2024-03-11 14:23:10.221634 INFO::Writing fitted values to file MaAsLin2_OutDir/Nejman.Rar/fits/fitted.rds
+2024-03-11 14:23:10.225768 INFO::Writing all results to file (ordered by increasing q-values): MaAsLin2_OutDir/Nejman.Rar/all_results.tsv
+2024-03-11 14:23:10.231117 INFO::Writing the significant results (those which are less than or equal to the threshold of 0.250000 ) to file (ordered by increasing q-values): MaAsLin2_OutDir/Nejman.Rar/significant_results.tsv
+2024-03-11 14:23:10.235654 INFO::Writing heatmap of significant results to file: MaAsLin2_OutDir/Nejman.Rar/heatmap.pdf
+2024-03-11 14:23:10.243677 INFO::Writing association plots (one for each significant association) to output folder: MaAsLin2_OutDir/Nejman.Rar
+2024-03-11 14:23:10.248591 INFO::Plotting associations from most to least significant, grouped by metadata
+2024-03-11 14:23:10.251677 INFO::Plotting data for metadata number 1, Treatment
+2024-03-11 14:23:10.256082 INFO::Creating boxplot for categorical data, Treatment vs X1282
+2024-03-11 14:23:10.422218 INFO::Creating boxplot for categorical data, Treatment vs X1283
+2024-03-11 14:23:10.571499 INFO::Creating boxplot for categorical data, Treatment vs X1598
+2024-03-11 14:23:10.720598 INFO::Creating boxplot for categorical data, Treatment vs X1408186
+2024-03-11 14:23:10.866962 INFO::Creating boxplot for categorical data, Treatment vs X324831
+2024-03-11 14:23:11.047827 INFO::Creating boxplot for categorical data, Treatment vs X2107999
+2024-03-11 14:23:11.188398 INFO::Creating boxplot for categorical data, Treatment vs X2724150

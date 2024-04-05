@@ -1,0 +1,20 @@
+2024-03-10 04:30:55.03138 INFO::Writing function arguments to log file
+2024-03-10 04:30:55.036176 DEBUG::Function arguments
+2024-03-10 04:30:55.038421 DEBUG::Output folder: RmLowabun.Rar
+2024-03-10 04:30:55.040019 DEBUG::Min Abundance: 0.000000
+2024-03-10 04:30:55.041564 DEBUG::Min Prevalence: 0.000000
+2024-03-10 04:30:55.043119 DEBUG::Normalization: NONE
+2024-03-10 04:30:55.044659 DEBUG::Transform: LOG
+2024-03-10 04:30:55.046197 DEBUG::Analysis method: LM
+2024-03-10 04:30:55.047742 DEBUG::Max significance: 0.250000
+2024-03-10 04:30:55.049244 DEBUG::Random effects:
+2024-03-10 04:30:55.050965 DEBUG::Fixed effects: Treatment
+2024-03-10 04:30:55.052095 DEBUG::Correction method: BH
+2024-03-10 04:30:55.053212 DEBUG::Standardize: TRUE
+2024-03-10 04:30:55.054325 DEBUG::Cores: 1
+2024-03-10 04:30:55.055459 INFO::Verifying options selected are valid
+2024-03-10 04:30:55.058439 INFO::Determining format of input files
+2024-03-10 04:30:55.061052 INFO::Input format is data samples as rows and metadata samples as rows
+2024-03-10 04:30:55.064134 DEBUG::A total of 8 samples were found in both the data and metadata
+2024-03-10 04:30:55.065249 DEBUG::Reordering data/metadata to use same sample ordering
+2024-03-10 04:30:55.069967 INFO::Formula for fixed effects: expr ~  Treatment

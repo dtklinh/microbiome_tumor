@@ -1,0 +1,566 @@
+---
+title: "Normalization Benchmarking"
+author: "Linh Dang"
+format: html
+editor: visual
+---
+
+# Summary
+
+Here we benchmark how decontamination and normalization could affect to microbiome analysis.
+
+Load libraries
+
+```{r}
+library(phyloseq)
+library (data.table) #fast reading (z.B. fread)
+library(ggrepel)
+#library(SCRuB)
+#library(PERFect)
+library(tidyverse)
+library(kableExtra)
+#library(yingtools2)
+library(vegan)
+library(openxlsx)
+library(microbiome)
+library(rstatix)
+library(ggpubr)
+library(gridExtra)
+library(grid)
+#library(decontam)
+# library(cluster)
+library(pairwiseAdonis)
+library(VennDiagram)
+## for Wrench normalization along with DESeq2
+library(Wrench)
+library(DESeq2)
+library(cowplot)
+## for ALDEx
+library(ALDEx2)
+library(Maaslin2)
+##---
+#remove.packages("Maaslin2")
+#purge("Maaslin2")
+#remotes::install_github(repo="biobakery/Maaslin2", force=TRUE
+```
+
+# Add functions
+
+```{r}
+AlphaPlot <- function(PhyloObj, index = "Observed", y_label = "Observed species", add_legend = FALSE){
+  group.colors <- c(ctrl = "dodgerblue3", Gem = "firebrick2")
+  my.labels <- c("Ctrl", "Gem")
+  rich_meta <- merge(PhyloObj %>% sample_data(), PhyloObj %>% estimate_richness(), by = "row.names")
+  ## only using statistics test
+    ob <- rich_meta %>% t_test(as.formula(paste0(index, "~ Treatment"))) %>% adjust_pvalue(method = "BH") %>%  add_significance("p.adj") %>% add_xy_position()
+  
+  ##-----
+  p1 <- ggplot (rich_meta, aes_string (x="Treatment", y=index, fill="Treatment"))+ 
+  geom_boxplot()+
+  geom_point (position=position_jitterdodge( jitter.width = 0.05))+
+  theme_gray() + 
+  xlab("")+
+  ylab(y_label)+
+  # facet_grid(.~tp)+
+  scale_x_discrete(labels= my.labels)+
+  scale_fill_manual(values=group.colors, labels = c("KPC tumor with and without gemcitabine treatment"))+
+  # ggtitle("KPC tumor vs. Healthy pancreas - Observed species") +
+  theme(axis.text.y = element_text (size=11),
+        axis.title = element_text(size=12, face="bold"))
+      
+  if(!add_legend){    
+    p1 <- p1 + theme(legend.position = "none",
+        # legend.background = element_rect(size=0.25, linetype="solid", colour ="black"),
+        legend.key.size = unit(4,"mm"),
+        axis.text.x = element_blank(),
+        plot.title = element_text(size = 12))
+   
+  } else {
+  p1 <- p1 + theme(legend.text = element_text(size = 12),
+        legend.title = element_blank(),
+        # legend.background = element_rect(size=0.25, linetype="solid", colour ="black"),
+        legend.key.size = unit(4,"mm"),
+        axis.text.x = element_blank(),
+        plot.title = element_text(size = 12))
+  }
+    p1 <- p1 + stat_pvalue_manual(ob, label = "p.adj", inherit.aes = FALSE, tip.length = 0.01)
+    return(p1)
+}
+###--------------------
+AlphaPlotWrapper <- function(PhyloObj, roundUp = TRUE){
+  ## round up/down otu_table
+  if(roundUp){
+    otu_table(PhyloObj) <- PhyloObj %>% otu_table() %>% round()
+  } else{
+    otu_table(PhyloObj) <- PhyloObj %>% otu_table() %>% ceiling()
+  }
+  plt.1 <- AlphaPlot(PhyloObj, index = "Observed", y_label = "Observed species", add_legend = F)
+  plt.2 <- AlphaPlot(PhyloObj, index = "Shannon", y_label = "Shannon index", add_legend = F)
+  plt.3 <- AlphaPlot(PhyloObj, index = "InvSimpson", y_label = "Inv Simpson index", add_legend = F)
+return(list("Observed" = plt.1, "Shannon" = plt.2, "InvSimpson" = plt.3))
+}
+###----- Beta --------------
+BetaPlot <- function(PhyloObjct, title_method = "Original", dis_method = "bray", ordination_method = "PCoA"){
+  bray_dist = phyloseq::distance(PhyloObjct, method=dis_method)
+  ordination = ordinate(PhyloObjct, method=ordination_method, distance=bray_dist)
+
+  pcoa1 <- paste("PCoA 1 [", round(ordination[[3]]$Relative_eig[1], digits = 3)*100, "%]", sep = "")
+  pcoa2 <- paste("PCoA 2 [", round(ordination[[3]]$Relative_eig[2], digits = 3)*100, "%]", sep = "")
+
+p.adonis <- adonis2(bray_dist ~ sample_data(PhyloObjct)$Treatment)
+p <- case_when(
+  p.adonis$`Pr(>F)`[1] > 0.05 ~ paste("p =", p.adonis$`Pr(>F)`[1], "n.s.", sep = " "),
+  p.adonis$`Pr(>F)`[1] < 0.05 &  p.adonis$`Pr(>F)`[1] > 0.01 ~ paste("p =", p.adonis$`Pr(>F)`[1], "*", sep = " "),
+  p.adonis$`Pr(>F)`[1] <= 0.01 & p.adonis$`Pr(>F)`[1] > 0.001  ~ paste("p =", p.adonis$`Pr(>F)`[1], "**", sep = " "),
+  p.adonis$`Pr(>F)`[1] <= 0.001 ~ paste("p =",p.adonis$`Pr(>F)`[1], "***", sep = " "),
+)
+
+annotations <- data.frame(
+        xpos = c(-Inf),
+        ypos =  c(Inf),
+        annotateText = p,
+        hjustvar = c(-0.2) ,
+        vjustvar = c(1.5))
+
+p1 <- plot_ordination(PhyloObjct, ordination, color = "Treatment") +
+  geom_point(aes(colour = Treatment), size = 3) +
+  geom_text_repel(aes(label = id), size = 4) +
+  theme(aspect.ratio=1) +
+  theme_bw()+
+  scale_color_brewer(palette = "Set1")+
+  stat_ellipse() +
+  xlab(pcoa1)+
+  ylab(pcoa2)+
+  theme(panel.grid =  element_blank())+
+  ggtitle(paste0(title_method, " - Tumor gemcitabine")) +
+  theme (axis.text=element_text(size=14),
+         axis.title=element_text(size=16,face="bold"),
+        legend.text = element_text(size = 12),
+        legend.title = element_blank())+
+  geom_text(data=annotations,aes(x=xpos,y=ypos,hjust=hjustvar,vjust=vjustvar,label=annotateText), size = 4.5, inherit.aes = FALSE)
+return(p1)
+}
+## ---- wrench normalization wrapper
+WrenchWrapper <- function(PhyloObjct, roundUp = F){
+  cnt_table <- PhyloObjct %>% otu_table()
+  group <- PhyloObjct %>% sample_data() %>% pull(Treatment)
+  w <- wrench(cnt_table, condition = group)
+  
+  deseq.obj <- DESeqDataSetFromMatrix(cnt_table %>% as.data.frame(), DataFrame(group), ~group)
+  DESeq2::sizeFactors(deseq.obj) <- w$nf
+  cnt_table_normalized <- DESeq2::counts(deseq.obj, normalized=TRUE)
+  if(roundUp){cnt_table_normalized <- cnt_table_normalized %>% round()}
+  return(phyloseq(otu_table(cnt_table_normalized, taxa_are_rows = T), tax_table(PhyloObjct %>% tax_table()), sample_data(PhyloObjct %>% sample_data())))
+}
+## MAAsLin2 Wrapper
+## Apply MaAslin2 for phyloseq object after decontam and normalized
+MaAsLin2_Wrapper <- function(PhyLoObj, OutDir){
+  ## Normalization: rarefying (rar), Wrench (wrench)
+  
+  df_data <- PhyLoObj %>% otu_table()  %>% t() %>% as.data.frame()
+  df_metadata <- PhyLoObj %>% sample_data() %>% as_tibble() %>% dplyr::select(barcode, Treatment) %>% as.data.frame()
+  row.names(df_metadata) <- df_metadata$barcode
+  fit.RmLowAbun.Rar <- Maaslin2(input_data = df_data,
+                              input_metadata = df_metadata,
+                              #output = "./MaAsLin2_OutDir/RmLowabun.Rar",
+                              output = OutDir,
+                              min_abundance = 0,
+                              min_prevalence = 0,
+                              normalization = "NONE",
+                              fixed_effects = c("Treatment"),
+                              reference = c("Treatment,ctrl"))
+}
+rarefy_even_depth_wrapper <- function(PhyLoObj, seed=711){
+  return(rarefy_even_depth(PhyLoObj, sample.size = PhyLoObj %>% sample_sums() %>% min(), rngseed = seed))
+}
+###---------------------------------------------------------------
+## plot MaAsLin2 results
+MaAslin2_plot <- function(Path2Tab, Tax_tab, title_method=""){
+  ## plot significant results
+  ## Read table
+  Tab <- read.table(Path2Tab, header = TRUE)
+  if(dim(Tab)[1]==0){return(NULL)}
+  Tab <- Tab %>% as_tibble() %>% 
+    mutate(TaxaID = substr(feature, 2, nchar(feature))) %>% 
+    left_join(., Tax_tab[, c("TaxaID", "species")], by = "TaxaID") %>% 
+    mutate(legend = paste0(TaxaID, ":", species))
+  
+  Tab$legend = factor(Tab$legend,levels=Tab$legend[order(Tab$coef)])
+  plt <- ggplot(Tab, aes(x=legend,y=coef,fill=coef>0))+
+    geom_col() + coord_flip()+
+    scale_fill_manual(values=c("blue","red"),
+      labels=c("negative","positive"))
+  plt <- plt + xlab("") +
+    ggtitle(paste0(title_method, " - MaAsLin2")) +
+    theme (axis.title=element_text(size=12,face="bold"),
+        legend.title = element_blank())
+  return(plt)
+}
+###---------------------------------------------------------------
+## plot ALDEx2 results
+ALDex2_plot <- function(x.all, Tax_tab, p_val_thres = 0.05, title_method=""){
+  Tab <- x.all %>% filter(we.ep <= p_val_thres) %>% 
+    rownames_to_column(var="TaxaID") %>% 
+    left_join(., Tax_tab[, c("TaxaID", "species")], by = "TaxaID") %>% 
+    mutate(legend = paste0(TaxaID, ":", species))
+  if(dim(Tab)[1]==0){return(NULL)}
+  Tab$legend = factor(Tab$legend,levels=Tab$legend[order(Tab$diff.btw)])
+  plt <- ggplot(Tab, aes(x=legend,y=diff.btw,fill=diff.btw>0))+
+    geom_col() + coord_flip()+
+    scale_fill_manual(values=c("blue","red"),
+      labels=c("negative","positive"))
+  plt <- plt + xlab("") +
+    ggtitle(paste0(title_method, " - ALDEx2")) +
+    theme (axis.title=element_text(size=12,face="bold"),
+        legend.title = element_blank())
+  return(plt)
+}
+```
+
+# Load Objects
+
+```{r}
+#dc_low <- readRDS("physeqs/p.decontam.rds")
+#dc_high <- readRDS("physeqs/p.decontam_default_nct_high_score.rds")
+dc_low_8nct <- readRDS("physeqs/p.decontam_8nct.rds")
+#scrub_low <- readRDS("physeqs/p.scrub.rds")
+#scrub_high <- readRDS("physeqs/p.scrub_nct_high_score.rds")
+scrub_low_8nct <- readRDS("physeqs/p.scrub_8nct.rds")
+#nej <- readRDS("physeqs/p.nejman.rds")
+nej_8nct <- readRDS("physeqs/p.nejman_8nct.rds")
+## 2 original phyloseq
+p.true.original <- readRDS("physeqs/physeq_1750_90_q15.rds")
+p.true.RmLowAbun <- readRDS("./physeqs/p.true.RmLowAbun.rds")
+```
+
+# 3. Normalization Methods
+
+## 3.1 Rarefying
+
+### 3.1.1 Alpha Analysis
+
+Measurring richness among treatment vs. control when applying rarefying as normalization
+
+```{r}
+## Original without any filtering
+seed <- 711
+#p.forcus <- rarefy_even_depth(p.true.original, sample.size = p.true.original %>% sample_sums() %>% min(), rngseed = seed)
+plt.original.lst <- AlphaPlotWrapper(rarefy_even_depth(p.true.original, sample.size = p.true.original %>% sample_sums() %>% min(), rngseed = seed))
+# plt.true.original.1 <- AlphaPlot(p.forcus, index = "Observed", y_label = "Observed species", add_legend = F)
+# plt.true.original.2 <- AlphaPlot(p.forcus, index = "Shannon", y_label = "Shannon index", add_legend = F)
+# plt.true.original.3 <- AlphaPlot(p.forcus, index = "InvSimpson", y_label = "Inv Simpson index", add_legend = F)
+#legend <- get_legend(p1)
+#p3 <- p3 + theme(legend.position="none")
+
+## Original with trivial filtering
+
+p.forcus <- rarefy_even_depth(p.true.RmLowAbun, sample.size = p.true.RmLowAbun %>% sample_sums() %>% min(), rngseed = seed)
+plt.true.RmLowAbun.1 <- AlphaPlot(p.forcus, index = "Observed", y_label = "Observed species", add_legend = F)
+plt.true.RmLowAbun.2 <- AlphaPlot(p.forcus, index = "Shannon", y_label = "Shannon index", add_legend = F)
+plt.true.RmLowAbun.3 <- AlphaPlot(p.forcus, index = "InvSimpson", y_label = "Inv Simpson index", add_legend = F)
+
+## Decontam R package
+p.forcus <- rarefy_even_depth(dc_low_8nct, sample.size = dc_low_8nct %>% sample_sums() %>% min(), rngseed = seed)
+plt.dc.1 <- AlphaPlot(p.forcus, index = "Observed", y_label = "Observed species", add_legend = F)
+
+plt.dc.2 <- AlphaPlot(p.forcus, index = "Shannon", y_label = "Shannon index", add_legend = F)
+
+plt.dc.3 <- AlphaPlot(p.forcus, index = "InvSimpson", y_label = "Inverse Simpson index", add_legend = F)
+
+## Nejman
+p.forcus <- rarefy_even_depth(nej_8nct, sample.size = nej_8nct %>% sample_sums() %>% min(), rngseed = seed)
+plt.nejman.1 <- AlphaPlot(p.forcus, index = "Observed", y_label = "Observed species", add_legend = F)
+plt.nejman.2 <- AlphaPlot(p.forcus, index = "Shannon", y_label = "Shannon index", add_legend = F)
+plt.nejman.3 <- AlphaPlot(p.forcus, index = "InvSimpson", y_label = "Inverse Simpson index", add_legend = F)
+
+## SCRuB
+p.forcus <- rarefy_even_depth(scrub_low_8nct, sample.size = scrub_low_8nct %>% sample_sums() %>% min(), rngseed = seed)
+plt.scrub.1 <- AlphaPlot(p.forcus, index = "Observed", y_label = "Observed species", add_legend = F)
+plt.scrub.2 <- AlphaPlot(p.forcus, index = "Shannon", y_label = "Shannon index", add_legend = F)
+plt.scrub.3 <- AlphaPlot(p.forcus, index = "InvSimpson", y_label = "Inverse Simpson index", add_legend = F)
+
+grid.arrange(plt.true.original.1, plt.true.original.2, plt.true.original.3,
+             plt.true.RmLowAbun.1, plt.true.RmLowAbun.2, plt.true.RmLowAbun.3,
+             plt.dc.1, plt.dc.2, plt.dc.3,
+             ncol = 3, top = textGrob("KPC tumor with and without gemcitabine treatment - Original, trivial",  x = 0, hjust = -0.16))
+
+## use different package for ploting
+library(cowplot)
+plot_grid(plt.true.original.1, plt.true.original.2, plt.true.original.3,
+          plt.true.RmLowAbun.1, plt.true.RmLowAbun.2, plt.true.RmLowAbun.3,
+          align = "h", ncol = 3, rel_heights = c(1/3, 1/3, 1/3))
+```
+
+```{r}
+pltA.RmLowAbun.Rar.lst <- p.RmLowAbun.Rar %>% rarefy_even_depth_wrapper(seed = 711) %>% AlphaPlotWrapper() 
+pltA.dc.Rar.lst <- dc_low_8nct %>% rarefy_even_depth_wrapper() %>% AlphaPlotWrapper()
+pltA.Nejman.Rar.lst <- nej_8nct %>% rarefy_even_depth_wrapper() %>% AlphaPlotWrapper()
+pltA.SCRuB.Rar.lst <- scrub_low_8nct %>% rarefy_even_depth_wrapper() %>% AlphaPlotWrapper()
+
+#png(filename="./img/pltA.RmLowAbun.Rar.png")
+plot_grid(#pltA.RmLowAbun.Rar.lst$Observed, pltA.RmLowAbun.Rar.lst$Shannon, pltA.RmLowAbun.Rar.lst$InvSimpson,
+          #pltA.dc.Rar.lst$Observed, pltA.dc.Rar.lst$Shannon, pltA.dc.Rar.lst$InvSimpson,
+          #pltA.Nejman.Rar.lst$Observed, pltA.Nejman.Rar.lst$Shannon, pltA.Nejman.Rar.lst$InvSimpson,
+          pltA.SCRuB.Rar.lst$Observed, pltA.SCRuB.Rar.lst$Shannon, pltA.SCRuB.Rar.lst$InvSimpson,
+          ncol = 3)
+#dev.off()
+```
+
+### 3.1.2 Beta Analysis
+
+Evaluate how samples clustering with and without decontamination process
+
+```{r}
+seed <- 711
+## original
+p.forcus <- rarefy_even_depth(p.true.original, sample.size = p.true.original %>% sample_sums() %>% min(), rngseed = seed)
+pltBeta.original <- BetaPlot(PhyloObjct = p.forcus, title_method = "Original")
+
+## original with trivial filtering
+p.forcus <- rarefy_even_depth(p.true.RmLowAbun, sample.size = p.true.RmLowAbun %>% sample_sums() %>% min(), rngseed = seed)
+pltBeta.RmLowAbun <- BetaPlot(p.forcus, title_method = "RmLowAbun")
+
+## Decontam
+p.forcus <- rarefy_even_depth(dc_low_8nct, sample.size = dc_low_8nct %>% sample_sums() %>% min(), rngseed = seed)
+pltBeta.dc <- BetaPlot(p.forcus, title_method = "Decontam")
+
+## Nejman
+p.forcus <- rarefy_even_depth(nej_8nct, sample.size = nej_8nct %>% sample_sums() %>% min(), rngseed = seed)
+pltBeta.Nejman <- BetaPlot(p.forcus, title_method = "Nejman")
+
+## SCRuB
+p.forcus <- rarefy_even_depth(scrub_low_8nct, sample.size = scrub_low_8nct %>% sample_sums() %>% min(), rngseed = seed)
+pltBeta.SCRuB <- BetaPlot(p.forcus, title_method = "SCRuB")
+
+plot_grid(pltBeta.RmLowAbun, pltBeta.dc, pltBeta.Nejman, pltBeta.SCRuB,
+          ncol = 2)
+```
+
+```{r}
+## RmLowAbun
+PltB.RmLowAbun.Rar <- p.RmLowAbun.Rar %>% rarefy_even_depth_wrapper() %>% BetaPlot(title_method = "RmLowAbun")
+PltB.RmLowAbun.Rar
+## Decontam
+pltB.dc.Rar <- dc_low_8nct %>% rarefy_even_depth_wrapper() %>% BetaPlot(title_method = "Decontam")
+pltB.dc.Rar
+## Nejman
+pltB.Nejman.Rar <- nej_8nct %>% rarefy_even_depth_wrapper() %>% BetaPlot(title_method = "Nejman")
+pltB.Nejman.Rar
+## SCRuB
+pltB.SCRuB.Rar <- scrub_low_8nct %>% rarefy_even_depth_wrapper() %>% BetaPlot(title_method = "SCRuB")
+pltB.SCRuB.Rar
+```
+
+### 3.1.3 DAA
+
+On taxa level
+
+Using MaAslin2
+
+Original with trivial filtering
+
+```{r}
+seed <- 711
+#require(Maaslin2)
+## rarefying
+p.RmLowAbun.Rar <- rarefy_even_depth(p.true.RmLowAbun, sample.size = p.true.RmLowAbun %>% sample_sums() %>% min(), rngseed = seed)
+df_data <- p.RmLowAbun.Rar %>% otu_table()  %>% t() %>% as.data.frame()
+df_metadata <- p.RmLowAbun.Rar %>% sample_data() %>% as_tibble() %>% dplyr::select(barcode, Treatment) %>% as.data.frame()
+row.names(df_metadata) <- df_metadata$barcode
+fit.RmLowAbun.Rar <- Maaslin2(input_data = df_data,
+                              input_metadata = df_metadata,
+                              output = "./MaAsLin2_OutDir/RmLowabun.Rar",
+                              min_abundance = 0,
+                              min_prevalence = 0,
+                              normalization = "NONE",
+                              fixed_effects = c("Treatment"),
+                              reference = c("Treatment,ctrl"))
+## Plot results
+##![Caption the picture.](/MaAsLin2_OutDir/RmLowabun.Rar/figures/Treatment_1.png)
+
+```
+
+Decontam
+
+```{r}
+dc.rar <- rarefy_even_depth(dc_low_8nct, sample.size = dc_low_8nct %>% sample_sums() %>% min(), rngseed = seed)
+df_data <- dc.rar %>% otu_table()  %>% t() %>% as.data.frame()
+df_metadata <- dc.rar %>% sample_data() %>% as_tibble() %>% dplyr::select(barcode, Treatment) %>% as.data.frame()
+row.names(df_metadata) <- df_metadata$barcode
+fit.RmLowAbun.Rar <- Maaslin2(input_data = df_data,
+                              input_metadata = df_metadata,
+                              output = "./MaAsLin2_OutDir/Decontam.Rar",
+                              min_abundance = 0,
+                              min_prevalence = 0,
+                              normalization = "NONE",
+                              fixed_effects = c("Treatment"),
+                              reference = c("Treatment,ctrl"))
+```
+
+Nejman
+
+```{r}
+nej.rar <- rarefy_even_depth(nej_8nct, sample.size = nej_8nct %>% sample_sums() %>% min(), rngseed = seed)
+MaAsLin2_Wrapper(nej.rar, "MaAsLin2_OutDir/Nejman.Rar")
+```
+
+SCRuB
+
+```{r}
+scrub.rar <- rarefy_even_depth(scrub_low_8nct, sample.size = scrub_low_8nct %>% sample_sums() %>% min(), rngseed = seed)
+MaAsLin2_Wrapper(scrub.rar, "MaAsLin2_OutDir/SCRuB.Rar")
+```
+
+Plot MaAsLin2 results
+
+```{r}
+pltM.RmLowAbun.Rar <- MaAslin2_plot("./MaAsLin2_OutDir/RmLowabun.Rar/significant_results.tsv", Tax_tab, title_method = "RmLowAbun.Rar")
+pltM.dc.Rar <- MaAslin2_plot("./MaAsLin2_OutDir/Decontam.Rar/significant_results.tsv", Tax_tab, "Decontam.Rar")
+pltM.Nejman.Rar <- MaAslin2_plot("./MaAsLin2_OutDir/Nejman.Rar/significant_results.tsv", Tax_tab, "Nejman.Rar")
+pltM.SCRuB.Rar <- MaAslin2_plot("./MaAsLin2_OutDir/SCRuB.Rar/significant_results.tsv", Tax_tab, "SCRuB.Rar")
+
+pltM.SCRuB.Rar
+png("./img/pltM.Rar.png")
+plot_grid(pltM.RmLowAbun.Rar, pltM.dc.Rar,
+          #pltM.Nejman.Rar, pltM.SCRuB.Rar,
+          ncol = 2)
+dev.off()
+```
+
+## 3.2 Wrench Normalization
+
+### 3.2.1 Alpha Analysis
+
+```{r}
+##debug(WrenchWrapper)
+## original with trivial filter
+pltA.RmLowAbun.wrench.lst <- p.true.RmLowAbun %>% WrenchWrapper() %>% AlphaPlotWrapper()
+# p.true.RmLowAbun.wrench <- WrenchWrapper(p.true.RmLowAbun)
+# otu_table(p.true.RmLowAbun.wrench) <- ceiling(otu_table(p.true.RmLowAbun.wrench))
+# plt.RmLowAbun.Wrench.1 <- AlphaPlot(p.true.RmLowAbun.wrench, index = "Observed", y_label = "Observed species", add_legend = F)
+# plt.RmLowAbun.Wrench.2 <- AlphaPlot(p.true.RmLowAbun.wrench, index = "Shannon", y_label = "Shannon idx", add_legend = F)
+# plt.RmLowAbun.Wrench.3 <- AlphaPlot(p.true.RmLowAbun.wrench, index = "InvSimpson", y_label = "Inv Simpson idx", add_legend = F)
+
+## decomtam
+pltA.dc.wrench.lst <- dc_low_8nct %>% WrenchWrapper() %>% AlphaPlotWrapper()
+# dc.wrench <- WrenchWrapper(dc_low_8nct)
+# otu_table(dc.wrench) <- dc.wrench %>% otu_table() %>% ceiling()
+# plt.dc.wrench.1 <- AlphaPlot(dc.wrench, index = "Observed", y_label = "Observed species", add_legend = F)
+# plt.dc.wrench.2 <- AlphaPlot(dc.wrench, index = "Shannon", y_label = "Shannon idx", add_legend = F)
+# plt.dc.wrench.3 <- AlphaPlot(dc.wrench, index = "InvSimpson", y_label = "Inv Simpson idx", add_legend = F)
+
+## Nejman
+pltA.Nejman.wrench.lst <- nej_8nct %>% WrenchWrapper() %>% AlphaPlotWrapper()
+
+## SCRuB
+pltA.SCRuB.wrench.lst <- scrub_low_8nct %>% WrenchWrapper() %>% AlphaPlotWrapper()
+
+plot_grid(#pltA.RmLowAbun.wrench.lst$Observed, pltA.RmLowAbun.wrench.lst$Shannon, pltA.RmLowAbun.wrench.lst$InvSimpson,
+          #pltA.dc.wrench.lst$Observed, pltA.dc.wrench.lst$Shannon, pltA.dc.wrench.lst$InvSimpson,
+          #pltA.Nejman.wrench.lst$Observed, pltA.Nejman.wrench.lst$Shannon, pltA.Nejman.wrench.lst$InvSimpson,
+          pltA.SCRuB.wrench.lst$Observed, pltA.SCRuB.wrench.lst$Shannon, pltA.SCRuB.wrench.lst$InvSimpson,
+          ncol = 3)
+```
+
+### 3.2.2 Beta Analysis
+
+```{r}
+pltB.RmLowAbun.wrench <- p.true.RmLowAbun %>% WrenchWrapper(roundUp = T) %>% BetaPlot(title_method = "RmLownAbun")
+pltB.dc.wrench <- dc_low_8nct %>% WrenchWrapper(roundUp = T) %>% BetaPlot(title_method = "Decontam")
+pltB.Nejman.wrench <- nej_8nct %>% WrenchWrapper(roundUp = T) %>% BetaPlot(title_method = "Nejman")
+pltB.SCRuB.wrench <- scrub_low_8nct %>% WrenchWrapper(roundUp = T) %>% BetaPlot(title_method = "SCRuB")
+pltB.SCRuB.wrench
+
+plot_grid(pltB.RmLowAbun.wrench, 
+          pltB.dc.wrench,
+          #pltB.Nejman.wrench, pltB.SCRuB.wrench,
+          ncol = 2)
+```
+
+### 3.2.3 DAA
+
+```{r}
+## RmLowAbun
+#p.RmLowAbun.Wrench <- WrenchWrapper(p.true.RmLowAbun)
+MaAsLin2_Wrapper(p.true.RmLowAbun %>% WrenchWrapper(roundUp = T), "MaAsLin2_OutDir/RmLowAbun.Wrench")
+## decontam
+dc_low_8nct %>% WrenchWrapper(roundUp = T) %>% MaAsLin2_Wrapper(OutDir = "MaAsLin2_OutDir/Decontam.Wrench")
+## Nejman
+nej_8nct %>% WrenchWrapper(roundUp = T) %>% MaAsLin2_Wrapper(OutDir = "MaAsLin2_OutDir/Nejman.Wrench")
+## SCRuB
+scrub_low_8nct %>% WrenchWrapper(roundUp = T) %>% MaAsLin2_Wrapper(OutDir = "MaAsLin2_OutDir/SCRuB.Wrench")
+```
+
+Plot MaAsLin2 results
+
+```{r}
+Tax_tab <- p.true.original %>% tax_table() %>% as.data.frame() %>% 
+  rownames_to_column(var = "TaxaID")
+pltM.RmLowAbun.Wrench <- MaAslin2_plot("./MaAsLin2_OutDir/RmLowAbun.Wrench/significant_results.tsv", Tax_tab, "RmLowAbun.Wrench")
+pltM.dc.Wrench <- MaAslin2_plot("./MaAsLin2_OutDir/Decontam.Wrench/significant_results.tsv", Tax_tab, "Decontam.Wrench")
+pltM.Nejman.Wrench <- MaAslin2_plot("./MaAsLin2_OutDir/Nejman.Wrench/significant_results.tsv", Tax_tab, "Nejman.Wrench")
+pltM.SCRuB.Wrench <- MaAslin2_plot("./MaAsLin2_OutDir/SCRuB.Wrench/significant_results.tsv", Tax_tab, "SCRuB.Wrench")
+```
+
+## 3.3 ALDEx
+
+### 3.3.1 Alpha Analysis
+
+```{r}
+
+```
+
+### 3.3.2 Beta Analysis
+
+# 4.GMPR
+
+```{r}
+size.factor <- GMPR(df_data)
+```
+
+# 5. ALDEx
+
+```{r}
+#library(ALDEx2)
+PhyLoObj <- scrub_low_8nct
+df_data <- PhyLoObj %>% otu_table()  %>% as.data.frame() %>%  as.matrix()
+df_metadata <- PhyLoObj %>% sample_data() %>% as_tibble() %>% dplyr::select(barcode, Treatment) %>% as.data.frame() %>% column_to_rownames(var = "barcode")
+x <- ALDEx2::aldex.clr(df_data, df_metadata$Treatment, mc.samples = 256, denom = "all", verbose = FALSE)
+x.tt <- aldex.ttest(x, paired.test=FALSE)
+#x.tt <- x.tt[order(x.tt$we.ep),]
+x.effect <- aldex.effect(x, include.sample.summary = F, verbose = F, paired.test=FALSE, glm.conds=NULL, useMC=F)
+x.all <- data.frame(x.tt, x.effect)
+##plt.ALDEx2 <- ALDEx2::aldex.plot(x.all, type = "volcano", cutoff.pval = 0.3)
+ALDex2_plot(x.all, Tax_tab, p_val_thres = 0.05, title_method = "SCRuB")
+```
+
+# ZicoSeq
+
+```{r}
+PhyLoObj <- scrub_low_8nct
+df_data <- PhyLoObj %>% otu_table()  %>% as.data.frame() %>%  as.matrix()
+df_metadata <- PhyLoObj %>% sample_data() %>% as_tibble() %>% dplyr::select(barcode, Treatment) %>% as.data.frame() %>% column_to_rownames(var = "barcode")
+ZicoSeq.obj <- ZicoSeq(meta.dat = df_metadata, feature.dat = df_data, 
+                    grp.name = 'Treatment', 
+                    ##adj.name = 'Sex', 
+                    feature.dat.type = "count",
+                    # Filter to remove rare taxa
+                    prev.filter = 0.0, 
+                    mean.abund.filter = 0.0,  
+                    max.abund.filter = 0.002, min.prop = 0, 
+                    # Winsorization to replace outliers
+                    is.winsor = TRUE, outlier.pct = 0.03, winsor.end = 'top',
+                    # Posterior sampling 
+                    is.post.sample = TRUE, post.sample.no = 25, 
+                    # Use the square-root transformation
+                    link.func = list(function (x) x^0.5), stats.combine.func = max,
+                    # Permutation-based multiple testing correction
+                    perm.no = 99,  strata = NULL, 
+                    # Reference-based multiple stage normalization
+                    ref.pct = 0.5, stage.no = 6, excl.pct = 0.2,
+                    # Family-wise error rate control
+                    is.fwer = TRUE, verbose = TRUE, return.feature.dat = TRUE)
+## plot
+ZicoSeq.plot(ZicoSeq.obj, pvalue.type = 'p.raw', cutoff = 0.05, text.size = 10,
+             out.dir = NULL, width = 10, height = 6)
+```

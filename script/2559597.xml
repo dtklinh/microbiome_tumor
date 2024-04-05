@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE TaxaSet>
+<TaxaSet>
+  <Taxon>
+    <TaxId>2559597</TaxId>
+    <ScientificName>Candidatus Nitrotoga sp. AM1P</ScientificName>
+    <OtherNames>
+      <Name>
+        <ClassCDE>misspelling</ClassCDE>
+        <DispName>Candidatus Nitrotoga sp. AM1</DispName>
+      </Name>
+    </OtherNames>
+    <ParentTaxId>2647919</ParentTaxId>
+    <Rank>species</Rank>
+    <Division>Bacteria</Division>
+    <GeneticCode>
+      <GCId>11</GCId>
+      <GCName>Bacterial, Archaeal and Plant Plastid</GCName>
+    </GeneticCode>
+    <MitoGeneticCode>
+      <MGCId>0</MGCId>
+      <MGCName>Unspecified</MGCName>
+    </MitoGeneticCode>
+    <Lineage>cellular organisms; Bacteria; Pseudomonadota; Betaproteobacteria; Nitrosomonadales; Gallionellaceae; Candidatus Nitrotoga; unclassified Candidatus Nitrotoga</Lineage>
+    <LineageEx>
+      <Taxon>
+        <TaxId>131567</TaxId>
+        <ScientificName>cellular organisms</ScientificName>
+        <Rank>no rank</Rank>
+      </Taxon>
+      <Taxon>
+        <TaxId>2</TaxId>
+        <ScientificName>Bacteria</ScientificName>
+        <Rank>superkingdom</Rank>
+      </Taxon>
+      <Taxon>
+        <TaxId>1224</TaxId>
+        <ScientificName>Pseudomonadota</ScientificName>
+        <Rank>phylum</Rank>
+      </Taxon>
+      <Taxon>
+        <TaxId>28216</TaxId>
+        <ScientificName>Betaproteobacteria</ScientificName>
+        <Rank>class</Rank>
+      </Taxon>
+      <Taxon>
+        <TaxId>32003</TaxId>
+        <ScientificName>Nitrosomonadales</ScientificName>
+        <Rank>order</Rank>
+      </Taxon>
+      <Taxon>
+        <TaxId>90627</TaxId>
+        <ScientificName>Gallionellaceae</ScientificName>
+        <Rank>family</Rank>
+      </Taxon>
+      <Taxon>
+        <TaxId>453161</TaxId>
+        <ScientificName>Candidatus Nitrotoga</ScientificName>
+        <Rank>genus</Rank>
+      </Taxon>
+      <Taxon>
+        <TaxId>2647919</TaxId>
+        <ScientificName>unclassified Candidatus Nitrotoga</ScientificName>
+        <Rank>no rank</Rank>
+      </Taxon>
+    </LineageEx>
+    <CreateDate>2019/03/25 12:12:28</CreateDate>
+    <UpdateDate>2020/05/11 07:22:58</UpdateDate>
+    <PubDate>2019/04/02 01:00:29</PubDate>
+  </Taxon>
+</TaxaSet>

@@ -1,0 +1,1532 @@
+---
+title: "Decontamination benchmarking"
+author: "Christoph"
+date: "Report created: `r Sys.Date()`"
+format: 
+  html: 
+    toc: true
+    toc-location: left
+    toc-title: Contents
+    html-math-method: plain
+    css: styles.css
+    code-fold: true
+    code-tools: true
+    embed-resources: true
+    self-contained: true
+editor_options: 
+  chunk_output_type: console
+execute:
+  warning: false
+  message: false
+---
+
+# 1. Preparation
+
+## 1.1 Libraries
+
+```{r}
+library(phyloseq)
+library (data.table) #fast reading (z.B. fread)
+library(ggrepel)
+library(SCRuB)
+library(PERFect)
+library(tidyverse)
+library(kableExtra)
+library(yingtools2)
+library(vegan)
+library(openxlsx)
+library(microbiome)
+library(rstatix)
+library(ggpubr)
+library(gridExtra)
+library(grid)
+library(decontam)
+# library(cluster)
+library(pairwiseAdonis)
+library(VennDiagram)
+```
+
+## 1.2 Functions
+
+```{r}
+## adding functions
+Path2Function <- "./functions/"
+source(paste0(Path2Function,"MyFunctionsV2.R"))
+source(paste0(Path2Function,"MyAnalysisWithPlots.R"))
+
+cols <- c("#9d547c","#56ca63","#a357d6","cornflowerblue","#419d2a","sandybrown","red3","peachpuff","cyan","paleturquoise3","mistyrose","mediumpurple","mediumseagreen","mediumorchid","moccasin","orange4","olivedrab","midnightblue","papayawhip","palevioletred4","brown1","greenyellow","orchid","navy","darkred","navajowhite1","mistyrose1","grey85","#525fd6","red2","#8cbe3a","#c944aa","indianred3","#5ba557","#9e66cb","#c1b735","#6d82ec","grey25","#e69728","#6654b0","lightsalmon3","lightcyan1","khaki1","seagreen1","plum1","lightsteelblue1","palevioletred3","mintcream","magenta3","#799330","#da7fdf","#3c782c","#e44586","blue4","#63c996","#dc3f53","#49cbc8","#cf3f29","#4fabda","#da6c2b","#598bd1","#b78c24","#8d4191","#a0b971","slategray1","sienna","plum1","lightyellow1","lightskyblue3","linen","limegreen","cornsilk1","mediumaquamarine","gray14","gold3","darkviolet","#b2386a","#479d71","#ae4341","#2ba198","#e07557","#5361a3","#dda353","#aa98df","#5b6114","#dc89bf","#327243","slateblue1","#e57b94","#277257","#9b62a0","#bbab59","#98495a","#526229","#d8827d","#857624","gray40","#9a4a22","#7c7d46","mediumslateblue","lemonchiffon1","#e3a073","#9e6b33", "gray74","slateblue1","rosybrown3", "lawngreen","gainsboro","dodgerblue3","deeppink3","firebrick3", "orchid2", "olivedrab1", "ivory3", "darkseagreen", "bisque2", "darkgoldenrod2", "blue2", "skyblue", "seashell2", "turquoise", "tan1", "seagreen2", "palevioletred3", "linen", "steelblue4","ghostwhite","dodgerblue1","deeppink1","firebrick1", "limegreen", "purple3", "khaki3", "snow3", "darkslategray","darkorchid","lavender", "magenta2", "palegreen", "salmon", "maroon", "cyan2","#671408","#FAEBD7","#7FFFD4","#F0FFFF","#A52A2A","burlywood","cadetblue","#7FFF00","chocolate","cornsilk","slateblue1","#FF7F50","red1","#008B8B","darkgoldenrod1","darkolivegreen","darkorange4","white","hotpink","honeydew1","goldenrod2","darkgreen","oldlace","darkslategray3","navajowhite3","orchid4","gray25","#F0924D")
+
+```
+
+## 1.3 Loading samples
+
+### 1.3.1 True samples
+
+```{r}
+physeq1 <- readRDS("physeqs/physeq_1750_90_q15.rds")
+#no reason to merge any phyloseq objects as only 1 phyloseq object exists
+p.true.original <- physeq1
+#clean objects
+rm(list = c("physeq1"))
+ntaxa.true.raw <- nrow(otu_table(p.true.original)) #This line calculates the number of taxa present in p.true.phyloseq by first converting the phyloseq object into an otu table and then counting the rows in that table using nrow function. 
+zero_true_raw <- sum(otu_table(p.true.original) == 0)/nrow(meta(p.true.original))
+#it calculates the proportion of samples with zero read counts for each taxa in p.true. original.
+```
+
+Now in true samples, we have: *`r nsamples(p.true.original)`* samples and *`r ntaxa(p.true.original)`* taxa
+
+### 1.3.2 NCT
+
+```{r}
+physeq.nct1 <- readRDS("physeqs/physeq_1000_50_nct.rds")
+physeq.nct2 <- readRDS("physeqs/physeq_acid_nct.rds")
+#no reason to merge any phyloseq objects as only 1 phyloseq object exists
+physeq.nct.original <- merge_phyloseq(physeq.nct1, physeq.nct2)
+#clean objects
+rm(list = c('physeq.nct1', "physeq.nct2"))
+ntaxa.nct.raw <- nrow(otu_table(physeq.nct.original))
+zero_nct_raw <- sum(otu_table(physeq.nct.original) == 0)/nrow(meta(physeq.nct.original))
+
+overlap.raw <- length(
+  which(
+    !is.na(
+      match(
+        rownames(otu_table(physeq.nct.original)),
+        rownames(otu_table(p.true.original))
+      )
+    )
+  )
+)
+
+```
+
+Now in NCT samples, we have: *`r nsamples(physeq.nct.original)`* samples and *`r ntaxa(physeq.nct.original)`* taxa
+
+## 1.4 Batch data
+
+We create the batch data from the assumptions:
+
+```{r}
+p.true.original@sam_data$Treatment <- c("ctrl","ctrl","ctrl","ctrl","Gem","Gem","Gem","Gem")
+p.true.original@sam_data$TRUE_control <- rep("TRUE",nsamples(p.true.original))
+p.true.original@sam_data$is.neg <- sample_data(p.true.original)$TRUE_control == "control"
+
+
+physeq.nct.original @sam_data$sample_side <- c("buffer","buffer","pcr","sequence", "buffer","buffer","pcr","sequence")
+physeq.nct.original @sam_data$TRUE_control <- rep("control",nsamples(physeq.nct.original ))
+physeq.nct.original @sam_data$is.neg <- sample_data(physeq.nct.original )$TRUE_control == "control"
+
+
+#Now assign the batch numbers
+#DNAex_round
+p.true.original@sam_data$DNAex_round <- rep(1,nsamples(p.true.original))
+physeq.nct.original @sam_data$DNAex_round <- c(1,1,NA,NA,1,1,NA,NA)
+#PCR_round
+p.true.original@sam_data$PCR_round <- rep(1,nsamples(p.true.original))
+physeq.nct.original @sam_data$PCR_round <- c(1,1,1,NA,1,1,1,NA)
+#Seq_round
+p.true.original@sam_data$Seq_round <- rep(1,nsamples(p.true.original))
+physeq.nct.original @sam_data$Seq_round <- c(1,1,1,1,1,1,1,1)
+
+```
+
+Now in true sample, we have *`r nrow(sample_data(p.true.original))`* samples and *`r nrow(otu_table(p.true.original))`* taxa. In the NCTs, we have *`r nrow(sample_data(physeq.nct.original))`* samples and *`r nrow(otu_table(physeq.nct.original))`* taxa.
+
+# 2 Preprocessing {.tabset}
+
+## 2.1 Filterung, Agglomarting
+
+We keep only bacterial reads with resolution to species
+
+```{r}
+## for true samples
+p.true.filt <- subset_taxa(p.true.original, superkingdom=="Bacteria")
+p.true.filt.s <- tax_glom(p.true.filt, taxrank = "species", NArm = TRUE)
+
+rm(p.true.filt)
+## for NCTs
+physeq.nct.filt <- subset_taxa(physeq.nct.original, superkingdom=="Bacteria")
+physeq.nct.filt.s <- tax_glom(physeq.nct.filt, taxrank = "species", NArm = TRUE)
+
+rm(physeq.nct.filt)
+```
+
+## 2.2 Sequencing depth
+
+### 2.2.1 True samples - Sequencing depth
+
+Before using tissue data for further downstream analysis, we firstly need to apply QC (quality control). We remove samples from our tissue set whose read counts are below a given threshold. The respective read counts are too low and do not yield confident presence/absence calls.
+
+```{r}
+Inspect_SequencingDepth(PhyloObj = p.true.filt.s)
+visualize_samples_low_reads(p.true.filt.s,type = "Tissue")
+
+seq_depth.true <- data.frame(id = meta(p.true.filt.s)$id,
+                 barcode = meta(p.true.filt.s)$barcode,
+                 nreads = sample_sums(p.true.filt.s),
+                 log2_reads = log2(sample_sums(p.true.filt.s)),
+                 log10_reads = log10(sample_sums(p.true.filt.s)))
+```
+
+### 2.2.2 NCTs - Sequencing depth
+
+```{r}
+Inspect_SequencingDepth(physeq.nct.filt.s)
+visualize_samples_low_reads(physeq.nct.filt.s,type = "NTC")
+
+seq_depth.nct <- data.frame(id = meta(physeq.nct.filt.s)$id,
+                 barcode = meta(physeq.nct.filt.s)$barcode,
+                 nreads = sample_sums(physeq.nct.filt.s),
+                 log2_reads = log2(sample_sums(physeq.nct.filt.s)),
+                 log10_reads = log10(sample_sums(physeq.nct.filt.s)))
+
+```
+
+Now, in NTC samples, we have *`r nrow(sample_data(physeq.nct.filt.s))`* samples and *`r nrow(otu_table(physeq.nct.filt.s))`* taxa.
+
+### 2.2.3 Excluding samples with low seq depth
+
+```{r}
+bac.count_cut_off_true <- 5000
+bac.count_cut_off_nct <- 40
+```
+
+We decide to remove Tissue samples if their read counts are less than **`r bac.count_cut_off_true` reads/sample** and NCT with a read count less than **`r bac.count_cut_off_nct` reads/sample**
+
+#### 2.2.3.1 True samples
+
+```{r}
+bac.count <- tibble(bac.count = sample_sums(p.true.filt.s), 
+                          sample = sample_data(p.true.filt.s)$id)
+id.ex <- bac.count %>% filter(bac.count < bac.count_cut_off_true) %>% pull (sample)
+physeq.read.filt <- subset_samples(p.true.filt.s, !(id %in% id.ex))
+physeq.read.filt <- prune_taxa(taxa_sums(physeq.read.filt)>0, physeq.read.filt)
+p.true.filt.s <- physeq.read.filt
+rm(bac.count)
+rm(id.ex)
+rm(physeq.read.filt)
+```
+
+Now, in Tissue samples, we have *`r nrow(sample_data(p.true.filt.s))`* samples and *`r nrow(otu_table(p.true.filt.s))`* taxa.
+
+#### 2.2.3.2 NCT
+
+```{r}
+bac.count <- tibble(bac.count = sample_sums(physeq.nct.filt.s), 
+                          sample = sample_data(physeq.nct.filt.s)$id)
+id.ex <- bac.count %>% filter(bac.count < bac.count_cut_off_nct) %>% pull (sample)
+physeq.read.filt <- subset_samples(physeq.nct.filt.s, !(id %in% id.ex))
+physeq.read.filt <- prune_taxa(taxa_sums(physeq.read.filt)>0, physeq.read.filt)
+physeq.nct.filt.s <- physeq.read.filt
+rm(bac.count)
+rm(id.ex)
+rm(physeq.read.filt)
+```
+
+Now, in Tissue samples, we have *`r nrow(sample_data(physeq.nct.filt.s))`* samples and *`r nrow(otu_table(physeq.nct.filt.s))`* taxa.
+
+## 2.3 Unification of taxids
+
+We have 2 phyloseq objects that may describe the same species using different OTU handles. We therefore unify the OTU handles for an easier downstream analysis.
+
+### 2.3.1 - Merging true samples and negative controls
+
+```{r merge true/nct samples}
+p.comb.filt <- merge_phyloseq(p.true.filt.s,physeq.nct.filt.s) 
+p.comb.filt.s <- tax_glom(p.comb.filt,taxrank = "species", NArm = TRUE) 
+rm(p.comb.filt)
+```
+
+### 2.3.2 - Demerging true samples and negative controls samples
+
+-it refers to the process of separating the merged data set into two distinct data set: one containing only the true samples and the other containing only the negative control samples
+
+```{r}
+p.true.filt.s.unify <- subset_samples(p.comb.filt.s,TRUE_control=="TRUE") #only true samples
+p.true.filt.s.unify <- prune_taxa(x = p.true.filt.s.unify,taxa = taxa_names(p.true.filt.s.unify)[-(which(taxa_sums(p.true.filt.s.unify)==0))]) #only taxa found in true samples
+
+physeq.nct.filt.s.unify <- subset_samples(p.comb.filt.s,TRUE_control == "control") #only NCT samples
+physeq.nct.filt.s.unify <- prune_taxa(x = physeq.nct.filt.s.unify,taxa = taxa_names(physeq.nct.filt.s.unify)[-(which(taxa_sums(physeq.nct.filt.s.unify)==0))]) #only taxa found in NCT samples
+```
+
+## 2.4 - Prevalence filtering
+
+In this step, we remove all taxas in true samples whose abundance are low (eg. \<10\^-4) in at least 1 sample
+
+```{r}
+p.true.RmLowAbun <- filter_by_low_abundance(phyloseqObj = p.true.filt.s.unify,threshold =0.00001 ,A = 1)
+
+
+physeq.nct.RmLowAbun <- filter_by_low_abundance(phyloseqObj = physeq.nct.filt.s.unify,threshold =0.00001 ,A = 1)
+```
+
+Now we have *`r nrow(sample_data(p.true.RmLowAbun))`* samples and *`r nrow(otu_table(p.true.RmLowAbun))`* taxa in the true sample set and *`r nrow(sample_data(physeq.nct.RmLowAbun))`* samples and *`r nrow(otu_table(physeq.nct.RmLowAbun))`* taxa in the NCT sample set.
+
+First of all, let us check the taxa overlap between NCT samples and true sample after low-abundance filtering by rule of thumb.
+
+### 2.4.1 Venn Diagram
+
+```{r}
+PlotVenn2Sets(taxa_names(p.true.RmLowAbun) %>% unique(),
+              taxa_names(physeq.nct.RmLowAbun) %>% unique(),
+              "True Samples" , "NCT Samples ")
+```
+
+There are `r setdiff(taxa_names(physeq.nct.RmLowAbun), taxa_names(p.true.RmLowAbun)) %>% length()` taxa belong to NCT samples but not in true samples (after rule of thumb).
+
+### 2.4.2 Microbial composition
+
+#### 2.4.2.1 True samples
+
+```{r}
+p.prop <- microbiome::transform(p.true.RmLowAbun, "compositional") 
+df.fam.melt <- psmelt(p.prop) %>% 
+  mutate(species.v2 = if_else(
+    Abundance < 0.03, "other", species 
+   ),
+   species.v2 = factor(species.v2, levels=rev(unique(species.v2)))
+  ) 
+
+rm(p.prop)
+
+
+#microbial composition at species level
+ggplot(df.fam.melt, aes(x=id, y=Abundance, fill=species.v2)) +
+  geom_bar(stat="identity") +
+  scale_y_continuous(labels = scales::percent, expand = c(0, 0), limits = c(0, 1.02)) +
+  scale_fill_manual(values = cols) +
+  xlab ("") +
+  ylab("Relative abundance") +
+  theme_bw() +
+  # facet_wrap(vars(Treatment), scales = "free_y") +
+  ggtitle("TRUE - Microbial composition at species level")+
+  # facet_wrap(~sample_side, scales = "free")+
+  theme( axis.text.x = element_text(angle = 45,hjust=1),
+        axis.text.y = element_text (size=12),
+        axis.title = element_text(size=14, face="bold"))+
+  theme(legend.position = "bottom",
+        legend.title = element_blank(),
+        legend.background = element_rect(linetype="solid", colour ="black"),
+        legend.key.size = unit(4,"mm"))
+
+```
+
+### 2.4.2.2 NCTs
+
+```{r}
+nct.prop <- microbiome::transform(physeq.nct.RmLowAbun, "compositional") 
+df.nct.melt <- psmelt(nct.prop) %>% 
+  mutate(species.v2 = if_else(
+    Abundance < 0.03, "other", species 
+   ),
+   species.v2 = factor(species.v2, levels=rev(unique(species.v2)))
+  ) 
+
+rm(nct.prop)
+
+
+ggplot(df.nct.melt, aes(x=id, y=Abundance, fill=species.v2)) +
+  geom_bar(stat="identity") +
+  scale_y_continuous(labels = scales::percent, expand = c(0, 0), limits = c(0, 1.02)) +
+  scale_fill_manual(values = cols) +
+  xlab ("") +
+  ylab("Relative abundance") +
+  theme_bw() +
+  # facet_wrap(vars(Treatment), scales = "free_y") +
+  ggtitle("NCT - Microbial composition at species level")+
+  # facet_wrap(~sample_side, scales = "free")+
+  theme( axis.text.x = element_text(angle = 45,hjust=1),
+        axis.text.y = element_text (size=12),
+        axis.title = element_text(size=14, face="bold"))+
+  theme(legend.position = "bottom",
+        legend.title = element_blank(),
+        legend.background = element_rect(linetype="solid", colour ="black"),
+        legend.key.size = unit(4,"mm"))
+
+```
+
+## 2.6. Decontamination {.tabset}
+
+Here we evaluate different deconatmination tools.
+
+1.  Decontam\
+2.  SCRuB\
+3.  Nejman et al.
+
+As indicators for sufficient decontamination following parameter are examined:\
+1. Count of species remaining the true samples\
+2. Count of species identified as contaminants\
+3. Comparison decontaminating samples with a database of common contaminants
+
+### 2.6.1 Preparation
+
+Merging of both
+
+```{r}
+p.comb.RmLowAbun <- merge_phyloseq(p.true.RmLowAbun, physeq.nct.RmLowAbun)
+```
+
+### 2.6.2 Decontam
+
+#### 2.6.2.1 Applying function
+
+We apply decontam by using isContaminant function with the prevalence option.
+
+```{r}
+threshold <- 0.8
+contamdf.prev <- isContaminant(p.comb.RmLowAbun, method="prevalence", neg="is.neg", threshold = threshold, normalize = FALSE)
+cont <- as.data.frame(table(contamdf.prev$contaminant))
+which(contamdf.prev$contaminant)
+
+ncont_decontam <- cont[2,2]
+```
+
+Hereby **`r cont[2,2]` taxa are considered as contaminants** and will be removed subsequently. As the matrix above points out a lot of taxa are very high abundant (majority (`r length((which(contamdf.prev$contaminant)<100)[which(contamdf.prev$contaminant)<100]==TRUE)` taxa) are before position 100 regarding their frequencies). **The `r (which(contamdf.prev$contaminant))[1]`st most abundant taxon** is the most abundant taxon which will be removed. The applied threshold of *`r threshold`* is determined with the following histogram.
+
+```{r}
+hist(contamdf.prev$p, 100)
+```
+
+We will control the defined contaminants by looking to the distribution of contaminated taxa within true and control samples.
+
+#### 2.6.2.2 Control plot
+
+```{r}
+# Make phyloseq object of presence-absence in negative controls and true samples
+ps.pa <- transform_sample_counts(p.comb.RmLowAbun, function(abund) 1*(abund>0))
+ps.pa.neg <- prune_samples(sample_data(ps.pa)$TRUE_control == "control", ps.pa)
+ps.pa.pos <- prune_samples(sample_data(ps.pa)$TRUE_control == "TRUE", ps.pa)
+# Make data.frame of prevalence in positive and negative samples
+df.pa <- data.frame(pa.pos=taxa_sums(ps.pa.pos), pa.neg=taxa_sums(ps.pa.neg),
+                      contaminant=contamdf.prev$contaminant)
+ggplot(data=df.pa, aes(x=pa.neg, y=pa.pos, color=contaminant)) + geom_point() +
+  xlab("Prevalence (Negative Controls)") + ylab("Prevalence (True Samples)") + ggtitle("Prevalence of TRUE species and Contaminants") + theme_bw()+
+  theme(axis.text.x = element_text(size=12, hjust = .5, vjust = .5),
+        axis.text.y = element_text (size=12),
+        axis.title = element_text(size=14, face="bold"),
+        legend.text = element_text(size = 12),
+        legend.title = element_blank(),
+        plot.title = element_text(size = 16, vjust = 0.5),
+        legend.background = element_rect(linetype="solid", colour ="black"),
+        legend.key.size = unit(4,"mm"))
+```
+
+#### 2.6.2.3 Removing contaminants
+
+We further remove species that are defined as contaminants and subsample the negative controls.
+
+```{r}
+p.comb.RmLowAbun_dcdefault <- prune_taxa(!contamdf.prev$contaminant, p.comb.RmLowAbun)
+p.RmLowAbun_dcdefault <- subset_samples(p.comb.RmLowAbun_dcdefault, is.neg ==FALSE)
+p.RmLowAbun_dcdefault <- prune_taxa(x = p.RmLowAbun_dcdefault, taxa = taxa_names(p.RmLowAbun_dcdefault)[-(which(taxa_sums(p.RmLowAbun_dcdefault)==0))])
+
+saveRDS(p.RmLowAbun_dcdefault,"physeqs/p.decontam_8nct.rds")
+```
+
+#### 2.6.2.4 Microbial composition
+
+```{r}
+#| fig-width: 9
+#| fig-height: 6
+p.prop <- microbiome::transform(p.RmLowAbun_dcdefault, "compositional") 
+df.fam.melt <- psmelt(p.prop) %>% 
+  mutate(species.v2 = if_else(
+    Abundance < 0.03, "other", species 
+   ),
+   species.v2 = factor(species.v2, levels=rev(unique(species.v2)))
+  ) 
+
+rm(p.prop)
+
+
+#microbial composition at species level
+ggplot(df.fam.melt, aes(x=id, y=Abundance, fill=species.v2)) +
+  geom_bar(stat="identity") +
+  scale_y_continuous(labels = scales::percent, expand = c(0, 0), limits = c(0, 1.02)) +
+  scale_fill_manual(values = cols) +
+  xlab ("") +
+  ylab("Relative abundance") +
+  theme_bw() +
+  # facet_wrap(vars(Treatment), scales = "free_y") +
+  ggtitle("TRUE - Microbial composition at species level")+
+  # facet_wrap(~sample_side, scales = "free")+
+  theme( axis.text.x = element_text(angle = 45,hjust=1),
+        axis.text.y = element_text (size=12),
+        axis.title = element_text(size=14, face="bold"))+
+  theme(legend.position = "bottom",
+        legend.title = element_blank(),
+        legend.background = element_rect(linetype="solid", colour ="black"),
+        legend.key.size = unit(4,"mm"))
+
+```
+
+### 2.6.3 SCRUB
+
+SCRuB was introduced 2023 and published by Austin et al. in Nature Biotechnologies [publication](https://www.nature.com/articles/s41587-023-01696-w). A tutorial is found in [github](https://github.com/Shenhav-and-Korem-labs/SCRuB?tab=readme-ov-file).
+
+According to the github the out_table needs to be transposed. The metadata should only contain 2 columns (is_control, sample_type). A control order can be facultatively be introduced.
+
+With control_order there are 3 more contaminants identified then without with our respective data set.
+
+#### 2.6.3.1 SCRuB Preparation and function
+
+```{r}
+scrub_otu <- as.data.frame(otu_table(p.comb.RmLowAbun)) %>% 
+  t() 
+
+scrub_meta <- meta(p.comb.RmLowAbun) %>% 
+  select(is.neg, Treatment, sample_side) %>% 
+  mutate(sample_side = if_else(is.na(sample_side), Treatment, sample_side)) %>% 
+  rename(is_control = is.neg,
+         samüple_type = sample_side) %>% 
+  select(-Treatment)
+
+
+
+scr_out <- SCRuB(scrub_otu,scrub_meta,
+		control_order = c("buffer", "pcr", "sequence")
+		                 )
+
+decont_otu_scr <- as.data.frame(scr_out$decontaminated_samples) %>% 
+  select(where(~sum(.) != 0)) %>% 
+  t() %>% 
+  otu_table(taxa_are_rows = TRUE)
+```
+
+#### 2.6.3.2 SCRuB Output
+
+The output is a list of objects. The first element of the output is a ready to use otu_table with deconatimanted true samples. It only needs to be transposed and merged into the phyloseq object.
+
+```{r}
+p.RmLowAbun_scrub <- phyloseq(decont_otu_scr, tax_table(p.comb.RmLowAbun), sample_data(p.true.RmLowAbun))
+```
+
+The second element is a vector providing the proportion of contaminants in each sample. 1 means no contamination 0 means all taxa are identified contaminants.
+
+```{r}
+as.data.frame(scr_out$p) %>% 
+  mutate(samples = rownames(.),
+         group = c("ctrl", "ctrl", "ctrl", "ctrl", "gem", "gem", "gem", "gem")) %>% 
+  ggplot(aes(x=group, y=scr_out$p, fill= group)) + 
+  # geom_violin()+
+  geom_boxplot()+
+  geom_point (position=position_jitterdodge( jitter.width = 0.05))+
+  theme_bw() + 
+  ggtitle ("Proportion of true taxa vs. contaminants") +
+  scale_x_discrete(labels= c("Controls", "Gemcitabine"))+
+  xlab("Treatment")+
+  ylab("p-value (1 = no contaminants)")+
+  ylim(0,1)+
+   scale_fill_manual(values = c("lightskyblue2", "hotpink3"), labels= c("Controls", "Gemcitabine"))+
+theme (axis.text=element_text(size=14),
+         axis.title=element_text(size=16,face="bold"),
+         legend.position =  "none",
+         legend.title = element_blank(),
+         legend.background = element_rect(linetype="solid", colour ="black"))
+```
+
+Finally we store the decontaminated phyloseq.
+
+```{r}
+saveRDS(p.RmLowAbun_scrub,"physeqs/p.scrub_8nct.rds")
+```
+
+#### 2.6.3.3 Microbial composition
+
+```{r}
+#| fig-width: 9
+#| fig-height: 6
+p.prop <- microbiome::transform(p.RmLowAbun_scrub, "compositional") 
+df.fam.melt <- psmelt(p.prop) %>% 
+  mutate(species.v2 = if_else(
+    Abundance < 0.03, "other", species 
+   ),
+   species.v2 = factor(species.v2, levels=rev(unique(species.v2)))
+  ) 
+
+rm(p.prop)
+
+
+#microbial composition at species level
+ggplot(df.fam.melt, aes(x=id, y=Abundance, fill=species.v2)) +
+  geom_bar(stat="identity") +
+  scale_y_continuous(labels = scales::percent, expand = c(0, 0), limits = c(0, 1.02)) +
+  scale_fill_manual(values = cols) +
+  xlab ("") +
+  ylab("Relative abundance") +
+  theme_bw() +
+  # facet_wrap(vars(Treatment), scales = "free_y") +
+  ggtitle("TRUE - Microbial composition at species level")+
+  # facet_wrap(~sample_side, scales = "free")+
+  theme( axis.text.x = element_text(angle = 45,hjust=1),
+        axis.text.y = element_text (size=12),
+        axis.title = element_text(size=14, face="bold"))+
+  theme(legend.position = "bottom",
+        legend.title = element_blank(),
+        legend.background = element_rect(linetype="solid", colour ="black"),
+        legend.key.size = unit(4,"mm"))
+
+```
+
+### 2.6.4 Nejman approach
+
+According to the Nejman et al publication first high abundant contaminants are removed. Secondly low abundant contaminants are addressed.
+
+#### 2.6.4.1 High prevalence taxas in NCTs
+
+##### 2.6.4.1.1 Overview high prevalent contaminants
+
+We consider all taxas whose prevalence in NCTs are higher than a certain threshold (eg. 50%) are contaminants.
+
+This is Filter-1 (General contaminants removal) according to Nejman et al.
+
+In order to determine that threshold, we have a look at the plot below
+
+```{r}
+xout <- HighPrevalence_Data(p.true.RmLowAbun, physeq.nct.RmLowAbun)
+plot(xout$factorx, xout$rel_tax, xlab="prevalence in NCT samples", ylab="proportion of tax in true samples")
+
+prev_ntc = tibble(
+  prev.ntc = prevalence(physeq.nct.RmLowAbun, detection  = 0, sort = TRUE, count = FALSE),
+  OTU =as.factor(names(prevalence(physeq.nct.RmLowAbun , detection = 0, sort = TRUE, count = FALSE))) 
+)
+
+prev_true = tibble(
+  prev.true = prevalence(p.true.RmLowAbun, detection  = 0, sort = TRUE, count = FALSE),
+  OTU =as.factor(names(prevalence(p.true.RmLowAbun , detection = 0, sort = TRUE, count = FALSE))) 
+)
+
+prev <- prev_true %>% 
+  left_join(prev_ntc) %>% 
+  mutate(prev.ntc = ifelse(is.na(prev.ntc), 0, prev.ntc),
+         prev.true = ifelse(is.na(prev.true), 0, prev.true))
+
+prev_count.mod <- prev %>% # rebuild "prev_count" object 
+  dplyr::count(prev.ntc) %>% # rebuild "prev_count" object 
+  mutate(prop = n/nrow(prev)) %>% # rebuild "prev_count" object 
+  arrange(-prev.ntc) %>% #orders the tibble starting with highest prev.ntc value and ending with lowest prev.ntc
+  mutate(csum = cumsum(n)) %>% #create column containing the cumulative sum of n
+  mutate(cumprop = csum/nrow(prev)) # take the cumsum and divide by the amount of taxa
+# Idea behind this:
+# In previous plots we used to plot the exact number / proportion of bacteria contained in x% of negative controls yielding nejman.figure.jpg / Graph 1 in notepad.
+# Now we plot the proportion of bacteria contained in at least x% of negative controls.
+# x = % of negative controls | y = (sum of all bacteria present in more than x negative controls + bacteria present in x negative controls) / (all bacteria)
+
+
+ggplot(prev_count.mod, aes(x= prev.ntc, y = cumprop))+
+  geom_point()+
+  xlab ("% negative controls") +
+  ylab("Proportion bacteria") +
+  theme_bw() +
+  geom_line()+
+  ggtitle("% of bacteria present in at least x ntc - % of negative controls included")+
+  theme( axis.text.x = element_text(size=12),
+         axis.text.y = element_text (size=12),
+         axis.title = element_text(size=14, face="bold"))+
+  theme(legend.position = "bottom",
+        legend.title = element_blank(),
+        legend.background = element_rect(size=0.25, linetype="solid", colour ="black"),
+        legend.key.size = unit(4,"mm"))
+```
+
+This plot shows us how many percents of taxa we would remove from true samples (y-axis) if we pick up a threshold for high prevalence in NCT samples (x-axis).
+
+##### 2.6.4.1.2 Define high prevalent contaminants
+
+From this plot, a threshold 0.50 would be fine. The code will suggest how many taxas are removed from the true and NCT samples if you choose a specific threshold
+
+```{r}
+filter <- 0.75
+filtered_taxa1 <- tibble(
+  Cont = genefilter_sample(physeq.nct.RmLowAbun, filterfun_sample(function(x) x > 0), A=filter*nsamples(physeq.nct.RmLowAbun)),
+  OTU = names(genefilter_sample(physeq.nct.RmLowAbun, filterfun_sample(function(x) x > 0), A=filter*nsamples(physeq.nct.RmLowAbun)))
+) %>% 
+  arrange (-Cont)
+
+cont.count <- filtered_taxa1 %>% dplyr::count(Cont) 
+cont.count %>% 
+  kable (caption=paste("Count of contaminants (filter", filter*100, " %)"), booktabs =TRUE) %>%
+  kable_classic(full_width = F, html_font = "Cambria") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) 
+
+
+psmelt(physeq.nct.RmLowAbun) %>% select(OTU, species) %>% 
+  unique %>% 
+  right_join(filtered_taxa1) %>% 
+  filter(Cont == TRUE) %>% 
+  select(-Cont) %>% 
+  kable (caption=paste("Contaminants (filter", filter*100, " %)"), booktabs =TRUE) %>%
+  kable_classic(full_width = F, html_font = "Cambria") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>% 
+  scroll_box(width = "70%", height = "600px")
+```
+
+##### 2.6.4.1.3 Removing high prevalent contaminants
+
+We now remove those taxa which have high prevalence in NTC samples out of true samples
+
+```{r}
+#This line of code remove the taxa that are identified as contaminants in the previous step effectively demerging the contaminants from the true samples. This prepares the data for further analysis without the influence of contaminants
+p.true.RmLowAbun.RmHighPrev <- prune_taxa(setdiff(taxa_names(p.true.RmLowAbun),filtered_taxa1[filtered_taxa1$Cont==TRUE,] %>% pull("OTU")), p.true.RmLowAbun)
+
+
+physeq.nct.RmLowAbun.RmHighPrev <- prune_taxa(setdiff(taxa_names(physeq.nct.RmLowAbun),filtered_taxa1[filtered_taxa1$Cont==TRUE,] %>% pull("OTU")), physeq.nct.RmLowAbun)
+
+```
+
+Now we have *`r nrow(sample_data(p.true.RmLowAbun.RmHighPrev))`* true samples and *`r nrow(otu_table(p.true.RmLowAbun.RmHighPrev))`* taxa. In NCTs, we have *`r nrow(sample_data(physeq.nct.RmLowAbun.RmHighPrev))`* control samples and *`r nrow(otu_table(physeq.nct.RmLowAbun.RmHighPrev))`* taxa.
+
+##### 2.6.4.1.4 Venn Diagram
+
+The Venn diagram of taxa between true samples and NCTs is now
+
+```{r}
+PlotVenn2Sets(rownames(otu_table(p.true.RmLowAbun.RmHighPrev)), rownames(otu_table(physeq.nct.RmLowAbun.RmHighPrev)), "True samples", "NCT sample")
+```
+
+#### 2.6.4.2 Low prevalence taxas in NCTs
+
+For those taxa whose prevalence are low in NCT samples, we apply Binomial test per-condition, per-batch to determine if they are contaminants or not. This is filter 2-5 according to Nejman et al.
+
+We need metadata information to proceed
+
+##### 2.6.4.2.1 Preparation
+
+The samples in each condition each batch must contain both true sample and NCTs in order to apply Binomial test. Thus, we first check how many of them are valid
+
+```{r}
+metadata <- meta(p.comb.RmLowAbun) %>% mutate(
+  sample_type = ifelse(grepl("paraffin", tolower(sample_side), fixed = TRUE),"paraffin",
+                                                     ifelse(grepl("buffer", tolower(sample_side), fixed = TRUE),"buffer",
+                                                    ifelse(grepl("pcr", tolower(sample_side), fixed = TRUE),"pcr_ctrl",
+                                                           ifelse(grepl("sequence", tolower(sample_side), fixed = TRUE),"sequence","true_sample")))),
+  uniqueID = id)
+
+
+
+
+dna_nct <- metadata %>% filter(sample_type == "buffer") %>% pull(DNAex_round) %>% unique()
+dna_true <- metadata %>% filter(sample_type == "true_sample") %>% pull(DNAex_round) %>% unique()
+pcr_nct <- metadata %>% filter(sample_type == "pcr_ctrl") %>% pull(PCR_round) %>% unique()
+pcr_true <- metadata %>% filter(sample_type == "true_sample") %>% pull(PCR_round) %>% unique()
+seq_nct <- metadata %>% filter(sample_type == "sequence") %>% pull(Seq_round) %>% unique()
+seq_true <- metadata %>% filter(sample_type == "true_sample") %>% pull(Seq_round) %>% unique()
+
+tibble(
+  "DNAex batch" = ifelse(identical(dna_nct, dna_true) == TRUE, "Valid", paste( length(which(is.na(match(dna_true, dna_nct)))), "batch(es) are different")),
+  "PCR batch" = ifelse(identical(pcr_nct, pcr_true) == TRUE, "Valid", paste( length(which(is.na(match(pcr_true, pcr_nct)))), "batch(es) are different")),
+  "Sequencing batch" = ifelse(identical(seq_nct, seq_true) == TRUE, "Valid", paste( length(which(is.na(match(seq_true, seq_nct)))), "batch(es) are different"))
+) %>%
+  kable (caption=paste("Valid batches"), booktabs =TRUE) %>%
+  kable_classic(full_width = F, html_font = "Cambria") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+
+```
+
+##### 2.6.4.2.2 Binominal test batch- and condition-wise
+
+Column uniqueID is needed for the function.
+
+```{r}
+sample_data(p.true.RmLowAbun.RmHighPrev)$uniqueID <- sample_data(p.true.RmLowAbun.RmHighPrev)$id
+sample_data(physeq.nct.RmLowAbun.RmHighPrev)$uniqueID <- sample_data(physeq.nct.RmLowAbun.RmHighPrev)$id
+
+
+# sample_data(p.true.RmLowAbun.RmHighPrev) <- meta(p.true.RmLowAbun.RmHighPrev) %>% select(-Seq_round)
+# sample_data(physeq.nct.RmLowAbun.RmHighPrev) <- meta(physeq.nct.RmLowAbun.RmHighPrev) %>% select(-Seq_round)
+```
+
+For each condition each batch, we apply Binomial test on each taxa whose prevalence are low in NCT samples, to determine if they are contaminants and then remove them from true samples.
+
+```{r}
+p <- p.true.RmLowAbun.RmHighPrev
+p.true.RmLowAbun.RmHLPrev <- Wrapper_Nejman1(p.true.RmLowAbun.RmHighPrev, physeq.nct.RmLowAbun.RmHighPrev, metadata, x = p)
+
+#remove samples without bacteria
+p.true.RmLowAbun.RmHLPrev <- subset_samples(physeq = p.true.RmLowAbun.RmHLPrev, sample_sums(p.true.RmLowAbun.RmHLPrev) > 0)
+
+
+saveRDS(p.true.RmLowAbun.RmHLPrev, "physeqs/p.nejman_8nct.rds")
+
+
+cont_taxid <- cont_nej_low(p.true.RmLowAbun.RmHighPrev, physeq.nct.RmLowAbun.RmHighPrev, metadata,x = p)
+
+
+keep.nct.taxa <- setdiff(taxa_names(physeq.nct.RmLowAbun.RmHighPrev), cont_taxid)
+physeq.nct.RmLowAbun.RmHighPrev.lowcont <- prune_taxa(keep.nct.taxa, physeq.nct.RmLowAbun.RmHighPrev)
+
+```
+
+All taxa in NCTs were defined as contaminants.
+
+#### 2.6.4.3 Microbial composition
+
+```{r}
+#| fig-width: 9
+#| fig-height: 6
+p.prop <- microbiome::transform(p.true.RmLowAbun.RmHLPrev, "compositional") 
+df.fam.melt <- psmelt(p.prop) %>% 
+  mutate(species.v2 = if_else(
+    Abundance < 0.03, "other", species 
+   ),
+   species.v2 = factor(species.v2, levels=rev(unique(species.v2)))
+  ) 
+
+rm(p.prop)
+
+
+#microbial composition at species level
+ggplot(df.fam.melt, aes(x=id, y=Abundance, fill=species.v2)) +
+  geom_bar(stat="identity") +
+  scale_y_continuous(labels = scales::percent, expand = c(0, 0), limits = c(0, 1.02)) +
+  scale_fill_manual(values = cols) +
+  xlab ("") +
+  ylab("Relative abundance") +
+  theme_bw() +
+  # facet_wrap(vars(Treatment), scales = "free_y") +
+  ggtitle("TRUE - Microbial composition at species level")+
+  # facet_wrap(~sample_side, scales = "free")+
+  theme( axis.text.x = element_text(angle = 45,hjust=1),
+        axis.text.y = element_text (size=12),
+        axis.title = element_text(size=14, face="bold"))+
+  theme(legend.position = "bottom",
+        legend.title = element_blank(),
+        legend.background = element_rect(linetype="solid", colour ="black"),
+        legend.key.size = unit(4,"mm"))
+
+```
+
+# 3. Comparison Decontamination approaches
+
+## 3.1 Preparation
+
+```{r}
+dc_low <- readRDS("physeqs/p.decontam.rds")
+dc_high <- readRDS("physeqs/p.decontam_default_nct_high_score.rds")
+dc_low_8nct <- readRDS("physeqs/p.decontam_8nct.rds")
+scrub_low <- readRDS("physeqs/p.scrub.rds")
+scrub_high <- readRDS("physeqs/p.scrub_nct_high_score.rds")
+scrub_low_8nct <- readRDS("physeqs/p.scrub_8nct.rds")
+nej <- readRDS("physeqs/p.nejman.rds")
+nej_8nct <- readRDS("physeqs/p.nejman_8nct.rds")
+```
+
+## 3.2. Overview
+
+```{r}
+ov <- tibble(
+  Decontamination = c("Decontam Low Scores 4xNCT", "Decontam Low Scores 8xNCT", "Decontam High Scores 4xNCT", "SCRuB Low Scores 4xNCT", "SCRuB Low Scores 8xNCT", "SCRuB High Scores4xNCT", "Nejman 4xNCT", "Nejman 8xNCT"),
+  "Count of TRUE Taxa" = c(ntaxa(dc_low), ntaxa(dc_low_8nct), ntaxa(dc_high), ntaxa(scrub_low), ntaxa(scrub_low_8nct), ntaxa(scrub_high), ntaxa(nej), ntaxa(nej_8nct)),
+  "Count of COntaminants" = c(ntaxa(p.true.RmLowAbun) - ntaxa(dc_low), ntaxa(p.true.RmLowAbun) - ntaxa(dc_low_8nct),  ntaxa(p.true.RmLowAbun) - ntaxa(dc_high), ntaxa(p.true.RmLowAbun) - ntaxa(scrub_low), ntaxa(p.true.RmLowAbun) - ntaxa(scrub_low_8nct), ntaxa(p.true.RmLowAbun) - ntaxa(scrub_high), ntaxa(p.true.RmLowAbun) - ntaxa(nej),  ntaxa(p.true.RmLowAbun) - ntaxa(nej_8nct)),
+  "Mean read Count" = c(mean(sample_sums(dc_low)), mean(sample_sums(dc_low_8nct)), mean(sample_sums(dc_high)), mean(sample_sums(scrub_low)), mean(sample_sums(scrub_low_8nct)), mean(sample_sums(scrub_high)), mean(sample_sums(nej)),  mean(sample_sums(nej_8nct))),
+   "Min read Count" = c(min(sample_sums(dc_low)), min(sample_sums(dc_low_8nct)), min(sample_sums(dc_high)), min(sample_sums(scrub_low)), min(sample_sums(scrub_low_8nct)), min(sample_sums(scrub_high)), min(sample_sums(nej)), min(sample_sums(nej_8nct))),
+  "Max read Count" = c(max(sample_sums(dc_low)), max(sample_sums(dc_low_8nct)), max(sample_sums(dc_high)), max(sample_sums(scrub_low)), max(sample_sums(scrub_low_8nct)), max(sample_sums(scrub_high)), max(sample_sums(nej)), max(sample_sums(nej_8nct)))
+) 
+
+ov %>% write.xlsx("tables/overview_decontamination_approaches_8NCT.xlsx")
+
+ov %>% kable (caption=paste("Overview Decontamination approaches"), booktabs =TRUE) %>%
+  kable_classic(full_width = F, html_font = "Cambria") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) 
+  
+```
+
+## 3.2 Overlap
+
+```{r}
+da_venn <- venn.diagram(
+  x = list(taxa_names(dc_low_8nct) %>% unique(),
+              taxa_names(scrub_low_8nct) %>% unique(),
+              taxa_names(nej_8nct) %>% unique()),
+  category.names = c("Decontam" , "SCRuB", "Nejman"),
+  filename = NULL,
+  fill = c("#8DD3C7", "#FB8072", "#80B1D3"),
+  margin = 0.1)
+
+grid::grid.newpage()
+grid::grid.draw(da_venn) 
+```
+
+## 3.3 Comparison to known contamination
+
+[Salter et al.](https://pubmed.ncbi.nlm.nih.gov/25387460/) documented common contaminants from the laboratory environment. [Eisenhofer et al.](https://pubmed.ncbi.nlm.nih.gov/30497919/) defined RIDE Guidelines that are minimum quality criteria regarding the handling low-biomass samples and the contamination. Both published a list of genera which were common contaminants.
+
+In the list of Eisenhofer et al. were the Salter contaminants included. However, only genera which were found in at least 2 publication were implmented in the Eisenhofer list. To this end, there are still genera in the Salter list, which are not implemented in Eisenhofers list.
+
+### 3.3.1 Preparation
+
+```{r}
+con.list <- read.xlsx("tables/published_contaminants.xlsx")
+# con.list.s <- con.list %>% filter(pub == "Salter")
+# con.list.e <- con.list %>% filter(pub == "Eisenhofer")
+# setdiff(con.list.e$genus, con.list.s$genus)
+
+con.unique <- con.list %>% pull(genus) %>% unique()
+dc_8nct_genus <- tax_tibble(dc_low_8nct) %>% pull(genus) %>% unique()
+scrub_8nct_genus <- tax_tibble(scrub_low_8nct) %>% pull(genus) %>% unique()
+nej_8nct_genus <- tax_tibble(nej_8nct) %>% pull(genus) %>% unique()
+```
+
+### 3.3.2 Overlap With contamination list
+
+```{r}
+da_venn <- venn.diagram(
+  x = list(dc_8nct_genus,
+              scrub_8nct_genus,
+              nej_8nct_genus,
+           con.unique),
+  category.names = c("Decontam" , "SCRuB", "Nejman", "Contamination"),
+  filename = NULL,
+  fill = c("#8DD3C7", "#FB8072", "#80B1D3", "orange"),
+  margin = 0.1)
+
+grid::grid.newpage()
+grid::grid.draw(da_venn) 
+
+
+all.genus <-  unique(c(con.unique, dc_8nct_genus, scrub_8nct_genus, nej_8nct_genus))
+
+gen_overlap <- tibble(
+  Genera = all.genus,
+  Contamination = if_else(is.na(match(all.genus, con.unique)) == FALSE, "X", "-"),
+  Decontam= if_else(is.na(match(all.genus, dc_8nct_genus)) == FALSE, "X", "-"),
+  SCRuB= if_else(is.na(match(all.genus, scrub_8nct_genus)) == FALSE, "X", "-"),
+  Nejman= if_else(is.na(match(all.genus, nej_8nct_genus)) == FALSE, "X", "-"),
+) %>% 
+  arrange(Genera)
+
+gen_overlap %>% write.xlsx("tables/overlap_contaminants_genus.xlsx")
+
+kable (gen_overlap, caption=paste("Contaminants Overlap of Genera"), booktabs =TRUE) %>%
+  kable_classic(full_width = F, html_font = "Cambria") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>% 
+  scroll_box(width = "90%", height = "600px")
+
+freq_overlap <- tibble(
+  Approach = c("Decontam", "SCRuB", "Nejman"),
+  "Overlap [%]" = c(round(length(which(!is.na(match(dc_8nct_genus, con.unique))))/length(dc_8nct_genus)*100, digits = 2),
+              round(length(which(!is.na(match(scrub_8nct_genus, con.unique))))/length(scrub_8nct_genus)*100, digits = 2),
+              round(length(which(!is.na(match(nej_8nct_genus, con.unique))))/length(nej_8nct_genus)*100, digits = 2)
+              )
+)
+
+freq_overlap %>% write.xlsx("tables/overlap_contaminants_frequencies.xlsx")
+
+kable (freq_overlap, caption=paste("Contaminants Overlap Frequencies"), booktabs =TRUE) %>%
+  kable_classic(full_width = F, html_font = "Cambria") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) 
+```
+
+# 4. Normailization
+
+## 4.1 Decontam
+
+```{r}
+seed <- 711
+
+sample.size <- min(sample_sums(dc_low_8nct))
+dc.rar <- rarefy_even_depth(physeq = dc_low_8nct, sample.size = sample.size, rngseed = seed)
+```
+
+## 4.2 SCRuB
+
+```{r}
+seed <- 711
+
+sample.size <- min(sample_sums(scrub_low_8nct))
+scrub.rar <- rarefy_even_depth(physeq = scrub_low_8nct, sample.size = sample.size, rngseed = seed)
+```
+
+## 4.3 Nejman
+
+```{r}
+seed <- 711
+
+sample.size <- min(sample_sums(nej_8nct))
+nej.rar <- rarefy_even_depth(physeq = nej_8nct, sample.size = sample.size, rngseed = seed)
+```
+
+## 4.3 Without decontamination
+
+```{r}
+seed <- 711
+
+sample.size <- min(sample_sums(p.true.RmLowAbun))
+wo_d.rar <- rarefy_even_depth(physeq = p.true.RmLowAbun, sample.size = sample.size, rngseed = seed)
+```
+
+# 5. Analysis {.tabset}
+
+## 5.1 Alpha diversity
+
+### 5.1.1 Decontam
+
+```{r}
+rich = estimate_richness(dc.rar)
+rich_meta <- merge(sample_data(dc.rar),rich, by="row.names")
+
+
+#Shapiro-Wilk
+sh.ob <- rich_meta %>% group_by(Treatment) %>% shapiro_test(Observed)
+sh.sh <- rich_meta %>% group_by(Treatment) %>% shapiro_test(Shannon)
+sh.in <- rich_meta %>% group_by(Treatment) %>% shapiro_test(InvSimpson)
+
+# sh.ob
+# sh.sh
+# sh.in
+
+# #Levene Test
+l.ob <- rich_meta %>% levene_test(Observed ~ Treatment)
+l.sh <- rich_meta %>% levene_test(Shannon ~ Treatment)
+l.in <- rich_meta %>% levene_test(InvSimpson ~ Treatment)
+
+# l.ob
+# l.sh
+# l.in
+
+
+# # stat-test
+ob <- rich_meta %>% t_test(Observed ~ Treatment) %>% adjust_pvalue(method = "BH") %>%  add_significance("p.adj") %>% add_xy_position()
+sh <- rich_meta %>% t_test(Shannon ~ Treatment) %>% adjust_pvalue(method = "BH") %>%  add_significance("p.adj") %>% add_xy_position()
+iv <- rich_meta %>% t_test(InvSimpson ~ Treatment) %>% adjust_pvalue(method = "BH") %>%  add_significance("p.adj") %>% add_xy_position()
+
+ob
+sh
+iv
+
+group.colors <- c(ctrl = "dodgerblue3", Gem = "firebrick2")
+my.labels <- c("Ctrl", "Gem")
+
+#Observed species
+p1 <- ggplot (rich_meta, aes (x=Treatment, y=Observed, fill=Treatment))+ 
+  geom_boxplot()+
+  geom_point (position=position_jitterdodge( jitter.width = 0.05))+
+  theme_gray() + 
+  xlab("")+
+  ylab("Observed species")+
+  # facet_grid(.~tp)+
+  scale_x_discrete(labels= my.labels)+
+  scale_fill_manual(values=group.colors, labels = c("KPC tumor with and without gemcitabine treatment"))+
+  # ggtitle("KPC tumor vs. Healthy pancreas - Observed species") +
+  theme(axis.text.y = element_text (size=12),
+        axis.title = element_text(size=14, face="bold"))+
+  theme(legend.position = "none",
+        # legend.background = element_rect(size=0.25, linetype="solid", colour ="black"),
+        legend.key.size = unit(4,"mm"),
+        axis.text.x = element_blank(),
+        plot.title = element_text(size = 14))+
+   stat_pvalue_manual(ob, label = "p.adj", inherit.aes = FALSE, tip.length = 0.01)
+
+#Shannon index
+p2 <- ggplot (rich_meta, aes (x=Treatment, y=Shannon, fill=Treatment))+ 
+  geom_boxplot()+
+  geom_point (position=position_jitterdodge( jitter.width = 0.05))+
+  theme_gray() + 
+  xlab("")+
+  ylab("Shannon index")+
+  # facet_grid(.~tp)+
+  scale_x_discrete(labels= my.labels)+
+  scale_fill_manual(values=group.colors, labels = c("KPC tumor with and without gemcitabine treatment"))+
+  # ggtitle("KPC tumor vs. Healthy pancreas - Shannon index") +
+  theme(axis.text.y = element_text (size=12),
+        axis.title = element_text(size=14, face="bold"))+
+  theme(legend.position = "none",
+        # legend.background = element_rect(size=0.25, linetype="solid", colour ="black"),
+        legend.key.size = unit(4,"mm"),
+        axis.text.x = element_blank(),
+        plot.title = element_text(size = 14))+
+   stat_pvalue_manual(sh, label = "p.adj", inherit.aes = FALSE, tip.length = 0.01)
+
+#InvSimpson index
+p3 <- ggplot (rich_meta, aes (x=Treatment, y=InvSimpson, fill=Treatment))+ 
+  geom_boxplot()+
+  geom_point (position=position_jitterdodge( jitter.width = 0.05))+
+  theme_gray() + 
+  xlab("")+
+  ylab("Inverse Simpson index")+
+  # facet_grid(.~tp)+
+  scale_x_discrete(labels= my.labels)+
+  scale_fill_manual(values=group.colors)+
+  # ggtitle("KPC tumor vs. Healthy pancreas - Inverse Simpson index") +
+  theme(axis.text.y = element_text (size=12),
+        axis.title = element_text(size=14, face="bold"))+
+  theme(legend.text = element_text(size = 12),
+        legend.title = element_blank(),
+        # legend.background = element_rect(size=0.25, linetype="solid", colour ="black"),
+        legend.key.size = unit(4,"mm"),
+        axis.text.x = element_blank(),
+        plot.title = element_text(size = 14))+
+   stat_pvalue_manual(iv, label = "p.adj", inherit.aes = FALSE, tip.length = 0.01)
+
+legend <- get_legend(p3) 
+p3 <- p3 + theme(legend.position="none")
+grid.arrange(p1, p2, p3, legend, ncol = 4, top = textGrob("KPC tumor with and without gemcitabine treatment - Decontam",  x = 0, hjust = -0.16))
+```
+
+### 5.1.2 SCRuB
+
+```{r}
+rich = estimate_richness(scrub.rar)
+rich_meta <- merge(sample_data(scrub.rar),rich, by="row.names")
+
+
+#Shapiro-Wilk
+sh.ob <- rich_meta %>% group_by(Treatment) %>% shapiro_test(Observed)
+sh.sh <- rich_meta %>% group_by(Treatment) %>% shapiro_test(Shannon)
+sh.in <- rich_meta %>% group_by(Treatment) %>% shapiro_test(InvSimpson)
+
+# sh.ob
+# sh.sh
+# sh.in
+
+# #Levene Test
+l.ob <- rich_meta %>% levene_test(Observed ~ Treatment)
+l.sh <- rich_meta %>% levene_test(Shannon ~ Treatment)
+l.in <- rich_meta %>% levene_test(InvSimpson ~ Treatment)
+
+# l.ob
+# l.sh
+# l.in
+
+
+# # stat-test
+ob <- rich_meta %>% t_test(Observed ~ Treatment) %>% adjust_pvalue(method = "BH") %>%  add_significance("p.adj") %>% add_xy_position()
+sh <- rich_meta %>% t_test(Shannon ~ Treatment) %>% adjust_pvalue(method = "BH") %>%  add_significance("p.adj") %>% add_xy_position()
+iv <- rich_meta %>% wilcox_test(InvSimpson ~ Treatment) %>% adjust_pvalue(method = "BH") %>%  add_significance("p.adj") %>% add_xy_position()
+
+ob
+sh
+iv
+
+group.colors <- c(ctrl = "dodgerblue3", Gem = "firebrick2")
+my.labels <- c("Ctrl", "Gem")
+
+#Observed species
+p1 <- ggplot (rich_meta, aes (x=Treatment, y=Observed, fill=Treatment))+ 
+  geom_boxplot()+
+  geom_point (position=position_jitterdodge( jitter.width = 0.05))+
+  theme_gray() + 
+  xlab("")+
+  ylab("Observed species")+
+  # facet_grid(.~tp)+
+  scale_x_discrete(labels= my.labels)+
+  scale_fill_manual(values=group.colors, labels = c("KPC tumor with and without gemcitabine treatment"))+
+  # ggtitle("KPC tumor vs. Healthy pancreas - Observed species") +
+  theme(axis.text.y = element_text (size=12),
+        axis.title = element_text(size=14, face="bold"))+
+  theme(legend.position = "none",
+        # legend.background = element_rect(size=0.25, linetype="solid", colour ="black"),
+        legend.key.size = unit(4,"mm"),
+        axis.text.x = element_blank(),
+        plot.title = element_text(size = 14))+
+   stat_pvalue_manual(ob, label = "p.adj", inherit.aes = FALSE, tip.length = 0.01)
+
+#Shannon index
+p2 <- ggplot (rich_meta, aes (x=Treatment, y=Shannon, fill=Treatment))+ 
+  geom_boxplot()+
+  geom_point (position=position_jitterdodge( jitter.width = 0.05))+
+  theme_gray() + 
+  xlab("")+
+  ylab("Shannon index")+
+  # facet_grid(.~tp)+
+  scale_x_discrete(labels= my.labels)+
+  scale_fill_manual(values=group.colors, labels = c("KPC tumor with and without gemcitabine treatment"))+
+  # ggtitle("KPC tumor vs. Healthy pancreas - Shannon index") +
+  theme(axis.text.y = element_text (size=12),
+        axis.title = element_text(size=14, face="bold"))+
+  theme(legend.position = "none",
+        # legend.background = element_rect(size=0.25, linetype="solid", colour ="black"),
+        legend.key.size = unit(4,"mm"),
+        axis.text.x = element_blank(),
+        plot.title = element_text(size = 14))+
+   stat_pvalue_manual(sh, label = "p.adj", inherit.aes = FALSE, tip.length = 0.01)
+
+#InvSimpson index
+p3 <- ggplot (rich_meta, aes (x=Treatment, y=InvSimpson, fill=Treatment))+ 
+  geom_boxplot()+
+  geom_point (position=position_jitterdodge( jitter.width = 0.05))+
+  theme_gray() + 
+  xlab("")+
+  ylab("Inverse Simpson index")+
+  # facet_grid(.~tp)+
+  scale_x_discrete(labels= my.labels)+
+  scale_fill_manual(values=group.colors)+
+  # ggtitle("KPC tumor vs. Healthy pancreas - Inverse Simpson index") +
+  theme(axis.text.y = element_text (size=12),
+        axis.title = element_text(size=14, face="bold"))+
+  theme(legend.text = element_text(size = 12),
+        legend.title = element_blank(),
+        # legend.background = element_rect(size=0.25, linetype="solid", colour ="black"),
+        legend.key.size = unit(4,"mm"),
+        axis.text.x = element_blank(),
+        plot.title = element_text(size = 14))+
+   stat_pvalue_manual(iv, label = "p.adj", inherit.aes = FALSE, tip.length = 0.01)
+
+legend <- get_legend(p3) 
+p3 <- p3 + theme(legend.position="none")
+grid.arrange(p1, p2, p3, legend, ncol = 4, top = textGrob("KPC tumor with and without gemcitabine treatment -SCRuB",  x = 0, hjust = -0.16))
+```
+
+### 5.1.3 Nejman
+
+```{r}
+rich = estimate_richness(nej.rar)
+rich_meta <- merge(sample_data(nej.rar),rich, by="row.names")
+
+
+#Shapiro-Wilk
+sh.ob <- rich_meta %>% group_by(Treatment) %>% shapiro_test(Observed)
+sh.sh <- rich_meta %>% group_by(Treatment) %>% shapiro_test(Shannon)
+sh.in <- rich_meta %>% group_by(Treatment) %>% shapiro_test(InvSimpson)
+
+# sh.ob
+# sh.sh
+# sh.in
+
+# #Levene Test
+l.ob <- rich_meta %>% levene_test(Observed ~ Treatment)
+l.sh <- rich_meta %>% levene_test(Shannon ~ Treatment)
+l.in <- rich_meta %>% levene_test(InvSimpson ~ Treatment)
+
+# l.ob
+# l.sh
+# l.in
+
+
+# # stat-test
+ob <- rich_meta %>% t_test(Observed ~ Treatment) %>% adjust_pvalue(method = "BH") %>%  add_significance("p.adj") %>% add_xy_position()
+sh <- rich_meta %>% t_test(Shannon ~ Treatment) %>% adjust_pvalue(method = "BH") %>%  add_significance("p.adj") %>% add_xy_position()
+iv <- rich_meta %>% t_test(InvSimpson ~ Treatment) %>% adjust_pvalue(method = "BH") %>%  add_significance("p.adj") %>% add_xy_position()
+
+# ob
+# sh
+# iv
+
+group.colors <- c(ctrl = "dodgerblue3", Gem = "firebrick2")
+my.labels <- c("Ctrl", "Gem")
+
+#Observed species
+p1 <- ggplot (rich_meta, aes (x=Treatment, y=Observed, fill=Treatment))+ 
+  geom_boxplot()+
+  geom_point (position=position_jitterdodge( jitter.width = 0.05))+
+  theme_gray() + 
+  xlab("")+
+  ylab("Observed species")+
+  # facet_grid(.~tp)+
+  scale_x_discrete(labels= my.labels)+
+  scale_fill_manual(values=group.colors, labels = c("KPC tumor with and without gemcitabine treatment"))+
+  # ggtitle("KPC tumor vs. Healthy pancreas - Observed species") +
+  theme(axis.text.y = element_text (size=12),
+        axis.title = element_text(size=14, face="bold"))+
+  theme(legend.position = "none",
+        # legend.background = element_rect(size=0.25, linetype="solid", colour ="black"),
+        legend.key.size = unit(4,"mm"),
+        axis.text.x = element_blank(),
+        plot.title = element_text(size = 14))+
+   stat_pvalue_manual(ob, label = "p.adj", inherit.aes = FALSE, tip.length = 0.01)
+
+#Shannon index
+p2 <- ggplot (rich_meta, aes (x=Treatment, y=Shannon, fill=Treatment))+ 
+  geom_boxplot()+
+  geom_point (position=position_jitterdodge( jitter.width = 0.05))+
+  theme_gray() + 
+  xlab("")+
+  ylab("Shannon index")+
+  # facet_grid(.~tp)+
+  scale_x_discrete(labels= my.labels)+
+  scale_fill_manual(values=group.colors, labels = c("KPC tumor with and without gemcitabine treatment"))+
+  # ggtitle("KPC tumor vs. Healthy pancreas - Shannon index") +
+  theme(axis.text.y = element_text (size=12),
+        axis.title = element_text(size=14, face="bold"))+
+  theme(legend.position = "none",
+        # legend.background = element_rect(size=0.25, linetype="solid", colour ="black"),
+        legend.key.size = unit(4,"mm"),
+        axis.text.x = element_blank(),
+        plot.title = element_text(size = 14))+
+   stat_pvalue_manual(sh, label = "p.adj", inherit.aes = FALSE, tip.length = 0.01)
+
+#InvSimpson index
+p3 <- ggplot (rich_meta, aes (x=Treatment, y=InvSimpson, fill=Treatment))+ 
+  geom_boxplot()+
+  geom_point (position=position_jitterdodge( jitter.width = 0.05))+
+  theme_gray() + 
+  xlab("")+
+  ylab("Inverse Simpson index")+
+  # facet_grid(.~tp)+
+  scale_x_discrete(labels= my.labels)+
+  scale_fill_manual(values=group.colors)+
+  # ggtitle("KPC tumor vs. Healthy pancreas - Inverse Simpson index") +
+  theme(axis.text.y = element_text (size=12),
+        axis.title = element_text(size=14, face="bold"))+
+  theme(legend.text = element_text(size = 12),
+        legend.title = element_blank(),
+        # legend.background = element_rect(size=0.25, linetype="solid", colour ="black"),
+        legend.key.size = unit(4,"mm"),
+        axis.text.x = element_blank(),
+        plot.title = element_text(size = 14))+
+   stat_pvalue_manual(iv, label = "p.adj", inherit.aes = FALSE, tip.length = 0.01)
+
+legend <- get_legend(p3) 
+p3 <- p3 + theme(legend.position="none")
+grid.arrange(p1, p2, p3, legend, ncol = 4, top = textGrob("KPC tumor with and without gemcitabine treatment - Alpha diversity metrics - Decontam",  x = 0, hjust = -0.16))
+```
+
+## 5.2 Beta-diversity
+
+### 5.2.1 Decontam
+
+```{r}
+bray_dist = phyloseq::distance(dc.rar, method="bray")
+ordination = ordinate(dc.rar, method="PCoA", distance=bray_dist)
+
+pcoa1 <- paste("PCoA 1 [", round(ordination[[3]]$Relative_eig[1], digits = 3)*100, "%]", sep = "")
+pcoa2 <- paste("PCoA 2 [", round(ordination[[3]]$Relative_eig[2], digits = 3)*100, "%]", sep = "")
+
+p.adonis <- adonis2(bray_dist ~ sample_data(dc.rar)$Treatment)
+p <- case_when(
+  p.adonis$`Pr(>F)`[1] > 0.05 ~ paste("p =", p.adonis$`Pr(>F)`[1], "n.s.", sep = " "),
+  p.adonis$`Pr(>F)`[1] < 0.05 &  p.adonis$`Pr(>F)`[1] > 0.01 ~ paste("p =", p.adonis$`Pr(>F)`[1], "*", sep = " "),
+  p.adonis$`Pr(>F)`[1] <= 0.01 & p.adonis$`Pr(>F)`[1] > 0.001  ~ paste("p =", p.adonis$`Pr(>F)`[1], "**", sep = " "),
+  p.adonis$`Pr(>F)`[1] <= 0.001 ~ paste("p =",p.adonis$`Pr(>F)`[1], "***", sep = " "),
+)
+
+annotations <- data.frame(
+        xpos = c(-Inf),
+        ypos =  c(Inf),
+        annotateText = p,
+        hjustvar = c(-0.2) ,
+        vjustvar = c(1.5))
+
+plot_ordination(dc.rar, ordination, color = "Treatment") +
+  geom_point(aes(colour = Treatment), size = 3) +
+  geom_text_repel(aes(label = id), size = 4) +
+  theme(aspect.ratio=1) +
+  theme_bw()+
+  scale_color_brewer(palette = "Set1")+
+  stat_ellipse() +
+  xlab(pcoa1)+
+  ylab(pcoa2)+
+  theme(panel.grid =  element_blank())+
+  ggtitle("Decontam - Tumor gemcitabine") +
+  theme (axis.text=element_text(size=14),
+         axis.title=element_text(size=16,face="bold"),
+        legend.text = element_text(size = 12),
+        legend.title = element_blank())+
+  geom_text(data=annotations,aes(x=xpos,y=ypos,hjust=hjustvar,vjust=vjustvar,label=annotateText), size = 4.5, inherit.aes = FALSE)
+```
+
+### 5.2.2 SCRuB
+
+```{r}
+bray_dist = phyloseq::distance(scrub.rar, method="bray")
+ordination = ordinate(scrub.rar, method="PCoA", distance=bray_dist)
+
+pcoa1 <- paste("PCoA 1 [", round(ordination[[3]]$Relative_eig[1], digits = 3)*100, "%]", sep = "")
+pcoa2 <- paste("PCoA 2 [", round(ordination[[3]]$Relative_eig[2], digits = 3)*100, "%]", sep = "")
+
+p.adonis <- adonis2(bray_dist ~ sample_data(scrub.rar)$Treatment)
+p <- case_when(
+  p.adonis$`Pr(>F)`[1] > 0.05 ~ paste("p =", p.adonis$`Pr(>F)`[1], "n.s.", sep = " "),
+  p.adonis$`Pr(>F)`[1] < 0.05 &  p.adonis$`Pr(>F)`[1] > 0.01 ~ paste("p =", p.adonis$`Pr(>F)`[1], "*", sep = " "),
+  p.adonis$`Pr(>F)`[1] <= 0.01 & p.adonis$`Pr(>F)`[1] > 0.001  ~ paste("p =", p.adonis$`Pr(>F)`[1], "**", sep = " "),
+  p.adonis$`Pr(>F)`[1] <= 0.001 ~ paste("p =",p.adonis$`Pr(>F)`[1], "***", sep = " "),
+)
+
+annotations <- data.frame(
+        xpos = c(-Inf),
+        ypos =  c(Inf),
+        annotateText = p,
+        hjustvar = c(-0.2) ,
+        vjustvar = c(1.5))
+
+plot_ordination(scrub.rar, ordination, color = "Treatment") +
+  geom_point(aes(colour = Treatment), size = 3) +
+  geom_text_repel(aes(label = id), size = 4) +
+  theme(aspect.ratio=1) +
+  theme_bw()+
+  scale_color_brewer(palette = "Set1")+
+  stat_ellipse() +
+  xlab(pcoa1)+
+  ylab(pcoa2)+
+  theme(panel.grid =  element_blank())+
+  ggtitle("SCRuB - Tumor gemcitabine") +
+  theme (axis.text=element_text(size=14),
+         axis.title=element_text(size=16,face="bold"),
+        legend.text = element_text(size = 12),
+        legend.title = element_blank())+
+  geom_text(data=annotations,aes(x=xpos,y=ypos,hjust=hjustvar,vjust=vjustvar,label=annotateText), size = 4.5, inherit.aes = FALSE)
+```
+
+### 5.2.3 Nejman
+
+```{r}
+bray_dist = phyloseq::distance(nej.rar, method="bray")
+ordination = ordinate(nej.rar, method="PCoA", distance=bray_dist)
+
+pcoa1 <- paste("PCoA 1 [", round(ordination[[3]]$Relative_eig[1], digits = 3)*100, "%]", sep = "")
+pcoa2 <- paste("PCoA 2 [", round(ordination[[3]]$Relative_eig[2], digits = 3)*100, "%]", sep = "")
+
+p.adonis <- adonis2(bray_dist ~ sample_data(nej.rar)$Treatment)
+p <- case_when(
+  p.adonis$`Pr(>F)`[1] > 0.05 ~ paste("p =", p.adonis$`Pr(>F)`[1], "n.s.", sep = " "),
+  p.adonis$`Pr(>F)`[1] < 0.05 &  p.adonis$`Pr(>F)`[1] > 0.01 ~ paste("p =", p.adonis$`Pr(>F)`[1], "*", sep = " "),
+  p.adonis$`Pr(>F)`[1] <= 0.01 & p.adonis$`Pr(>F)`[1] > 0.001  ~ paste("p =", p.adonis$`Pr(>F)`[1], "**", sep = " "),
+  p.adonis$`Pr(>F)`[1] <= 0.001 ~ paste("p =",p.adonis$`Pr(>F)`[1], "***", sep = " "),
+)
+
+annotations <- data.frame(
+        xpos = c(-Inf),
+        ypos =  c(Inf),
+        annotateText = p,
+        hjustvar = c(-0.2) ,
+        vjustvar = c(1.5))
+
+plot_ordination(nej.rar, ordination, color = "Treatment") +
+  geom_point(aes(colour = Treatment), size = 3) +
+  geom_text_repel(aes(label = id), size = 4) +
+  theme(aspect.ratio=1) +
+  theme_bw()+
+  scale_color_brewer(palette = "Set1")+
+  stat_ellipse() +
+  xlab(pcoa1)+
+  ylab(pcoa2)+
+  theme(panel.grid =  element_blank())+
+  ggtitle("Nejman - Tumor gemcitabine") +
+  theme (axis.text=element_text(size=14),
+         axis.title=element_text(size=16,face="bold"),
+        legend.text = element_text(size = 12),
+        legend.title = element_blank())+
+  geom_text(data=annotations,aes(x=xpos,y=ypos,hjust=hjustvar,vjust=vjustvar,label=annotateText), size = 4.5, inherit.aes = FALSE)
+```
+
+### 5.2.3 Without Decontamination
+
+```{r}
+bray_dist = phyloseq::distance(wo_d.rar, method="bray")
+ordination = ordinate(wo_d.rar, method="PCoA", distance=bray_dist)
+
+pcoa1 <- paste("PCoA 1 [", round(ordination[[3]]$Relative_eig[1], digits = 3)*100, "%]", sep = "")
+pcoa2 <- paste("PCoA 2 [", round(ordination[[3]]$Relative_eig[2], digits = 3)*100, "%]", sep = "")
+
+p.adonis <- adonis2(bray_dist ~ sample_data(wo_d.rar)$Treatment)
+p <- case_when(
+  p.adonis$`Pr(>F)`[1] > 0.05 ~ paste("p =", p.adonis$`Pr(>F)`[1], "n.s.", sep = " "),
+  p.adonis$`Pr(>F)`[1] < 0.05 &  p.adonis$`Pr(>F)`[1] > 0.01 ~ paste("p =", p.adonis$`Pr(>F)`[1], "*", sep = " "),
+  p.adonis$`Pr(>F)`[1] <= 0.01 & p.adonis$`Pr(>F)`[1] > 0.001  ~ paste("p =", p.adonis$`Pr(>F)`[1], "**", sep = " "),
+  p.adonis$`Pr(>F)`[1] <= 0.001 ~ paste("p =",p.adonis$`Pr(>F)`[1], "***", sep = " "),
+)
+
+annotations <- data.frame(
+        xpos = c(-Inf),
+        ypos =  c(Inf),
+        annotateText = p,
+        hjustvar = c(-0.2) ,
+        vjustvar = c(1.5))
+
+plot_ordination(wo_d.rar, ordination, color = "Treatment") +
+  geom_point(aes(colour = Treatment), size = 3) +
+  geom_text_repel(aes(label = id), size = 4) +
+  theme(aspect.ratio=1) +
+  theme_bw()+
+  scale_color_brewer(palette = "Set1")+
+  stat_ellipse() +
+  xlab(pcoa1)+
+  ylab(pcoa2)+
+  theme(panel.grid =  element_blank())+
+  ggtitle("Without Decontamination - Tumor gemcitabine") +
+  theme (axis.text=element_text(size=14),
+         axis.title=element_text(size=16,face="bold"),
+        legend.text = element_text(size = 12),
+        legend.title = element_blank())+
+  geom_text(data=annotations,aes(x=xpos,y=ypos,hjust=hjustvar,vjust=vjustvar,label=annotateText), size = 4.5, inherit.aes = FALSE)
+```
+
+# 6. Technical controls
+
+In the following we like to perform plausibility tests of the decontamination process. For this we want to check the relative abundances of different species in negative controls and true samples.
+
+Species:
+
+1.  Prevotella melaninogenica\
+2.  Sphingomonas sp.\
+3.  Schaalia odontolytica\
+4.  Lactobacillus johnsonii\
+5.  Clostridium isatidis\
+6.  Sphingomonas panacis\
+7.  Sphingomonas alpina
+
+For this we take the phyloseq before decontamination and compare it to the NCT phyloseq
+
+```{r}
+true_prop <- microbiome::transform(p.true.RmLowAbun, "compositional") 
+true.melt <- psmelt(true_prop)
+
+# true.melt %>% filter(genus == "Sphingomonas")
+# dc_low_8nct_prop <- microbiome::transform(dc_low_8nct, "compositional") 
+# dc_low_8nct.melt <- psmelt(dc_low_8nct_prop)
+# dc_low_8nct.melt %>% filter(genus == "Sphingomonas")
+
+nct_prop <- microbiome::transform(physeq.nct.RmLowAbun, "compositional") 
+nct.melt <- psmelt(nct_prop)
+
+taxa_of_interest <- true.melt %>% 
+  filter(species == "Prevotella melaninogenica" | species == "Sphingomonas sp." | species == "Schaalia odontolytica" | species == "Lactobacillus johnsonii" | species == "Clostridium isatidis" | species == "Sphingomonas panacis" | species == "Sphingomonas alpina") %>% 
+  pull(OTU) %>% 
+  unique()
+  
+taxa_names_interest <- true.melt %>% filter(OTU %in% taxa_of_interest) %>% select(species, OTU) %>% unique()
+
+
+prev_true <- as.data.frame(prevalence(true_prop, detection  = 0, sort = TRUE, count = FALSE)) %>% 
+  mutate(taxid = rownames(.),
+         type = "true") %>% 
+  filter(taxid %in% taxa_of_interest) %>% 
+  rename(prevalence = `prevalence(true_prop, detection = 0, sort = TRUE, count = FALSE)`) %>% 
+  as_tibble()
+
+abu_true <- as.data.frame(abundances(true_prop)) %>% 
+  mutate(taxid = rownames(.))%>% 
+  filter(taxid %in% taxa_of_interest) %>% 
+  select(-taxid) %>% 
+  t()%>% 
+  as.data.frame() %>% 
+  mutate(type = "true")
+
+prev_nct <- as.data.frame(prevalence(nct_prop, detection  = 0, sort = TRUE, count = FALSE)) %>% 
+  mutate(taxid = rownames(.),
+         type = "nct") %>% 
+  filter(taxid %in% taxa_of_interest) %>% 
+  rename(prevalence = `prevalence(nct_prop, detection = 0, sort = TRUE, count = FALSE)`) %>% 
+  as_tibble()
+
+abu_nct <- as.data.frame(abundances(nct_prop)) %>% 
+  mutate(taxid = rownames(.))%>% 
+  filter(taxid %in% taxa_of_interest) %>% 
+  select(-taxid) %>% 
+  t() %>% 
+  as.data.frame() %>% 
+  mutate(type = "nct")
+
+bind_rows(prev_true, prev_nct)
+
+bind_rows(abu_true, abu_nct) %>%
+    pivot_longer(-type, names_to = "OTU", values_to = "abundance") %>% 
+  mutate(abundance = if_else(is.na(abundance), 0, abundance)) %>%
+  left_join(taxa_names_interest, by = "OTU") %>% 
+  ggplot(aes(x=type, y=abundance, fill= type)) + 
+  # geom_violin()+
+  geom_boxplot()+
+  geom_point (position=position_jitterdodge( jitter.width = 0.05))+
+  theme_bw() +
+  facet_wrap(.~species, scales = "free_y")+
+  ggtitle ("Abunandances of Species before decontamination") +
+  scale_x_discrete(labels= c("NCT", "TRUE"))+
+  xlab("Sample type")+
+  ylab("Abundances [Proportion]")+
+   scale_fill_manual(values = c("lightskyblue2", "hotpink3"), labels= c("NCT", "TRUE"))+
+theme (axis.text=element_text(size=14),
+         axis.title=element_text(size=16,face="bold"),
+         legend.position =  "none",
+         legend.title = element_blank(),
+         legend.background = element_rect(linetype="solid", colour ="black"))
+```

@@ -1,0 +1,422 @@
+2024-03-11 12:05:16.996981 INFO::Writing function arguments to log file
+2024-03-11 12:05:17.007892 DEBUG::Function arguments
+2024-03-11 12:05:17.018176 DEBUG::Output folder: demo_output_df
+2024-03-11 12:05:17.01943 DEBUG::Min Abundance: 0.000000
+2024-03-11 12:05:17.020659 DEBUG::Min Prevalence: 0.000000
+2024-03-11 12:05:17.021816 DEBUG::Normalization: NONE
+2024-03-11 12:05:17.023096 DEBUG::Transform: LOG
+2024-03-11 12:05:17.024318 DEBUG::Analysis method: LM
+2024-03-11 12:05:17.025493 DEBUG::Max significance: 0.250000
+2024-03-11 12:05:17.026737 DEBUG::Random effects:
+2024-03-11 12:05:17.027951 DEBUG::Fixed effects: diagnosis,dysbiosis
+2024-03-11 12:05:17.029201 DEBUG::Correction method: BH
+2024-03-11 12:05:17.030477 DEBUG::Standardize: TRUE
+2024-03-11 12:05:17.031737 DEBUG::Cores: 1
+2024-03-11 12:05:17.032928 INFO::Verifying options selected are valid
+2024-03-11 12:05:17.134156 INFO::Determining format of input files
+2024-03-11 12:05:17.13671 INFO::Input format is data samples as rows and metadata samples as rows
+2024-03-11 12:05:17.1393 DEBUG::A total of 1595 samples were found in both the data and metadata
+2024-03-11 12:05:17.140548 DEBUG::Reordering data/metadata to use same sample ordering
+2024-03-11 12:05:17.145729 INFO::Formula for fixed effects: expr ~  diagnosis + dysbiosis
+2024-03-11 12:05:17.148645 INFO::Filter data based on min abundance and min prevalence
+2024-03-11 12:05:17.150623 INFO::Total samples in data: 1595
+2024-03-11 12:05:17.152547 INFO::Min samples required with min abundance for a feature not to be filtered: 0.000000
+2024-03-11 12:05:17.159055 INFO::Total filtered features: 0
+2024-03-11 12:05:17.161425 INFO::Filtered feature names from abundance and prevalence filtering:
+2024-03-11 12:05:17.173381 INFO::Total filtered features with variance filtering: 0
+2024-03-11 12:05:17.1759 INFO::Filtered feature names from variance filtering:
+2024-03-11 12:05:17.178166 INFO::Running selected normalization method: NONE
+2024-03-11 12:05:17.18051 INFO::Applying z-score to standardize continuous metadata
+2024-03-11 12:05:17.201769 INFO::Running selected transform method: LOG
+2024-03-11 12:05:17.214937 INFO::Running selected analysis method: LM
+2024-03-11 12:05:17.224588 INFO::Fitting model to feature number 1, Bifidobacterium.adolescentis
+2024-03-11 12:05:17.235868 INFO::Fitting model to feature number 2, Bifidobacterium.bifidum
+2024-03-11 12:05:17.24067 INFO::Fitting model to feature number 3, Bifidobacterium.longum
+2024-03-11 12:05:17.245414 INFO::Fitting model to feature number 4, Bifidobacterium.pseudocatenulatum
+2024-03-11 12:05:17.250042 INFO::Fitting model to feature number 5, Collinsella.aerofaciens
+2024-03-11 12:05:17.25491 INFO::Fitting model to feature number 6, Bacteroides.caccae
+2024-03-11 12:05:17.259572 INFO::Fitting model to feature number 7, Bacteroides.cellulosilyticus
+2024-03-11 12:05:17.264217 INFO::Fitting model to feature number 8, Bacteroides.dorei
+2024-03-11 12:05:17.268893 INFO::Fitting model to feature number 9, Bacteroides.eggerthii
+2024-03-11 12:05:17.273569 INFO::Fitting model to feature number 10, Bacteroides.faecis
+2024-03-11 12:05:17.278296 INFO::Fitting model to feature number 11, Bacteroides.finegoldii
+2024-03-11 12:05:17.282977 INFO::Fitting model to feature number 12, Bacteroides.fragilis
+2024-03-11 12:05:17.287708 INFO::Fitting model to feature number 13, Bacteroides.intestinalis
+2024-03-11 12:05:17.29233 INFO::Fitting model to feature number 14, Bacteroides.massiliensis
+2024-03-11 12:05:17.297059 INFO::Fitting model to feature number 15, Bacteroides.ovatus
+2024-03-11 12:05:17.301882 INFO::Fitting model to feature number 16, Bacteroides.salyersiae
+2024-03-11 12:05:17.306753 INFO::Fitting model to feature number 17, Bacteroides.stercoris
+2024-03-11 12:05:17.311524 INFO::Fitting model to feature number 18, Bacteroides.thetaiotaomicron
+2024-03-11 12:05:17.316565 INFO::Fitting model to feature number 19, Bacteroides.uniformis
+2024-03-11 12:05:17.321728 INFO::Fitting model to feature number 20, Bacteroides.vulgatus
+2024-03-11 12:05:17.326854 INFO::Fitting model to feature number 21, Bacteroides.xylanisolvens
+2024-03-11 12:05:17.385322 INFO::Fitting model to feature number 22, Bacteroidales.bacterium.ph8
+2024-03-11 12:05:17.390522 INFO::Fitting model to feature number 23, Barnesiella.intestinihominis
+2024-03-11 12:05:17.394794 INFO::Fitting model to feature number 24, Coprobacter.fastidiosus
+2024-03-11 12:05:17.399016 INFO::Fitting model to feature number 25, Odoribacter.splanchnicus
+2024-03-11 12:05:17.40321 INFO::Fitting model to feature number 26, Parabacteroides.distasonis
+2024-03-11 12:05:17.407443 INFO::Fitting model to feature number 27, Parabacteroides.goldsteinii
+2024-03-11 12:05:17.41162 INFO::Fitting model to feature number 28, Parabacteroides.merdae
+2024-03-11 12:05:17.415856 INFO::Fitting model to feature number 29, Parabacteroides.unclassified
+2024-03-11 12:05:17.420084 INFO::Fitting model to feature number 30, Paraprevotella.clara
+2024-03-11 12:05:17.424271 INFO::Fitting model to feature number 31, Paraprevotella.unclassified
+2024-03-11 12:05:17.428456 INFO::Fitting model to feature number 32, Prevotella.copri
+2024-03-11 12:05:17.432641 INFO::Fitting model to feature number 33, Alistipes.finegoldii
+2024-03-11 12:05:17.436836 INFO::Fitting model to feature number 34, Alistipes.onderdonkii
+2024-03-11 12:05:17.441011 INFO::Fitting model to feature number 35, Alistipes.putredinis
+2024-03-11 12:05:17.445236 INFO::Fitting model to feature number 36, Alistipes.shahii
+2024-03-11 12:05:17.449492 INFO::Fitting model to feature number 37, Alistipes.unclassified
+2024-03-11 12:05:17.453757 INFO::Fitting model to feature number 38, Streptococcus.salivarius
+2024-03-11 12:05:17.45807 INFO::Fitting model to feature number 39, Clostridium.bolteae
+2024-03-11 12:05:17.462329 INFO::Fitting model to feature number 40, Clostridium.citroniae
+2024-03-11 12:05:17.466578 INFO::Fitting model to feature number 41, Clostridium.clostridioforme
+2024-03-11 12:05:17.470853 INFO::Fitting model to feature number 42, Clostridium.hathewayi
+2024-03-11 12:05:17.475178 INFO::Fitting model to feature number 43, Clostridium.leptum
+2024-03-11 12:05:17.479403 INFO::Fitting model to feature number 44, Clostridium.nexile
+2024-03-11 12:05:17.483669 INFO::Fitting model to feature number 45, Clostridium.symbiosum
+2024-03-11 12:05:17.487916 INFO::Fitting model to feature number 46, Flavonifractor.plautii
+2024-03-11 12:05:17.492235 INFO::Fitting model to feature number 47, Eubacterium.eligens
+2024-03-11 12:05:17.496531 INFO::Fitting model to feature number 48, Eubacterium.hallii
+2024-03-11 12:05:17.500789 INFO::Fitting model to feature number 49, Eubacterium.rectale
+2024-03-11 12:05:17.505322 INFO::Fitting model to feature number 50, Eubacterium.siraeum
+2024-03-11 12:05:17.509696 INFO::Fitting model to feature number 51, Eubacterium.sp.3.1.31
+2024-03-11 12:05:17.514045 INFO::Fitting model to feature number 52, Eubacterium.ventriosum
+2024-03-11 12:05:17.518334 INFO::Fitting model to feature number 53, Ruminococcus.gnavus
+2024-03-11 12:05:17.522632 INFO::Fitting model to feature number 54, Ruminococcus.obeum
+2024-03-11 12:05:17.526936 INFO::Fitting model to feature number 55, Ruminococcus.torques
+2024-03-11 12:05:17.531725 INFO::Fitting model to feature number 56, Coprococcus.comes
+2024-03-11 12:05:17.596983 INFO::Fitting model to feature number 57, Dorea.longicatena
+2024-03-11 12:05:17.602822 INFO::Fitting model to feature number 58, Lachnospiraceae.bacterium.1.1.57FAA
+2024-03-11 12:05:17.607529 INFO::Fitting model to feature number 59, Lachnospiraceae.bacterium.3.1.46FAA
+2024-03-11 12:05:17.611872 INFO::Fitting model to feature number 60, Roseburia.hominis
+2024-03-11 12:05:17.616184 INFO::Fitting model to feature number 61, Roseburia.intestinalis
+2024-03-11 12:05:17.62043 INFO::Fitting model to feature number 62, Roseburia.inulinivorans
+2024-03-11 12:05:17.624636 INFO::Fitting model to feature number 63, Roseburia.unclassified
+2024-03-11 12:05:17.628873 INFO::Fitting model to feature number 64, Oscillibacter.unclassified
+2024-03-11 12:05:17.633173 INFO::Fitting model to feature number 65, Peptostreptococcaceae.noname.unclassified
+2024-03-11 12:05:17.637454 INFO::Fitting model to feature number 66, Faecalibacterium.prausnitzii
+2024-03-11 12:05:17.641773 INFO::Fitting model to feature number 67, Ruminococcus.bromii
+2024-03-11 12:05:17.645925 INFO::Fitting model to feature number 68, Ruminococcus.callidus
+2024-03-11 12:05:17.65012 INFO::Fitting model to feature number 69, Ruminococcus.lactaris
+2024-03-11 12:05:17.654275 INFO::Fitting model to feature number 70, Subdoligranulum.unclassified
+2024-03-11 12:05:17.658484 INFO::Fitting model to feature number 71, Coprobacillus.unclassified
+2024-03-11 12:05:17.662688 INFO::Fitting model to feature number 72, Acidaminococcus.unclassified
+2024-03-11 12:05:17.666922 INFO::Fitting model to feature number 73, Dialister.invisus
+2024-03-11 12:05:17.671132 INFO::Fitting model to feature number 74, Veillonella.atypica
+2024-03-11 12:05:17.675385 INFO::Fitting model to feature number 75, Veillonella.dispar
+2024-03-11 12:05:17.679635 INFO::Fitting model to feature number 76, Veillonella.parvula
+2024-03-11 12:05:17.683882 INFO::Fitting model to feature number 77, Veillonella.unclassified
+2024-03-11 12:05:17.688116 INFO::Fitting model to feature number 78, Burkholderiales.bacterium.1.1.47
+2024-03-11 12:05:17.69237 INFO::Fitting model to feature number 79, Parasutterella.excrementihominis
+2024-03-11 12:05:17.696607 INFO::Fitting model to feature number 80, Sutterella.wadsworthensis
+2024-03-11 12:05:17.700896 INFO::Fitting model to feature number 81, Bilophila.unclassified
+2024-03-11 12:05:17.705063 INFO::Fitting model to feature number 82, Escherichia.coli
+2024-03-11 12:05:17.709336 INFO::Fitting model to feature number 83, Escherichia.unclassified
+2024-03-11 12:05:17.713733 INFO::Fitting model to feature number 84, Klebsiella.pneumoniae
+2024-03-11 12:05:17.718062 INFO::Fitting model to feature number 85, Haemophilus.parainfluenzae
+2024-03-11 12:05:17.722358 INFO::Fitting model to feature number 86, Akkermansia.muciniphila
+2024-03-11 12:05:17.726613 INFO::Fitting model to feature number 87, C2likevirus.unclassified
+2024-03-11 12:05:17.753742 INFO::Counting total values for each feature
+2024-03-11 12:05:17.767209 INFO::Writing filtered data to file demo_output_df/features/filtered_data.tsv
+2024-03-11 12:05:17.896237 INFO::Writing filtered, normalized data to file demo_output_df/features/filtered_data_norm.tsv
+2024-03-11 12:05:18.042157 INFO::Writing filtered, normalized, transformed data to file demo_output_df/features/filtered_data_norm_transformed.tsv
+2024-03-11 12:05:18.862784 INFO::Writing residuals to file demo_output_df/fits/residuals.rds
+2024-03-11 12:05:18.941084 INFO::Writing fitted values to file demo_output_df/fits/fitted.rds
+2024-03-11 12:05:19.023627 INFO::Writing all results to file (ordered by increasing q-values): demo_output_df/all_results.tsv
+2024-03-11 12:05:19.029987 INFO::Writing the significant results (those which are less than or equal to the threshold of 0.250000 ) to file (ordered by increasing q-values): demo_output_df/significant_results.tsv
+2024-03-11 12:05:19.0353 INFO::Writing heatmap of significant results to file: demo_output_df/heatmap.pdf
+2024-03-11 12:05:19.258557 INFO::Writing association plots (one for each significant association) to output folder: demo_output_df
+2024-03-11 12:05:19.26534 INFO::Plotting associations from most to least significant, grouped by metadata
+2024-03-11 12:05:19.267205 INFO::Plotting data for metadata number 1, dysbiosis
+2024-03-11 12:05:19.270328 INFO::Creating scatter plot for continuous data, dysbiosis vs Faecalibacterium.prausnitzii
+2024-03-11 12:05:19.593561 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:19.595488 INFO::Creating scatter plot for continuous data, dysbiosis vs Bacteroides.uniformis
+2024-03-11 12:05:19.859216 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:19.860478 INFO::Creating scatter plot for continuous data, dysbiosis vs Subdoligranulum.unclassified
+2024-03-11 12:05:20.065808 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:20.067748 INFO::Creating scatter plot for continuous data, dysbiosis vs Alistipes.putredinis
+2024-03-11 12:05:20.30475 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:20.306003 INFO::Creating scatter plot for continuous data, dysbiosis vs Ruminococcus.obeum
+2024-03-11 12:05:20.497859 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:20.498936 INFO::Creating scatter plot for continuous data, dysbiosis vs Coprococcus.comes
+2024-03-11 12:05:20.690615 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:20.692384 INFO::Creating scatter plot for continuous data, dysbiosis vs Eubacterium.rectale
+2024-03-11 12:05:20.88256 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:20.884268 INFO::Creating scatter plot for continuous data, dysbiosis vs Alistipes.onderdonkii
+2024-03-11 12:05:21.112112 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:21.113771 INFO::Creating scatter plot for continuous data, dysbiosis vs Parabacteroides.merdae
+2024-03-11 12:05:21.302182 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:21.30396 INFO::Creating scatter plot for continuous data, dysbiosis vs Clostridium.clostridioforme
+2024-03-11 12:05:21.493156 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:21.494802 INFO::Creating scatter plot for continuous data, dysbiosis vs Bacteroides.ovatus
+2024-03-11 12:05:21.682323 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:21.684036 INFO::Creating scatter plot for continuous data, dysbiosis vs Bacteroides.vulgatus
+2024-03-11 12:05:21.898978 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:21.9002 INFO::Creating scatter plot for continuous data, dysbiosis vs Eubacterium.eligens
+2024-03-11 12:05:22.092762 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:22.093982 INFO::Creating scatter plot for continuous data, dysbiosis vs Odoribacter.splanchnicus
+2024-03-11 12:05:22.287109 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:22.288881 INFO::Creating scatter plot for continuous data, dysbiosis vs Bacteroides.caccae
+2024-03-11 12:05:22.486219 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:22.488033 INFO::Creating scatter plot for continuous data, dysbiosis vs Alistipes.shahii
+2024-03-11 12:05:22.709544 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:22.711278 INFO::Creating scatter plot for continuous data, dysbiosis vs Oscillibacter.unclassified
+2024-03-11 12:05:22.903256 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:22.904498 INFO::Creating scatter plot for continuous data, dysbiosis vs Collinsella.aerofaciens
+2024-03-11 12:05:23.099312 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:23.10114 INFO::Creating scatter plot for continuous data, dysbiosis vs Ruminococcus.gnavus
+2024-03-11 12:05:23.291431 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:23.293231 INFO::Creating scatter plot for continuous data, dysbiosis vs Bilophila.unclassified
+2024-03-11 12:05:23.504127 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:23.505315 INFO::Creating scatter plot for continuous data, dysbiosis vs Escherichia.coli
+2024-03-11 12:05:23.694699 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:23.69632 INFO::Creating scatter plot for continuous data, dysbiosis vs Bacteroides.stercoris
+2024-03-11 12:05:23.885746 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:23.88767 INFO::Creating scatter plot for continuous data, dysbiosis vs Coprobacillus.unclassified
+2024-03-11 12:05:24.076975 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:24.078629 INFO::Creating scatter plot for continuous data, dysbiosis vs Alistipes.finegoldii
+2024-03-11 12:05:24.286848 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:24.288584 INFO::Creating scatter plot for continuous data, dysbiosis vs Lachnospiraceae.bacterium.3.1.46FAA
+2024-03-11 12:05:24.484451 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:24.486108 INFO::Creating scatter plot for continuous data, dysbiosis vs Eubacterium.ventriosum
+2024-03-11 12:05:24.676496 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:24.678338 INFO::Creating scatter plot for continuous data, dysbiosis vs Bacteroidales.bacterium.ph8
+2024-03-11 12:05:24.865496 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:24.867133 INFO::Creating scatter plot for continuous data, dysbiosis vs Dorea.longicatena
+2024-03-11 12:05:25.075977 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:25.077696 INFO::Creating scatter plot for continuous data, dysbiosis vs Roseburia.inulinivorans
+2024-03-11 12:05:25.286042 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:25.287767 INFO::Creating scatter plot for continuous data, dysbiosis vs Eubacterium.hallii
+2024-03-11 12:05:25.492676 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:25.494296 INFO::Creating scatter plot for continuous data, dysbiosis vs Parabacteroides.distasonis
+2024-03-11 12:05:25.713611 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:25.715486 INFO::Creating scatter plot for continuous data, dysbiosis vs Klebsiella.pneumoniae
+2024-03-11 12:05:25.960515 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:25.962528 INFO::Creating scatter plot for continuous data, dysbiosis vs Bacteroides.cellulosilyticus
+2024-03-11 12:05:26.171617 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:26.173508 INFO::Creating scatter plot for continuous data, dysbiosis vs Clostridium.nexile
+2024-03-11 12:05:26.379956 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:26.381857 INFO::Creating scatter plot for continuous data, dysbiosis vs Barnesiella.intestinihominis
+2024-03-11 12:05:26.585813 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:26.587746 INFO::Creating scatter plot for continuous data, dysbiosis vs Bacteroides.xylanisolvens
+2024-03-11 12:05:26.823444 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:26.82533 INFO::Creating scatter plot for continuous data, dysbiosis vs Eubacterium.siraeum
+2024-03-11 12:05:27.04296 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:27.044835 INFO::Creating scatter plot for continuous data, dysbiosis vs Clostridium.leptum
+2024-03-11 12:05:27.255066 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:27.256909 INFO::Creating scatter plot for continuous data, dysbiosis vs Bacteroides.thetaiotaomicron
+2024-03-11 12:05:27.492642 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:27.493781 INFO::Creating scatter plot for continuous data, dysbiosis vs Sutterella.wadsworthensis
+2024-03-11 12:05:27.701478 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:27.702695 INFO::Creating scatter plot for continuous data, dysbiosis vs Clostridium.bolteae
+2024-03-11 12:05:27.900667 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:27.901985 INFO::Creating scatter plot for continuous data, dysbiosis vs Roseburia.hominis
+2024-03-11 12:05:28.106779 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:28.108057 INFO::Creating scatter plot for continuous data, dysbiosis vs Ruminococcus.lactaris
+2024-03-11 12:05:28.334414 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:28.335671 INFO::Creating scatter plot for continuous data, dysbiosis vs Ruminococcus.bromii
+2024-03-11 12:05:28.536679 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:28.538487 INFO::Creating scatter plot for continuous data, dysbiosis vs Bacteroides.finegoldii
+2024-03-11 12:05:28.740777 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:28.742043 INFO::Creating scatter plot for continuous data, dysbiosis vs Clostridium.symbiosum
+2024-03-11 12:05:28.946212 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:28.947501 INFO::Creating scatter plot for continuous data, dysbiosis vs Clostridium.hathewayi
+2024-03-11 12:05:29.177096 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:29.178827 INFO::Creating scatter plot for continuous data, dysbiosis vs Bacteroides.massiliensis
+2024-03-11 12:05:29.369893 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:29.37118 INFO::Creating scatter plot for continuous data, dysbiosis vs Bacteroides.faecis
+2024-03-11 12:05:29.558199 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:29.55983 INFO::Creating scatter plot for continuous data, dysbiosis vs Bifidobacterium.adolescentis
+2024-03-11 12:05:29.748583 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:29.750298 INFO::Creating scatter plot for continuous data, dysbiosis vs Bacteroides.dorei
+2024-03-11 12:05:29.957532 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:29.959275 INFO::Creating scatter plot for continuous data, dysbiosis vs Ruminococcus.callidus
+2024-03-11 12:05:30.146484 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:30.148137 INFO::Creating scatter plot for continuous data, dysbiosis vs Burkholderiales.bacterium.1.1.47
+2024-03-11 12:05:30.331902 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:30.333652 INFO::Creating scatter plot for continuous data, dysbiosis vs Bacteroides.salyersiae
+2024-03-11 12:05:30.519431 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:30.521021 INFO::Creating scatter plot for continuous data, dysbiosis vs Bifidobacterium.pseudocatenulatum
+2024-03-11 12:05:30.724137 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:30.725922 INFO::Creating scatter plot for continuous data, dysbiosis vs Bacteroides.intestinalis
+2024-03-11 12:05:30.908721 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:30.910487 INFO::Creating scatter plot for continuous data, dysbiosis vs Veillonella.parvula
+2024-03-11 12:05:31.09319 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:31.094882 INFO::Creating scatter plot for continuous data, dysbiosis vs Ruminococcus.torques
+2024-03-11 12:05:31.285502 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:31.287112 INFO::Creating scatter plot for continuous data, dysbiosis vs Parasutterella.excrementihominis
+2024-03-11 12:05:31.499682 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:31.501475 INFO::Creating scatter plot for continuous data, dysbiosis vs Parabacteroides.goldsteinii
+2024-03-11 12:05:31.688973 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:31.690698 INFO::Creating scatter plot for continuous data, dysbiosis vs Paraprevotella.clara
+2024-03-11 12:05:31.874748 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:31.876461 INFO::Creating scatter plot for continuous data, dysbiosis vs Veillonella.dispar
+2024-03-11 12:05:32.081857 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:32.083057 INFO::Creating scatter plot for continuous data, dysbiosis vs Bacteroides.eggerthii
+2024-03-11 12:05:32.268604 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:32.270497 INFO::Creating scatter plot for continuous data, dysbiosis vs Acidaminococcus.unclassified
+2024-03-11 12:05:32.453602 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:32.455425 INFO::Creating scatter plot for continuous data, dysbiosis vs Paraprevotella.unclassified
+2024-03-11 12:05:32.639542 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:32.641361 INFO::Creating scatter plot for continuous data, dysbiosis vs Veillonella.atypica
+2024-03-11 12:05:32.847815 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:32.849561 INFO::Creating scatter plot for continuous data, dysbiosis vs Eubacterium.sp.3.1.31
+2024-03-11 12:05:33.036219 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:33.038016 INFO::Creating scatter plot for continuous data, dysbiosis vs Bifidobacterium.longum
+2024-03-11 12:05:33.223102 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:33.224728 INFO::Creating scatter plot for continuous data, dysbiosis vs Alistipes.unclassified
+2024-03-11 12:05:33.413843 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:33.415504 INFO::Creating scatter plot for continuous data, dysbiosis vs Roseburia.unclassified
+2024-03-11 12:05:34.227035 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:34.228308 INFO::Creating scatter plot for continuous data, dysbiosis vs Flavonifractor.plautii
+2024-03-11 12:05:34.412218 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:34.41394 INFO::Creating scatter plot for continuous data, dysbiosis vs Coprobacter.fastidiosus
+2024-03-11 12:05:34.604674 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:34.606315 INFO::Creating scatter plot for continuous data, dysbiosis vs Bifidobacterium.bifidum
+2024-03-11 12:05:34.792974 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:34.794755 INFO::Creating scatter plot for continuous data, dysbiosis vs Roseburia.intestinalis
+2024-03-11 12:05:35.000457 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:35.002094 INFO::Creating scatter plot for continuous data, dysbiosis vs Veillonella.unclassified
+2024-03-11 12:05:35.189272 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:35.191021 INFO::Creating scatter plot for continuous data, dysbiosis vs Lachnospiraceae.bacterium.1.1.57FAA
+2024-03-11 12:05:35.378478 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:35.38058 INFO::Creating scatter plot for continuous data, dysbiosis vs Haemophilus.parainfluenzae
+2024-03-11 12:05:35.56657 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:35.568294 INFO::Creating scatter plot for continuous data, dysbiosis vs C2likevirus.unclassified
+2024-03-11 12:05:35.77652 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:35.778283 INFO::Creating scatter plot for continuous data, dysbiosis vs Peptostreptococcaceae.noname.unclassified
+2024-03-11 12:05:35.961004 DEBUG::`geom_smooth()` using formula = 'y ~ x'
+2024-03-11 12:05:38.367883 INFO::Plotting data for metadata number 2, diagnosis
+2024-03-11 12:05:38.371701 INFO::Creating boxplot for categorical data, diagnosis vs Alistipes.putredinis
+2024-03-11 12:05:38.587772 INFO::Creating boxplot for categorical data, diagnosis vs Parabacteroides.goldsteinii
+2024-03-11 12:05:38.827814 INFO::Creating boxplot for categorical data, diagnosis vs Alistipes.shahii
+2024-03-11 12:05:39.008722 INFO::Creating boxplot for categorical data, diagnosis vs Akkermansia.muciniphila
+2024-03-11 12:05:39.192173 INFO::Creating boxplot for categorical data, diagnosis vs Alistipes.shahii
+2024-03-11 12:05:39.373408 INFO::Creating boxplot for categorical data, diagnosis vs Alistipes.onderdonkii
+2024-03-11 12:05:39.583019 INFO::Creating boxplot for categorical data, diagnosis vs Alistipes.finegoldii
+2024-03-11 12:05:39.768872 INFO::Creating boxplot for categorical data, diagnosis vs Bacteroides.eggerthii
+2024-03-11 12:05:39.963064 INFO::Creating boxplot for categorical data, diagnosis vs Clostridium.symbiosum
+2024-03-11 12:05:40.137104 INFO::Creating boxplot for categorical data, diagnosis vs Bifidobacterium.adolescentis
+2024-03-11 12:05:40.327969 INFO::Creating boxplot for categorical data, diagnosis vs Roseburia.hominis
+2024-03-11 12:05:40.534732 INFO::Creating boxplot for categorical data, diagnosis vs Roseburia.hominis
+2024-03-11 12:05:40.712185 INFO::Creating boxplot for categorical data, diagnosis vs Ruminococcus.bromii
+2024-03-11 12:05:40.889194 INFO::Creating boxplot for categorical data, diagnosis vs Eubacterium.ventriosum
+2024-03-11 12:05:41.063876 INFO::Creating boxplot for categorical data, diagnosis vs Akkermansia.muciniphila
+2024-03-11 12:05:41.269989 INFO::Creating boxplot for categorical data, diagnosis vs Parabacteroides.distasonis
+2024-03-11 12:05:41.441423 INFO::Creating boxplot for categorical data, diagnosis vs Sutterella.wadsworthensis
+2024-03-11 12:05:41.615297 INFO::Creating boxplot for categorical data, diagnosis vs Bilophila.unclassified
+2024-03-11 12:05:41.787748 INFO::Creating boxplot for categorical data, diagnosis vs Roseburia.inulinivorans
+2024-03-11 12:05:41.984022 INFO::Creating boxplot for categorical data, diagnosis vs Odoribacter.splanchnicus
+2024-03-11 12:05:42.161438 INFO::Creating boxplot for categorical data, diagnosis vs Bacteroidales.bacterium.ph8
+2024-03-11 12:05:42.331977 INFO::Creating boxplot for categorical data, diagnosis vs Clostridium.bolteae
+2024-03-11 12:05:42.514835 INFO::Creating boxplot for categorical data, diagnosis vs Subdoligranulum.unclassified
+2024-03-11 12:05:42.693722 INFO::Creating boxplot for categorical data, diagnosis vs Coprobacillus.unclassified
+2024-03-11 12:05:42.896466 INFO::Creating boxplot for categorical data, diagnosis vs Clostridium.leptum
+2024-03-11 12:05:43.066877 INFO::Creating boxplot for categorical data, diagnosis vs Barnesiella.intestinihominis
+2024-03-11 12:05:43.242405 INFO::Creating boxplot for categorical data, diagnosis vs Bacteroides.ovatus
+2024-03-11 12:05:43.415317 INFO::Creating boxplot for categorical data, diagnosis vs Bacteroides.finegoldii
+2024-03-11 12:05:43.615942 INFO::Creating boxplot for categorical data, diagnosis vs Eubacterium.siraeum
+2024-03-11 12:05:43.787365 INFO::Creating boxplot for categorical data, diagnosis vs Ruminococcus.bromii
+2024-03-11 12:05:43.961836 INFO::Creating boxplot for categorical data, diagnosis vs Clostridium.bolteae
+2024-03-11 12:05:44.136643 INFO::Creating boxplot for categorical data, diagnosis vs Barnesiella.intestinihominis
+2024-03-11 12:05:44.351639 INFO::Creating boxplot for categorical data, diagnosis vs Ruminococcus.callidus
+2024-03-11 12:05:44.531959 INFO::Creating boxplot for categorical data, diagnosis vs Alistipes.putredinis
+2024-03-11 12:05:44.70688 INFO::Creating boxplot for categorical data, diagnosis vs Ruminococcus.lactaris
+2024-03-11 12:05:44.889455 INFO::Creating boxplot for categorical data, diagnosis vs Bacteroides.fragilis
+2024-03-11 12:05:45.087518 INFO::Creating boxplot for categorical data, diagnosis vs Parabacteroides.distasonis
+2024-03-11 12:05:45.261519 INFO::Creating boxplot for categorical data, diagnosis vs Parabacteroides.goldsteinii
+2024-03-11 12:05:45.434922 INFO::Creating boxplot for categorical data, diagnosis vs Prevotella.copri
+2024-03-11 12:05:45.607323 INFO::Creating boxplot for categorical data, diagnosis vs Alistipes.onderdonkii
+2024-03-11 12:05:45.800755 INFO::Creating boxplot for categorical data, diagnosis vs Bacteroides.massiliensis
+2024-03-11 12:05:45.974954 INFO::Creating boxplot for categorical data, diagnosis vs Bacteroides.ovatus
+2024-03-11 12:05:46.146137 INFO::Creating boxplot for categorical data, diagnosis vs Parabacteroides.unclassified
+2024-03-11 12:05:46.326196 INFO::Creating boxplot for categorical data, diagnosis vs Alistipes.finegoldii
+2024-03-11 12:05:46.503446 INFO::Creating boxplot for categorical data, diagnosis vs Ruminococcus.callidus
+2024-03-11 12:05:46.700892 INFO::Creating boxplot for categorical data, diagnosis vs Roseburia.intestinalis
+2024-03-11 12:05:46.871586 INFO::Creating boxplot for categorical data, diagnosis vs Parabacteroides.unclassified
+2024-03-11 12:05:47.057712 INFO::Creating boxplot for categorical data, diagnosis vs Bacteroides.uniformis
+2024-03-11 12:05:47.242181 INFO::Creating boxplot for categorical data, diagnosis vs Clostridium.leptum
+2024-03-11 12:05:47.442912 INFO::Creating boxplot for categorical data, diagnosis vs Ruminococcus.obeum
+2024-03-11 12:05:47.618649 INFO::Creating boxplot for categorical data, diagnosis vs Burkholderiales.bacterium.1.1.47
+2024-03-11 12:05:47.799697 INFO::Creating boxplot for categorical data, diagnosis vs Eubacterium.siraeum
+2024-03-11 12:05:47.976754 INFO::Creating boxplot for categorical data, diagnosis vs Subdoligranulum.unclassified
+2024-03-11 12:05:48.17411 INFO::Creating boxplot for categorical data, diagnosis vs Acidaminococcus.unclassified
+2024-03-11 12:05:48.354615 INFO::Creating boxplot for categorical data, diagnosis vs Bacteroides.xylanisolvens
+2024-03-11 12:05:48.525316 INFO::Creating boxplot for categorical data, diagnosis vs Clostridium.symbiosum
+2024-03-11 12:05:48.705605 INFO::Creating boxplot for categorical data, diagnosis vs Eubacterium.ventriosum
+2024-03-11 12:05:48.90687 INFO::Creating boxplot for categorical data, diagnosis vs Clostridium.clostridioforme
+2024-03-11 12:05:49.084421 INFO::Creating boxplot for categorical data, diagnosis vs Veillonella.dispar
+2024-03-11 12:05:49.259387 INFO::Creating boxplot for categorical data, diagnosis vs Eubacterium.hallii
+2024-03-11 12:05:49.443325 INFO::Creating boxplot for categorical data, diagnosis vs Oscillibacter.unclassified
+2024-03-11 12:05:49.642004 INFO::Creating boxplot for categorical data, diagnosis vs Bacteroides.uniformis
+2024-03-11 12:05:49.836405 INFO::Creating boxplot for categorical data, diagnosis vs Clostridium.nexile
+2024-03-11 12:05:50.023296 INFO::Creating boxplot for categorical data, diagnosis vs Peptostreptococcaceae.noname.unclassified
+2024-03-11 12:05:50.20057 INFO::Creating boxplot for categorical data, diagnosis vs Bacteroides.eggerthii
+2024-03-11 12:05:50.403719 INFO::Creating boxplot for categorical data, diagnosis vs Sutterella.wadsworthensis
+2024-03-11 12:05:50.574532 INFO::Creating boxplot for categorical data, diagnosis vs Coprobacter.fastidiosus
+2024-03-11 12:05:50.747338 INFO::Creating boxplot for categorical data, diagnosis vs Dorea.longicatena
+2024-03-11 12:05:50.919719 INFO::Creating boxplot for categorical data, diagnosis vs Prevotella.copri
+2024-03-11 12:05:51.166106 INFO::Creating boxplot for categorical data, diagnosis vs Bacteroides.fragilis
+2024-03-11 12:05:51.341427 INFO::Creating boxplot for categorical data, diagnosis vs Bacteroides.xylanisolvens
+2024-03-11 12:05:51.527387 INFO::Creating boxplot for categorical data, diagnosis vs Coprobacillus.unclassified
+2024-03-11 12:05:51.709258 INFO::Creating boxplot for categorical data, diagnosis vs Bacteroides.thetaiotaomicron
+2024-03-11 12:05:51.91057 INFO::Creating boxplot for categorical data, diagnosis vs Bacteroides.cellulosilyticus
+2024-03-11 12:05:52.093815 INFO::Creating boxplot for categorical data, diagnosis vs Lachnospiraceae.bacterium.3.1.46FAA
+2024-03-11 12:05:52.269442 INFO::Creating boxplot for categorical data, diagnosis vs Flavonifractor.plautii
+2024-03-11 12:05:52.451601 INFO::Creating boxplot for categorical data, diagnosis vs Bilophila.unclassified
+2024-03-11 12:05:52.639739 INFO::Creating boxplot for categorical data, diagnosis vs Paraprevotella.clara
+2024-03-11 12:05:52.854929 INFO::Creating boxplot for categorical data, diagnosis vs Clostridium.hathewayi
+2024-03-11 12:05:53.030666 INFO::Creating boxplot for categorical data, diagnosis vs Clostridium.citroniae
+2024-03-11 12:05:53.209316 INFO::Creating boxplot for categorical data, diagnosis vs Ruminococcus.gnavus
+2024-03-11 12:05:53.392636 INFO::Creating boxplot for categorical data, diagnosis vs Dialister.invisus
+2024-03-11 12:05:53.600346 INFO::Creating boxplot for categorical data, diagnosis vs Bacteroides.intestinalis
+2024-03-11 12:05:53.778349 INFO::Creating boxplot for categorical data, diagnosis vs Veillonella.atypica
+2024-03-11 12:05:53.950958 INFO::Creating boxplot for categorical data, diagnosis vs Bacteroides.caccae
+2024-03-11 12:05:54.126095 INFO::Creating boxplot for categorical data, diagnosis vs Bacteroides.cellulosilyticus
+2024-03-11 12:05:54.327594 INFO::Creating boxplot for categorical data, diagnosis vs Veillonella.unclassified
+2024-03-11 12:05:54.50827 INFO::Creating boxplot for categorical data, diagnosis vs Lachnospiraceae.bacterium.1.1.57FAA
+2024-03-11 12:05:54.685906 INFO::Creating boxplot for categorical data, diagnosis vs Oscillibacter.unclassified
+2024-03-11 12:05:54.858902 INFO::Creating boxplot for categorical data, diagnosis vs Clostridium.clostridioforme
+2024-03-11 12:05:55.039761 INFO::Creating boxplot for categorical data, diagnosis vs Bacteroides.finegoldii
+2024-03-11 12:05:55.266136 INFO::Creating boxplot for categorical data, diagnosis vs Clostridium.nexile
+2024-03-11 12:05:55.449575 INFO::Creating boxplot for categorical data, diagnosis vs Streptococcus.salivarius
+2024-03-11 12:05:55.627318 INFO::Creating boxplot for categorical data, diagnosis vs Eubacterium.eligens
+2024-03-11 12:05:55.807242 INFO::Creating boxplot for categorical data, diagnosis vs Eubacterium.rectale
+2024-03-11 12:05:56.021347 INFO::Creating boxplot for categorical data, diagnosis vs Eubacterium.rectale
+2024-03-11 12:05:56.203536 INFO::Creating boxplot for categorical data, diagnosis vs Odoribacter.splanchnicus
+2024-03-11 12:05:56.3827 INFO::Creating boxplot for categorical data, diagnosis vs Faecalibacterium.prausnitzii
+2024-03-11 12:05:56.557529 INFO::Creating boxplot for categorical data, diagnosis vs Flavonifractor.plautii
+2024-03-11 12:05:56.765669 INFO::Creating boxplot for categorical data, diagnosis vs Parasutterella.excrementihominis
+2024-03-11 12:05:56.946385 INFO::Creating boxplot for categorical data, diagnosis vs Ruminococcus.gnavus
+2024-03-11 12:05:57.121684 INFO::Creating boxplot for categorical data, diagnosis vs Roseburia.unclassified
+2024-03-11 12:05:57.299767 INFO::Creating boxplot for categorical data, diagnosis vs Bacteroides.dorei
+2024-03-11 12:05:57.474562 INFO::Creating boxplot for categorical data, diagnosis vs Veillonella.parvula
+2024-03-11 12:05:57.682547 INFO::Creating boxplot for categorical data, diagnosis vs Haemophilus.parainfluenzae
+2024-03-11 12:05:57.859425 INFO::Creating boxplot for categorical data, diagnosis vs Roseburia.inulinivorans
+2024-03-11 12:05:58.035213 INFO::Creating boxplot for categorical data, diagnosis vs Eubacterium.eligens
+2024-03-11 12:05:58.214225 INFO::Creating boxplot for categorical data, diagnosis vs Escherichia.coli
+2024-03-11 12:05:58.424409 INFO::Creating boxplot for categorical data, diagnosis vs Bifidobacterium.longum
+2024-03-11 12:05:58.603233 INFO::Creating boxplot for categorical data, diagnosis vs Bifidobacterium.adolescentis
+2024-03-11 12:05:58.779449 INFO::Creating boxplot for categorical data, diagnosis vs Bifidobacterium.pseudocatenulatum
+2024-03-11 12:05:58.955483 INFO::Creating boxplot for categorical data, diagnosis vs C2likevirus.unclassified
+2024-03-11 12:05:59.159918 INFO::Creating boxplot for categorical data, diagnosis vs Paraprevotella.clara
+2024-03-11 12:05:59.335415 INFO::Creating boxplot for categorical data, diagnosis vs Collinsella.aerofaciens
+2024-03-11 12:05:59.507075 INFO::Creating boxplot for categorical data, diagnosis vs Klebsiella.pneumoniae
+2024-03-11 12:05:59.684313 INFO::Creating boxplot for categorical data, diagnosis vs Bacteroides.vulgatus
+2024-03-11 12:05:59.886505 INFO::Creating boxplot for categorical data, diagnosis vs Faecalibacterium.prausnitzii
+2024-03-11 12:06:00.068172 INFO::Creating boxplot for categorical data, diagnosis vs Eubacterium.hallii
+2024-03-11 12:06:00.250362 INFO::Creating boxplot for categorical data, diagnosis vs Peptostreptococcaceae.noname.unclassified
+2024-03-11 12:06:00.430428 INFO::Creating boxplot for categorical data, diagnosis vs Burkholderiales.bacterium.1.1.47
+2024-03-11 12:06:00.645028 INFO::Creating boxplot for categorical data, diagnosis vs Bacteroides.dorei
+2024-03-11 12:06:00.827815 INFO::Creating boxplot for categorical data, diagnosis vs Bacteroidales.bacterium.ph8
+2024-03-11 12:06:01.005893 INFO::Creating boxplot for categorical data, diagnosis vs Bifidobacterium.bifidum
+2024-03-11 12:06:01.181673 INFO::Creating boxplot for categorical data, diagnosis vs C2likevirus.unclassified
+2024-03-11 12:06:01.35815 INFO::Creating boxplot for categorical data, diagnosis vs Lachnospiraceae.bacterium.1.1.57FAA
+2024-03-11 12:06:01.565083 INFO::Creating boxplot for categorical data, diagnosis vs Roseburia.unclassified
+2024-03-11 12:06:01.740441 INFO::Creating boxplot for categorical data, diagnosis vs Paraprevotella.unclassified
+2024-03-11 12:06:01.914862 INFO::Creating boxplot for categorical data, diagnosis vs Escherichia.unclassified
+2024-03-11 12:06:02.088186 INFO::Creating boxplot for categorical data, diagnosis vs Bacteroides.faecis
+2024-03-11 12:06:02.294274 INFO::Creating boxplot for categorical data, diagnosis vs Bacteroides.faecis
+2024-03-11 12:06:02.470892 INFO::Creating boxplot for categorical data, diagnosis vs Veillonella.parvula
+2024-03-11 12:06:02.644762 INFO::Creating boxplot for categorical data, diagnosis vs Bacteroides.stercoris
+2024-03-11 12:06:02.825607 INFO::Creating boxplot for categorical data, diagnosis vs Coprococcus.comes
