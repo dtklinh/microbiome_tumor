@@ -1,11 +1,18 @@
 ## get all taxID
+library(phyloseq)
 
-Lst_taxID <- NCTs %>% taxa_names()
-write.table(Lst_taxID, "./script/AllTaxID.txt", quote = F, row.names = F, col.names = F)
+
+FF <- readRDS("./raw_data/Bulk_FFPE/combined_bulk_physeq_object.rds")
+FFPE <- readRDS("./raw_data/Bulk_FFPE/combined_ffpe_physeq_object.rds")
+NCT <- readRDS("./raw_data/Bulk_FFPE/combined_ntc_physeq_object.rds")
+
+Lst_taxID <-union( NCT %>% taxa_names(), FFPE %>% taxa_names())
+Lst_taxID <- union(Lst_taxID, FF %>% taxa_names())
+write.table(Lst_taxID, "./script/FFPE_FF_TaxID.txt", quote = F, row.names = F, col.names = F)
 
 ## process All_taxonomy file
 
-Lines <- read.csv("./script/All_taxonomy.txt", sep = "\t", header = F)
+Lines <- read.csv("./script/FFPEvsFF_taxonomy.txt", sep = "\t", header = F)
 ##phylum;class;order;family;genus;species
 Taxa_tab <- data.frame(TaxID = character(0),
                        superkingdom = character(0),
@@ -35,7 +42,12 @@ for(i in 1:nrow(Lines)) {
 NCTs <- readRDS("./physeqs/NCTs_16S_Bac.rds")
 library(tidyverse)
 df_taxa <- Taxa_tab %>% remove_rownames() %>% column_to_rownames(var = "TaxID")
-tax_table(NCTs) <-  tax_table(as.matrix(df_taxa))
+
+##df_taxa[NCT %>% taxa_names(),] %>% head()
+tax_table(NCT) <-  tax_table(as.matrix(df_taxa[NCT %>% taxa_names(),]))
+tax_table(FFPE) <-  tax_table(as.matrix(df_taxa[FFPE %>% taxa_names(),]))
+tax_table(FF) <-  tax_table(as.matrix(df_taxa[FF %>% taxa_names(),]))
+
 saveRDS(NCTs, "./physeqs/NCTs_CorrectedTaxa.rds")
 
 ## rename taxa rank
@@ -51,5 +63,10 @@ df_taxa_correct <- df_taxa %>%
   select(superkingdom, phylum, class = class_co, order = order_co, family = family_co, genus = genus_co, species)
   
 ## put back
-tax_table(NCTs) <-  tax_table(as.matrix(df_taxa_correct))
-saveRDS(NCTs, "./physeqs/NCTs_CorrectedTaxa_AdjustName.rds")
+tax_table(NCT) <-  tax_table(as.matrix(df_taxa_correct[NCT %>% taxa_names(),]))
+tax_table(FFPE) <-  tax_table(as.matrix(df_taxa_correct[FFPE %>% taxa_names(),]))
+tax_table(FF) <-  tax_table(as.matrix(df_taxa_correct[FF %>% taxa_names(),]))
+
+saveRDS(NCT, "./raw_data/Bulk_FFPE/NCT_TaxaAdj.rds")
+saveRDS(FFPE, "./raw_data/Bulk_FFPE/FFPE_TaxaAdj.rds")
+saveRDS(FF, "./raw_data/Bulk_FFPE/FF_TaxaAdj.rds")

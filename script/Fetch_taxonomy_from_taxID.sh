@@ -1,2 +1,1 @@
-taxonkit lineage  -R AllTaxID.txt | tee All_taxonomy.txt
-
+taxonkit lineage  -R FFPE_FF_TaxID.txt | tee FFPEvsFF_taxonomy.txt

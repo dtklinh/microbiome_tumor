@@ -1,0 +1,542 @@
+---
+title: "NCTs - Substory 1"
+author: "Linh Dang"
+format: html
+editor: visual
+---
+
+# 1. Load Libraries and Data
+
+```{r}
+library(phyloseq)
+library(microbiome)
+library(taxizedb)
+library(readxl)
+library(dplyr)
+library(pairwiseAdonis)
+library(cowplot)
+library(ggrepel)
+library(grid)
+library(tidyr)
+#install.packages("remotes")
+#remotes::install_github("david-barnett/microViz")
+library(microViz)
+##-----
+my_cols <- c("#9d547c","#56ca63","#a357d6","cornflowerblue","#419d2a","sandybrown","red3","peachpuff","cyan","paleturquoise3","mistyrose","mediumpurple","mediumseagreen","mediumorchid","moccasin","orange4","olivedrab","midnightblue","papayawhip","palevioletred4","brown1","greenyellow","orchid","navy","darkred","navajowhite1","mistyrose1","grey85","#525fd6","red2","#8cbe3a","#c944aa","indianred3","#5ba557","#9e66cb","#c1b735","#6d82ec","grey25","#e69728","#6654b0","lightsalmon3","lightcyan1","khaki1","seagreen1","plum1","lightsteelblue1","palevioletred3","mintcream","magenta3","#799330","#da7fdf","#3c782c","#e44586","blue4","#63c996","#dc3f53","#49cbc8","#cf3f29","#4fabda","#da6c2b","#598bd1","#b78c24","#8d4191","#a0b971","slategray1","sienna","plum1","lightyellow1","lightskyblue3","linen","limegreen","cornsilk1","mediumaquamarine","gray14","gold3","darkviolet","#b2386a","#479d71","#ae4341","#2ba198","#e07557","#5361a3","#dda353","#aa98df","#5b6114","#dc89bf","#327243","slateblue1","#e57b94","#277257","#9b62a0","#bbab59","#98495a","#526229","#d8827d","#857624","gray40","#9a4a22","#7c7d46","mediumslateblue","lemonchiffon1","#e3a073","#9e6b33", "gray74","slateblue1","rosybrown3", "lawngreen","gainsboro","dodgerblue3","deeppink3","firebrick3", "orchid2", "olivedrab1", "ivory3", "darkseagreen", "bisque2", "darkgoldenrod2", "blue2", "skyblue", "seashell2", "turquoise", "tan1", "seagreen2", "palevioletred3", "linen", "steelblue4","ghostwhite","dodgerblue1","deeppink1","firebrick1", "limegreen", "purple3", "khaki3", "snow3", "darkslategray","darkorchid","lavender", "magenta2", "palegreen", "salmon", "maroon", "cyan2","#671408","#FAEBD7","#7FFFD4","#F0FFFF","#A52A2A","burlywood","cadetblue","#7FFF00","chocolate","cornsilk","slateblue1","#FF7F50","red1","#008B8B","darkgoldenrod1","darkolivegreen","darkorange4","white","hotpink","honeydew1","goldenrod2","darkgreen","oldlace","darkslategray3","navajowhite3","orchid4","gray25","#F0924D")
+```
+
+# Additional functions
+
+```{r}
+###----- Beta --------------
+BetaPlot <- function(PhyloObjct, feature = "Treatment", title_method = "Original", dis_method = "bray", ordination_method = "PCoA"){
+  bray_dist = phyloseq::distance(PhyloObjct, method=dis_method)
+  ordination = ordinate(PhyloObjct, method=ordination_method, distance=bray_dist)
+
+  pcoa1 <- paste("PCoA 1 [", round(ordination[[3]]$Relative_eig[1], digits = 3)*100, "%]", sep = "")
+  pcoa2 <- paste("PCoA 2 [", round(ordination[[3]]$Relative_eig[2], digits = 3)*100, "%]", sep = "")
+
+p.adonis <- adonis2(bray_dist ~ sample_data(PhyloObjct)[, feature][[1]])
+p <- case_when(
+  p.adonis$`Pr(>F)`[1] > 0.05 ~ paste("p =", p.adonis$`Pr(>F)`[1], "n.s.", sep = " "),
+  p.adonis$`Pr(>F)`[1] < 0.05 &  p.adonis$`Pr(>F)`[1] > 0.01 ~ paste("p =", p.adonis$`Pr(>F)`[1], "*", sep = " "),
+  p.adonis$`Pr(>F)`[1] <= 0.01 & p.adonis$`Pr(>F)`[1] > 0.001  ~ paste("p =", p.adonis$`Pr(>F)`[1], "**", sep = " "),
+  p.adonis$`Pr(>F)`[1] <= 0.001 ~ paste("p =",p.adonis$`Pr(>F)`[1], "***", sep = " "),
+)
+
+annotations <- data.frame(
+        xpos = c(-Inf),
+        ypos =  c(Inf),
+        annotateText = p,
+        hjustvar = c(-0.2) ,
+        vjustvar = c(1.5))
+
+p1 <- plot_ordination(PhyloObjct, ordination, color = feature) +
+  geom_point(aes_string(colour = feature), size = 3) +
+  geom_text_repel(aes(label = id), size = 4) +
+  theme(aspect.ratio=1) +
+  theme_bw()+
+  scale_color_brewer(palette = "Set1")+
+  stat_ellipse() +
+  xlab(pcoa1)+
+  ylab(pcoa2)+
+  theme(panel.grid =  element_blank())+
+  ggtitle(paste0(title_method, " - Tumor gemcitabine")) +
+  theme (axis.text=element_text(size=14),
+         axis.title=element_text(size=16,face="bold"),
+        legend.text = element_text(size = 12),
+        legend.title = element_blank())+
+  geom_text(data=annotations,aes(x=xpos,y=ypos,hjust=hjustvar,vjust=vjustvar,label=annotateText), size = 4.5, inherit.aes = FALSE)
+return(p1)
+}
+### ---- compositional plot with annotation in x-axis
+CompositionPlot <- function(PhyloseqObj, target_rank='order', rel_abundance=0.03){
+  physeq.fam <- transform_sample_counts(PhyloseqObj, function(x){x/sum(x)})
+  df.fam.melt <- psmelt(physeq.fam)
+  if(tolower(target_rank)=='order'){
+    df.fam.melt$target_rank <- ifelse(df.fam.melt$Abundance>rel_abundance,as.character(df.fam.melt$order), "others")
+  } else if(tolower(target_rank)=='family'){
+    df.fam.melt$target_rank <- ifelse(df.fam.melt$Abundance>rel_abundance,as.character(df.fam.melt$family), "others")
+  } else if(tolower(target_rank)=='genus'){
+    df.fam.melt$target_rank <- ifelse(df.fam.melt$Abundance>rel_abundance,as.character(df.fam.melt$genus), "others")
+  } else if(tolower(target_rank)== 'species'){
+    df.fam.melt$target_rank <- ifelse(df.fam.melt$Abundance>rel_abundance,as.character(df.fam.melt$species), "others")
+  } else{
+    stop("Unknown target rank. Must be one of the list: order, family, genus, species.")
+  }
+  
+  df.fam.melt$target_rank <- factor(df.fam.melt$target_rank, levels=rev(unique(df.fam.melt$target_rank)))
+  
+## create sample annotation
+  
+  
+plt1 <-  ggplot(df.fam.melt, aes(x=id, y=Abundance, fill=target_rank)) +
+    geom_bar(stat="identity") +
+    scale_y_continuous(labels = scales::percent, expand = c(0, 0), limits = c(0, 1.02)) +
+    scale_fill_manual(values = cols) +
+    xlab ("") +
+    ylab("Relative abundance") +
+    theme_bw() +
+    ggtitle(paste0("Microbial composition at ",target_rank, " level"))+
+    theme( axis.text.x = element_text(angle=45,  vjust = .5),
+           axis.text.y = element_text (size=12),
+           axis.title = element_text(size=14, face="bold"))+
+    theme(legend.position = "bottom",
+          legend.title = element_blank(),
+          legend.background = element_rect(size=0.4, linetype="solid", colour ="black"),
+          legend.key.size = unit(6,"mm")) 
+return(plt1)
+}
+```
+
+# Load and clean Object & Preprocess
+
+```{r}
+NCTs <- readRDS("./physeqs/combined_ntc_physeq_object.rds")
+### replace NA person as Unknown
+## only 16S
+NCTs <- prune_samples(sample_data(NCTs)[, "seq_approach"][[1]] == "16S", NCTs)
+
+## remove NCT sample if read count is less than a certain number
+NCTs_RmLowReads <- phyloseq::prune_samples(sample_sums(NCTs)>=250, NCTs)
+## remove extreme low abundance taxa (assumption: results from noise mapping)
+NCT_RmLowAbun <- filter_by_low_abundance(NCTs_RmLowReads, 0.0001, 1)
+rm(list = c("NCTs", "NCTs_RmLowReads"))
+
+## tax glom
+NCT_16S_Bac <- subset_taxa(NCT_RmLowAbun, superkingdom=="Bacteria")
+NCT_16S_Bac <- tax_glom(NCT_16S_Bac, taxrank = "species", NArm = TRUE)
+## filter taxa and sample
+NCT_16S_Bac <- prune_samples(sample_sums(NCT_16S_Bac)>100, NCT_16S_Bac)
+NCT_16S_Bac <- prune_taxa(taxa_sums(NCT_16S_Bac)>=5, NCT_16S_Bac)
+
+## remove sample_type == seq_ctrl
+NCT_16S_Bac <- prune_samples(sample_data(NCT_16S_Bac)$sample_type != "seq_ctrl", NCT_16S_Bac)
+## change person NA to unknown
+df_person <- sample_data(NCT_16S_Bac)$person
+df_person_edit <- lapply(df_person, function(x){ifelse(is.na(x), "Unknown", x)}) %>% unlist()
+sample_data(NCT_16S_Bac)$person <- df_person_edit
+## save back
+saveRDS(NCT_16S_Bac, "./physeqs/NCTs_16S_Bac.rds")
+```
+
+# 2. Load Eisenhofer List
+
+What is the prevalence of well-known contaminants (from Eisenhofer et al. list) over time in this specific lab setting?
+
+Import Eisenhofer list
+
+```{r}
+Eisenhofer_tab <- read_excel("./metadata/Eisenhofer_lst.xlsx")
+## 
+table( Eisenhofer_tab$genus %in% tax_table(NCT_RmLowAbun)[, "genus"])
+tax_table(NCT_RmLowAbun)[, "genus"] %>% unique() %>% length()
+```
+
+Composition plot
+
+```{r}
+# p.prop <- microbiome::transform(NCT_RmLowAbun, "compositional") 
+# df.fam.melt <- psmelt(p.prop) %>% 
+#   mutate(species.v2 = if_else(
+#     Abundance < 0.04, "other", species 
+#    ),
+#    species.v2 = factor(species.v2, levels=rev(unique(species.v2)))
+#   ) 
+# 
+# rm(p.prop)
+# 
+# 
+# #microbial composition at species level
+# ggplot(df.fam.melt, aes(x=pseudonym, y=Abundance, fill=species.v2)) +
+#   geom_bar(stat="identity") +
+#   scale_y_continuous(labels = scales::percent, expand = c(0, 0), limits = c(0, 1.02)) +
+#   scale_fill_manual(values = cols) +
+#   xlab ("") +
+#   ylab("Relative abundance") +
+#   theme_bw() +
+#   # facet_wrap(vars(Treatment), scales = "free_y") +
+#   ggtitle("TRUE - Microbial composition at species level")+
+#   # facet_wrap(~sample_side, scales = "free")+
+#   theme( axis.text.x = element_text(angle = 45,hjust=1),
+#         axis.text.y = element_text (size=12),
+#         axis.title = element_text(size=14, face="bold"))+
+#   theme(legend.position = "bottom",
+#         legend.title = element_blank(),
+#         legend.background = element_rect(linetype="solid", colour ="black"),
+#         legend.key.size = unit(4,"mm"))
+```
+
+## 2.1 Composition barplots
+
+```{r}
+library(hrbrthemes)
+library(gcookbook)
+
+p <- NCT_16S_Bac %>%
+  plot_composition(sample.sort = "year", otu.sort = "abundance") +
+  # Set custom colors
+  scale_fill_manual("Phylum",values = default_colors("Phylum")[taxa(NCT_16S_Bac)]) +
+  scale_y_continuous(label = scales::percent) + 
+  theme_ipsum(grid="Y") +
+  # Removes sample names and ticks
+  theme(axis.text.x=element_blank(), 
+        axis.ticks.x=element_blank())
+print(p)
+```
+
+3.  
+
+    # 3. Batch Association
+
+    ```{r}
+    p <- BetaPlot(NCT_16S_Bac, feature = "sample_type")
+    p
+    ```
+
+```{r}
+## person
+p_person <- BetaPlot(NCT_16S_Bac, feature = "person")
+p_person
+```
+
+```{r}
+p_year <- BetaPlot(NCT_16S_Bac, feature = "year")
+p_year
+```
+
+Composition Analysis
+
+```{r}
+p_compo <- CompositionPlot(subset_samples(NCT_16S_Bac, year == "2024"), target_rank = "family")
+print(p_compo)
+```
+
+# Visualize with MicroViz
+
+```{r}
+NCTs <- readRDS("./physeqs/NCTs_CorrectedTaxa_AdjustName.rds")
+NCTs_genus <- tax_glom(NCTs, taxrank = "genus", NArm = TRUE)
+pseq <- NCTs %>%  
+  tax_fix(unknowns = c("uncultured")) %>% 
+  phyloseq_validate()
+ord_explore(pseq)
+## modify Eisenhofer list
+Eisenhofer_tab <- Eisenhofer_tab %>% 
+  mutate(In_NCT = genus %in% tax_table(NCTs)[, "genus"])
+```
+
+```{r}
+library(grid)
+## pseq <- pseq %>%  tax_fix(unknowns = c("Candidatus", "[Clostridium]", "bacterium"))
+pseq %>% 
+  prune_samples(sample_data(.)[, "year"][[1]]=="2022", .) %>% 
+  subset_taxa(genus %in% Eisenhofer_tab$genus) %>% 
+  tax_transform(trans = "compositional", rank = "class") %>% 
+  comp_heatmap(tax_anno = taxAnnotation(Prev. = anno_tax_prev(bar_width = 0.3, size = grid::unit(1, "cm"))),
+               sample_anno = sampleAnnotation(
+                 person = anno_sample("person"),
+                 type = anno_sample("sample_type"),
+                 border = FALSE
+               ))
+```
+
+Only look at genus in Eisenhofer list
+
+```{r}
+pseq %>% 
+  tax_transform(trans = "compositional", rank = "genus") %>% 
+  subset_taxa(genus %in% Eisenhofer_tab$genus) %>% 
+  prune_taxa(prevalence(., sort = F)>0.30, .) %>% 
+  ##tax_to
+  comp_heatmap( tax_anno = taxAnnotation(Prev. = anno_tax_prev(bar_width = 0.3, size = grid::unit(1, "cm"))),
+               sample_anno = sampleAnnotation(
+                 person = anno_sample_cat("person", col = cols[1:9], legend_title = "person"),
+                 year = anno_sample_cat("year", col = cols[10:13], legend_title = "year"),
+                 type = anno_sample_cat("sample_type", col = cols[13:15], legend_title = "type"),
+                 border = FALSE
+               )
+               )
+```
+
+Only keep top 20 Taxa whose best median Rel Abundance
+
+## Heatmap
+
+```{r}
+## sample order sorted by year
+ps_byYear <- sample_names(pseq)[sample_data(pseq)$year %>% order()]  
+pseq_byYear <- ps_reorder(pseq, ps_byYear)
+## 20 most prevalence taxa at genus level
+Most_prev_30_genus <- pseq %>% 
+  tax_top(n=30, by = "prev", rank = "genus", undetected = 2)
+Most_abun_30_genus <- pseq %>% 
+  tax_top(n=30, by = sum, rank = "genus")
+In_list <- Most_prev_30_genus %in% Eisenhofer_tab$genus 
+pseq %>% 
+  #ps_reorder(ps_byYear) %>% 
+  ##subset_taxa(genus %in% Most_prev_30_genus) %>% 
+  ## microViz::tax_mutate(InEisenhofer = ifelse(genus %in% Eisenhofer_tab$genus, "TRUE", "FALSE")) %>% 
+  tax_transform(trans = "compositional", rank = "genus") %>% 
+  comp_heatmap(
+    #taxa = Most_prev_30_genus,
+    taxa = Most_abun_30_genus,
+    cluster_rows = FALSE, 
+    cluster_columns = FALSE,
+    row_title = NULL,
+    ##facet_wrap()
+    tax_anno = taxAnnotation(
+      InList = ComplexHeatmap::anno_points(In_list, which = "row", gp= gpar(col = "red")),
+      Prev. = anno_tax_prev(bar_width = 0.5, size = grid::unit(1, "cm"), border = F),
+      Prop_Abd. = anno_tax_box(size = unit(2, "cm"))
+      ),
+    sample_anno = sampleAnnotation(
+      year = anno_sample_cat("year", col = my_cols[1:4], legend_title = "year"),
+      person = anno_sample_cat("person", col = my_cols[5:13], legend_title = "person"),
+      type = anno_sample_cat("sample_type", col = my_cols[14:16], legend_title = "ctrl type")
+    )
+  ) %>% 
+  ComplexHeatmap::draw(
+  annotation_legend_list = attr(. , "AnnoLegends")
+)
+```
+
+At species level
+
+```{r}
+### same as above but in species level
+
+Most_prev_30_species <- pseq %>% 
+  tax_top(n=30, by = "prev", rank = "species", undetected = 2)
+
+In_list_species <- lapply(Most_prev_30_species, function(x){
+  genus_name <- strsplit(x, "\\s+")[[1]][1]
+  return(genus_name %in% Eisenhofer_tab$genus)
+}) %>% unlist()
+pseq %>% 
+  #ps_reorder(ps_byYear) %>% 
+  ##subset_taxa(genus %in% Most_prev_30_genus) %>% 
+  ## microViz::tax_mutate(InEisenhofer = ifelse(genus %in% Eisenhofer_tab$genus, "TRUE", "FALSE")) %>% 
+  tax_transform(trans = "compositional", rank = "species") %>% 
+  comp_heatmap(
+    taxa = Most_prev_30_species,
+    cluster_rows = FALSE, 
+    cluster_columns = FALSE,
+    row_title = NULL,
+    tax_anno = taxAnnotation(
+      InList = ComplexHeatmap::anno_points(In_list_species, which = "row", gp= gpar(col = "red")),
+      Prev. = anno_tax_prev(bar_width = 0.5, size = grid::unit(1, "cm"), border = F),
+      Prop_Abd. = anno_tax_box(size = unit(2, "cm"))
+      ),
+    sample_anno = sampleAnnotation(
+      year = anno_sample_cat("year", col = cols[1:4], legend_title = "year"),
+      person = anno_sample_cat("person", col = cols[5:13], legend_title = "person"),
+      type = anno_sample_cat("sample_type", col = cols[14:16], legend_title = "ctrl type")
+    )
+  ) %>% 
+  ComplexHeatmap::draw(
+  annotation_legend_list = attr(. , "AnnoLegends")
+)
+```
+
+### By Year
+
+```{r}
+
+comp_heatmap_by_Year <- function(pseq, s_year, n_taxa = 30){
+  pseq <- prune_samples(sample_data(pseq)$year == s_year, pseq)
+  Most_prev_30_species <- pseq %>% 
+    tax_top(n=n_taxa, by = "prev", rank = "species", undetected = 5)
+  In_list_species <- lapply(Most_prev_30_species, function(x){
+    genus_name <- strsplit(x, "\\s+")[[1]][1]
+    return(genus_name %in% Eisenhofer_tab$genus)
+  }) %>% unlist()
+  selected_samples <- sample_names(pseq)[sample_data(pseq)$year == s_year]
+   plt <- pseq %>% 
+    tax_transform(trans = "compositional", rank = "species") %>% 
+    comp_heatmap(
+      #samples = selected_samples,
+      taxa = Most_prev_30_species,
+      cluster_rows = FALSE, 
+      cluster_columns = FALSE,
+      row_title = NULL,
+      tax_anno = taxAnnotation(
+        InList = ComplexHeatmap::anno_points(In_list_species, which = "row", gp= gpar(col = "red")),
+        Prev. = anno_tax_prev(bar_width = 0.5, size = grid::unit(1, "cm"), border = F),
+        Prop_Abd. = anno_tax_box(size = unit(2, "cm"))
+      ),
+      sample_anno = sampleAnnotation(
+        #year = anno_sample_cat("year", col = cols[1:4], legend_title = "year"),
+        person = anno_sample_cat("person", col = cols[5:13], legend_title = "person"),
+        type = anno_sample_cat("sample_type", col = cols[14:16], legend_title = "ctrl type")
+    )
+  )
+  return(plt)
+}
+## 20 most prevalence taxa at genus level
+selected_year <- "2024"
+
+pseq %>% 
+  comp_heatmap_by_Year(selected_year, 20) %>% 
+  ComplexHeatmap::draw(
+  annotation_legend_list = attr(. , "AnnoLegends")
+)
+
+```
+
+## Composition
+
+```{r}
+pseq %>% 
+  tax_transform(trans = "compositional", rank = "genus") %>% 
+  ps_mutate(
+    alias = paste("ctrl", 1:nsamples(.), collapse = ":"),
+    year = factor(year),
+    sample_type = factor(sample_type, levels = c("buffer_ctrl", "paraffin_ctrl", "pcr_ctrl"))) %>% 
+  comp_barplot(
+    tax_level = "genus",
+    n_taxa = 15,
+    bar_width = 0.7, 
+    #x = NULL,
+    label = "alias",
+    merge_other = FALSE, bar_outline_colour = "grey25"
+  ) +
+  facet_grid(
+    cols = vars(sample_type), rows = vars(person),
+    scales = "free_y", # this only frees y scale per row in grid faceting
+    space = "free_y" # allows bars to be same size by freeing facet heights
+  ) +
+  scale_x_discrete(limits = rev) + # reverses order: top-down alphabetical
+  coord_flip()
+```
+
+### Compositional average across sample types
+
+```{r}
+pseq %>%
+  ps_select(person, year) %>% # avoids lots of phyloseq::merge_samples warnings
+  phyloseq::merge_samples(group = "person") %>%
+  comp_barplot(tax_level = "genus", n_taxa = 15, bar_width = 0.8) +
+  coord_flip() + labs(x = NULL, y = NULL)
+```
+
+## Correlation
+
+```{r}
+## organize sample data
+pseq_cor <- pseq %>% 
+  ps_mutate(
+    person_id = recode(person, AS=1, CD=2, CH=3, CT=4, J=5, N=6, TR=7, U=8, Unknown=9),
+    ctrl_type = recode(sample_type, buffer_ctrl=1, paraffin_ctrl=2, pcr_ctrl=3),
+    year_id = as.integer(year)
+  )
+#sample_data(pseq_cor) <- sample_data(pseq_cor)[, c("year", "person", "sample_type")]
+pseq_cor %>% 
+  tax_transform(trans = "compositional", rank = "genus") %>% 
+  cor_heatmap(
+    taxa = Most_prev_30_genus,
+    vars = c("year_id", "person_id", "ctrl_type"),
+    cor = "spearman"
+    #tax_anno = taxAnnotation(
+    #Prev. = anno_tax_prev(bar_width = 0.5, size = grid::unit(1, "cm"), border = ),
+    #Abun. = anno_tax_box(size = unit(2, "cm"))
+  #)
+  )
+```
+
+```{r}
+## manually calc using corrr package
+X <- pseq_cor %>% sample_data() %>% as_tibble() %>% select(year_id, person_id, sample_type)
+X$year <- as.factor(X$year)
+X$person <- as.factor(X$person)
+X$sample_type <- as.factor(X$sample_type)
+
+Y <- pseq_cor %>% tax_transform(trans = "compositional", rank = "species") %>% otu_table() %>% as_tibble()
+library(corrr)
+corrr::correlate(X, Y, method = "spearman")
+```
+
+test
+
+```{r}
+pml <- pseq %>% 
+  tax_glom(taxrank = "genus") %>% 
+  transform_sample_counts(function(x) {x/sum(x)}) %>% 
+  ps_select(year, person, sample_type) %>% 
+  ps_melt() %>% 
+  arrange(OTU) 
+
+pml <- pml %>% 
+  select(-species) %>% 
+  mutate(Log10.Abund = log10(Abundance + 1e-7))
+
+## add prevalence grouped by year
+pseq_genus <- pseq %>% 
+  tax_glom(taxrank = "genus")
+pseq_2021_prev <- pseq_genus %>% 
+  prune_samples(sample_data(.)$year == "2021", .) %>% 
+  prevalence()
+pseq_2022_prev <- pseq_genus %>% 
+  prune_samples(sample_data(.)$year == "2022", .) %>% 
+  prevalence()
+pseq_2023_prev <- pseq_genus %>% 
+  prune_samples(sample_data(.)$year == "2023", .) %>% 
+  prevalence()
+pseq_2024_prev <- pseq_genus %>% 
+  prune_samples(sample_data(.)$year == "2024", .) %>% 
+  prevalence()
+
+library(tibble)
+df_prev <- cbind(pseq_2021_prev, pseq_2022_prev, pseq_2023_prev, pseq_2024_prev)
+colnames(df_prev) <- c("2021", "2022", "2023", "2024")
+
+
+df_prev_long <- df_prev %>% 
+  as.data.frame() %>% 
+  rownames_to_column(var = "OTU") %>% 
+  pivot_longer(cols = !OTU,
+               names_to = "year",
+               values_to = "Prevalence")
+
+taxa_genus <- "Bacillus"
+ylim.prim <- c(-7, 0)   # in this example, Log10 rel abun
+ylim.sec <- c(0, 1)    # in this example, Prev
+b <- diff(ylim.prim)/diff(ylim.sec)
+a <- ylim.prim[1] - b*ylim.sec[1]
+
+pml %>% 
+  left_join(., df_prev_long, by = c("OTU", "year")) %>% 
+  filter(genus == taxa_genus) %>% 
+  ggplot(mapping = aes(x = year))+
+  #geom_boxplot(aes(y = Abundance)) +
+  geom_boxplot(aes(y = Log10.Abund)) +
+  geom_point(aes(y =a + b*Prevalence), color = "red", size = 2) +
+  geom_line(aes(y =a + b*Prevalence), color = "gray", linewidth = 1) +
+  scale_y_continuous(
+    # Features of the first axis
+    name = "Log10 Rel. Abund",
+    # Add a second axis and specify its features
+    sec.axis = sec_axis(~ (. - a)/b, name="Prev.")
+  )+
+  ggtitle(taxa_genus)
+```

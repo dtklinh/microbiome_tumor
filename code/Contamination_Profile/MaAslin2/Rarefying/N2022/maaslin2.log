@@ -1,0 +1,292 @@
+2024-04-18 15:27:35.772593 INFO::Writing function arguments to log file
+2024-04-18 15:27:35.786083 DEBUG::Function arguments
+2024-04-18 15:27:35.787792 DEBUG::Output folder: ./MaAslin2/Rarefying/N2022
+2024-04-18 15:27:35.788961 DEBUG::Min Abundance: 0.000000
+2024-04-18 15:27:35.790155 DEBUG::Min Prevalence: 0.000000
+2024-04-18 15:27:35.791329 DEBUG::Normalization: NONE
+2024-04-18 15:27:35.792483 DEBUG::Transform: LOG
+2024-04-18 15:27:35.793625 DEBUG::Analysis method: LM
+2024-04-18 15:27:35.794917 DEBUG::Max significance: 0.250000
+2024-04-18 15:27:35.796111 DEBUG::Random effects:
+2024-04-18 15:27:35.797289 DEBUG::Fixed effects: sample_type
+2024-04-18 15:27:35.798549 DEBUG::Correction method: BH
+2024-04-18 15:27:35.799735 DEBUG::Standardize: TRUE
+2024-04-18 15:27:35.80091 DEBUG::Cores: 1
+2024-04-18 15:27:35.802046 INFO::Verifying options selected are valid
+2024-04-18 15:27:35.943087 INFO::Determining format of input files
+2024-04-18 15:27:35.946187 INFO::Input format is data samples as columns and metadata samples as rows
+2024-04-18 15:27:35.950824 DEBUG::Transformed data so samples are rows
+2024-04-18 15:27:35.952626 DEBUG::A total of 76 samples were found in both the data and metadata
+2024-04-18 15:27:35.953831 DEBUG::Reordering data/metadata to use same sample ordering
+2024-04-18 15:27:35.957304 INFO::Formula for fixed effects: expr ~  sample_type
+2024-04-18 15:27:35.960706 INFO::Filter data based on min abundance and min prevalence
+2024-04-18 15:27:35.96343 INFO::Total samples in data: 76
+2024-04-18 15:27:35.96609 INFO::Min samples required with min abundance for a feature not to be filtered: 0.000000
+2024-04-18 15:27:35.972139 INFO::Total filtered features: 0
+2024-04-18 15:27:35.975376 INFO::Filtered feature names from abundance and prevalence filtering:
+2024-04-18 15:27:35.991626 INFO::Total filtered features with variance filtering: 0
+2024-04-18 15:27:35.996012 INFO::Filtered feature names from variance filtering:
+2024-04-18 15:27:36.001441 INFO::Running selected normalization method: NONE
+2024-04-18 15:27:36.009713 INFO::Applying z-score to standardize continuous metadata
+2024-04-18 15:27:36.022706 INFO::Running selected transform method: LOG
+2024-04-18 15:27:36.039234 INFO::Running selected analysis method: LM
+2024-04-18 15:27:36.065309 INFO::Fitting model to feature number 1, X525919
+2024-04-18 15:27:36.071787 INFO::Fitting model to feature number 2, X2725666
+2024-04-18 15:27:36.077209 INFO::Fitting model to feature number 3, X334413
+2024-04-18 15:27:36.088657 INFO::Fitting model to feature number 4, X562
+2024-04-18 15:27:36.093397 INFO::Fitting model to feature number 5, X623
+2024-04-18 15:27:36.09809 INFO::Fitting model to feature number 6, X114527
+2024-04-18 15:27:36.10769 INFO::Fitting model to feature number 7, X347253
+2024-04-18 15:27:36.112339 INFO::Fitting model to feature number 8, X28037
+2024-04-18 15:27:36.120183 INFO::Fitting model to feature number 9, X1308
+2024-04-18 15:27:36.134346 INFO::Fitting model to feature number 10, X1870984
+2024-04-18 15:27:36.142291 INFO::Fitting model to feature number 11, X283734
+2024-04-18 15:27:36.15042 INFO::Fitting model to feature number 12, X1343
+2024-04-18 15:27:36.164367 INFO::Fitting model to feature number 13, X33040
+2024-04-18 15:27:36.172298 INFO::Fitting model to feature number 14, X470
+2024-04-18 15:27:36.18016 INFO::Fitting model to feature number 15, X1458465
+2024-04-18 15:27:36.200926 INFO::Fitting model to feature number 16, X2664291
+2024-04-18 15:27:36.212854 INFO::Fitting model to feature number 17, X1282
+2024-04-18 15:27:36.224141 INFO::Fitting model to feature number 18, X29388
+2024-04-18 15:27:36.238718 INFO::Fitting model to feature number 19, X2144175
+2024-04-18 15:27:36.247556 INFO::Fitting model to feature number 20, X158836
+2024-04-18 15:27:36.25614 INFO::Fitting model to feature number 21, X29380
+2024-04-18 15:27:36.270077 INFO::Fitting model to feature number 22, X1328
+2024-04-18 15:27:36.277709 INFO::Fitting model to feature number 23, X39778
+2024-04-18 15:27:36.285017 INFO::Fitting model to feature number 24, X29466
+2024-04-18 15:27:36.297737 INFO::Fitting model to feature number 25, X1596
+2024-04-18 15:27:36.305635 INFO::Fitting model to feature number 26, X1303
+2024-04-18 15:27:36.316791 INFO::Fitting model to feature number 27, X712633
+2024-04-18 15:27:36.332542 INFO::Fitting model to feature number 28, X1194971
+2024-04-18 15:27:36.38989 INFO::Fitting model to feature number 29, X1283
+2024-04-18 15:27:36.395249 INFO::Fitting model to feature number 30, X1433513
+2024-04-18 15:27:36.404879 INFO::Fitting model to feature number 31, X1280
+2024-04-18 15:27:36.409459 INFO::Fitting model to feature number 32, X89152
+2024-04-18 15:27:36.414351 INFO::Fitting model to feature number 33, X1379
+2024-04-18 15:27:36.424733 INFO::Fitting model to feature number 34, X621
+2024-04-18 15:27:36.429626 INFO::Fitting model to feature number 35, X76857
+2024-04-18 15:27:36.434181 INFO::Fitting model to feature number 36, X1812935
+2024-04-18 15:27:36.444387 INFO::Fitting model to feature number 37, X1398
+2024-04-18 15:27:36.4494 INFO::Fitting model to feature number 38, X617123
+2024-04-18 15:27:36.454107 INFO::Fitting model to feature number 39, X28035
+2024-04-18 15:27:36.463899 INFO::Fitting model to feature number 40, X729
+2024-04-18 15:27:36.468592 INFO::Fitting model to feature number 41, X946333
+2024-04-18 15:27:36.473061 INFO::Fitting model to feature number 42, X13689
+2024-04-18 15:27:36.482701 INFO::Fitting model to feature number 43, X1335
+2024-04-18 15:27:36.487469 INFO::Fitting model to feature number 44, X1496
+2024-04-18 15:27:36.492306 INFO::Fitting model to feature number 45, X2599308
+2024-04-18 15:27:36.501882 INFO::Fitting model to feature number 46, X147802
+2024-04-18 15:27:36.506677 INFO::Fitting model to feature number 47, X837
+2024-04-18 15:27:36.514738 INFO::Fitting model to feature number 48, X622
+2024-04-18 15:27:36.530502 INFO::Fitting model to feature number 49, X113107
+2024-04-18 15:27:36.539162 INFO::Fitting model to feature number 50, X1313
+2024-04-18 15:27:36.543888 INFO::Fitting model to feature number 51, X39777
+2024-04-18 15:27:36.554165 INFO::Fitting model to feature number 52, X573
+2024-04-18 15:27:36.558903 INFO::Fitting model to feature number 53, X1888195
+2024-04-18 15:27:36.563564 INFO::Fitting model to feature number 54, X33033
+2024-04-18 15:27:36.573342 INFO::Fitting model to feature number 55, X46125
+2024-04-18 15:27:36.578313 INFO::Fitting model to feature number 56, X1134687
+2024-04-18 15:27:36.583177 INFO::Fitting model to feature number 57, X29385
+2024-04-18 15:27:36.597439 INFO::Fitting model to feature number 58, X1305
+2024-04-18 15:27:36.602288 INFO::Fitting model to feature number 59, X760570
+2024-04-18 15:27:36.607164 INFO::Fitting model to feature number 60, X1404
+2024-04-18 15:27:36.616709 INFO::Fitting model to feature number 61, X28901
+2024-04-18 15:27:36.621264 INFO::Fitting model to feature number 62, X203275
+2024-04-18 15:27:36.625842 INFO::Fitting model to feature number 63, X889201
+2024-04-18 15:27:36.636602 INFO::Fitting model to feature number 64, X2696060
+2024-04-18 15:27:36.647325 INFO::Fitting model to feature number 65, X34062
+2024-04-18 15:27:36.656033 INFO::Fitting model to feature number 66, X1613
+2024-04-18 15:27:36.668477 INFO::Fitting model to feature number 67, X267747
+2024-04-18 15:27:36.67324 INFO::Fitting model to feature number 68, X1587
+2024-04-18 15:27:36.677947 INFO::Fitting model to feature number 69, X1938606
+2024-04-18 15:27:36.696935 INFO::Fitting model to feature number 70, X747
+2024-04-18 15:27:36.702167 INFO::Fitting model to feature number 71, X294
+2024-04-18 15:27:36.706914 INFO::Fitting model to feature number 72, X537973
+2024-04-18 15:27:36.716467 INFO::Fitting model to feature number 73, X408
+2024-04-18 15:27:36.723866 INFO::Fitting model to feature number 74, X40214
+2024-04-18 15:27:36.731628 INFO::Fitting model to feature number 75, X1292
+2024-04-18 15:27:36.745253 INFO::Fitting model to feature number 76, X1290
+2024-04-18 15:27:36.753197 INFO::Fitting model to feature number 77, X1314884
+2024-04-18 15:27:36.761307 INFO::Fitting model to feature number 78, X29430
+2024-04-18 15:27:36.775078 INFO::Fitting model to feature number 79, X47770
+2024-04-18 15:27:36.782568 INFO::Fitting model to feature number 80, X303
+2024-04-18 15:27:36.79191 INFO::Fitting model to feature number 81, X1310
+2024-04-18 15:27:36.805612 INFO::Fitting model to feature number 82, X2714946
+2024-04-18 15:27:36.813286 INFO::Fitting model to feature number 83, X1054460
+2024-04-18 15:27:36.821511 INFO::Fitting model to feature number 84, X546269
+2024-04-18 15:27:36.834936 INFO::Fitting model to feature number 85, X29391
+2024-04-18 15:27:36.840124 INFO::Fitting model to feature number 86, X726
+2024-04-18 15:27:36.844825 INFO::Fitting model to feature number 87, X490
+2024-04-18 15:27:36.863559 INFO::Fitting model to feature number 88, X488
+2024-04-18 15:27:36.867993 INFO::Fitting model to feature number 89, X1276282
+2024-04-18 15:27:36.875372 INFO::Fitting model to feature number 90, X1302
+2024-04-18 15:27:36.886061 INFO::Fitting model to feature number 91, X44008
+2024-04-18 15:27:36.890503 INFO::Fitting model to feature number 92, X2025492
+2024-04-18 15:27:36.89493 INFO::Fitting model to feature number 93, X223967
+2024-04-18 15:27:36.904518 INFO::Fitting model to feature number 94, X104955
+2024-04-18 15:27:36.909015 INFO::Fitting model to feature number 95, X712310
+2024-04-18 15:27:36.913597 INFO::Fitting model to feature number 96, X2728020
+2024-04-18 15:27:36.923524 INFO::Fitting model to feature number 97, X1016987
+2024-04-18 15:27:36.927971 INFO::Fitting model to feature number 98, X824
+2024-04-18 15:27:36.932492 INFO::Fitting model to feature number 99, X546271
+2024-04-18 15:27:36.94175 INFO::Fitting model to feature number 100, X727
+2024-04-18 15:27:36.946187 INFO::Fitting model to feature number 101, X693986
+2024-04-18 15:27:36.950583 INFO::Fitting model to feature number 102, X1549858
+2024-04-18 15:27:36.96226 INFO::Fitting model to feature number 103, X1884263
+2024-04-18 15:27:36.966683 INFO::Fitting model to feature number 104, X1523415
+2024-04-18 15:27:36.971267 INFO::Fitting model to feature number 105, X1560345
+2024-04-18 15:27:36.980624 INFO::Fitting model to feature number 106, X539
+2024-04-18 15:27:36.986959 INFO::Fitting model to feature number 107, X653931
+2024-04-18 15:27:36.994359 INFO::Fitting model to feature number 108, X152682
+2024-04-18 15:27:37.006801 INFO::Fitting model to feature number 109, X13690
+2024-04-18 15:27:37.011361 INFO::Fitting model to feature number 110, X335406
+2024-04-18 15:27:37.015955 INFO::Fitting model to feature number 111, X93064
+2024-04-18 15:27:37.025517 INFO::Fitting model to feature number 112, X41276
+2024-04-18 15:27:37.029979 INFO::Fitting model to feature number 113, X378753
+2024-04-18 15:27:37.03603 INFO::Fitting model to feature number 114, X2711215
+2024-04-18 15:27:37.046956 INFO::Fitting model to feature number 115, X1609977
+2024-04-18 15:27:37.051464 INFO::Fitting model to feature number 116, X424800
+2024-04-18 15:27:37.056251 INFO::Fitting model to feature number 117, X1850238
+2024-04-18 15:27:37.065383 INFO::Fitting model to feature number 118, X1123269
+2024-04-18 15:27:37.069844 INFO::Fitting model to feature number 119, X190148
+2024-04-18 15:27:37.074269 INFO::Fitting model to feature number 120, X2126319
+2024-04-18 15:27:37.083325 INFO::Fitting model to feature number 121, X108980
+2024-04-18 15:27:37.087704 INFO::Fitting model to feature number 122, X436515
+2024-04-18 15:27:37.092113 INFO::Fitting model to feature number 123, X29429
+2024-04-18 15:27:37.101384 INFO::Fitting model to feature number 124, X945844
+2024-04-18 15:27:37.105936 INFO::Fitting model to feature number 125, X929102
+2024-04-18 15:27:37.110601 INFO::Fitting model to feature number 126, X871742
+2024-04-18 15:27:37.12343 INFO::Fitting model to feature number 127, X1707785
+2024-04-18 15:27:37.12915 INFO::Fitting model to feature number 128, X2045208
+2024-04-18 15:27:37.133749 INFO::Fitting model to feature number 129, X2072590
+2024-04-18 15:27:37.143567 INFO::Fitting model to feature number 130, X1855823
+2024-04-18 15:27:37.148063 INFO::Fitting model to feature number 131, X1882682
+2024-04-18 15:27:37.152611 INFO::Fitting model to feature number 132, X1367847
+2024-04-18 15:27:37.162377 INFO::Fitting model to feature number 133, X28090
+2024-04-18 15:27:37.170098 INFO::Fitting model to feature number 134, X1077935
+2024-04-18 15:27:37.187539 INFO::Fitting model to feature number 135, X2500532
+2024-04-18 15:27:37.197378 INFO::Fitting model to feature number 136, X234267
+2024-04-18 15:27:37.201877 INFO::Fitting model to feature number 137, X2082188
+2024-04-18 15:27:37.206276 INFO::Fitting model to feature number 138, X588932
+2024-04-18 15:27:37.215158 INFO::Fitting model to feature number 139, X1491
+2024-04-18 15:27:37.219582 INFO::Fitting model to feature number 140, X82367
+2024-04-18 15:27:37.223934 INFO::Fitting model to feature number 141, X2018065
+2024-04-18 15:27:37.232771 INFO::Fitting model to feature number 142, X34004
+2024-04-18 15:27:37.237092 INFO::Fitting model to feature number 143, X28038
+2024-04-18 15:27:37.241458 INFO::Fitting model to feature number 144, X204
+2024-04-18 15:27:37.25065 INFO::Fitting model to feature number 145, X1397
+2024-04-18 15:27:37.255123 INFO::Fitting model to feature number 146, X1270
+2024-04-18 15:27:37.25952 INFO::Fitting model to feature number 147, X40324
+2024-04-18 15:27:37.272907 INFO::Fitting model to feature number 148, X2490939
+2024-04-18 15:27:37.277515 INFO::Fitting model to feature number 149, X2065379
+2024-04-18 15:27:37.282007 INFO::Fitting model to feature number 150, X1545044
+2024-04-18 15:27:37.291309 INFO::Fitting model to feature number 151, X2725684
+2024-04-18 15:27:37.295717 INFO::Fitting model to feature number 152, X147645
+2024-04-18 15:27:37.30014 INFO::Fitting model to feature number 153, X1423723
+2024-04-18 15:27:37.309526 INFO::Fitting model to feature number 154, X735
+2024-04-18 15:27:37.314032 INFO::Fitting model to feature number 155, X407035
+2024-04-18 15:27:37.32226 INFO::Fitting model to feature number 156, X1176536
+2024-04-18 15:27:37.335411 INFO::Fitting model to feature number 157, X272123
+2024-04-18 15:27:37.33984 INFO::Fitting model to feature number 158, X321984
+2024-04-18 15:27:37.344216 INFO::Fitting model to feature number 159, X2182384
+2024-04-18 15:27:37.353378 INFO::Fitting model to feature number 160, X417367
+2024-04-18 15:27:37.358291 INFO::Fitting model to feature number 161, X195105
+2024-04-18 15:27:37.362919 INFO::Fitting model to feature number 162, X1813821
+2024-04-18 15:27:37.372991 INFO::Fitting model to feature number 163, X2303750
+2024-04-18 15:27:37.377433 INFO::Fitting model to feature number 164, X418223
+2024-04-18 15:27:37.381987 INFO::Fitting model to feature number 165, X595537
+2024-04-18 15:27:37.391415 INFO::Fitting model to feature number 166, X908290
+2024-04-18 15:27:37.395863 INFO::Fitting model to feature number 167, X2057741
+2024-04-18 15:27:37.400352 INFO::Fitting model to feature number 168, X39960
+2024-04-18 15:27:37.409732 INFO::Fitting model to feature number 169, X2488560
+2024-04-18 15:27:37.414553 INFO::Fitting model to feature number 170, X1892855
+2024-04-18 15:27:37.419103 INFO::Fitting model to feature number 171, X203
+2024-04-18 15:27:37.42862 INFO::Fitting model to feature number 172, X157687
+2024-04-18 15:27:37.433165 INFO::Fitting model to feature number 173, X1827469
+2024-04-18 15:27:37.440761 INFO::Fitting model to feature number 174, X1633
+2024-04-18 15:27:37.453061 INFO::Fitting model to feature number 175, X2479393
+2024-04-18 15:27:37.4574 INFO::Fitting model to feature number 176, X1329
+2024-04-18 15:27:37.461816 INFO::Fitting model to feature number 177, X270351
+2024-04-18 15:27:37.47075 INFO::Fitting model to feature number 178, X2202825
+2024-04-18 15:27:37.475105 INFO::Fitting model to feature number 179, X1170318
+2024-04-18 15:27:37.479583 INFO::Fitting model to feature number 180, X2498451
+2024-04-18 15:27:37.489015 INFO::Fitting model to feature number 181, X2724619
+2024-04-18 15:27:37.493591 INFO::Fitting model to feature number 182, X1945662
+2024-04-18 15:27:37.498453 INFO::Fitting model to feature number 183, X674703
+2024-04-18 15:27:37.514052 INFO::Fitting model to feature number 184, X135740
+2024-04-18 15:27:37.518528 INFO::Fitting model to feature number 185, X266
+2024-04-18 15:27:37.522873 INFO::Fitting model to feature number 186, X1532023
+2024-04-18 15:27:37.532018 INFO::Fitting model to feature number 187, X450851
+2024-04-18 15:27:37.536402 INFO::Fitting model to feature number 188, X2201350
+2024-04-18 15:27:37.540759 INFO::Fitting model to feature number 189, X2294119
+2024-04-18 15:27:37.550374 INFO::Fitting model to feature number 190, X314722
+2024-04-18 15:27:37.555038 INFO::Fitting model to feature number 191, X2587858
+2024-04-18 15:27:37.559797 INFO::Fitting model to feature number 192, X1520
+2024-04-18 15:27:37.569412 INFO::Fitting model to feature number 193, X2175091
+2024-04-18 15:27:37.573729 INFO::Fitting model to feature number 194, X74329
+2024-04-18 15:27:37.578263 INFO::Fitting model to feature number 195, X1061
+2024-04-18 15:27:37.587816 INFO::Fitting model to feature number 196, X1499308
+2024-04-18 15:27:37.592993 INFO::Fitting model to feature number 197, X169480
+2024-04-18 15:27:37.600083 INFO::Fitting model to feature number 198, X2547962
+2024-04-18 15:27:37.616259 INFO::Fitting model to feature number 199, X83427
+2024-04-18 15:27:37.621213 INFO::Fitting model to feature number 200, X267632
+2024-04-18 15:27:37.625679 INFO::Fitting model to feature number 201, X158754
+2024-04-18 15:27:37.63537 INFO::Fitting model to feature number 202, X293405
+2024-04-18 15:27:37.639966 INFO::Fitting model to feature number 203, X169976
+2024-04-18 15:27:37.647879 INFO::Fitting model to feature number 204, X199684
+2024-04-18 15:27:37.661351 INFO::Fitting model to feature number 205, X316087
+2024-04-18 15:27:37.665872 INFO::Fitting model to feature number 206, X292277
+2024-04-18 15:27:37.670427 INFO::Fitting model to feature number 207, X658225
+2024-04-18 15:27:37.679851 INFO::Fitting model to feature number 208, X74696
+2024-04-18 15:27:37.684315 INFO::Fitting model to feature number 209, X328225
+2024-04-18 15:27:37.688854 INFO::Fitting model to feature number 210, X663950
+2024-04-18 15:27:37.698428 INFO::Fitting model to feature number 211, X327691
+2024-04-18 15:27:37.702994 INFO::Fitting model to feature number 212, X41431
+2024-04-18 15:27:37.743475 INFO::Counting total values for each feature
+2024-04-18 15:27:37.75658 INFO::Writing filtered data to file ./MaAslin2/Rarefying/N2022/features/filtered_data.tsv
+2024-04-18 15:27:37.782146 INFO::Writing filtered, normalized data to file ./MaAslin2/Rarefying/N2022/features/filtered_data_norm.tsv
+2024-04-18 15:27:37.800408 INFO::Writing filtered, normalized, transformed data to file ./MaAslin2/Rarefying/N2022/features/filtered_data_norm_transformed.tsv
+2024-04-18 15:27:37.824093 INFO::Writing residuals to file ./MaAslin2/Rarefying/N2022/fits/residuals.rds
+2024-04-18 15:27:37.831635 INFO::Writing fitted values to file ./MaAslin2/Rarefying/N2022/fits/fitted.rds
+2024-04-18 15:27:37.836884 INFO::Writing all results to file (ordered by increasing q-values): ./MaAslin2/Rarefying/N2022/all_results.tsv
+2024-04-18 15:27:37.843714 INFO::Writing the significant results (those which are less than or equal to the threshold of 0.250000 ) to file (ordered by increasing q-values): ./MaAslin2/Rarefying/N2022/significant_results.tsv
+2024-04-18 15:27:37.848201 INFO::Writing heatmap of significant results to file: ./MaAslin2/Rarefying/N2022/heatmap.pdf
+2024-04-18 15:27:37.857843 INFO::Writing association plots (one for each significant association) to output folder: ./MaAslin2/Rarefying/N2022
+2024-04-18 15:27:37.865318 INFO::Plotting associations from most to least significant, grouped by metadata
+2024-04-18 15:27:37.868103 INFO::Plotting data for metadata number 1, sample_type
+2024-04-18 15:27:37.907229 INFO::Creating boxplot for categorical data, sample_type vs X158754
+2024-04-18 15:27:38.078312 INFO::Creating boxplot for categorical data, sample_type vs X2725666
+2024-04-18 15:27:38.250837 INFO::Creating boxplot for categorical data, sample_type vs X293405
+2024-04-18 15:27:38.389846 INFO::Creating boxplot for categorical data, sample_type vs X169976
+2024-04-18 15:27:38.520603 INFO::Creating boxplot for categorical data, sample_type vs X316087
+2024-04-18 15:27:38.651945 INFO::Creating boxplot for categorical data, sample_type vs X658225
+2024-04-18 15:27:38.801361 INFO::Creating boxplot for categorical data, sample_type vs X292277
+2024-04-18 15:27:38.932608 INFO::Creating boxplot for categorical data, sample_type vs X328225
+2024-04-18 15:27:39.062309 INFO::Creating boxplot for categorical data, sample_type vs X663950
+2024-04-18 15:27:39.23459 INFO::Creating boxplot for categorical data, sample_type vs X267632
+2024-04-18 15:27:39.369888 INFO::Creating boxplot for categorical data, sample_type vs X199684
+2024-04-18 15:27:39.526295 INFO::Creating boxplot for categorical data, sample_type vs X327691
+2024-04-18 15:27:39.655659 INFO::Creating boxplot for categorical data, sample_type vs X74696
+2024-04-18 15:27:39.787122 INFO::Creating boxplot for categorical data, sample_type vs X1560345
+2024-04-18 15:27:39.917914 INFO::Creating boxplot for categorical data, sample_type vs X2182384
+2024-04-18 15:27:40.05251 INFO::Creating boxplot for categorical data, sample_type vs X1404
+2024-04-18 15:27:40.206316 INFO::Creating boxplot for categorical data, sample_type vs X1496
+2024-04-18 15:27:40.33592 INFO::Creating boxplot for categorical data, sample_type vs X83427
+2024-04-18 15:27:40.474712 INFO::Creating boxplot for categorical data, sample_type vs X2711215
+2024-04-18 15:27:40.605137 INFO::Creating boxplot for categorical data, sample_type vs X34062
+2024-04-18 15:27:40.759116 INFO::Creating boxplot for categorical data, sample_type vs X76857
+2024-04-18 15:27:40.887819 INFO::Creating boxplot for categorical data, sample_type vs X653931
+2024-04-18 15:27:41.016164 INFO::Creating boxplot for categorical data, sample_type vs X114527
+2024-04-18 15:27:41.153659 INFO::Creating boxplot for categorical data, sample_type vs X1194971
+2024-04-18 15:27:41.289377 INFO::Creating boxplot for categorical data, sample_type vs X33033
+2024-04-18 15:27:41.456693 INFO::Creating boxplot for categorical data, sample_type vs X93064
+2024-04-18 15:27:41.585739 INFO::Creating boxplot for categorical data, sample_type vs X1827469
+2024-04-18 15:27:41.716195 INFO::Creating boxplot for categorical data, sample_type vs X89152
+2024-04-18 15:27:41.848636 INFO::Creating boxplot for categorical data, sample_type vs X1613
+2024-04-18 15:27:41.980376 INFO::Creating boxplot for categorical data, sample_type vs X946333
+2024-04-18 15:27:42.133625 INFO::Creating boxplot for categorical data, sample_type vs X1549858
+2024-04-18 15:27:42.266344 INFO::Creating boxplot for categorical data, sample_type vs X335406
+2024-04-18 15:27:42.396904 INFO::Creating boxplot for categorical data, sample_type vs X1123269
+2024-04-18 15:27:42.538341 INFO::Creating boxplot for categorical data, sample_type vs X1310
+2024-04-18 15:27:42.699227 INFO::Creating boxplot for categorical data, sample_type vs X424800
+2024-04-18 21:20:29.588337 WARNING::Input is a matrix, passing through as.data.frame() .

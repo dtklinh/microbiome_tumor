@@ -1,0 +1,534 @@
+---
+title: "NCTs_ContProfiling"
+format: html
+editor: visual
+---
+
+# 0. Load libraries and objects
+
+```{r}
+library(zoo)
+library(phyloseq)
+library(microbiome)
+library(taxizedb)
+library(readxl)
+library(kableExtra)
+library(dplyr)
+library(pairwiseAdonis)
+library(cowplot)
+library(ggrepel)
+library(grid)
+library(tidyr)
+library(tidyverse)
+#library(DESeq2)
+library(rstatix)
+library(Wrench)
+#install.packages("remotes")
+#remotes::install_github("david-barnett/microViz")
+library(microViz)
+library(ggpubr)
+library(pheatmap)
+library(ALDEx2)
+library(patchwork)
+library(cowplot)
+library(gridExtra)
+##-----
+Kolors <- c("#9d547c","#56ca63","#a357d6","cornflowerblue","#419d2a","sandybrown","red3","peachpuff","cyan","paleturquoise3","mistyrose","mediumpurple","mediumseagreen","mediumorchid","moccasin","orange4","olivedrab","midnightblue","papayawhip","palevioletred4","brown1","greenyellow","orchid","navy","darkred","navajowhite1","mistyrose1","grey85","#525fd6","red2","#8cbe3a","#c944aa","indianred3","#5ba557","#9e66cb","#c1b735","#6d82ec","grey25","#e69728","#6654b0","lightsalmon3","lightcyan1","khaki1","seagreen1","plum1","lightsteelblue1","palevioletred3","mintcream","magenta3","#799330","#da7fdf","#3c782c","#e44586","blue4","#63c996","#dc3f53","#49cbc8","#cf3f29","#4fabda","#da6c2b","#598bd1","#b78c24","#8d4191","#a0b971","slategray1","sienna","plum1","lightyellow1","lightskyblue3","linen","limegreen","cornsilk1","mediumaquamarine","gray14","gold3","darkviolet","#b2386a","#479d71","#ae4341","#2ba198","#e07557","#5361a3","#dda353","#aa98df","#5b6114","#dc89bf","#327243","slateblue1","#e57b94","#277257","#9b62a0","#bbab59","#98495a","#526229","#d8827d","#857624","gray40","#9a4a22","#7c7d46","mediumslateblue","lemonchiffon1","#e3a073","#9e6b33", "gray74","slateblue1","rosybrown3", "lawngreen","gainsboro","dodgerblue3","deeppink3","firebrick3", "orchid2", "olivedrab1", "ivory3", "darkseagreen", "bisque2", "darkgoldenrod2", "blue2", "skyblue", "seashell2", "turquoise", "tan1", "seagreen2", "palevioletred3", "linen", "steelblue4","ghostwhite","dodgerblue1","deeppink1","firebrick1", "limegreen", "purple3", "khaki3", "snow3", "darkslategray","darkorchid","lavender", "magenta2", "palegreen", "salmon", "maroon", "cyan2","#671408","#FAEBD7","#7FFFD4","#F0FFFF","#A52A2A","burlywood","cadetblue","#7FFF00","chocolate","cornsilk","slateblue1","#FF7F50","red1","#008B8B","darkgoldenrod1","darkolivegreen","darkorange4","white","hotpink","honeydew1","goldenrod2","darkgreen","oldlace","darkslategray3","navajowhite3","orchid4","gray25","#F0924D")
+
+#NCTs <- readRDS("../../physeqs/NCTs_CorrectedTaxa_AdjustName.rds")
+NCTs <- readRDS("../../physeqs/NCTs_v3.rds")
+```
+
+Date reformat
+
+```{r}
+dates <- c("05/27/21", "07/07/25")
+betterDates <- as.Date(dates,format = "%m/%d/%y")
+```
+
+Inspect sample read counts
+
+```{r}
+NCTs %>% 
+  #ps_filter(true.control == "true") %>% 
+  Inspect_SequencingDepth()
+```
+
+# 1. Beta Diversity Analysis
+
+## 1.1 Without Normalization
+
+### 1.1.1 Sample_type
+
+```{r}
+BetaPlot(NCTs, strata_f = "sample_type", title_method = "NCTs, original data")
+```
+
+```{r}
+## pairwise adonis
+res_adonis_pw <- ps_pwAdonis2(NCTs, feature = "sample_type")
+#debug(reshape_adonis2)
+res_dat <- reshape_adonis2(res_adonis_pw)
+res_dat
+```
+
+### 1.1.2 Person
+
+```{r}
+BetaPlot_Simple(NCTs, strata_f = "person", type = "sample_type", title_method = "Beta diversity of original NCTs")
+```
+
+```{r}
+## pairwise addonis of person
+pw_adonis_person <- NCTs %>% 
+  ps_pwAdonis2(feature = "person") %>% 
+  reshape_adonis2()
+pw_adonis_person
+
+## strata by sample_type
+pw_adonis_person_strataSampleType <- NCTs %>% 
+  ps_pwAdonis2(feature = "person", m_strata = "sample_type") %>% 
+  reshape_adonis2()
+
+pw_adonis_person_strataSampleType
+```
+
+### 1.1.3 Year
+
+```{r}
+NCTs %>% 
+  subset_samples(year == "2021" | year=="2022") %>% 
+  BetaPlot(strata_f = "year", title_method = "Grouped by years")
+  #BetaPlot_Simple(strata_f = "year", type = "sample_type", title_method = "Beta diversity of original NCTs")
+```
+
+```{r}
+## pairwise addonis of person
+pw_adonis_year <- NCTs %>% 
+  ps_pwAdonis2(feature = "year") %>% 
+  reshape_adonis2()
+
+## strata by sample_type
+pw_adonis_person_strataSampleType <- NCTs %>% 
+  ps_pwAdonis2(feature = "person", m_strata = "sample_type") %>% 
+  reshape_adonis2()
+
+#### test
+#bray_dist <- phyloseq::distance(NCTs, method = "bray")
+xxx_year_st <- pairwise.adonis2(bray_dist ~ year, data = sample_data(NCTs) %>% as_tibble() %>% as.data.frame(), strata = "sample_type")
+xxx_yearST_tbl <- reshape_adonis2(xxx_year_st)
+
+## fixed sample_type
+bray_dist <- NCTs %>% 
+  subset_samples(sample_type == "buffer_ctrl") %>% 
+  phyloseq::distance(method = "bray")
+
+Year_givenBufferCtrl <- ps_pwAdonis2(NCTs %>% subset_samples(sample_type == "buffer_ctrl"), feature = "year")
+reshape_adonis2(Year_givenBufferCtrl)
+```
+
+## 1.2 With Rarefying
+
+```{r}
+NCTs_rar <- NCTs %>% 
+  rarefy_even_depth(sample.size = 500, rngseed = 911) %>% 
+  prune_taxa(taxa_sums(.)>=10, .)
+```
+
+### 1.2.1 Sample types
+
+```{r}
+NCTs_rar %>% 
+  BetaPlot(strata_f = "sample_type", title_method = "Rarefying - SampleType")
+```
+
+### 1.2.2 Person
+
+```{r}
+NCTs_rar %>% 
+  subset_samples(person %in% c("J", "N", "TR")) %>% 
+  BetaPlot(strata_f = "person", title_method = "Rarefying, J vs N vs TR")
+```
+
+```{r}
+res_pw_person_samType <- NCTs_rar %>% 
+  subset_samples(person %in% c("J", "N")) %>%
+  ps_pwAdonis2(feature = "person", m_strata = "sample_type") %>% 
+  reshape_adonis2()
+res_pw_person_samType
+```
+
+```{r}
+Size = 10
+sam_type <- "paraffin_ctrl"
+yea <- "2022"
+merge_phyloseq(
+  NCTs_rar %>% 
+    subset_samples(person == "J"  & year == yea) %>% 
+    sample_ps(size=Size),
+  NCTs_rar %>% 
+    subset_samples(person == "N"  & year == yea) %>% 
+    sample_ps(size=Size)
+  ) %>% 
+  BetaPlot(strata_f = "person", type = "sample_type")
+```
+
+### 1.2.3 Years
+
+### 1.2.4 year-fixed, person-fixed
+
+```{r}
+NCTs_rar_N2021 <- NCTs_rar %>% 
+  subset_samples(person == "N" & year == "2021") %>% 
+  prune_taxa(taxa_sums(.)>10, .)
+NCTs_rar_N2022 <- NCTs_rar %>% 
+  subset_samples(person == "N" & year == "2022") %>% 
+  prune_taxa(taxa_sums(.)>10, .)
+NCTs_rar_J2023 <- NCTs_rar %>% 
+  subset_samples(person == "J" & year == "2023") %>% 
+  prune_taxa(taxa_sums(.)>10, .)
+```
+
+```{r}
+NCTs_rar_N2021 %>% 
+  BetaPlot(strata_f = "sample_type", type = "year_qtr", title_method = "Rarefying, N-2021")
+```
+
+```{r}
+NCTs_rar_N2022 %>% 
+  BetaPlot(strata_f = "sample_type", type = "year_qtr", title_method = "Rarefying, N-2022")
+```
+
+```{r}
+NCTs_rar_J2023 %>% 
+  BetaPlot(strata_f = "sample_type", type = "year_qtr", title_method = "Rarefying, J-2023")
+```
+
+## 1.3 With Wrench Normalization
+
+```{r}
+NCTs_wrench <- WrenchWrapper(NCTs, grp = "sample_type", roundUp = T) %>% 
+  prune_taxa(taxa_sums(.)>=10, .)
+## rename samples
+# tbl_names <- sample_data(NCTs_wrench)$sample_type
+# newnames <- paste0(tbl_names, "_", 1:length(tbl_names))
+# sample_names(NCTs_wrench) <- newnames
+# NCTs_wrench <- NCTs_wrench %>% 
+#   ps_mutate(id = sample_names(.))
+## manual
+# count_tab <- as.matrix(data.frame(otu_table(NCTs)))
+# group <- sample_data(NCTs)$sample_type
+# 
+# W <- wrench(count_tab, condition=group)
+# 
+# norm_factors <- W$nf
+# head(norm_factors)
+# 
+# norm_counts <- sweep(otu_table(NCTs), 2, norm_factors, FUN = '/')
+```
+
+### 1.3.1 Sample_type
+
+```{r}
+BetaPlot(NCTs_wrench, strata_f = "sample_type", title_method = "Wrench Normalization, sample types")
+```
+
+```{r}
+res_2 <- NCTs_wrench %>% 
+  ps_pwAdonis2(feature = "sample_type", m_strata = "person") %>% 
+  reshape_adonis2()
+res_2
+```
+
+```{r}
+m<- matrix(c(1:100), nrow= 10)
+m[1,1]<- NA
+m[10,10]<- NA
+
+hmap <- pheatmap(m, cluster_rows=FALSE, cluster_cols=FALSE)
+```
+
+### Person
+
+```{r}
+BetaPlot(NCTs_wrench, strata_f = "person", title_method = "Wrench Normalization")
+```
+
+```{r}
+res_pw <- ps_pwAdonis2(NCTs_wrench, feature = "person")
+reshape_adonis2(res_pw)
+```
+
+### Year
+
+```{r}
+BetaPlot(NCTs_wrench, strata_f = "year", n_per = 1000, title_method = "Wrench Normalization")
+```
+
+```{r}
+res_pw <- ps_pwAdonis2(NCTs_wrench, feature = 'year', m_strata ='sample_type')
+pw_sampleType <- reshape_adonis2(res_pw) 
+```
+
+### Test for independent among metadata
+
+#### Sample type vs. year
+
+```{r}
+df_SampleData <- NCTs_wrench %>% sample_data() %>% as_tibble()
+tbl <- table(df_SampleData$sample_type, df_SampleData$year)
+chi2 <- chisq.test(tbl, correct = F)
+chi2
+```
+
+#### Sample type vs. person
+
+```{r}
+tbl <- table(df_SampleData$sample_type, df_SampleData$person)
+chi2 <- chisq.test(tbl, correct = F)
+chi2
+```
+
+#### Year vs. person
+
+```{r}
+tbl <- table(df_SampleData$year, df_SampleData$person)
+chi2 <- chisq.test(tbl, correct = F)
+chi2
+```
+
+### Alpha Diversity
+
+```{r}
+AlphaPlot(NCTs_wrench, index = "Shannon", strata = "sample_type", y_label = "Shannon Index", add_legend = F)
+```
+
+### DAA
+
+#### Between Sample Type
+
+```{r}
+PhyLoObj <- NCTs_rar_J2023 %>% 
+  subset_samples(sample_type != "pcr_ctrl") %>% 
+  #tax_glom("genus") %>% 
+  #ps_mutate(id = sample_names(.)) %>% 
+  prune_samples(sample_sums(.)>250, .) %>% 
+  prune_taxa(taxa_sums(.)>10, .)
+  
+df_data <- PhyLoObj %>% otu_table()  %>% as.data.frame() %>%  as.matrix()
+df_metadata <- PhyLoObj %>% sample_data() %>% as_tibble() %>% dplyr::select(id, sample_type, year_qtr, person) %>% as.data.frame() %>% column_to_rownames(var = "id")
+
+# for(y in unique(df_metadata$year)){
+#   for(p in unique(df_metadata$person)){
+#     tmp <- df_metadata[df_metadata$year== y & df_metadata$person==p, "sample_type"] %>% table()
+#     print(paste0("Year: ", y))
+#     print(paste0("Person: ", p))
+#     print(tmp)
+#   }
+# }
+```
+
+```{r}
+## DAA with Zicoseq
+#library(GUniFrac)
+#NCTs_wrench
+
+ZicoSeq.obj <- ZicoSeq(meta.dat = df_metadata, feature.dat = df_data, 
+                    grp.name = 'sample_type', 
+                    adj.name = 'year_qtr', 
+                    feature.dat.type = "count",
+                    # Filter to remove rare taxa
+                    prev.filter = 0.015, 
+                    mean.abund.filter = 0.0,  
+                    max.abund.filter = 0.002, min.prop = 0, 
+                    # Winsorization to replace outliers
+                    is.winsor = T, outlier.pct = 0.01, winsor.end = 'top',
+                    # Posterior sampling 
+                    is.post.sample = TRUE, post.sample.no = 25, 
+                    # Use the square-root transformation
+                    link.func = list(function (x) x^0.5), stats.combine.func = max,
+                    # Permutation-based multiple testing correction
+                    perm.no = 99,  strata = NULL, 
+                    # Reference-based multiple stage normalization
+                    ref.pct = 0.5, stage.no = 6, excl.pct = 0.2,
+                    # Family-wise error rate control
+                    is.fwer = TRUE, verbose = TRUE, return.feature.dat = TRUE)
+## plot
+ZicoSeq.plot(ZicoSeq.obj, pvalue.type = 'p.adj.fdr', cutoff = 0.05, text.size = 10,
+             out.dir = NULL, width = 10, height = 6)
+```
+
+```{r}
+## with ALDEX2
+#library(ALDEx2)
+# PhyLoObj <- NCTs_wrench %>% 
+#   #tax_glom("genus") %>% 
+#   ps_mutate(id = sample_names(.)) %>% 
+#   prune_taxa(taxa_sums(.)>10, .) %>% 
+#   prune_samples(sample_sums(.)>250, .) %>% 
+#   subset_samples(sample_type != "pcr_ctrl")
+# df_data <- PhyLoObj %>% otu_table()  %>% as.data.frame() %>%  as.matrix()
+# df_metadata <- PhyLoObj %>% sample_data() %>% as_tibble() %>% dplyr::select(id, sample_type) %>% as.data.frame() %>% column_to_rownames(var = "id")
+x <- ALDEx2::aldex.clr(df_data, df_metadata$sample_type, mc.samples = 256, denom = "all", verbose = FALSE)
+x.tt <- aldex.ttest(x, paired.test=FALSE)
+#x.tt <- x.tt[order(x.tt$we.ep),]
+x.effect <- aldex.effect(x, include.sample.summary = F, verbose = F, paired.test=FALSE, glm.conds=NULL, useMC=F)
+x.all <- data.frame(x.tt, x.effect)
+##plt.ALDEx2 <- ALDEx2::aldex.plot(x.all, type = "volcano", cutoff.pval = 0.3)
+Tax_tab <- PhyLoObj %>% tax_table() %>% as.data.frame() %>%  as_tibble(rownames = NA) %>%
+  rownames_to_column(var = "TaxaID")
+#debug(ALDex2_plot)
+ALDex2_plot(x.all, Tax_tab, p_val_thres = 0.05, title_method = "Rarefying")
+```
+
+```{r}
+## with MaAslin2
+require(Maaslin2)
+MaAsLin2_Wrapper2(df_data, df_metadata, Treatment = "sample_type", TreatMent_ref = "buffer_ctrl",OutDir = "./MaAslin2/Rarefying/J2023")
+MaAslin2_plot("./MaAslin2/Rarefying/J2023/significant_results.tsv", Tax_tab, title_method = "MasAslin2, rarefying")
+```
+
+```{r}
+###plot result with genus annotation
+Tab <- read.table("./MaAslin2/Rarefying/N2022/significant_results.tsv", header = TRUE)
+Tab <- Tab %>% as_tibble() %>% 
+  mutate(TaxaID = substr(feature, 2, nchar(feature))) %>% 
+  left_join(., Tax_tab[, c("TaxaID", "species", "genus", "family")], by = "TaxaID") %>% 
+  mutate(legend = paste0(TaxaID, ":", species))
+
+Tab$legend = factor(Tab$legend,levels=Tab$legend[order(Tab$coef)])
+Tab$family = factor(Tab$family)
+Tab <- Tab %>% 
+  mutate(fam_col = Kolors[factor(.data[["family"]]) %>% as.integer()])
+
+KKK <- Tab[, c("family", "fam_col")] %>% unique()
+
+plt_data <- Tab %>% 
+  #mutate(fam_col = Kolors[factor(.data[["family"]]) %>% as.integer()]) %>% 
+  ggplot()+
+  geom_col(aes(x=legend,y=coef,fill=coef>0))+
+  coord_flip()+
+  scale_fill_manual(values=c("blue","red"),
+                      labels=c("negative","positive"))+
+  theme(axis.text.y=element_blank(),
+        axis.title = element_blank()
+        )
+  #coord_cartesian(expand = F)
+
+plt_anno <- Tab %>% 
+  #mutate(fam_col = Kolors[factor(.data[["family"]]) %>% as.integer()]) %>% 
+  ggplot()+
+  geom_col(aes(x=1, y=legend, fill = family))+
+  #scale_fill_brewer(type = "qual", )+
+  scale_fill_manual(values = KKK$fam_col
+                   )+
+ #scale_fill_identity(name = waiver(), labels = LETTERS[1:18])+
+  theme(axis.title = element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks = element_blank(),
+        legend.position = "none",
+        legend.text = element_blank()
+       )
+
+plt_anno2 <- Tab %>% 
+  #mutate(fam_col = Kolors[factor(.data[["family"]]) %>% as.integer()]) %>% 
+  ggplot()+
+  geom_col(aes(x=1, y=legend, fill = family))+
+  #scale_fill_brewer(type = "qual", )+
+  scale_fill_manual(values = KKK$fam_col
+                   )+
+ #scale_fill_identity(name = waiver(), labels = LETTERS[1:18])+
+  theme(axis.title = element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks = element_blank(),
+        legend.position="bottom"
+        #legend.position = "none",
+        #legend.text = element_blank()
+       )
+m_legend <- get_legend(plt_anno2)
+
+(plt_anno + plt_data + plot_layout(widths = c(.1, 1)))/m_legend
+grid.arrange(plt_anno, plt_data, m_legend, ncol = 2)
+```
+
+```{r}
+Res <- MaAslin2_plot_2("./MaAslin2/Rarefying/J2023/significant_results.tsv", Tax_tab = Tax_tab, legend_rank = "family", title_method = "MasAslin2, rarefying")
+(Res$gg_anno + Res$gg_data + plot_layout(widths = c(.1, 1))) / Res$gg_legend
+```
+
+```{r}
+# Example data
+test <- data.frame(sample = paste0("sample", 1:100), tumor = rep(c("breast", "lung", "bladder", "colorectal", "prostate"), 20), allele = rep(c("exon1", "exon2", "exon3", "exon4", "exon5", "exon6", "exon7", "exon8", "exon9", "exon10"), 10), values = rnorm(100))
+ggplot(test)+geom_bar(mapping = aes(x = sample, y = values, fill = allele), stat = "identity")
+
+```
+
+# MicroViz
+
+## Composition Heatmap
+
+```{r}
+Most_prev_20_genus <- pseq %>% 
+  tax_top(n=20, by = "prev", rank = "genus", undetected = 2)
+Most_abun_30_genus <- pseq %>% 
+  tax_top(n=30, by = sum, rank = "genus")
+In_list <- Most_prev_20_genus %in% Eisenhofer_tab$genus 
+pseq %>% 
+  #ps_reorder(ps_byYear) %>% 
+  ##subset_taxa(genus %in% Most_prev_30_genus) %>% 
+  ## microViz::tax_mutate(InEisenhofer = ifelse(genus %in% Eisenhofer_tab$genus, "TRUE", "FALSE")) %>% 
+  tax_transform(trans = "compositional", rank = "genus") %>% 
+  comp_heatmap(
+    #taxa = Most_prev_30_genus,
+    taxa = Most_prev_20_genus,
+    cluster_rows = FALSE, 
+    cluster_columns = FALSE,
+    row_title = NULL,
+    ##facet_wrap()
+    tax_anno = taxAnnotation(
+      InList = ComplexHeatmap::anno_points(In_list, which = "row", gp= gpar(col = "red")),
+      Prev. = anno_tax_prev(bar_width = 0.5, size = grid::unit(1, "cm"), border = F),
+      Prop_Abd. = anno_tax_box(size = unit(2, "cm"))
+      ),
+    sample_anno = sampleAnnotation(
+      year = anno_sample_cat("year", col = my_cols[1:4], legend_title = "year"),
+      person = anno_sample_cat("person", col = my_cols[5:13], legend_title = "person"),
+      type = anno_sample_cat("sample_type", col = my_cols[14:16], legend_title = "ctrl type")
+    )
+  ) %>% 
+  ComplexHeatmap::draw(
+  annotation_legend_list = attr(. , "AnnoLegends")
+)
+```
+
+## Correlation Heatmap
+
+# Miscancellous
+
+```{r}
+## with rarefying as normalization
+df_SampleData <- NCTs %>% sample_data() %>% as_tibble()
+seed <- 911
+NCTs %>% 
+  rarefy_even_depth(sample.size = min(sample_sums(.)), rngseed = seed) %>% 
+  BetaPlot_Simple(strata_f = "year")
+```
+
+```{r}
+## test
+bray_dis <- NCTs %>% 
+  WrenchWrapper(grp = "person", roundUp = T) %>% 
+  phyloseq::distance(method = "bray")
+p.adonis_2 <- pairwise.adonis2(bray_dis_2 ~ month, data = df_samDat)
+```
+
+```{r}
+tbl <- table(df_SampleData$year, df_SampleData$person)
+chi2 <- chisq.test(tbl, correct = F)
+```
+
+```{r}
+tbl_2 <- table(sample(c("buffer", "pcr", "paraffin"), size = 220, replace = T), 
+               sample(c("2021", "2022", "2023", "2024"), size = 220, replace = T))
+chi.tbl2 <- chisq.test(tbl_2, correct = F)
+```

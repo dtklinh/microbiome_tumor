@@ -1,0 +1,515 @@
+TaxaID	superkingdom	phylum	class	order	family	genus	species	Prevalence	FistQuantile	Median	Mean	ThirdQuantile	Max
+2093857	Bacteria	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	Dysosmobacter	Dysosmobacter welbionis	0.134615384615385	0	0	0.00103621384666389	0	0.028169014084507
+525919	Bacteria	Bacillota	Tissierellia	Tissierellales	Peptoniphilaceae	Anaerococcus	Anaerococcus prevotii	0.230769230769231	0	0	0.0059564888696977	0	0.132113821138211
+2093742	Bacteria	Bacillota	Clostridia	Eubacteriales	Lachnospiraceae	Lachnospiraceae_unclassified	Lachnospiraceae bacterium KM106-2	0.0721153846153846	0	0	0.00019781353222815	0	0.00622406639004149
+360107	Bacteria	Campylobacterota	Epsilonproteobacteria	Campylobacterales	Campylobacteraceae	Campylobacter	Campylobacter hominis	0.0913461538461538	0	0	0.00331909754573427	0	0.217303822937626
+2725666	Bacteria	Pseudomonadota	Alphaproteobacteria	Hyphomicrobiales	Phyllobacteriaceae	Mesorhizobium	Mesorhizobium terrae	0.350961538461538	0	0	0.0126331769193564	0.00437487232862854	0.225469728601253
+853	Bacteria	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	Faecalibacterium	Faecalibacterium prausnitzii	0.139423076923077	0	0	0.00430241916712692	0	0.0935550935550936
+334413	Bacteria	Bacillota	Tissierellia	Tissierellales	Peptoniphilaceae	Finegoldia	Finegoldia magna	0.216346153846154	0	0	0.0131655026888652	0	0.351129363449692
+2081703	Bacteria	Bacillota	Clostridia	Eubacteriales	Peptostreptococcaceae	Peptostreptococcaceae_unclassified	Peptostreptococcaceae bacterium oral taxon 929	0.110576923076923	0	0	0.00499992798546515	0	0.206122448979592
+54005	Bacteria	Bacillota	Tissierellia	Tissierellales	Peptoniphilaceae	Peptoniphilus	Peptoniphilus harei	0.1875	0	0	0.00755951861205587	0	0.154004106776181
+39488	Bacteria	Bacillota	Clostridia	Eubacteriales	Lachnospiraceae	Anaerobutyricum	Anaerobutyricum hallii	0.134615384615385	0	0	0.0019068834537763	0	0.049079754601227
+54006	Bacteria	Bacillota	Tissierellia	Tissierellales	Peptoniphilaceae	Peptoniphilus	Peptoniphilus ivorii	0.110576923076923	0	0	0.00241154429985451	0	0.0552147239263804
+2479767	Bacteria	Bacillota	Clostridia	Eubacteriales	Lachnospiraceae	Blautia	Blautia sp. SC05B48	0.173076923076923	0	0	0.00631964967275862	0	0.220164609053498
+649756	Bacteria	Bacillota	Clostridia	Eubacteriales	Lachnospiraceae	Anaerostipes	Anaerostipes hadrus	0.139423076923077	0	0	0.00128182239115008	0	0.0526315789473684
+39950	Bacteria	Bacillota	Negativicutes	Veillonellales	Veillonellaceae	Dialister	Dialister pneumosintes	0.158653846153846	0	0	0.00143355968878386	0	0.0346938775510204
+2582419	Bacteria	Bacillota	Negativicutes	Veillonellales	Veillonellaceae	Dialister	Dialister hominis	0.0913461538461538	0	0	0.000394687688292276	0	0.0120724346076459
+2161821	Bacteria	Bacillota	Negativicutes	Veillonellales	Veillonellaceae	Dialister	Dialister massiliensis	0.129807692307692	0	0	0.00156584849541092	0	0.0489795918367347
+411470	Bacteria	Bacillota	Clostridia	Eubacteriales	Lachnospiraceae	Mediterraneibacter	[Ruminococcus] gnavus	0.144230769230769	0	0	0.000880063083046682	0	0.01417004048583
+2564099	Bacteria	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	Ruminococcus	Ruminococcus bovis	0.129807692307692	0	0	0.00172778990805071	0	0.0452674897119342
+562	Bacteria	Pseudomonadota	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Escherichia	Escherichia coli	0.4375	0	0	0.0336817119620226	0.0105407631726804	0.77079107505071
+1898203	Bacteria	Bacillota	Clostridia	Eubacteriales	Lachnospiraceae	Lachnospiraceae_unclassified	Lachnospiraceae bacterium	0.129807692307692	0	0	0.0020987779561354	0	0.09375
+515620	Bacteria	Bacillota	Clostridia	Eubacteriales	Lachnospiraceae	Lachnospira	Lachnospira eligens	0.100961538461538	0	0	0.000683051588924935	0	0.0166666666666667
+2507162	Bacteria	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	Caproiciproducens	Caproiciproducens sp. NJN-50	0.0480769230769231	0	0	0.00016787792670324	0	0.00823045267489712
+2109690	Bacteria	Bacillota	Clostridia	Eubacteriales	Lachnospiraceae	Lachnospiraceae_unclassified	Lachnospiraceae bacterium Choco86	0.125	0	0	0.00101710677002451	0	0.034412955465587
+623	Bacteria	Pseudomonadota	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Shigella	Shigella flexneri	0.149038461538462	0	0	0.000802998485563961	0	0.0224032586558045
+114527	Bacteria	Bacillota	Clostridia	Eubacteriales	Eubacteriales Family XIII. Incertae Sedis	Mogibacterium	Mogibacterium diversum	0.288461538461538	0	0	0.00687405949855241	0.00205444435994288	0.0955284552845529
+347253	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	Streptococcus salivarius	0.326923076923077	0	0	0.00436382085685023	0.00208008489258489	0.134268537074148
+2086584	Bacteria	Bacillota	Clostridia	Eubacteriales	Eubacteriales_unclassified	Massilistercora	Massilistercora timonensis	0.0673076923076923	0	0	0.000266997626489694	0	0.0082135523613963
+200	Bacteria	Campylobacterota	Epsilonproteobacteria	Campylobacterales	Campylobacteraceae	Campylobacter	Campylobacter curvus	0.0480769230769231	0	0	0.0001602503977029	0	0.00819672131147541
+2724150	Bacteria	Bacillota	Clostridia	Eubacteriales	Peptostreptococcaceae	Romboutsia	Romboutsia sp. CE17	0.0528846153846154	0	0	0.000169043055862815	0	0.00617283950617284
+697329	Bacteria	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	Ruminococcus	Ruminococcus albus	0.0528846153846154	0	0	0.000158995945907174	0	0.00622406639004149
+185007	Bacteria	Bacillota	Clostridia	Eubacteriales	Lachnospiraceae	Pseudobutyrivibrio	Pseudobutyrivibrio xylanivorans	0.0480769230769231	0	0	0.000228335599613398	0	0.0104166666666667
+2107999	Bacteria	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Lactobacillus	Lactobacillus paragasseri	0.0576923076923077	0	0	0.000334965075703465	0	0.024390243902439
+28037	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	Streptococcus mitis	0.639423076923077	0	0.0115915795119335	0.0434945641651957	0.0541494115082825	0.375510204081633
+301301	Bacteria	Bacillota	Clostridia	Eubacteriales	Lachnospiraceae	Roseburia	Roseburia hominis	0.125	0	0	0.000633434039042859	0	0.0186721991701245
+553973	Bacteria	Bacillota	Clostridia	Eubacteriales	Lachnospiraceae	Lachnoclostridium	[Clostridium] hylemonae	0.0576923076923077	0	0	0.000285781955143048	0	0.01417004048583
+33035	Bacteria	Bacillota	Clostridia	Eubacteriales	Lachnospiraceae	Blautia	Blautia producta	0.144230769230769	0	0	0.00134490895808567	0	0.037037037037037
+1550024	Bacteria	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	Ruthenibacterium	Ruthenibacterium lactatiformans	0.125	0	0	0.000890812115123484	0	0.033195020746888
+1308	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	Streptococcus thermophilus	0.322115384615385	0	0	0.00358678535956629	0.00205338809034908	0.0639269406392694
+1871021	Bacteria	Bacillota	Clostridia	Eubacteriales	Lachnospiraceae	Lachnoclostridium	Lachnoclostridium phocaeense	0.0673076923076923	0	0	0.000296113810056144	0	0.0101214574898785
+1870984	Bacteria	Bacillota	Tissierellia	Tissierellales	Peptoniphilaceae	Anaerococcus	Anaerococcus mediterraneensis	0.201923076923077	0	0	0.00262493283570765	0	0.0547667342799189
+283734	Bacteria	Bacillota	Bacilli	Bacillales	Staphylococcaceae	Staphylococcus	Staphylococcus pseudintermedius	0.0913461538461538	0	0	0.000400880548945467	0	0.0123456790123457
+536231	Bacteria	Bacillota	Clostridia	Eubacteriales	Lachnospiraceae	Roseburia	Roseburia intestinalis	0.134615384615385	0	0	0.000860345220070154	0	0.0186335403726708
+2109687	Bacteria	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	Oscillibacter	Oscillibacter sp. PEA192	0.0192307692307692	0	0	0.000128151808454211	0	0.0185185185185185
+1343	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	Streptococcus vestibularis	0.201923076923077	0	0	0.00383717429357988	0	0.252525252525253
+610130	Bacteria	Bacillota	Clostridia	Eubacteriales	Lachnospiraceae	Lacrimispora	Lacrimispora saccharolytica	0.120192307692308	0	0	0.000345248353821042	0	0.0103734439834025
+33040	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	Streptococcus milleri	0.177884615384615	0	0	0.00272549268231704	0	0.0562248995983936
+470	Bacteria	Pseudomonadota	Gammaproteobacteria	Moraxellales	Moraxellaceae	Acinetobacter	Acinetobacter baumannii	0.0288461538461538	0	0	0.00022491858282949	0	0.0202429149797571
+435590	Bacteria	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Phocaeicola	Phocaeicola vulgatus	0.0432692307692308	0	0	0.000159864840539194	0	0.00622406639004149
+1458465	Bacteria	Bacillota	Negativicutes	Veillonellales	Veillonellaceae	Megasphaera	Megasphaera elsdenii	0.134615384615385	0	0	0.00114945031852873	0	0.0580912863070539
+2664291	Bacteria	Pseudomonadota	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Salmonella	Salmonella sp. HNK130	0.0961538461538462	0	0	0.000637376604531716	0	0.0182186234817814
+299767	Bacteria	Pseudomonadota	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Enterobacter	Enterobacter ludwigii	0.0528846153846154	0	0	0.000130848349920397	0	0.00442477876106195
+1282	Bacteria	Bacillota	Bacilli	Bacillales	Staphylococcaceae	Staphylococcus	Staphylococcus epidermidis	0.418269230769231	0	0	0.0119186210113499	0.00958551185875578	0.348
+565651	Bacteria	Bacillota	Bacilli	Lactobacillales	Enterococcaceae	Enterococcus	Enterococcus faecalis	0.0480769230769231	0	0	0.000507682778533723	0	0.0270833333333333
+29388	Bacteria	Bacillota	Bacilli	Bacillales	Staphylococcaceae	Staphylococcus	Staphylococcus capitis	0.134615384615385	0	0	0.000837588736093724	0	0.0354166666666667
+2144175	Bacteria	Bacillota	Negativicutes	Veillonellales	Veillonellaceae	Megasphaera	Megasphaera stantonii	0.120192307692308	0	0	0.00052469182336283	0	0.0105708245243129
+1834196	Bacteria	Bacillota	Clostridia	Eubacteriales	Lachnospiraceae	Lachnoclostridium	Lachnoclostridium sp. YL32	0.0865384615384615	0	0	0.000256726168297664	0	0.00623700623700624
+158836	Bacteria	Pseudomonadota	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Enterobacter	Enterobacter hormaechei	0.168269230769231	0	0	0.0012586112019025	0	0.0587002096436059
+742737	Bacteria	Bacillota	Clostridia	Eubacteriales	Clostridiaceae	Hungatella	Hungatella hathewayi	0.0721153846153846	0	0	0.000246204256342667	0	0.00813008130081301
+29380	Bacteria	Bacillota	Bacilli	Bacillales	Staphylococcaceae	Staphylococcus	Staphylococcus caprae	0.177884615384615	0	0	0.000532246245328654	0	0.00824742268041237
+208479	Bacteria	Bacillota	Clostridia	Eubacteriales	Lachnospiraceae	Enterocloster	Enterocloster bolteae	0.0817307692307692	0	0	0.00034517175953324	0	0.0121457489878543
+2109688	Bacteria	Bacillota	Clostridia	Eubacteriales	Eubacteriales_unclassified	Eubacteriales_unclassified	Clostridiales bacterium CCNA10	0.0384615384615385	0	0	0.000147270989027746	0	0.00616016427104723
+1328	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	Streptococcus anginosus	0.153846153846154	0	0	0.00215827946785613	0	0.0688259109311741
+39778	Bacteria	Bacillota	Negativicutes	Veillonellales	Veillonellaceae	Veillonella	Veillonella dispar	0.25	0	0	0.00354241064645281	0.000505050505050505	0.0873983739837398
+29466	Bacteria	Bacillota	Negativicutes	Veillonellales	Veillonellaceae	Veillonella	Veillonella parvula	0.403846153846154	0	0	0.0190664067156037	0.0147766003594224	0.412121212121212
+1596	Bacteria	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Lactobacillus	Lactobacillus gasseri	0.0673076923076923	0	0	0.00120519125138401	0	0.080338266384778
+1352	Bacteria	Bacillota	Bacilli	Lactobacillales	Enterococcaceae	Enterococcus	Enterococcus faecium	0.0961538461538462	0	0	0.000398665494610156	0	0.0142517814726841
+1303	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	Streptococcus oralis	0.581730769230769	0	0.00404042053023377	0.0160963299314648	0.0223012195222507	0.175757575757576
+712633	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	Streptococcus sp. oral taxon 431	0.644230769230769	0	0.00626329369922243	0.0231546404875342	0.0302888761138258	0.201244813278008
+1194971	Bacteria	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Ligilactobacillus	Ligilactobacillus salivarius	0.0336538461538462	0	0	0.000287129648536781	0	0.0282828282828283
+1283	Bacteria	Bacillota	Bacilli	Bacillales	Staphylococcaceae	Staphylococcus	Staphylococcus haemolyticus	0.153846153846154	0	0	0.000771064228443967	0	0.0282828282828283
+29347	Bacteria	Bacillota	Clostridia	Eubacteriales	Lachnospiraceae	Lachnoclostridium	[Clostridium] scindens	0.0721153846153846	0	0	0.000305835465445286	0	0.01417004048583
+428406	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Burkholderiaceae	Ralstonia	Ralstonia pickettii	0.129807692307692	0	0	0.00109388090404204	0	0.0388548057259714
+1433513	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	Streptococcus gwangjuense	0.418269230769231	0	0	0.00516915757076434	0.00607287449392713	0.160965794768612
+1280	Bacteria	Bacillota	Bacilli	Bacillales	Staphylococcaceae	Staphylococcus	Staphylococcus aureus	0.331730769230769	0	0	0.00416041892549914	0.00205973880216304	0.123456790123457
+89152	Bacteria	Bacillota	Clostridia	Eubacteriales	Peptostreptococcaceae	Peptacetobacter	Peptacetobacter hiranonis	0.129807692307692	0	0	0.0015261495113054	0	0.0472279260780287
+1379	Bacteria	Bacillota	Bacilli	Bacillales	Bacillales_unclassified	Gemella	Gemella haemolysans	0.370192307692308	0	0	0.00921868954201743	0.010147141278715	0.148296593186373
+2610895	Bacteria	Bacillota	Clostridia	Eubacteriales	Eubacteriales_unclassified	Flintibacter	Flintibacter sp. KGMB00164	0.0769230769230769	0	0	0.000285057970769	0	0.0121457489878543
+98228	Bacteria	Bacillota	Bacilli	Bacillales	Bacillaceae	Bacillus	Bacillus sp. OxB-1	0.0528846153846154	0	0	0.000214468311092016	0	0.0171673819742489
+2109691	Bacteria	Bacillota	Clostridia	Eubacteriales	Lachnospiraceae	Lachnospiraceae_unclassified	Lachnospiraceae bacterium GAM79	0.0865384615384615	0	0	0.000540873470006019	0	0.0205761316872428
+621	Bacteria	Pseudomonadota	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Shigella	Shigella boydii	0.115384615384615	0	0	0.000608268295720039	0	0.026369168356998
+1297617	Bacteria	Bacillota	Clostridia	Eubacteriales	Eubacteriales_unclassified	Intestinimonas	Intestinimonas butyriciproducens	0.0625	0	0	0.000168070120170906	0	0.00625
+1912856	Bacteria	Bacillota	Tissierellia	Tissierellales	Peptoniphilaceae	Peptoniphilus	Peptoniphilus sp. ING2-D1G	0.0528846153846154	0	0	0.000356367553521166	0	0.0184804928131417
+1825069	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	Streptococcus marmotae	0.0625	0	0	0.000158382684434417	0	0.00606060606060606
+76857	Bacteria	Fusobacteriota	Fusobacteriia	Fusobacteriales	Fusobacteriaceae	Fusobacterium	Fusobacterium polymorphum	0.201923076923077	0	0	0.00416892508903913	0	0.0809128630705394
+1296	Bacteria	Bacillota	Bacilli	Bacillales	Staphylococcaceae	Mammaliicoccus	Mammaliicoccus sciuri	0.0144230769230769	0	0	0.000275699070303179	0	0.0529661016949153
+1852373	Bacteria	Bacillota	Tissierellia	Tissierellales	Peptoniphilaceae	Murdochiella	Murdochiella vaginalis	0.0817307692307692	0	0	0.00211709016911413	0	0.0885311871227364
+292800	Bacteria	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	Flavonifractor	Flavonifractor plautii	0.0576923076923077	0	0	0.000412204121934426	0	0.0161943319838057
+712710	Bacteria	Bacteroidota	Bacteroidia	Bacteroidales	Tannerellaceae	Tannerella	Tannerella serpentiformis	0.0288461538461538	0	0	9.87680333211899e-05	0	0.0102669404517454
+1812935	Bacteria	Pseudomonadota	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Enterobacter	Enterobacter roggenkampii	0.100961538461538	0	0	0.000348889908174201	0	0.0082135523613963
+1398	Bacteria	Bacillota	Bacilli	Bacillales	Bacillaceae	Weizmannia	Weizmannia coagulans	0.0432692307692308	0	0	0.000211478341146109	0	0.0148936170212766
+102684	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	Streptococcus infantarius	0.0240384615384615	0	0	0.000131618631607768	0	0.0127659574468085
+617123	Bacteria	Bacillota	Clostridia	Eubacteriales	Lachnospiraceae	Lachnoanaerobaculum	Lachnoanaerobaculum umeaense	0.0913461538461538	0	0	0.000830596592267048	0	0.0542168674698795
+1679721	Bacteria	Bacillota	Clostridia	Eubacteriales	Lachnospiraceae	Herbinix	Herbinix luporum	0.0432692307692308	0	0	0.000108565302299622	0	0.0040650406504065
+28035	Bacteria	Bacillota	Bacilli	Bacillales	Staphylococcaceae	Staphylococcus	Staphylococcus lugdunensis	0.0865384615384615	0	0	0.000255593665639717	0	0.00803212851405622
+28132	Bacteria	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Prevotella	Prevotella melaninogenica	0.129807692307692	0	0	0.0066571381367461	0	0.249496981891348
+368607	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Oxalobacteraceae	Janthinobacterium	Janthinobacterium svalbardensis	0.0721153846153846	0	0	0.000176830055666011	0	0.00604838709677419
+729	Bacteria	Pseudomonadota	Gammaproteobacteria	Pasteurellales	Pasteurellaceae	Haemophilus	Haemophilus parainfluenzae	0.336538461538462	0	0	0.0141208715558714	0.00813008130081301	0.364197530864198
+511691	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	Streptococcus mutans	0.0721153846153846	0	0	0.00152500337725476	0	0.104294478527607
+1042156	Bacteria	Bacillota	Clostridia	Eubacteriales	Clostridiaceae	Clostridium	Clostridium sp. SY8519	0.0480769230769231	0	0	0.000139152089112664	0	0.00630252100840336
+1505	Bacteria	Bacillota	Clostridia	Eubacteriales	Peptostreptococcaceae	Paeniclostridium	Paeniclostridium sordellii	0.0625	0	0	0.000206482508320569	0	0.0082135523613963
+946333	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Burkholderiales_unclassified	Rhizobacter	Rhizobacter gummiphilus	0.134615384615385	0	0	0.000860363032936408	0	0.0328638497652582
+287	Bacteria	Pseudomonadota	Gammaproteobacteria	Pseudomonadales	Pseudomonadaceae	Pseudomonas	Pseudomonas aeruginosa	0.0384615384615385	0	0	0.000179188729218138	0	0.00950118764845606
+545	Bacteria	Pseudomonadota	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Citrobacter	Citrobacter koseri	0.0625	0	0	0.000181760146938025	0	0.00610997963340122
+13689	Bacteria	Pseudomonadota	Alphaproteobacteria	Sphingomonadales	Sphingomonadaceae	Sphingomonas	Sphingomonas paucimobilis	0.269230769230769	0	0	0.0111951213290568	0.00202225090663225	0.892
+1032069	Bacteria	Campylobacterota	Epsilonproteobacteria	Campylobacterales	Campylobacteraceae	Campylobacter	Campylobacter ureolyticus	0.0625	0	0	0.000522688408595335	0	0.049079754601227
+1335	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	Streptococcus equinus	0.115384615384615	0	0	0.00121126808027459	0	0.0674846625766871
+693746	Bacteria	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	Oscillibacter	Oscillibacter valericigenes	0.0913461538461538	0	0	0.000285566379386589	0	0.00809716599190283
+78535	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	Streptococcus viridans	0.0913461538461538	0	0	0.000334331579610635	0	0.0142276422764228
+1496	Bacteria	Bacillota	Clostridia	Eubacteriales	Peptostreptococcaceae	Clostridioides	Clostridioides difficile	0.0961538461538462	0	0	0.00037750769085327	0	0.0123203285420945
+2599308	Bacteria	Bacillota	Clostridia	Eubacteriales	Clostridiaceae	Crassaminicella	Crassaminicella thermophila	0.0528846153846154	0	0	0.000266981098234931	0	0.0102669404517454
+147802	Bacteria	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Lactobacillus	Lactobacillus iners	0.0288461538461538	0	0	0.000620806368683361	0	0.0772357723577236
+1338	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	Streptococcus intermedius	0.100961538461538	0	0	0.000296266509611522	0	0.00617283950617284
+837	Bacteria	Bacteroidota	Bacteroidia	Bacteroidales	Porphyromonadaceae	Porphyromonas	Porphyromonas gingivalis	0.105769230769231	0	0	0.00143857665641946	0	0.0461847389558233
+1160721	Bacteria	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	Ruminococcus	Ruminococcus bicirculans	0.0673076923076923	0	0	0.000728442817278929	0	0.0761316872427984
+1177574	Bacteria	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Prevotella	Prevotella jejuni	0.110576923076923	0	0	0.00208695618221753	0	0.0764587525150905
+2696063	Bacteria	Bacillota	Clostridia	Eubacteriales	Lachnospiraceae	Anaerocolumna	Anaerocolumna sedimenticola	0.0384615384615385	0	0	9.82661483388319e-05	0	0.00410677618069815
+622	Bacteria	Pseudomonadota	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Shigella	Shigella dysenteriae	0.144230769230769	0	0	0.000842716569095037	0	0.0184804928131417
+248315	Bacteria	Bacillota	Negativicutes	Veillonellales	Veillonellaceae	Veillonella	Veillonella rodentium	0.134615384615385	0	0	0.000765233586862421	0	0.0286298568507157
+360104	Bacteria	Campylobacterota	Epsilonproteobacteria	Campylobacterales	Campylobacteraceae	Campylobacter	Campylobacter concisus	0.0384615384615385	0	0	0.000175845056500144	0	0.0120724346076459
+381	Bacteria	Pseudomonadota	Alphaproteobacteria	Hyphomicrobiales	Phyllobacteriaceae	Mesorhizobium	Mesorhizobium loti	0.0336538461538462	0	0	0.000328029546234916	0	0.0259433962264151
+113107	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	Streptococcus australis	0.360576923076923	0	0	0.00276103670177174	0.00207900207900208	0.0404040404040404
+55508	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Oxalobacteraceae	Janthinobacterium	Janthinobacterium agaricidamnosum	0.0625	0	0	0.000206439123300385	0	0.00625
+1313	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	Streptococcus pneumoniae	0.533653846153846	0	0.00203045894556309	0.0109760683112589	0.0141772261047376	0.129292929292929
+39777	Bacteria	Bacillota	Negativicutes	Veillonellales	Veillonellaceae	Veillonella	Veillonella atypica	0.216346153846154	0	0	0.00377039771766408	0	0.0780287474332649
+573	Bacteria	Pseudomonadota	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Klebsiella	Klebsiella pneumoniae	0.153846153846154	0	0	0.00101499037894995	0	0.0213776722090261
+2044467	Bacteria	Pseudomonadota	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Escherichia	Escherichia sp. E4742	0.0625	0	0	0.000223717209602133	0	0.0091324200913242
+2021971	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	Streptococcus respiraculi	0.100961538461538	0	0	0.000374799878021647	0	0.016597510373444
+1888195	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	Streptococcus himalayensis	0.125	0	0	0.000482511467442776	0	0.0223123732251521
+997877	Bacteria	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Phocaeicola	Phocaeicola dorei	0.0384615384615385	0	0	0.000205993286378028	0	0.0120724346076459
+28135	Bacteria	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Prevotella	Prevotella oris	0.105769230769231	0	0	0.000806979104612657	0	0.0589430894308943
+33033	Bacteria	Bacillota	Tissierellia	Tissierellales	Peptoniphilaceae	Parvimonas	Parvimonas micra	0.216346153846154	0	0	0.0107202014930813	0	0.278118609406953
+46125	Bacteria	Bacillota	Bacilli	Lactobacillales	Aerococcaceae	Abiotrophia	Abiotrophia defectiva	0.168269230769231	0	0	0.00360258558187026	0	0.117886178861789
+29581	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Oxalobacteraceae	Janthinobacterium	Janthinobacterium lividum	0.0817307692307692	0	0	0.00027682224779323	0	0.010183299389002
+350688	Bacteria	Bacillota	Clostridia	Eubacteriales	Clostridiaceae	Alkaliphilus	Alkaliphilus oremlandii	0.0432692307692308	0	0	0.000131154480669628	0	0.00442477876106195
+1134687	Bacteria	Pseudomonadota	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Klebsiella	Klebsiella michiganensis	0.0240384615384615	0	0	0.000212120752526658	0	0.0204081632653061
+87541	Bacteria	Bacillota	Bacilli	Lactobacillales	Aerococcaceae	Aerococcus	Aerococcus christensenii	0.0913461538461538	0	0	0.000325847227343856	0	0.0102040816326531
+29385	Bacteria	Bacillota	Bacilli	Bacillales	Staphylococcaceae	Staphylococcus	Staphylococcus saprophyticus	0.0673076923076923	0	0	0.000217984455035062	0	0.0101010101010101
+1408186	Bacteria	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Lactobacillus	Lactobacillus johnsonii	0.0336538461538462	0	0	0.000111667298262872	0	0.00625
+2382163	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	Streptococcus koreensis	0.120192307692308	0	0	0.000363766106592049	0	0.00808080808080808
+1305	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	Streptococcus sanguinis	0.331730769230769	0	0	0.00362335145040821	0.00205871326693193	0.217038539553753
+119206	Bacteria	Bacillota	Bacilli	Lactobacillales	Aerococcaceae	Aerococcus	Aerococcus sanguinicola	0.0336538461538462	0	0	0.000118624083242931	0	0.0102040816326531
+760570	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	Streptococcus parasanguinis	0.264423076923077	0	0	0.00268125869781667	0.00202225090663225	0.0628803245436105
+321846	Bacteria	Pseudomonadota	Gammaproteobacteria	Pseudomonadales	Pseudomonadaceae	Pseudomonas	Pseudomonas simiae	0.0144230769230769	0	0	0.000564873996048085	0	0.101214574898785
+1404	Bacteria	Bacillota	Bacilli	Bacillales	Bacillaceae	Priestia	Priestia megaterium	0.0384615384615385	0	0	0.000196864300861171	0	0.0184049079754601
+28901	Bacteria	Pseudomonadota	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Salmonella	Salmonella enterica	0.206730769230769	0	0	0.00228134050214112	0	0.0973871733966746
+29382	Bacteria	Bacillota	Bacilli	Bacillales	Staphylococcaceae	Staphylococcus	Staphylococcus cohnii	0.0288461538461538	0	0	0.00010922268105486	0	0.0125260960334029
+203275	Bacteria	Bacteroidota	Bacteroidia	Bacteroidales	Tannerellaceae	Tannerella	Tannerella forsythia	0.0384615384615385	0	0	0.000196298967154874	0	0.0184049079754601
+28116	Bacteria	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides ovatus	0.0240384615384615	0	0	0.000109543270821702	0	0.0145833333333333
+889201	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	Streptococcus cristatus	0.221153846153846	0	0	0.00174079294957957	0	0.0432989690721649
+2696060	Bacteria	Pseudomonadota	Alphaproteobacteria	Hyphomicrobiales	Methylobacteriaceae	Methylobacterium	Methylobacterium sp. CLZ	0.235576923076923	0	0	0.00349426574553156	0	0.269938650306748
+67780	Bacteria	Pseudomonadota	Gammaproteobacteria	Enterobacterales	Hafniaceae	Edwardsiella	Edwardsiella ictaluri	0.0576923076923077	0	0	0.000158327052736784	0	0.00628930817610063
+584	Bacteria	Pseudomonadota	Gammaproteobacteria	Enterobacterales	Morganellaceae	Proteus	Proteus mirabilis	0.0432692307692308	0	0	0.000170925210791192	0	0.0170575692963753
+34062	Bacteria	Pseudomonadota	Gammaproteobacteria	Moraxellales	Moraxellaceae	Moraxella	Moraxella osloensis	0.399038461538462	0	0	0.0361411709353364	0.0101421135255722	0.552083333333333
+1440052	Bacteria	Pseudomonadota	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Escherichia	Escherichia albertii	0.0480769230769231	0	0	0.000118611226636598	0	0.0040650406504065
+1613	Bacteria	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Limosilactobacillus	Limosilactobacillus fermentum	0.0480769230769231	0	0	0.000904756945078379	0	0.102137767220903
+267747	Bacteria	Actinomycetota	Actinomycetes	Propionibacteriales	Propionibacteriaceae	Cutibacterium	Cutibacterium acnes	0.514423076923077	0	0.00200803212851406	0.0205887054607405	0.010842803030303	0.473895582329317
+1587	Bacteria	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Lactobacillus	Lactobacillus helveticus	0.0336538461538462	0	0	0.000139148446683789	0	0.0102040816326531
+1938606	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Oxalobacteraceae	Janthinobacterium	Janthinobacterium sp. LM6	0.177884615384615	0	0	0.00107001414866934	0	0.0317124735729387
+747	Bacteria	Pseudomonadota	Gammaproteobacteria	Pasteurellales	Pasteurellaceae	Pasteurella	Pasteurella multocida	0.0625	0	0	0.000464884811586999	0	0.0434782608695652
+208596	Bacteria	Bacillota	Bacilli	Lactobacillales	Carnobacteriaceae	Carnobacterium	Carnobacterium sp. 17-4	0.100961538461538	0	0	0.00030639544735581	0	0.0105042016806723
+614	Bacteria	Pseudomonadota	Gammaproteobacteria	Enterobacterales	Yersiniaceae	Serratia	Serratia liquefaciens	0.0288461538461538	0	0	0.000139762665094896	0	0.0122199592668024
+294	Bacteria	Pseudomonadota	Gammaproteobacteria	Pseudomonadales	Pseudomonadaceae	Pseudomonas	Pseudomonas fluorescens	0.0721153846153846	0	0	0.000350904253461816	0	0.0122699386503067
+430522	Bacteria	Bacteroidota	Sphingobacteriia	Sphingobacteriales	Sphingobacteriaceae	Pedobacter	Pedobacter steynii	0.0192307692307692	0	0	0.000380503860024174	0	0.0395010395010395
+83655	Bacteria	Pseudomonadota	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Leclercia	Leclercia adecarboxylata	0.0336538461538462	0	0	0.000100853537561466	0	0.00442477876106195
+358220	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Comamonadaceae	Acidovorax	Acidovorax sp. KKS102	0.0865384615384615	0	0	0.00124721421795434	0	0.112107623318386
+305	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Burkholderiaceae	Ralstonia	Ralstonia solanacearum	0.177884615384615	0	0	0.0021636536877586	0	0.0657276995305164
+47885	Bacteria	Pseudomonadota	Gammaproteobacteria	Pseudomonadales	Pseudomonadaceae	Pseudomonas	Pseudomonas oryzihabitans	0.0144230769230769	0	0	9.90794898471729e-05	0	0.0124740124740125
+150055	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	Streptococcus lutetiensis	0.0336538461538462	0	0	0.000229343275791229	0	0.016597510373444
+537973	Bacteria	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Lacticaseibacillus	Lacticaseibacillus paracasei	0.0192307692307692	0	0	0.000284015835550273	0	0.0464646464646465
+1307	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	Streptococcus suis	0.0721153846153846	0	0	0.000176965079839944	0	0.00607287449392713
+28131	Bacteria	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Prevotella	Prevotella intermedia	0.105769230769231	0	0	0.000561939684180621	0	0.0224948875255624
+47917	Bacteria	Pseudomonadota	Gammaproteobacteria	Enterobacterales	Yersiniaceae	Serratia	Serratia fonticola	0.0336538461538462	0	0	0.000119273834103167	0	0.00840336134453781
+51665	Bacteria	Bacillota	Bacilli	Lactobacillales	Aerococcaceae	Aerococcus	Aerococcus urinaeequi	0.0625	0	0	0.000236433098648044	0	0.0122448979591837
+190721	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Burkholderiaceae	Ralstonia	Ralstonia insidiosa	0.192307692307692	0	0	0.00444921563397364	0	0.162932790224033
+278148	Bacteria	Pseudomonadota	Alphaproteobacteria	Hyphomicrobiales	Phyllobacteriaceae	Mesorhizobium	Mesorhizobium ciceri	0.0336538461538462	0	0	0.000158579947467634	0	0.0154185022026432
+408	Bacteria	Pseudomonadota	Alphaproteobacteria	Hyphomicrobiales	Methylobacteriaceae	Methylorubrum	Methylorubrum extorquens	0.168269230769231	0	0	0.00138807021254872	0	0.0388548057259714
+137545	Bacteria	Pseudomonadota	Gammaproteobacteria	Enterobacterales	Yersiniaceae	Serratia	Serratia quinivorans	0.0384615384615385	0	0	9.93089757172323e-05	0	0.00610997963340122
+40214	Bacteria	Pseudomonadota	Gammaproteobacteria	Moraxellales	Moraxellaceae	Acinetobacter	Acinetobacter johnsonii	0.105769230769231	0	0	0.00239211025263817	0	0.0884955752212389
+1292	Bacteria	Bacillota	Bacilli	Bacillales	Staphylococcaceae	Staphylococcus	Staphylococcus warneri	0.168269230769231	0	0	0.00284452625875589	0	0.130612244897959
+546	Bacteria	Pseudomonadota	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Citrobacter	Citrobacter freundii	0.0576923076923077	0	0	0.000221006803046125	0	0.00712589073634204
+1290	Bacteria	Bacillota	Bacilli	Bacillales	Staphylococcaceae	Staphylococcus	Staphylococcus hominis	0.230769230769231	0	0	0.0056712901536949	0	0.275720164609054
+28151	Bacteria	Pseudomonadota	Gammaproteobacteria	Enterobacterales	Yersiniaceae	Serratia	Serratia proteamaculans	0.0384615384615385	0	0	0.000189493307454307	0	0.0104166666666667
+2748	Bacteria	Bacillota	Bacilli	Lactobacillales	Carnobacteriaceae	Carnobacterium	Carnobacterium divergens	0.105769230769231	0	0	0.000256821578013059	0	0.00422832980972516
+200450	Bacteria	Pseudomonadota	Gammaproteobacteria	Pseudomonadales	Pseudomonadaceae	Pseudomonas	Pseudomonas trivialis	0.0144230769230769	0	0	9.81503632214603e-05	0	0.0121457489878543
+1314884	Bacteria	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Lactobacillus	Lactobacillus acidophilus	0.0384615384615385	0	0	0.000179080779828665	0	0.00816326530612245
+29430	Bacteria	Pseudomonadota	Gammaproteobacteria	Moraxellales	Moraxellaceae	Acinetobacter	Acinetobacter haemolyticus	0.0432692307692308	0	0	0.00018162604985404	0	0.0132743362831858
+47770	Bacteria	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Lactobacillus	Lactobacillus crispatus	0.0817307692307692	0	0	0.000997729029088069	0	0.0589430894308943
+33011	Bacteria	Actinomycetota	Actinomycetes	Propionibacteriales	Propionibacteriaceae	Cutibacterium	Cutibacterium granulosum	0.0480769230769231	0	0	0.000633594617269901	0	0.0461847389558233
+316	Bacteria	Pseudomonadota	Gammaproteobacteria	Pseudomonadales	Pseudomonadaceae	Stutzerimonas	Stutzerimonas stutzeri	0.0192307692307692	0	0	0.000189064733186034	0	0.0166320166320166
+303	Bacteria	Pseudomonadota	Gammaproteobacteria	Pseudomonadales	Pseudomonadaceae	Pseudomonas	Pseudomonas putida	0.0384615384615385	0	0	0.000148787093014075	0	0.0105708245243129
+158627	Bacteria	Pseudomonadota	Gammaproteobacteria	Pseudomonadales	Pseudomonadaceae	Pseudomonas	Pseudomonas graminis	0.0240384615384615	0	0	0.000146907788943189	0	0.0223214285714286
+1310	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	Streptococcus sobrinus	0.0480769230769231	0	0	0.000817490744806307	0	0.0277185501066098
+2714946	Bacteria	Bacillota	Bacilli	Lactobacillales	Enterococcaceae	Vagococcus	Vagococcus coleopterorum	0.177884615384615	0	0	0.00106624512390626	0	0.0210084033613445
+1054460	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	Streptococcus pseudopneumoniae	0.293269230769231	0	0	0.00185081838490265	0.00203355521335254	0.036734693877551
+546269	Bacteria	Bacillota	Clostridia	Eubacteriales	Peptostreptococcaceae	Filifactor	Filifactor alocis	0.105769230769231	0	0	0.00334140952295383	0	0.130879345603272
+981540	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	Streptococcus pasteurianus	0.0288461538461538	0	0	0.000498819495464889	0	0.0308008213552361
+33945	Bacteria	Bacillota	Bacilli	Lactobacillales	Enterococcaceae	Enterococcus	Enterococcus avium	0.0288461538461538	0	0	0.000245026624918292	0	0.0242914979757085
+315405	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	Streptococcus gallolyticus	0.0144230769230769	0	0	0.000137948779558113	0	0.0246406570841889
+521095	Bacteria	Actinomycetota	Coriobacteriia	Coriobacteriales	Atopobiaceae	Lancefieldella	Lancefieldella parvula	0.0576923076923077	0	0	0.00059992396265556	0	0.028169014084507
+29391	Bacteria	Bacillota	Bacilli	Bacillales	Bacillales_unclassified	Gemella	Gemella morbillorum	0.225961538461538	0	0	0.00226035307319542	0	0.0528455284552846
+726	Bacteria	Pseudomonadota	Gammaproteobacteria	Pasteurellales	Pasteurellaceae	Haemophilus	Haemophilus haemolyticus	0.168269230769231	0	0	0.0025323591008821	0	0.0674846625766871
+33025	Bacteria	Bacillota	Negativicutes	Acidaminococcales	Acidaminococcaceae	Phascolarctobacterium	Phascolarctobacterium faecium	0.0721153846153846	0	0	0.000417922459661427	0	0.020703933747412
+1582259	Bacteria	Bacillota	Tissierellia	Tissierellales	Tissierellaceae	Gudongella	Gudongella oleilytica	0.0288461538461538	0	0	9.87310971559646e-05	0	0.00607287449392713
+490	Bacteria	Pseudomonadota	Betaproteobacteria	Neisseriales	Neisseriaceae	Neisseria	Neisseria sicca	0.125	0	0	0.00110961185209321	0	0.0247933884297521
+1765049	Bacteria	Pseudomonadota	Betaproteobacteria	Rhodocyclales	Rhodocyclaceae	Azospira	Azospira sp. I09	0.0432692307692308	0	0	0.000454866631704197	0	0.0526315789473684
+908937	Bacteria	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Prevotella	Prevotella dentalis	0.0336538461538462	0	0	0.000130240344770347	0	0.0106609808102345
+28141	Bacteria	Pseudomonadota	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Cronobacter	Cronobacter sakazakii	0.0288461538461538	0	0	0.000170829909704005	0	0.0111607142857143
+488	Bacteria	Pseudomonadota	Betaproteobacteria	Neisseriales	Neisseriaceae	Neisseria	Neisseria mucosa	0.153846153846154	0	0	0.00208706605112662	0	0.0971074380165289
+218144	Bacteria	Bacillota	Bacilli	Lactobacillales	Enterococcaceae	Vagococcus	Vagococcus carniphilus	0.0480769230769231	0	0	0.000108475198898907	0	0.00420168067226891
+1276282	Bacteria	Bacillota	Bacilli	Bacillales	Staphylococcaceae	Staphylococcus	Staphylococcus pasteuri	0.105769230769231	0	0	0.0022595390017239	0	0.126530612244898
+84135	Bacteria	Bacillota	Bacilli	Bacillales	Bacillales_unclassified	Gemella	Gemella sanguinis	0.1875	0	0	0.00177860398980123	0	0.0482897384305835
+862968	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	Streptococcus constellatus	0.0384615384615385	0	0	0.000119256744444966	0	0.00851063829787234
+550	Bacteria	Pseudomonadota	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Enterobacter	Enterobacter cloacae	0.0432692307692308	0	0	0.000171315553261587	0	0.0118764845605701
+1302	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	Streptococcus gordonii	0.245192307692308	0	0	0.00337083937642455	0	0.0813008130081301
+1266845	Bacteria	Bacillota	Bacilli	Lactobacillales	Carnobacteriaceae	Carnobacterium	Carnobacterium inhibens	0.0673076923076923	0	0	0.000268190905305614	0	0.0105042016806723
+44008	Bacteria	Bacillota	Bacilli	Lactobacillales	Enterococcaceae	Enterococcus	Enterococcus cecorum	0.0865384615384615	0	0	0.000488570524065726	0	0.036
+417368	Bacteria	Bacillota	Bacilli	Lactobacillales	Enterococcaceae	Enterococcus	Enterococcus thailandicus	0.0480769230769231	0	0	0.000167864858028301	0	0.00630252100840336
+1296669	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Burkholderiales_unclassified	Aquabacterium	Aquabacterium olei	0.153846153846154	0	0	0.00412027613846262	0	0.129107981220657
+624	Bacteria	Pseudomonadota	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Shigella	Shigella sonnei	0.0240384615384615	0	0	0.00023710235407311	0	0.0165094339622642
+2025492	Bacteria	Bacillota	Bacilli	Bacillales	Staphylococcaceae	Staphylococcus	Staphylococcus sp. M0911	0.110576923076923	0	0	0.00118095099137124	0	0.0571428571428571
+526944	Bacteria	Bacillota	Bacilli	Lactobacillales	Enterococcaceae	Tetragenococcus	Tetragenococcus osmophilus	0.0769230769230769	0	0	0.000325859942868135	0	0.0103734439834025
+223967	Bacteria	Pseudomonadota	Alphaproteobacteria	Hyphomicrobiales	Methylobacteriaceae	Methylorubrum	Methylorubrum populi	0.120192307692308	0	0	0.00136206887130981	0	0.0733752620545073
+104955	Bacteria	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Limosilactobacillus	Limosilactobacillus frumenti	0.0288461538461538	0	0	0.000169700605983634	0	0.0146750524109015
+712310	Bacteria	Pseudomonadota	Gammaproteobacteria	Pasteurellales	Pasteurellaceae	Haemophilus	Haemophilus sp. oral taxon 036	0.100961538461538	0	0	0.00182501550668568	0	0.123983739837398
+945021	Bacteria	Bacillota	Bacilli	Lactobacillales	Enterococcaceae	Tetragenococcus	Tetragenococcus halophilus	0.0528846153846154	0	0	0.000117772428647128	0	0.00404858299595142
+2751	Bacteria	Bacillota	Bacilli	Lactobacillales	Carnobacteriaceae	Carnobacterium	Carnobacterium maltaromaticum	0.0240384615384615	0	0	0.000109658842321806	0	0.0105042016806723
+515622	Bacteria	Bacillota	Clostridia	Eubacteriales	Lachnospiraceae	Butyrivibrio	Butyrivibrio proteoclasticus	0.0480769230769231	0	0	9.91708319035002e-05	0	0.00216450216450216
+1484158	Bacteria	Pseudomonadota	Gammaproteobacteria	Enterobacterales	Erwiniaceae	Pantoea	Pantoea sp. PSNIH1	0.0240384615384615	0	0	0.000119879898588487	0	0.00826446280991736
+395495	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Sphaerotilaceae	Leptothrix	Leptothrix cholodnii	0.0769230769230769	0	0	0.000366293100774655	0	0.0140845070422535
+639200	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Sphaerotilaceae	Sphaerotilus	Sphaerotilus sulfidivorans	0.0625	0	0	0.00113031066091671	0	0.0951417004048583
+2728020	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Oxalobacteraceae	Massilia	Massilia forsythiae	0.158653846153846	0	0	0.00132776573297381	0	0.0334728033472803
+983917	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Sphaerotilaceae	Rubrivivax	Rubrivivax gelatinosus	0.0576923076923077	0	0	0.000588383718873137	0	0.0291479820627803
+866775	Bacteria	Bacillota	Bacilli	Lactobacillales	Aerococcaceae	Aerococcus	Aerococcus urinae	0.0480769230769231	0	0	0.000118043605677233	0	0.00411522633744856
+1660	Bacteria	Actinomycetota	Actinomycetes	Actinomycetales	Actinomycetaceae	Schaalia	Schaalia odontolytica	0.0673076923076923	0	0	0.00531066096616282	0	0.193158953722334
+28449	Bacteria	Pseudomonadota	Betaproteobacteria	Neisseriales	Neisseriaceae	Neisseria	Neisseria subflava	0.0673076923076923	0	0	0.000517788527044444	0	0.0420168067226891
+52773	Bacteria	Actinomycetota	Actinomycetes	Actinomycetales	Actinomycetaceae	Schaalia	Schaalia meyeri	0.0432692307692308	0	0	0.000492331000966739	0	0.0261569416498994
+223919	Bacteria	Bacillota	Clostridia	Eubacteriales	Clostridiaceae	Clostridium	Clostridium diolis	0.0144230769230769	0	0	0.000155630524946242	0	0.0241448692152917
+535289	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Comamonadaceae	Diaphorobacter	[Acidovorax] ebreus	0.0336538461538462	0	0	0.000235122427276225	0	0.0263157894736842
+1016987	Bacteria	Pseudomonadota	Alphaproteobacteria	Sphingomonadales	Sphingomonadaceae	Novosphingobium	Novosphingobium sp. THN1	0.514423076923077	0	0.00200803212851406	0.00298513080679554	0.00416672114785322	0.0234741784037559
+128944	Bacteria	Bacillota	Bacilli	Lactobacillales	Aerococcaceae	Aerococcus	Aerococcus urinaehominis	0.100961538461538	0	0	0.000355031965064633	0	0.0105042016806723
+824	Bacteria	Campylobacterota	Epsilonproteobacteria	Campylobacterales	Campylobacteraceae	Campylobacter	Campylobacter gracilis	0.0625	0	0	0.000394892924417725	0	0.0206611570247934
+546271	Bacteria	Bacillota	Negativicutes	Selenomonadales	Selenomonadaceae	Selenomonas	Selenomonas sputigena	0.0625	0	0	0.000394898316539707	0	0.0164271047227926
+1326	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	Streptococcus acidominimus	0.0192307692307692	0	0	0.00017303919588051	0	0.0275423728813559
+727	Bacteria	Pseudomonadota	Gammaproteobacteria	Pasteurellales	Pasteurellaceae	Haemophilus	Haemophilus influenzae	0.0721153846153846	0	0	0.000452455784304892	0	0.0284552845528455
+671223	Bacteria	Actinomycetota	Actinomycetes	Propionibacteriales	Propionibacteriaceae	Cutibacterium	Cutibacterium modestum	0.0384615384615385	0	0	0.000166679665696257	0	0.016
+1768242	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Burkholderiales_unclassified	Paucibacter	Paucibacter sp. KCTC 42545	0.0721153846153846	0	0	0.000345365771002077	0	0.0203665987780041
+137591	Bacteria	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Weissella	Weissella cibaria	0.00961538461538462	0	0	0.000119928193425911	0	0.0229166666666667
+693986	Bacteria	Pseudomonadota	Alphaproteobacteria	Hyphomicrobiales	Methylobacteriaceae	Methylobacterium	Methylobacterium oryzae	0.0336538461538462	0	0	0.000150457526545719	0	0.0184049079754601
+76731	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Sphaerotilaceae	Roseateles	Roseateles depolymerans	0.173076923076923	0	0	0.0035373356983544	0	0.279022403258656
+76947	Bacteria	Pseudomonadota	Alphaproteobacteria	Sphingomonadales	Sphingomonadaceae	Sphingobium	Sphingobium herbicidovorans	0.0192307692307692	0	0	0.000120052539604297	0	0.0164609053497942
+237258	Bacteria	Bacteroidota	Flavobacteriia	Flavobacteriales	Weeksellaceae	Cloacibacterium	Cloacibacterium normanense	0.0384615384615385	0	0	0.000382426406463112	0	0.040983606557377
+487	Bacteria	Pseudomonadota	Betaproteobacteria	Neisseriales	Neisseriaceae	Neisseria	Neisseria meningitidis	0.0769230769230769	0	0	0.000353378622042433	0	0.0104384133611691
+120107	Bacteria	Pseudomonadota	Alphaproteobacteria	Sphingomonadales	Sphingomonadaceae	Sphingobium	Sphingobium cloacae	0.0432692307692308	0	0	0.000111040582184998	0	0.00437636761487965
+492670	Bacteria	Bacillota	Bacilli	Bacillales	Bacillaceae	Bacillus	Bacillus velezensis	0.0432692307692308	0	0	0.000391906494114591	0	0.0352697095435685
+1549858	Bacteria	Pseudomonadota	Alphaproteobacteria	Sphingomonadales	Sphingomonadaceae	Sphingomonas	Sphingomonas taxi	0.341346153846154	0	0	0.00168735709520721	0.00205973880216304	0.0184426229508197
+732	Bacteria	Pseudomonadota	Gammaproteobacteria	Pasteurellales	Pasteurellaceae	Aggregatibacter	Aggregatibacter aphrophilus	0.100961538461538	0	0	0.000755144814657948	0	0.0309278350515464
+1884263	Bacteria	Bacillota	Negativicutes	Selenomonadales	Selenomonadaceae	Selenomonas	Selenomonas sp. oral taxon 920	0.0865384615384615	0	0	0.000606429782483384	0	0.0265848670756646
+1523415	Bacteria	Pseudomonadota	Alphaproteobacteria	Sphingomonadales	Sphingomonadaceae	Sphingomonas	Sphingomonas sp. AAP5	0.841346153846154	0.00611622697859632	0.0678465112427377	0.125747932142177	0.206515973122716	0.595141700404858
+1560345	Bacteria	Pseudomonadota	Alphaproteobacteria	Sphingomonadales	Sphingomonadaceae	Sphingomonas	Sphingomonas panacis	0.663461538461538	0	0.00417976939203354	0.0157877199301011	0.0274432308134521	0.0955284552845529
+1423	Bacteria	Bacillota	Bacilli	Bacillales	Bacillaceae	Bacillus	Bacillus subtilis	0.0336538461538462	0	0	0.00063249468878055	0	0.104513064133017
+2663009	Bacteria	Fusobacteriota	Fusobacteriia	Fusobacteriales	Fusobacteriaceae	Fusobacterium	Fusobacterium pseudoperiodonticum	0.115384615384615	0	0	0.000650726236661864	0	0.024390243902439
+539	Bacteria	Pseudomonadota	Betaproteobacteria	Neisseriales	Neisseriaceae	Eikenella	Eikenella corrodens	0.0576923076923077	0	0	0.000508899591277363	0	0.0752032520325203
+1639	Bacteria	Bacillota	Bacilli	Bacillales	Listeriaceae	Listeria	Listeria monocytogenes	0.0240384615384615	0	0	0.000499376762198551	0	0.0712589073634204
+653931	Bacteria	Pseudomonadota	Alphaproteobacteria	Sphingomonadales	Sphingomonadaceae	Sphingomonas	Sphingomonas alpina	0.745192307692308	0	0.0185399694501018	0.0532909874448522	0.0745555555555556	0.350701402805611
+152682	Bacteria	Pseudomonadota	Alphaproteobacteria	Sphingomonadales	Sphingomonadaceae	Sphingomonas	Sphingomonas melonis	0.5625	0	0.00206843150005134	0.00597694382341816	0.0102092984433037	0.0355648535564854
+483	Bacteria	Pseudomonadota	Betaproteobacteria	Neisseriales	Neisseriaceae	Neisseria	Neisseria cinerea	0.0432692307692308	0	0	0.000235531343935147	0	0.01417004048583
+363952	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Comamonadaceae	Comamonas	Comamonas thiooxydans	0.0576923076923077	0	0	0.000558887230962695	0	0.0829959514170041
+1019	Bacteria	Bacteroidota	Flavobacteriia	Flavobacteriales	Flavobacteriaceae	Capnocytophaga	Capnocytophaga sputigena	0.0144230769230769	0	0	0.000117822366240462	0	0.0121951219512195
+279238	Bacteria	Pseudomonadota	Alphaproteobacteria	Sphingomonadales	Sphingomonadaceae	Novosphingobium	Novosphingobium aromaticivorans	0.0384615384615385	0	0	0.000157021248202358	0	0.0140845070422535
+1274	Bacteria	Actinomycetota	Actinomycetes	Micrococcales	Dermacoccaceae	Dermacoccus	Dermacoccus nishinomiyaensis	0.00961538461538462	0	0	0.000127471251164631	0	0.0224489795918367
+13690	Bacteria	Pseudomonadota	Alphaproteobacteria	Sphingomonadales	Sphingomonadaceae	Sphingobium	Sphingobium yanoikuyae	0.0721153846153846	0	0	0.000237804084415227	0	0.00816326530612245
+738	Bacteria	Pseudomonadota	Gammaproteobacteria	Pasteurellales	Pasteurellaceae	Glaesserella	Glaesserella parasuis	0.0384615384615385	0	0	0.000148370356864596	0	0.0124223602484472
+335406	Bacteria	Pseudomonadota	Alphaproteobacteria	Sphingomonadales	Sphingosinicellaceae	Sphingosinicella	Sphingosinicella microcystinivorans	0.447115384615385	0	0	0.00299490537247005	0.00421103668719809	0.0262096774193548
+1029756	Bacteria	Pseudomonadota	Alphaproteobacteria	Hyphomicrobiales	Hyphomicrobiaceae	Hyphomicrobium	Hyphomicrobium nitrativorans	0.0240384615384615	0	0	0.00029414817199192	0	0.0484848484848485
+1583098	Bacteria	Fusobacteriota	Fusobacteriia	Fusobacteriales	Fusobacteriaceae	Fusobacterium	Fusobacterium hwasookii	0.0336538461538462	0	0	0.000176277098982958	0	0.016260162601626
+2040624	Bacteria	Bacillota	Bacilli	Bacillales	Bacillales_unclassified	Gemella	Gemella sp. ND 6198	0.0240384615384615	0	0	0.000148217558389678	0	0.0183673469387755
+93064	Bacteria	Pseudomonadota	Alphaproteobacteria	Sphingomonadales	Sphingomonadaceae	Sphingomonas	Sphingomonas koreensis	0.442307692307692	0	0	0.00541799833460285	0.00607595404488753	0.140816326530612
+1969806	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhodospirillales	Acetobacteraceae	Acidibrevibacterium	Acidibrevibacterium fodinaquatile	0.0240384615384615	0	0	0.000110547502304253	0	0.00851063829787234
+41276	Bacteria	Pseudomonadota	Alphaproteobacteria	Caulobacterales	Caulobacteraceae	Brevundimonas	Brevundimonas vesicularis	0.0817307692307692	0	0	0.00130808675647832	0	0.0583501006036217
+180282	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Comamonadaceae	Delftia	Delftia tsuruhatensis	0.0913461538461538	0	0	0.000774475400985186	0	0.0503018108651912
+378753	Bacteria	Actinomycetota	Actinomycetes	Micrococcales	Micrococcaceae	Kocuria	Kocuria rhizophila	0.00961538461538462	0	0	0.000161012860577447	0	0.0272536687631027
+2711215	Bacteria	Pseudomonadota	Alphaproteobacteria	Sphingomonadales	Sphingomonadaceae	Sphingosinithalassobacter	Sphingosinithalassobacter tenebrarum	0.245192307692308	0	0	0.00374866502958939	0	0.0857142857142857
+2036206	Bacteria	Bacillota	Bacilli	Lactobacillales	Aerococcaceae	Suicoccus	Suicoccus acidiformans	0.0288461538461538	0	0	0.000167312332805956	0	0.0244897959183673
+1609977	Bacteria	Pseudomonadota	Alphaproteobacteria	Sphingomonadales	Sphingomonadaceae	Sphingomonas	Sphingomonas hengshuiensis	0.0721153846153846	0	0	0.000207047521531545	0	0.00808080808080808
+728	Bacteria	Pseudomonadota	Gammaproteobacteria	Pasteurellales	Pasteurellaceae	Avibacterium	Avibacterium paragallinarum	0.0336538461538462	0	0	0.000118171404105373	0	0.0062111801242236
+424800	Bacteria	Pseudomonadota	Alphaproteobacteria	Sphingomonadales	Sphingomonadaceae	Sphingomonas	Sphingomonas insulae	0.235576923076923	0	0	0.000949548814922129	0	0.0125786163522013
+1850238	Bacteria	Pseudomonadota	Alphaproteobacteria	Sphingomonadales	Sphingomonadaceae	Rhizorhabdus	Rhizorhabdus dicambivorans	0.0576923076923077	0	0	0.000149537739703508	0	0.00642398286937901
+1123269	Bacteria	Pseudomonadota	Alphaproteobacteria	Sphingomonadales	Sphingomonadaceae	Sphingomonas	Sphingomonas sanxanigenens	0.134615384615385	0	0	0.00100243376413375	0	0.0251046025104603
+190148	Bacteria	Pseudomonadota	Alphaproteobacteria	Hyphomicrobiales	Nitrobacteraceae	Bradyrhizobium	Bradyrhizobium paxllaeri	0.0625	0	0	0.00035624649549349	0	0.024390243902439
+1355477	Bacteria	Pseudomonadota	Alphaproteobacteria	Hyphomicrobiales	Nitrobacteraceae	Bradyrhizobium	Bradyrhizobium diazoefficiens	0.0528846153846154	0	0	0.000215286678974614	0	0.00625
+375	Bacteria	Pseudomonadota	Alphaproteobacteria	Hyphomicrobiales	Nitrobacteraceae	Bradyrhizobium	Bradyrhizobium japonicum	0.100961538461538	0	0	0.000390900059615342	0	0.010183299389002
+1926868	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Comamonadaceae	Paenacidovorax	Paenacidovorax monticola	0.0576923076923077	0	0	0.000416350697596971	0	0.0381165919282511
+553814	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Comamonadaceae	Acidovorax	Acidovorax carolinensis	0.0384615384615385	0	0	0.000122708222214129	0	0.00672645739910314
+1404367	Bacteria	Pseudomonadota	Alphaproteobacteria	Hyphomicrobiales	Nitrobacteraceae	Bradyrhizobium	Bradyrhizobium symbiodeficiens	0.0528846153846154	0	0	0.000158731599580549	0	0.00442477876106195
+2126319	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Comamonadaceae	Variovorax	Variovorax sp. PMC12	0.0673076923076923	0	0	0.000951932335412621	0	0.0717488789237668
+420662	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Sphaerotilaceae	Methylibium	Methylibium petroleiphilum	0.0817307692307692	0	0	0.000821661440889551	0	0.0358744394618834
+1245469	Bacteria	Pseudomonadota	Alphaproteobacteria	Hyphomicrobiales	Nitrobacteraceae	Bradyrhizobium	Bradyrhizobium oligotrophicum	0.0625	0	0	0.000293609651156333	0	0.0120724346076459
+1325090	Bacteria	Pseudomonadota	Alphaproteobacteria	Hyphomicrobiales	Nitrobacteraceae	Bradyrhizobium	Bradyrhizobium guangdongense	0.0432692307692308	0	0	0.000142007394281471	0	0.00602409638554217
+1736	Bacteria	Bacillota	Clostridia	Eubacteriales	Eubacteriaceae	Eubacterium	Eubacterium limosum	0.0144230769230769	0	0	0.000129925000025919	0	0.0125260960334029
+108980	Bacteria	Pseudomonadota	Gammaproteobacteria	Moraxellales	Moraxellaceae	Acinetobacter	Acinetobacter ursingii	0.0288461538461538	0	0	0.000398358806638496	0	0.0309734513274336
+436515	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Comamonadaceae	Variovorax	Variovorax boronicumulans	0.0240384615384615	0	0	0.000245089818270395	0	0.0404040404040404
+29429	Bacteria	Pseudomonadota	Alphaproteobacteria	Hyphomicrobiales	Methylobacteriaceae	Methylorubrum	Methylorubrum zatmanii	0.0576923076923077	0	0	0.00039856775722204	0	0.014
+1219035	Bacteria	Pseudomonadota	Alphaproteobacteria	Sphingomonadales	Erythrobacteraceae	Caenibius	Caenibius tardaugens	0.0576923076923077	0	0	0.000327548969690671	0	0.028169014084507
+945844	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Oxalobacteraceae	Massilia	Massilia oculi	0.163461538461538	0	0	0.00451376394480191	0	0.219665271966527
+929102	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Lactococcus	Lactococcus lactis	0.0673076923076923	0	0	0.0081853294621015	0	0.780933062880324
+871742	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Oxalobacteraceae	Pseudoduganella	Pseudoduganella flava	0.100961538461538	0	0	0.000572662614041111	0	0.0191489361702128
+568703	Bacteria	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Lacticaseibacillus	Lacticaseibacillus rhamnosus	0.00961538461538462	0	0	0.000136093340961495	0	0.0222222222222222
+1707785	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Oxalobacteraceae	Massilia	Massilia sp. WG5	0.149038461538462	0	0	0.00172542874420541	0	0.0732217573221757
+2045208	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Oxalobacteraceae	Massilia	Massilia violaceinigra	0.120192307692308	0	0	0.00233454006111418	0	0.107822410147992
+1141883	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Oxalobacteraceae	Massilia	Massilia putida	0.0576923076923077	0	0	0.000368460943256324	0	0.0353430353430353
+296591	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Comamonadaceae	Polaromonas	Polaromonas sp. JS666	0.0288461538461538	0	0	0.000149279675046085	0	0.0134529147982063
+2509614	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Comamonadaceae	Rhodoferax	Rhodoferax sediminis	0.0288461538461538	0	0	0.000355543304934666	0	0.0448430493273543
+158500	Bacteria	Pseudomonadota	Alphaproteobacteria	Sphingomonadales	Sphingomonadaceae	Novosphingobium	Novosphingobium resinovorum	0.0384615384615385	0	0	0.000112448895319844	0	0.00469483568075117
+2072590	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Oxalobacteraceae	Pseudoduganella	Pseudoduganella armeniaca	0.139423076923077	0	0	0.00155991133130771	0	0.0420841683366733
+1855823	Bacteria	Bacillota	Bacilli	Bacillales	Staphylococcaceae	Macrococcus	Macrococcus canis	0.00961538461538462	0	0	0.000129668049792531	0	0.024896265560166
+2082386	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Sphaerotilaceae	Methylibium	Methylibium sp. Pch-M	0.0336538461538462	0	0	0.000112843921950959	0	0.00448430493273543
+1882682	Bacteria	Pseudomonadota	Alphaproteobacteria	Hyphomicrobiales	Methylobacteriaceae	Microvirga	Microvirga ossetica	0.0336538461538462	0	0	0.000134669432713284	0	0.0132743362831858
+225992	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Comamonadaceae	Comamonas	Comamonas kerstersii	0.0528846153846154	0	0	0.000282466801367749	0	0.0117370892018779
+1852377	Bacteria	Actinomycetota	Actinomycetes	Actinomycetales	Actinomycetaceae	Actinomyces	Actinomyces pacaensis	0.0480769230769231	0	0	0.000640123635286131	0	0.040650406504065
+1247726	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Alcaligenaceae	Advenella	Advenella mimigardefordensis	0.0432692307692308	0	0	0.000218830078743086	0	0.0103950103950104
+1367847	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhodobacterales	Paracoccaceae	Paracoccus	Paracoccus aminophilus	0.0721153846153846	0	0	0.00157119979803836	0	0.0625
+28090	Bacteria	Pseudomonadota	Gammaproteobacteria	Moraxellales	Moraxellaceae	Acinetobacter	Acinetobacter lwoffii	0.0721153846153846	0	0	0.00206379882335214	0	0.32657200811359
+1077935	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhodobacterales	Paracoccaceae	Paracoccus	Paracoccus zhejiangensis	0.0817307692307692	0	0	0.00128652753635719	0	0.0645161290322581
+713059	Bacteria	Candidatus Saccharibacteria	Candidatus Saccharibacteria_unclassified	Candidatus Saccharibacteria_unclassified	Candidatus Saccharibacteria_unclassified	Candidatus Saccharibacteria_unclassified	Candidatus Saccharibacteria bacterium oral taxon 488	0.0336538461538462	0	0	0.000137735472139986	0	0.0101626016260163
+888057	Bacteria	Pseudomonadota	Gammaproteobacteria	Pasteurellales	Pasteurellaceae	Aggregatibacter	Aggregatibacter segnis	0.0817307692307692	0	0	0.000946873211122185	0	0.111340206185567
+2500532	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhodobacterales	Paracoccaceae	Paracoccus	Paracoccus sp. Arc7-R13	0.173076923076923	0	0	0.00442979077936842	0	0.146341463414634
+29379	Bacteria	Bacillota	Bacilli	Bacillales	Staphylococcaceae	Staphylococcus	Staphylococcus auricularis	0.0288461538461538	0	0	0.000563095876668335	0	0.0593047034764826
+43675	Bacteria	Actinomycetota	Actinomycetes	Micrococcales	Micrococcaceae	Rothia	Rothia mucilaginosa	0.0480769230769231	0	0	0.000488344228909728	0	0.0282828282828283
+1017	Bacteria	Bacteroidota	Flavobacteriia	Flavobacteriales	Flavobacteriaceae	Capnocytophaga	Capnocytophaga gingivalis	0.0528846153846154	0	0	0.000528907519794065	0	0.0385395537525355
+712122	Bacteria	Actinomycetota	Actinomycetes	Actinomycetales	Actinomycetaceae	Actinomyces	Actinomyces sp. oral taxon 414	0.0288461538461538	0	0	9.83863474945314e-05	0	0.00411522633744856
+386	Bacteria	Pseudomonadota	Alphaproteobacteria	Hyphomicrobiales	Rhizobiaceae	Rhizobium	Rhizobium leguminosarum	0.0384615384615385	0	0	0.000153053366505567	0	0.0102669404517454
+1905288	Bacteria	Pseudomonadota	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Klebsiella	Klebsiella sp. LTGPAF-6F	0.0240384615384615	0	0	0.000129626181976166	0	0.00884955752212389
+234267	Bacteria	Acidobacteriota	Terriglobia	Bryobacterales	Solibacteraceae	Candidatus Solibacter	Candidatus Solibacter usitatus	0.00961538461538462	0	0	0.000608299949681704	0	0.124497991967871
+488447	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Burkholderiaceae	Burkholderia	Burkholderia contaminans	0.240384615384615	0	0	0.0344215880676788	0	0.444444444444444
+28450	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Burkholderiaceae	Burkholderia	Burkholderia pseudomallei	0.182692307692308	0	0	0.00242447623829457	0	0.0404040404040404
+95486	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Burkholderiaceae	Burkholderia	Burkholderia cenocepacia	0.201923076923077	0	0	0.00859585635648031	0	0.139344262295082
+2082188	Bacteria	Pseudomonadota	Alphaproteobacteria	Sphingomonadales	Sphingomonadaceae	Sphingobium	Sphingobium sp. YG1	0.158653846153846	0	0	0.00195317083618065	0	0.0868686868686869
+482957	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Burkholderiaceae	Burkholderia	Burkholderia lata	0.216346153846154	0	0	0.0170038924746368	0	0.183299389002037
+2202827	Bacteria	Pseudomonadota	Alphaproteobacteria	Hyphomicrobiales	Methylobacteriaceae	Methylobacterium	Methylobacterium terrae	0.0192307692307692	0	0	0.000110306242256991	0	0.0143149284253579
+57975	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Burkholderiaceae	Burkholderia	Burkholderia thailandensis	0.177884615384615	0	0	0.00289197706182609	0	0.0468431771894094
+1673076	Bacteria	Pseudomonadota	Alphaproteobacteria	Sphingomonadales	Sphingomonadaceae	Sphingobium	Sphingobium xenophagum	0.0528846153846154	0	0	0.00013947555407892	0	0.00650759219088937
+80869	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Comamonadaceae	Paracidovorax	Paracidovorax citrulli	0.0240384615384615	0	0	0.000117056851484818	0	0.0134529147982063
+337	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Burkholderiaceae	Burkholderia	Burkholderia glumae	0.197115384615385	0	0	0.00655782066097142	0	0.080082135523614
+588932	Bacteria	Pseudomonadota	Alphaproteobacteria	Caulobacterales	Caulobacteraceae	Brevundimonas	Brevundimonas naejangsanensis	0.0528846153846154	0	0	0.000178406882529268	0	0.00627615062761506
+795665	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Comamonadaceae	Hydrogenophaga	Hydrogenophaga sp. PBC	0.0576923076923077	0	0	0.00029007527742791	0	0.0164319248826291
+1491	Bacteria	Bacillota	Clostridia	Eubacteriales	Clostridiaceae	Clostridium	Clostridium botulinum	0.00480769230769231	0	0	0.000182692307692308	0	0.038
+742013	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Comamonadaceae	Delftia	Delftia sp. Cs1-4	0.0240384615384615	0	0	9.80754674109726e-05	0	0.0100603621730382
+28104	Bacteria	Pseudomonadota	Alphaproteobacteria	Hyphomicrobiales	Phyllobacteriaceae	Mesorhizobium	Mesorhizobium huakuii	0.0144230769230769	0	0	0.000121417181355378	0	0.0114155251141553
+82367	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhodobacterales	Paracoccaceae	Paracoccus	Paracoccus pantotrophus	0.0288461538461538	0	0	0.000107108265930579	0	0.00806451612903226
+87883	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Burkholderiaceae	Burkholderia	Burkholderia multivorans	0.149038461538462	0	0	0.00094700267295192	0	0.0183299389002037
+2018065	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhodospirillales	Acetobacteraceae	Roseomonas	Roseomonas sp. FDAARGOS_362	0.0384615384615385	0	0	0.000926551591766082	0	0.0585858585858586
+34004	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhodobacterales	Paracoccaceae	Paracoccus	Paracoccus aminovorans	0.0528846153846154	0	0	0.000273615732881944	0	0.0203252032520325
+398578	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Comamonadaceae	Delftia	Delftia acidovorans	0.0625	0	0	0.0035275352276857	0	0.277665995975855
+402881	Bacteria	Pseudomonadota	Alphaproteobacteria	Hyphomicrobiales	Parvibaculaceae	Parvibaculum	Parvibaculum lavamentivorans	0.0192307692307692	0	0	0.000219939479809393	0	0.0293501048218029
+28038	Bacteria	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Latilactobacillus	Latilactobacillus curvatus	0.00480769230769231	0	0	0.000220352564102564	0	0.0458333333333333
+204	Bacteria	Campylobacterota	Epsilonproteobacteria	Campylobacterales	Campylobacteraceae	Campylobacter	Campylobacter showae	0.0625	0	0	0.0014417054908412	0	0.126106194690265
+1397	Bacteria	Bacillota	Bacilli	Bacillales	Bacillaceae	Niallia	Niallia circulans	0.0144230769230769	0	0	0.000424994325811882	0	0.054
+1270	Bacteria	Actinomycetota	Actinomycetes	Micrococcales	Micrococcaceae	Micrococcus	Micrococcus luteus	0.0769230769230769	0	0	0.00112530708121517	0	0.0755102040816327
+1867715	Bacteria	Pseudomonadota	Alphaproteobacteria	Hyphomicrobiales	Boseaceae	Bosea	Bosea sp. Tri-49	0.0480769230769231	0	0	0.000233188033541071	0	0.01417004048583
+279058	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Oxalobacteraceae	Collimonas	Collimonas arenae	0.0384615384615385	0	0	0.000114936485960251	0	0.00672645739910314
+40324	Bacteria	Pseudomonadota	Gammaproteobacteria	Xanthomonadales	Xanthomonadaceae	Stenotrophomonas	Stenotrophomonas maltophilia	0.168269230769231	0	0	0.00978368816795847	0	0.383367139959432
+1310165	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Burkholderiaceae	Ralstonia	Ralstonia pseudosolanacearum	0.0480769230769231	0	0	0.000270039871810699	0	0.015625
+596154	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Comamonadaceae	Alicycliphilus	Alicycliphilus denitrificans	0.0384615384615385	0	0	0.000207616483157615	0	0.0101214574898785
+2490939	Bacteria	Cyanobacteriota	Cyanophyceae	Nostocales	Nostocaceae	Anabaena	Anabaena sp. YBS01	0.0576923076923077	0	0	0.000178474513765892	0	0.0104602510460251
+2065379	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhodobacterales	Paracoccaceae	Paracoccus	Paracoccus jeotgali	0.0673076923076923	0	0	0.00108486188670157	0	0.0544354838709677
+1545044	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhodobacterales	Paracoccaceae	Paracoccus	Paracoccus sanguinis	0.0192307692307692	0	0	0.000387097663902693	0	0.0548780487804878
+2725684	Bacteria	Pseudomonadota	Gammaproteobacteria	Moraxellales	Moraxellaceae	Acinetobacter	Acinetobacter sp. NEB149	0.129807692307692	0	0	0.00160664864398447	0	0.221095334685598
+147645	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhodobacterales	Paracoccaceae	Paracoccus	Paracoccus yeei	0.125	0	0	0.00219017505183917	0	0.0564516129032258
+864828	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Oxalobacteraceae	Pseudoduganella	Pseudoduganella umbonata	0.0576923076923077	0	0	0.000219719457978717	0	0.0112107623318386
+643561	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Comamonadaceae	Paracidovorax	Paracidovorax avenae	0.0480769230769231	0	0	0.000172118112000461	0	0.00672645739910314
+1423723	Bacteria	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Lactobacillus	Lactobacillus amylovorus	0.0240384615384615	0	0	0.00012805307461821	0	0.0121457489878543
+13373	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Burkholderiaceae	Burkholderia	Burkholderia mallei	0.110576923076923	0	0	0.000372783735392868	0	0.00632911392405063
+735	Bacteria	Pseudomonadota	Gammaproteobacteria	Pasteurellales	Pasteurellaceae	Haemophilus	Haemophilus parahaemolyticus	0.0673076923076923	0	0	0.000872389067039479	0	0.0698151950718686
+59814	Bacteria	Pseudomonadota	Gammaproteobacteria	Enterobacterales	Erwiniaceae	Pantoea	Pantoea dispersa	0.0144230769230769	0	0	0.000783718384065661	0	0.150826446280992
+861299	Bacteria	Gemmatimonadota	Gemmatimonadetes	Gemmatimonadales	Gemmatimonadaceae	Gemmatirosa	Gemmatirosa kalamazoonensis	0.0192307692307692	0	0	0.000137046763716072	0	0.0202020202020202
+155892	Bacteria	Pseudomonadota	Alphaproteobacteria	Caulobacterales	Caulobacteraceae	Caulobacter	Caulobacter vibrioides	0.0288461538461538	0	0	0.00064208602403686	0	0.0586854460093897
+407035	Bacteria	Bacillota	Bacilli	Bacillales	Staphylococcaceae	Salinicoccus	Salinicoccus halodurans	0.00961538461538462	0	0	0.00022249424452126	0	0.025531914893617
+69665	Bacteria	Pseudomonadota	Alphaproteobacteria	Caulobacterales	Caulobacteraceae	Caulobacter	Caulobacter sp. FWC26	0.0384615384615385	0	0	0.000691646880866902	0	0.0539906103286385
+128785	Bacteria	Pseudomonadota	Gammaproteobacteria	Xanthomonadales	Xanthomonadaceae	Pseudoxanthomonas	Pseudoxanthomonas mexicana	0.0144230769230769	0	0	0.000127084887806427	0	0.0201207243460765
+1842727	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Comamonadaceae	Rhodoferax	Rhodoferax koreense	0.0288461538461538	0	0	0.000192864386830035	0	0.0224215246636771
+1492898	Bacteria	Bacteroidota	Chitinophagia	Chitinophagales	Chitinophagaceae	Flavisolibacter	Flavisolibacter tropicus	0.0192307692307692	0	0	0.000102433713634089	0	0.00867678958785249
+712357	Bacteria	Fusobacteriota	Fusobacteriia	Fusobacteriales	Leptotrichiaceae	Leptotrichia	Leptotrichia sp. oral taxon 212	0.0144230769230769	0	0	0.000117259792621376	0	0.0161290322580645
+365046	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Comamonadaceae	Ramlibacter	Ramlibacter tataouinensis	0.0192307692307692	0	0	0.000457112075378916	0	0.0538116591928251
+2499144	Bacteria	Pseudomonadota	Alphaproteobacteria	Hyphomicrobiales	Devosiaceae	Devosia	Devosia sp. 1566	0.0192307692307692	0	0	0.000107474542830044	0	0.0161943319838057
+63	Bacteria	Pseudomonadota	Betaproteobacteria	Neisseriales	Neisseriaceae	Vitreoscilla	Vitreoscilla filiformis	0.0480769230769231	0	0	0.000183536248627859	0	0.00896860986547085
+363835	Bacteria	Pseudomonadota	Alphaproteobacteria	Sphingomonadales	Sphingomonadaceae	Sphingomonas	Sphingomonas ginsengisoli An et al. 2013	0.0384615384615385	0	0	0.000127459880978359	0	0.00606060606060606
+1176536	Bacteria	Pseudomonadota	Alphaproteobacteria	Sphingomonadales	Sphingomonadaceae	Novosphingobium	Novosphingobium ginsenosidimutans	0.149038461538462	0	0	0.000451376864117021	0	0.0100401606425703
+47671	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Burkholderiaceae	Lautropia	Lautropia mirabilis	0.0384615384615385	0	0	0.000385141327253355	0	0.0571428571428571
+321327	Bacteria	Cyanobacteriota	Cyanophyceae	Synechococcales	Synechococcaceae	Synechococcus	Synechococcus sp. JA-3-3Ab	0.0240384615384615	0	0	0.000127778665244238	0	0.00811359026369168
+76114	Bacteria	Pseudomonadota	Betaproteobacteria	Rhodocyclales	Rhodocyclaceae	Aromatoleum	Aromatoleum aromaticum	0.0192307692307692	0	0	0.000100640947871252	0	0.0125523012552301
+549	Bacteria	Pseudomonadota	Gammaproteobacteria	Enterobacterales	Erwiniaceae	Pantoea	Pantoea agglomerans	0.0240384615384615	0	0	0.000121618960389387	0	0.00943396226415094
+272123	Bacteria	Cyanobacteriota	Cyanophyceae	Nostocales	Nostocaceae	Anabaena	Anabaena cylindrica	0.0432692307692308	0	0	0.000201105525807554	0	0.0209205020920502
+321984	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Oxalobacteraceae	Pseudoduganella	Pseudoduganella plicata	0.0673076923076923	0	0	0.000319358655865718	0	0.0167364016736402
+2182384	Bacteria	Pseudomonadota	Alphaproteobacteria	Sphingomonadales	Erythrobacteraceae	Erythrobacter	Erythrobacter aureus	0.0721153846153846	0	0	0.000241143851274086	0	0.0104166666666667
+417367	Bacteria	Bacillota	Bacilli	Bacillales	Planococcaceae	Paenisporosarcina	Paenisporosarcina antarctica	0.0192307692307692	0	0	0.00014042796493059	0	0.0170212765957447
+195105	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhodobacterales	Paracoccaceae	Haematobacter	Haematobacter massiliensis	0.0384615384615385	0	0	0.000159156351001961	0	0.0101626016260163
+2231055	Bacteria	Pseudomonadota	Betaproteobacteria	Rhodocyclales	Azonexaceae	Dechloromonas	Dechloromonas sp. HYN0024	0.0240384615384615	0	0	0.000423923764236962	0	0.0465587044534413
+1813821	Bacteria	Pseudomonadota	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Shigella	Shigella sp. PAMC 28760	0.0432692307692308	0	0	0.000213616645712741	0	0.0121951219512195
+292	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Burkholderiaceae	Burkholderia	Burkholderia cepacia	0.182692307692308	0	0	0.00550651205793477	0	0.0863453815261044
+2217913	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Burkholderiaceae	Burkholderia	Burkholderia sp. JP2-270	0.182692307692308	0	0	0.00449757939849046	0	0.0813008130081301
+95485	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Burkholderiaceae	Burkholderia	Burkholderia stabilis	0.105769230769231	0	0	0.000380935708858006	0	0.0121212121212121
+339670	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Burkholderiaceae	Burkholderia	Burkholderia ambifaria	0.105769230769231	0	0	0.000488387003495377	0	0.0142276422764228
+1503055	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Burkholderiaceae	Burkholderia	Burkholderia territorii	0.0721153846153846	0	0	0.000253420046931921	0	0.0100401606425703
+1503054	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Burkholderiaceae	Burkholderia	Burkholderia stagnalis	0.0673076923076923	0	0	0.000206396382575218	0	0.00616016427104723
+488729	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Burkholderiaceae	Burkholderia	Burkholderia metallica	0.115384615384615	0	0	0.000517638409918713	0	0.0100603621730382
+2303750	Bacteria	Pseudomonadota	Gammaproteobacteria	Xanthomonadales	Xanthomonadaceae	Stenotrophomonas	Stenotrophomonas sp. G4	0.0913461538461538	0	0	0.00080738026179725	0	0.0266393442622951
+2571748	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Burkholderiaceae	Paraburkholderia	Paraburkholderia acidisoli	0.0528846153846154	0	0	0.000166155964757032	0	0.00602409638554217
+151783	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Burkholderiaceae	Cupriavidus	Cupriavidus campinensis	0.0192307692307692	0	0	0.000219446374594117	0	0.0258215962441315
+60552	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Burkholderiaceae	Burkholderia	Burkholderia vietnamiensis	0.0721153846153846	0	0	0.000233933836536066	0	0.00813008130081301
+1825976	Bacteria	Pseudomonadota	Alphaproteobacteria	Hyphomicrobiales	Rhizobiaceae	Neorhizobium	Neorhizobium sp. NCHU2750	0.0192307692307692	0	0	0.000107850549061294	0	0.0141414141414141
+496014	Bacteria	Actinomycetota	Rubrobacteria	Rubrobacterales	Baekduiaceae	Baekduia	Baekduia soli	0.0144230769230769	0	0	0.000153008169399367	0	0.0276595744680851
+418223	Bacteria	Pseudomonadota	Alphaproteobacteria	Hyphomicrobiales	Methylobacteriaceae	Methylobacterium	Methylobacterium phyllosphaerae	0.0528846153846154	0	0	0.000240913366079244	0	0.0105042016806723
+661478	Bacteria	Armatimonadota	Fimbriimonadia	Fimbriimonadales	Fimbriimonadaceae	Fimbriimonas	Fimbriimonas ginsengisoli	0.00961538461538462	0	0	0.000120105939867353	0	0.0182555780933063
+257708	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhodospirillales	Acetobacteraceae	Roseomonas	Roseomonas gilardii	0.0432692307692308	0	0	0.000259217632612676	0	0.022964509394572
+595537	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Comamonadaceae	Variovorax	Variovorax paradoxus	0.0480769230769231	0	0	0.000465539489223966	0	0.0606060606060606
+908290	Bacteria	Pseudomonadota	Alphaproteobacteria	Hyphomicrobiales	Methylobacteriaceae	Methylobacterium	Methylobacterium mesophilicum	0.0480769230769231	0	0	0.000130116586062488	0	0.00425531914893617
+2057741	Bacteria	Pseudomonadota	Alphaproteobacteria	Hyphomicrobiales	Nitrobacteraceae	Bradyrhizobium	Bradyrhizobium sp. SK17	0.182692307692308	0	0	0.00127520122749094	0	0.0365853658536585
+39960	Bacteria	Pseudomonadota	Alphaproteobacteria	Sphingomonadales	Erythrobacteraceae	Erythrobacter	Erythrobacter litoralis	0.0769230769230769	0	0	0.000175677067622888	0	0.00400801603206413
+363852	Bacteria	Bacteroidota	Sphingobacteriia	Sphingobacteriales	Sphingobacteriaceae	Pedobacter	Pedobacter ginsengisoli	0.0144230769230769	0	0	0.000150410743566858	0	0.0187110187110187
+2488560	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Alcaligenaceae	Pigmentiphaga	Pigmentiphaga sp. H8	0.0240384615384615	0	0	0.000609112008840774	0	0.0610328638497653
+188932	Bacteria	Bacteroidota	Sphingobacteriia	Sphingobacteriales	Sphingobacteriaceae	Pedobacter	Pedobacter cryoconitis	0.0192307692307692	0	0	0.000140191392473911	0	0.0167364016736402
+1176646	Bacteria	Pseudomonadota	Alphaproteobacteria	Sphingomonadales	Sphingomonadaceae	Sphingomonas	Sphingomonas daechungensis	0.0384615384615385	0	0	9.86840732427186e-05	0	0.00415800415800416
+1892855	Bacteria	Pseudomonadota	Alphaproteobacteria	Sphingomonadales	Sphingosinicellaceae	Sphingosinicella	Sphingosinicella sp. BN140058	0.0625	0	0	0.000167915075265741	0	0.00603621730382294
+28095	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Burkholderiaceae	Burkholderia	Burkholderia gladioli	0.0432692307692308	0	0	9.77957782843812e-05	0	0.00401606425702811
+203	Bacteria	Campylobacterota	Epsilonproteobacteria	Campylobacterales	Campylobacteraceae	Campylobacter	Campylobacter rectus	0.0576923076923077	0	0	0.00040155190138946	0	0.0210084033613445
+157687	Bacteria	Fusobacteriota	Fusobacteriia	Fusobacteriales	Leptotrichiaceae	Leptotrichia	Leptotrichia wadei	0.0144230769230769	0	0	0.000332400826531677	0	0.0404255319148936
+342113	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Burkholderiaceae	Burkholderia	Burkholderia oklahomensis	0.0480769230769231	0	0	0.000107099116101609	0	0.00401606425702811
+505	Bacteria	Pseudomonadota	Betaproteobacteria	Neisseriales	Neisseriaceae	Kingella	Kingella oralis	0.0144230769230769	0	0	0.000282405384932805	0	0.036480686695279
+1827469	Bacteria	Pseudomonadota	Alphaproteobacteria	Caulobacterales	Caulobacteraceae	Brevundimonas	Brevundimonas sp. GW460-12-10-14-LB2	0.211538461538462	0	0	0.0065997195388956	0	0.202868852459016
+265293	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Burkholderiaceae	Burkholderia	Burkholderia ubonensis	0.0432692307692308	0	0	9.79397410670105e-05	0	0.00404858299595142
+1633	Bacteria	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Limosilactobacillus	Limosilactobacillus vaginalis	0.0288461538461538	0	0	0.00113638262564124	0	0.117400419287212
+1469502	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Burkholderiales_unclassified	Burkholderiales_unclassified	Burkholderiales bacterium GJ-E10	0.0336538461538462	0	0	0.000136349609138373	0	0.0112107623318386
+269673	Bacteria	Bacillota	Bacilli	Bacillales	Sporolactobacillaceae	Sporolactobacillus	Sporolactobacillus terrae	0.00961538461538462	0	0	0.000213137130796936	0	0.0422535211267606
+2479393	Bacteria	Pseudomonadota	Gammaproteobacteria	Pseudomonadales	Pseudomonadaceae	Pseudomonas	Pseudomonas sp. LTGT-11-2Z	0.149038461538462	0	0	0.000899356729443377	0	0.024390243902439
+1329	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	Streptococcus canis	0.00480769230769231	0	0	0.000305406683480454	0	0.0635245901639344
+192812	Bacteria	Pseudomonadota	Alphaproteobacteria	Sphingomonadales	Erythrobacteraceae	Qipengyuania	Qipengyuania flava	0.0384615384615385	0	0	9.75453734416113e-05	0	0.00404858299595142
+270351	Bacteria	Pseudomonadota	Alphaproteobacteria	Hyphomicrobiales	Methylobacteriaceae	Methylobacterium	Methylobacterium aquaticum	0.0288461538461538	0	0	0.000324635275850341	0	0.0265848670756646
+134537	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Burkholderiaceae	Paraburkholderia	Paraburkholderia fungorum	0.0240384615384615	0	0	9.76253074927633e-05	0	0.00616016427104723
+2202825	Bacteria	Pseudomonadota	Alphaproteobacteria	Hyphomicrobiales	Methylobacteriaceae	Methylobacterium	Methylobacterium durans	0.0384615384615385	0	0	0.00183137360370743	0	0.343558282208589
+1170318	Bacteria	Actinomycetota	Actinomycetes	Propionibacteriales	Propionibacteriaceae	Cutibacterium	Cutibacterium avidum	0.0384615384615385	0	0	0.000463326002746046	0	0.05
+1252	Bacteria	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Leuconostoc	Leuconostoc carnosum	0.00961538461538462	0	0	0.00013965013965014	0	0.027027027027027
+2498451	Bacteria	Pseudomonadota	Gammaproteobacteria	Chromatiales	Chromatiaceae	Rheinheimera	Rheinheimera mangrovi	0.0288461538461538	0	0	0.000399414626212311	0	0.0375
+2724619	Bacteria	Bacteroidota	Flavobacteriia	Flavobacteriales	Weeksellaceae	Chryseobacterium	Chryseobacterium sp. NEB161	0.0192307692307692	0	0	0.000276171164534739	0	0.0287610619469027
+42858	Bacteria	Bacillota	Bacilli	Bacillales	Staphylococcaceae	Mammaliicoccus	Mammaliicoccus lentus	0.0144230769230769	0	0	0.000520235856992067	0	0.103813559322034
+698761	Bacteria	Pseudomonadota	Alphaproteobacteria	Hyphomicrobiales	Rhizobiaceae	Rhizobium	Rhizobium tropici	0.0144230769230769	0	0	0.000137689065357218	0	0.0205338809034908
+2048897	Bacteria	Pseudomonadota	Alphaproteobacteria	Hyphomicrobiales	Rhizobiaceae	Rhizobium	Rhizobium sp. NXC24	0.0721153846153846	0	0	0.00101787053962544	0	0.0484581497797357
+2080419	Bacteria	Deinococcota	Deinococci	Deinococcales	Deinococcaceae	Deinococcus	Deinococcus sp. NW-56	0.0192307692307692	0	0	0.000112097095384128	0	0.00838574423480084
+1658665	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Sphaerotilaceae	Mitsuaria	Mitsuaria sp. 7	0.163461538461538	0	0	0.00255389276244833	0	0.171079429735234
+1945662	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhodobacterales	Paracoccaceae	Paracoccus	Paracoccus contaminans	0.115384615384615	0	0	0.00203940048536362	0	0.15650406504065
+674703	Bacteria	Pseudomonadota	Alphaproteobacteria	Hyphomicrobiales	Hyphomicrobiaceae	Rhodoplanes	Rhodoplanes sp. Z2-YC6860	0.0336538461538462	0	0	0.000548128403309598	0	0.0467479674796748
+135740	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhodobacterales	Paracoccaceae	Paracoccus	Paracoccus kondratievae	0.0480769230769231	0	0	0.000889166659821694	0	0.0934959349593496
+316056	Bacteria	Pseudomonadota	Alphaproteobacteria	Hyphomicrobiales	Nitrobacteraceae	Rhodopseudomonas	Rhodopseudomonas palustris	0.0625	0	0	0.000315685178745825	0	0.0184804928131417
+1416914	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Burkholderiaceae	Pandoraea	Pandoraea pnomenusa	0.0144230769230769	0	0	0.00016394581178941	0	0.0179372197309417
+266	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhodobacterales	Paracoccaceae	Paracoccus	Paracoccus denitrificans	0.0576923076923077	0	0	0.000295155444903758	0	0.0145530145530146
+93219	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Burkholderiaceae	Pandoraea	Pandoraea norimbergensis	0.0480769230769231	0	0	0.000191036191997257	0	0.0105485232067511
+1532023	Bacteria	Pseudomonadota	Alphaproteobacteria	Sphingomonadales	Erythrobacteraceae	Qipengyuania	Qipengyuania sediminis	0.0528846153846154	0	0	0.00021942703748308	0	0.00856531049250535
+2703789	Bacteria	Bacteroidota	Sphingobacteriia	Sphingobacteriales	Sphingobacteriaceae	Mucilaginibacter	Mucilaginibacter sp. 14171R-50	0.0192307692307692	0	0	0.000217713260028125	0	0.016359918200409
+33050	Bacteria	Pseudomonadota	Alphaproteobacteria	Sphingomonadales	Sphingomonadaceae	Sphingopyxis	Sphingopyxis macrogoltabida	0.0240384615384615	0	0	0.000194673747711785	0	0.0201207243460765
+1515612	Bacteria	Pseudomonadota	Alphaproteobacteria	Sphingomonadales	Sphingomonadaceae	Sphingopyxis	Sphingopyxis fribergensis	0.0288461538461538	0	0	0.000573190299859956	0	0.0643863179074447
+450851	Bacteria	Pseudomonadota	Alphaproteobacteria	Caulobacterales	Caulobacteraceae	Phenylobacterium	Phenylobacterium zucineum	0.0144230769230769	0	0	0.000230801906703307	0	0.0439330543933054
+2201350	Bacteria	Pseudomonadota	Alphaproteobacteria	Caulobacterales	Caulobacteraceae	Phenylobacterium	Phenylobacterium parvum	0.0336538461538462	0	0	0.000290634129111279	0	0.0439330543933054
+1679497	Bacteria	Pseudomonadota	Alphaproteobacteria	Caulobacterales	Caulobacteraceae	Caulobacter	Caulobacter flavus	0.0288461538461538	0	0	0.000125701256511276	0	0.00836820083682008
+1727164	Bacteria	Bacteroidota	Sphingobacteriia	Sphingobacteriales	Sphingobacteriaceae	Pedobacter	Pedobacter sp. PACM 27299	0.00961538461538462	0	0	0.000140434683402176	0	0.0167364016736402
+2294119	Bacteria	Bacteroidota	Flavobacteriia	Flavobacteriales	Flavobacteriaceae	Flavobacterium	Flavobacterium sp. CJ74	0.00480769230769231	0	0	0.000110176282051282	0	0.0229166666666667
+314722	Bacteria	Pseudomonadota	Gammaproteobacteria	Xanthomonadales	Xanthomonadaceae	Pseudoxanthomonas	Pseudoxanthomonas suwonensis	0.0192307692307692	0	0	0.000178894511485593	0	0.0205761316872428
+649638	Bacteria	Deinococcota	Deinococci	Trueperales	Trueperaceae	Truepera	Truepera radiovictrix	0.00961538461538462	0	0	0.000115500696486612	0	0.02
+2587858	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhodobacterales	Roseobacteraceae	Roseivivax	Roseivivax sp. THAF40	0.0240384615384615	0	0	0.000116268501608404	0	0.012
+1520	Bacteria	Bacillota	Clostridia	Eubacteriales	Clostridiaceae	Clostridium	Clostridium beijerinckii	0.0384615384615385	0	0	0.000539704980028902	0	0.0390143737166324
+2175091	Bacteria	Bacteroidota	Flavobacteriia	Flavobacteriales	Flavobacteriaceae	Flavobacterium	Flavobacterium album	0.0144230769230769	0	0	0.000240707637680264	0	0.0333333333333333
+74329	Bacteria	Pseudomonadota	Alphaproteobacteria	Caulobacterales	Caulobacteraceae	Brevundimonas	Brevundimonas mediterranea	0.0817307692307692	0	0	0.000357654590160952	0	0.0120724346076459
+37921	Bacteria	Actinomycetota	Actinomycetes	Micrococcales	Micrococcaceae	Arthrobacter	Arthrobacter agilis	0.00961538461538462	0	0	9.94341479416106e-05	0	0.0142857142857143
+1061	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhodobacterales	Paracoccaceae	Rhodobacter	Rhodobacter capsulatus	0.0192307692307692	0	0	0.000440889109515918	0	0.0833333333333333
+1499308	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhodobacterales	Paracoccaceae	Paracoccus	Paracoccus mutanolyticus	0.0480769230769231	0	0	0.00065833055531009	0	0.0603448275862069
+169480	Bacteria	Actinomycetota	Actinomycetes	Micrococcales	Micrococcaceae	Rothia	Rothia amarae	0.00961538461538462	0	0	0.000127765400250156	0	0.0203252032520325
+2528642	Bacteria	Pseudomonadota	Alphaproteobacteria	Hyphomicrobiales	Lichenihabitantaceae	Lichenihabitans	Lichenihabitans psoromatis	0.0144230769230769	0	0	0.000113118299152645	0	0.0129310344827586
+643214	Bacteria	Bacillota	Bacilli	Bacillales	Staphylococcaceae	Mammaliicoccus	Mammaliicoccus stepanovicii	0.0192307692307692	0	0	0.000120370898462432	0	0.0145228215767635
+1874061	Bacteria	Pseudomonadota	Alphaproteobacteria	Sphingomonadales	Sphingomonadaceae	Sphingopyxis	Sphingopyxis sp. EG6	0.0961538461538462	0	0	0.00113886459207719	0	0.146881287726358
+2547962	Bacteria	Pseudomonadota	Gammaproteobacteria	Enterobacterales	Erwiniaceae	Erwinia	Erwinia sp. QL-Z3	0.0336538461538462	0	0	0.000493410173663446	0	0.0420168067226891
+233795	Bacteria	Pseudomonadota	Alphaproteobacteria	Hyphomicrobiales	Phyllobacteriaceae	Mesorhizobium	uncultured Mesorhizobium sp.	0.0336538461538462	0	0	0.00212436053988681	0	0.169811320754717
+286134	Bacteria	Pseudomonadota	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Shigella	uncultured Shigella sp.	0.0240384615384615	0	0	0.000341323970255282	0	0.0213776722090261
+218034	Bacteria	Pseudomonadota	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Enterobacteriaceae_unclassified	uncultured Enterobacteriaceae bacterium	0.0240384615384615	0	0	0.000274338306875422	0	0.0166270783847981
+83427	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	uncultured Streptococcus sp.	0.0384615384615385	0	0	0.00437181446904256	0	0.432203389830508
+189668	Bacteria	Bacillota	Bacilli	Bacillales	Staphylococcaceae	Staphylococcus	uncultured Staphylococcus sp.	0.0288461538461538	0	0	0.000929433581137676	0	0.0950118764845606
+237777	Bacteria	Pseudomonadota	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Escherichia	uncultured Escherichia sp.	0.0240384615384615	0	0	0.000425783286922564	0	0.0273972602739726
+42895	Bacteria	Pseudomonadota	Gammaproteobacteria	Enterobacterales	Enterobacteriaceae	Enterobacter	Enterobacter sp.	0.0480769230769231	0	0	0.000189744025205827	0	0.0114155251141553
+71237	Bacteria	Bacillota	Bacilli	Bacillales	Staphylococcaceae	Mammaliicoccus	Mammaliicoccus vitulinus	0.00480769230769231	0	0	0.000132415254237288	0	0.0275423728813559
+167973	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Lactococcus	uncultured Lactococcus sp.	0.00961538461538462	0	0	0.000189431576434054	0	0.037199124726477
+83428	Bacteria	Bacillota	Bacilli	Bacillales	Bacillaceae	Bacillus	uncultured Bacillus sp.	0.0144230769230769	0	0	0.000178969506565621	0	0.0285035629453682
+35783	Bacteria	Bacillota	Bacilli	Lactobacillales	Enterococcaceae	Enterococcus	Enterococcus sp.	0.0240384615384615	0	0	0.000218677476045084	0	0.0285035629453682
+167972	Bacteria	Bacillota	Bacilli	Lactobacillales	Enterococcaceae	Enterococcus	uncultured Enterococcus sp.	0.0192307692307692	0	0	0.000122254269302553	0	0.0190023752969121
+153152	Bacteria	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Lactobacillus	uncultured Lactobacillus sp.	0.0240384615384615	0	0	0.000174585352471564	0	0.0251141552511416
+208549	Bacteria	Pseudomonadota	Alphaproteobacteria	Hyphomicrobiales	Hyphomicrobiales_unclassified	Hyphomicrobiales_unclassified	uncultured Hyphomicrobiales bacterium	0.0288461538461538	0	0	0.00118656731943521	0	0.101415094339623
+257462	Bacteria	Pseudomonadota	Alphaproteobacteria	Hyphomicrobiales	Phyllobacteriaceae	Phyllobacteriaceae_unclassified	uncultured Phyllobacteriaceae bacterium	0.0240384615384615	0	0	0.000202841261513401	0	0.0242290748898678
+267632	Bacteria	Pseudomonadota	Alphaproteobacteria	Hyphomicrobiales	Brucellaceae	Ochrobactrum	uncultured Ochrobactrum sp.	0.0432692307692308	0	0	0.000216763681735824	0	0.0123203285420945
+158754	Bacteria	Pseudomonadota	Alphaproteobacteria	Sphingomonadales	Sphingomonadaceae	Sphingomonas	uncultured Sphingomonas sp.	0.0480769230769231	0	0	0.0189961169600157	0	0.660416666666667
+293405	Bacteria	Pseudomonadota	Alphaproteobacteria	Sphingomonadales	Sphingomonadales_unclassified	Sphingomonadales_unclassified	uncultured Sphingomonadales bacterium	0.0336538461538462	0	0	0.000162723765231807	0	0.00833333333333333
+169976	Bacteria	Pseudomonadota	Alphaproteobacteria	Sphingomonadales	Sphingomonadaceae	Sphingomonadaceae_unclassified	uncultured Sphingomonadaceae bacterium	0.0432692307692308	0	0	0.000489697837240823	0	0.0208333333333333
+199684	Bacteria	Pseudomonadota	Alphaproteobacteria	Hyphomicrobiales	Nitrobacteraceae	Bradyrhizobium	uncultured Bradyrhizobium sp.	0.0288461538461538	0	0	0.000182389797365384	0	0.0106609808102345
+316087	Bacteria	Pseudomonadota	Alphaproteobacteria	Sphingomonadales	Sphingomonadaceae	Sphingobium	uncultured Sphingobium sp.	0.0384615384615385	0	0	0.00016370411418583	0	0.00634249471458774
+640081	Bacteria	Pseudomonadota	Betaproteobacteria	Rhodocyclales	Rhodocyclaceae	Azospira	Azospira oryzae	0.0432692307692308	0	0	0.000302107561093154	0	0.0187891440501044
+670307	Bacteria	Pseudomonadota	Alphaproteobacteria	Hyphomicrobiales	Hyphomicrobiaceae	Hyphomicrobium	Hyphomicrobium denitrificans	0.0432692307692308	0	0	0.000189294210503902	0	0.0141987829614604
+717785	Bacteria	Pseudomonadota	Alphaproteobacteria	Hyphomicrobiales	Hyphomicrobiaceae	Hyphomicrobium	Hyphomicrobium sp. MC1	0.0240384615384615	0	0	0.00017649311635641	0	0.0182555780933063
+267629	Bacteria	Pseudomonadota	Betaproteobacteria	Rhodocyclales	Rhodocyclaceae	Azospira	uncultured Azospira sp.	0.00961538461538462	0	0	0.000263628507044676	0	0.0350109409190372
+269069	Bacteria	Pseudomonadota	Alphaproteobacteria	Hyphomicrobiales	Methylobacteriaceae	Methylorubrum	Methylorubrum aminovorans	0.00961538461538462	0	0	0.000126449922030658	0	0.0196936542669584
+157278	Bacteria	Pseudomonadota	Alphaproteobacteria	Hyphomicrobiales	Methylobacteriaceae	Methylobacterium	uncultured Methylobacterium sp.	0.00961538461538462	0	0	0.000305361384005867	0	0.0547045951859956
+292277	Bacteria	Pseudomonadota	Alphaproteobacteria	Sphingomonadales	Sphingomonadaceae	Novosphingobium	uncultured Novosphingobium sp.	0.0336538461538462	0	0	0.000582204753051032	0	0.023454157782516
+658225	Bacteria	Pseudomonadota	Alphaproteobacteria	Sphingomonadales	Sphingomonadaceae	Sphingomonas	Sphingomonas glacialis	0.0384615384615385	0	0	0.000829763353002188	0	0.0426439232409382
+74696	Bacteria	Pseudomonadota	Alphaproteobacteria	Hyphomicrobiales	Nitrobacteraceae	Nitrobacteraceae_unclassified	star-like microcolonies	0.0240384615384615	0	0	0.000162559548381419	0	0.0147991543340381
+328225	Bacteria	Pseudomonadota	Alphaproteobacteria	Sphingomonadales	Erythrobacteraceae	Erythrobacter	Erythrobacter dokdonensis	0.0288461538461538	0	0	0.000294706884940696	0	0.0149253731343284
+663950	Bacteria	Pseudomonadota	Pseudomonadota_unclassified	Pseudomonadota_unclassified	Pseudomonadota_unclassified	Pseudomonadota_unclassified	proteobacterium symbiont of Nilaparvata lugens	0.0384615384615385	0	0	0.000303578841770637	0	0.0208333333333333
+327691	Bacteria	Pseudomonadota	Alphaproteobacteria	Sphingomonadales	Sphingomonadaceae	Sphingomonas	Sphingomonas rhizogenes	0.0288461538461538	0	0	0.000547836974410894	0	0.0676532769556025
+1416806	Bacteria	Pseudomonadota	Betaproteobacteria	Burkholderiales	Alcaligenaceae	Bordetella	Bordetella genomosp. 8	0.00961538461538462	0	0	0.000131885367627173	0	0.015695067264574
+1176533	Bacteria	Pseudomonadota	Gammaproteobacteria	Xanthomonadales	Xanthomonadaceae	Luteimonas	Luteimonas granuli	0.0240384615384615	0	0	0.00020016164771307	0	0.0208333333333333
+41431	Bacteria	Cyanobacteriota	Cyanophyceae	Chroococcales	Aphanothecaceae	Rippkaea	Rippkaea orientalis	0.0144230769230769	0	0	0.000115061555231629	0	0.0176991150442478

@@ -1,0 +1,157 @@
+---
+title: "NCT Contaminant Profile"
+author: "Linh Dang"
+format: html
+editor: visual
+---
+
+# 0. Load libraries and object
+
+```{r}
+library(zoo)
+library(phyloseq)
+library(microbiome)
+library(taxizedb)
+library(readxl)
+library(kableExtra)
+library(dplyr)
+library(pairwiseAdonis)
+library(cowplot)
+library(ggrepel)
+library(grid)
+library(tidyr)
+library(tidyverse)
+#library(DESeq2)
+library(rstatix)
+library(Wrench)
+#install.packages("remotes")
+#remotes::install_github("david-barnett/microViz")
+library(microViz)
+library(ggpubr)
+library(pheatmap)
+library(ALDEx2)
+library(Maaslin2)
+library(patchwork)
+library(cowplot)
+library(gridExtra)
+##-----
+Kolors <- c("#9d547c","#56ca63","#a357d6","cornflowerblue","#419d2a","sandybrown","red3","peachpuff","cyan","paleturquoise3","mistyrose","mediumpurple","mediumseagreen","mediumorchid","moccasin","orange4","olivedrab","midnightblue","papayawhip","palevioletred4","brown1","greenyellow","orchid","navy","darkred","navajowhite1","mistyrose1","grey85","#525fd6","red2","#8cbe3a","#c944aa","indianred3","#5ba557","#9e66cb","#c1b735","#6d82ec","grey25","#e69728","#6654b0","lightsalmon3","lightcyan1","khaki1","seagreen1","plum1","lightsteelblue1","palevioletred3","mintcream","magenta3","#799330","#da7fdf","#3c782c","#e44586","blue4","#63c996","#dc3f53","#49cbc8","#cf3f29","#4fabda","#da6c2b","#598bd1","#b78c24","#8d4191","#a0b971","slategray1","sienna","plum1","lightyellow1","lightskyblue3","linen","limegreen","cornsilk1","mediumaquamarine","gray14","gold3","darkviolet","#b2386a","#479d71","#ae4341","#2ba198","#e07557","#5361a3","#dda353","#aa98df","#5b6114","#dc89bf","#327243","slateblue1","#e57b94","#277257","#9b62a0","#bbab59","#98495a","#526229","#d8827d","#857624","gray40","#9a4a22","#7c7d46","mediumslateblue","lemonchiffon1","#e3a073","#9e6b33", "gray74","slateblue1","rosybrown3", "lawngreen","gainsboro","dodgerblue3","deeppink3","firebrick3", "orchid2", "olivedrab1", "ivory3", "darkseagreen", "bisque2", "darkgoldenrod2", "blue2", "skyblue", "seashell2", "turquoise", "tan1", "seagreen2", "palevioletred3", "linen", "steelblue4","ghostwhite","dodgerblue1","deeppink1","firebrick1", "limegreen", "purple3", "khaki3", "snow3", "darkslategray","darkorchid","lavender", "magenta2", "palegreen", "salmon", "maroon", "cyan2","#671408","#FAEBD7","#7FFFD4","#F0FFFF","#A52A2A","burlywood","cadetblue","#7FFF00","chocolate","cornsilk","slateblue1","#FF7F50","red1","#008B8B","darkgoldenrod1","darkolivegreen","darkorange4","white","hotpink","honeydew1","goldenrod2","darkgreen","oldlace","darkslategray3","navajowhite3","orchid4","gray25","#F0924D")
+
+#NCTs <- readRDS("../../physeqs/NCTs_CorrectedTaxa_AdjustName.rds")
+NCTs <- readRDS("../../physeqs/NCTs_v3.rds")
+```
+
+# Normalization
+
+```{r}
+NCTs_rar <- NCTs %>% 
+  rarefy_even_depth(sample.size = 500, rngseed = 911) %>% 
+  prune_taxa(taxa_sums(.)>=10, .)
+NCTs_wrench <- WrenchWrapper(NCTs, grp = "sample_type", roundUp = T) %>% 
+  prune_taxa(taxa_sums(.)>=10, .)
+```
+
+# 1. Beta Diversity
+
+Configuration
+
+```{r}
+normlization_type <- "Wrench"
+#PhyloObj <- NCTs_rar
+PhyloObj <- NCTs_wrench
+```
+
+## 1.1 Sample Types
+
+```{r}
+PhyloObj %>% 
+  BetaPlot(strata_f = "sample_type", title_method = paste0(normlization_type, "-sample types"))
+```
+
+## 1.2 Person
+
+```{r}
+PhyloObj %>% 
+  subset_samples(person %in% c("J", "N", "TR")) %>% 
+  BetaPlot(strata_f = "person", title_method = paste0(normlization_type, "-persons"))
+```
+
+## 1.3 Year
+
+```{r}
+PhyloObj %>% 
+  subset_samples(year_qtr == "2021/04" | year_qtr == "2022/01" | year_qtr == "2022/02" | year_qtr == "2022/03" | year_qtr == "2022/04") %>% 
+  BetaPlot_Simple(strata_f = "year_qtr", type = "sample_type", title_method = "Wrench normalization")
+```
+
+# 2. Diff Abund. Species
+
+```{r}
+pseq <- NCTs_wrench %>% 
+  subset_samples(sample_type != "pcr_ctrl") %>% 
+  #tax_glom("genus") %>% 
+  #ps_mutate(id = sample_names(.)) %>% 
+  prune_samples(sample_sums(.)>250, .) %>% 
+  prune_taxa(taxa_sums(.)>10, .)
+  
+df_data <- pseq %>% otu_table()  %>% as.data.frame() %>%  as.matrix()
+df_metadata <- pseq %>% sample_data() %>% as_tibble() %>% dplyr::select(id, sample_type, year_qtr, person) %>% as.data.frame() %>% column_to_rownames(var = "id")
+Tax_tab <- NCTs %>% 
+  tax_table() %>% 
+  as.data.frame() %>%  
+  as_tibble(rownames = NA) %>% 
+  rownames_to_column(var = "TaxaID")
+```
+
+Sample Type
+
+```{r}
+MaAsLin2_Wrapper2(df_data, df_metadata, Treatment = "sample_type", TreatMent_ref = "buffer_ctrl",OutDir = "./MaAslin2/Wrench/Paraffin_vs_Buffer")
+res <- MaAslin2_plot_2(Path2Tab = "./MaAslin2/Wrench/Paraffin_vs_Buffer/significant_results.tsv", coef_thres = 2.0, qval_thres = 0.05, Tax_tab = Tax_tab, legend_rank = "genus", title_method = "")
+plt <- (res$gg_anno + res$gg_data + plot_layout(widths = c(.1, 1)))/res$gg_legend
+plot(res$gg_legend)
+
+## save image
+png(file="DAA_wrench_paraffin_vs_buffer.png")
+plot(plt)
+dev.off()
+dev.o
+```
+
+# 3. Make a List
+
+```{r}
+## Tab: TaxID, taxa info, prevalence, summary(abundance)
+
+# pseq <- NCTs_rar %>% 
+#   transform_sample_counts(fun = function(x){x/sum(x)})
+pseq <- NCTs_wrench %>% 
+  tax_transform(trans = "compositional", rank = "genus") %>% 
+  ps_get()
+df_TaxaInfo <- pseq %>% 
+  tax_table() %>% 
+  as.data.frame() %>%  
+  as_tibble(rownames = NA) %>% 
+  rownames_to_column(var = "TaxaID")
+p <- prevalence(pseq)
+df_prev <- data.frame(TaxaID = names(p), Prevalence = p)
+
+## creating df for stats of rel abund
+Stats <- function(x){
+  FistQuantile = quantile(x, 0.25)[[1]]
+  Median = median(x)
+  ThirdQuantile = quantile(x, 0.75)[[1]]
+      Mean <- mean(x, na.rm=TRUE)
+      #SD <- sd(x, na.rm=TRUE)
+      #Min <- min(x, na.rm=TRUE)
+      Max <- max(x, na.rm=TRUE)
+      return(c(FistQuantile=FistQuantile, Median=Median, Mean=Mean, ThirdQuantile = ThirdQuantile, Max=Max))
+    }
+df_abd <- t(apply(pseq %>% otu_table,1, Stats)) %>% as.data.frame() %>% rownames_to_column("TaxaID")
+
+## merge all
+df_all <- df_TaxaInfo %>% 
+  left_join(., df_prev, by = "TaxaID") %>% 
+  left_join(., df_abd, by = "TaxaID")
+write.table(df_all, "Wrench_genus_Stats.tsv", sep = "\t", quote = F, col.names = T, row.names = F)
+```

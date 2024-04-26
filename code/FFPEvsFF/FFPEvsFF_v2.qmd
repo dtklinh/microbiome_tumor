@@ -1,0 +1,198 @@
+---
+title: "FFPEvsFF_v2"
+format: html
+editor: visual
+---
+
+# Loading Object and libraries
+
+```{r}
+library(phyloseq)
+library(microbiome)
+library(decontam)
+library(ggrepel)
+library(microViz)
+library(vegan)
+library(kableExtra)
+library(tidyverse)
+library(dplyr)
+library(DESeq2)
+library(Wrench)
+library(VennDiagram)
+
+pseq <- readRDS("../../raw_data/Bulk_FFPE/All.rds")
+
+df_metadata <- pseq %>% sample_data()
+```
+
+# 1) Original True Sample
+
+## 1.1) Beta plot when not apply decontamination
+
+Sequencing depth
+
+```{r}
+pseq %>% 
+  ps_filter(true.control == "true") %>% 
+  Inspect_SequencingDepth()
+```
+
+### 1.1.0) Without Normalization
+
+Beta plot
+
+```{r}
+## beta plot for true sample with different experiment type
+pseq %>% 
+  ps_filter(true.control == "true") %>% 
+  BetaPlot(strata = sample_data(.)$Experiment_Type, strata_f = "Experiment_Type", title_method = "True sample, diff Experiement Types")
+```
+
+```{r}
+## Beta plot of true sample, segregated by Bulk_Tissue ID
+pseq %>% 
+  ps_filter(true.control == "true") %>% 
+  BetaPlot_Simple(strata_f = "Bulk_Tissue_ID", type = "Experiment_Type", title_method = "True Sample with Bulk Tissue ID")
+```
+
+### 1.1.1) Normalized by rarefying
+
+```{r}
+seed <- 911
+pseq %>% 
+  ps_filter(true.control == "true") %>% 
+  rarefy_even_depth(sample.size = min(sample_sums(.)), rngseed = seed) %>% 
+  BetaPlot(sample_data(.)$Experiment_Type, strata_f = "Experiment_Type", title_method = "Org True sample with Rarefying")
+```
+
+```{r}
+seed <- 911
+pseq %>% 
+  ps_filter(true.control == "true") %>% 
+  rarefy_even_depth(sample.size = min(sample_sums(.)), rngseed = seed) %>% 
+  BetaPlot_Simple(strata_f = "Bulk_Tissue_ID", type = "Experiment_Type", title_method = "Org True Sample Rar with Bulk Tissue ID")
+```
+
+### 1.1.2) Normalized by Wrench
+
+```{r}
+
+pseq %>% 
+  ps_filter(true.control == "true") %>% 
+  WrenchWrapper(grp = "Experiment_Type", roundUp = F) %>% 
+  BetaPlot(sample_data(.)$Experiment_Type, strata_f = "Experiment_Type", title_method = "Org True sample with Wrench")
+```
+
+```{r}
+pseq %>% 
+  ps_filter(true.control == "true") %>% 
+  WrenchWrapper(grp = "Experiment_Type", roundUp = F) %>%  
+  BetaPlot_Simple(strata_f = "Bulk_Tissue_ID", type = "Experiment_Type", title_method = "Org True Sample Wrench with Bulk Tissue ID")
+```
+
+## 1.2) Compositional Plot
+
+### 1.2.0) Without Normalization
+
+```{r}
+pseq %>% 
+  ps_filter(true.control == "true") %>% 
+  comp_barplot("species", facet_by = "Experiment_Type", n_taxa = 15) +
+  coord_flip()
+```
+
+```{r}
+## same as above, just different setting
+plots <- pseq %>% 
+  ps_filter(true.control == "true") %>% 
+  comp_barplot("genus", n_taxa = 15, group_by = "Experiment_Type")
+
+# combine plots with shared legend
+patchwork::wrap_plots(plots, nrow = 3, guides = "collect") &
+  theme(axis.ticks.x = element_blank(), axis.text.x = element_blank())
+```
+
+```{r}
+## same as above, but look only FFPE sample and compare btw true vs control
+plots <- pseq %>% 
+  ps_filter(Experiment_Type == "ffpe") %>% 
+  comp_barplot("genus", n_taxa = 15, group_by = "true.control")
+
+# combine plots with shared legend
+patchwork::wrap_plots(plots, nrow = 3, guides = "collect") &
+  theme(axis.ticks.x = element_blank(), axis.text.x = element_blank())
+```
+
+### 1.2.1) With Rarefying
+
+```{r}
+plots <- pseq %>% 
+  ps_filter(true.control == "true") %>% 
+  rarefy_even_depth(sample.size = min(sample_sums(.)), rngseed = seed) %>% 
+  comp_barplot("genus", n_taxa = 15, group_by = "Experiment_Type")
+
+# combine plots with shared legend
+patchwork::wrap_plots(plots, nrow = 3, guides = "collect") &
+  theme(axis.ticks.x = element_blank(), axis.text.x = element_blank())
+```
+
+### 1.2.2) With Wrench
+
+```{r}
+plots <- pseq %>% 
+  ps_filter(true.control == "true") %>% 
+  WrenchWrapper(grp = "Experiment_Type", roundUp = T) %>%  
+  comp_barplot("genus", n_taxa = 15, group_by = "Experiment_Type")
+
+# combine plots with shared legend
+patchwork::wrap_plots(plots, nrow = 3, guides = "collect") &
+  theme(axis.ticks.x = element_blank(), axis.text.x = element_blank())
+```
+
+# 2) Decontam
+
+Create Phyloseq object with decontam package
+
+```{r}
+#cont <- isContaminant()
+pseq_dc <- pseq %>% 
+  ps_mutate(is_neg = ifelse(true.control == "true", FALSE, TRUE)) %>% 
+  filter_by_low_abundance(threshold = 1e-5, A = 1) %>% 
+  #ntaxa() %>% 
+  #Inspect_SequencingDepth() %>% 
+  #isContaminant(method="prevalence", neg="is_neg", threshold = 0.1, normalize = FALSE, detailed = FALSE) %>% 
+  Wrapper_Decontam(neg_f = "is_neg", thres = 0.1) %>% 
+  subset_samples(is_neg == FALSE) %>% 
+  prune_taxa(taxa_sums(.)==0, .)
+
+pseq %>% 
+  prune_taxa(!is_contam, .) %>% 
+  subset_samples(true.control == "true")
+
+```
+
+```{r}
+## test
+PlotVenn2Sets(
+  pseq %>% 
+    subset_samples(true.control == "true") %>% 
+    filter_by_low_abundance(threshold = 1e-5, A = 1) %>% 
+    prune_taxa(taxa_sums(.)>0, .) %>% 
+    taxa_names(),
+  pseq %>% 
+    subset_samples(true.control == "control") %>% 
+    filter_by_low_abundance(threshold = 1e-5, A = 1) %>% 
+    prune_taxa(taxa_sums(.)>0, .) %>% 
+    taxa_names(),
+  "True samples",
+  "Control"
+)
+```
+
+## 2.1) Beta
+
+## 2.2) Compositional Plot
+
+# 3) Scrub
+
+# 4) Nejman

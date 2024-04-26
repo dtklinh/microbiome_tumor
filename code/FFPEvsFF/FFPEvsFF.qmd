@@ -1,0 +1,262 @@
+---
+title: "Fresh frozen vs. FFPE samples"
+author: "Linh Dang"
+format: html
+editor: visual
+---
+
+# Load libraries and object
+
+```{r}
+library(phyloseq)
+library(microbiome)
+library(microViz)
+library(vegan)
+library(tidyverse)
+library(ggrepel)
+
+## Phyloseq Object
+FFPE <- readRDS("./raw_data/Bulk_FFPE/FFPE_TaxaAdj.rds")
+FF <- readRDS("./raw_data/Bulk_FFPE/FF_TaxaAdj.rds")
+NCT <- readRDS("./raw_data/Bulk_FFPE/NCT_TaxaAdj.rds")
+
+## merge them all together
+PLS <- merge_phyloseq(FF, FFPE, NCT)
+df_sampledata <- PLS %>% sample_data()
+df_sampledata <- df_sampledata[, -c(9,10)]
+```
+
+# Additional Functions
+
+```{r}
+AlphaPlot <- function(PhyloObj, index = "Observed", y_label = "Observed species", add_legend = FALSE){
+  group.colors <- c(ctrl = "dodgerblue3", Gem = "firebrick2")
+  my.labels <- c("Ctrl", "Gem")
+  rich_meta <- merge(PhyloObj %>% sample_data(), PhyloObj %>% estimate_richness(), by = "row.names")
+  ## only using statistics test
+    ob <- rich_meta %>% t_test(as.formula(paste0(index, "~ Treatment"))) %>% adjust_pvalue(method = "BH") %>%  add_significance("p.adj") %>% add_xy_position()
+  
+  ##-----
+  p1 <- ggplot (rich_meta, aes_string (x="Treatment", y=index, fill="Treatment"))+ 
+  geom_boxplot()+
+  geom_point (position=position_jitterdodge( jitter.width = 0.05))+
+  theme_gray() + 
+  xlab("")+
+  ylab(y_label)+
+  # facet_grid(.~tp)+
+  scale_x_discrete(labels= my.labels)+
+  scale_fill_manual(values=group.colors, labels = c("KPC tumor with and without gemcitabine treatment"))+
+  # ggtitle("KPC tumor vs. Healthy pancreas - Observed species") +
+  theme(axis.text.y = element_text (size=11),
+        axis.title = element_text(size=12, face="bold"))
+      
+  if(!add_legend){    
+    p1 <- p1 + theme(legend.position = "none",
+        # legend.background = element_rect(size=0.25, linetype="solid", colour ="black"),
+        legend.key.size = unit(4,"mm"),
+        axis.text.x = element_blank(),
+        plot.title = element_text(size = 12))
+   
+  } else {
+  p1 <- p1 + theme(legend.text = element_text(size = 12),
+        legend.title = element_blank(),
+        # legend.background = element_rect(size=0.25, linetype="solid", colour ="black"),
+        legend.key.size = unit(4,"mm"),
+        axis.text.x = element_blank(),
+        plot.title = element_text(size = 12))
+  }
+    p1 <- p1 + stat_pvalue_manual(ob, label = "p.adj", inherit.aes = FALSE, tip.length = 0.01)
+    return(p1)
+}
+###--------------------
+AlphaPlotWrapper <- function(PhyloObj, roundUp = TRUE){
+  ## round up/down otu_table
+  if(roundUp){
+    otu_table(PhyloObj) <- PhyloObj %>% otu_table() %>% round()
+  } else{
+    otu_table(PhyloObj) <- PhyloObj %>% otu_table() %>% ceiling()
+  }
+  plt.1 <- AlphaPlot(PhyloObj, index = "Observed", y_label = "Observed species", add_legend = F)
+  plt.2 <- AlphaPlot(PhyloObj, index = "Shannon", y_label = "Shannon index", add_legend = F)
+  plt.3 <- AlphaPlot(PhyloObj, index = "InvSimpson", y_label = "Inv Simpson index", add_legend = F)
+return(list("Observed" = plt.1, "Shannon" = plt.2, "InvSimpson" = plt.3))
+}
+###----- Beta --------------
+BetaPlot <- function(PhyloObjct, strata = NULL, strata_f = NULL, title_method = "Original", dis_method = "bray", ordination_method = "PCoA"){
+  bray_dist = phyloseq::distance(PhyloObjct, method=dis_method)
+  ordination = ordinate(PhyloObjct, method=ordination_method, distance=bray_dist)
+
+  pcoa1 <- paste("PCoA 1 [", round(ordination[[3]]$Relative_eig[1], digits = 3)*100, "%]", sep = "")
+  pcoa2 <- paste("PCoA 2 [", round(ordination[[3]]$Relative_eig[2], digits = 3)*100, "%]", sep = "")
+
+##p.adonis <- adonis2(bray_dist ~ sample_data(PhyloObjct)$Treatment)
+p.adonis <- adonis2(bray_dist ~ strata)
+
+p <- case_when(
+  p.adonis$`Pr(>F)`[1] > 0.05 ~ paste("p =", p.adonis$`Pr(>F)`[1], "n.s.", sep = " "),
+  p.adonis$`Pr(>F)`[1] < 0.05 &  p.adonis$`Pr(>F)`[1] > 0.01 ~ paste("p =", p.adonis$`Pr(>F)`[1], "*", sep = " "),
+  p.adonis$`Pr(>F)`[1] <= 0.01 & p.adonis$`Pr(>F)`[1] > 0.001  ~ paste("p =", p.adonis$`Pr(>F)`[1], "**", sep = " "),
+  p.adonis$`Pr(>F)`[1] <= 0.001 ~ paste("p =",p.adonis$`Pr(>F)`[1], "***", sep = " "),
+)
+
+annotations <- data.frame(
+        xpos = c(-Inf),
+        ypos =  c(Inf),
+        annotateText = p,
+        hjustvar = c(-0.2) ,
+        vjustvar = c(1.5))
+
+p1 <- plot_ordination(PhyloObjct, ordination, color = strata_f) +
+  geom_point(aes_string(colour = strata_f), size = 3) +
+  geom_text_repel(aes(label = id), size = 4) +
+  theme(aspect.ratio=1) +
+  theme_bw()+
+  scale_color_brewer(palette = "Set1")+
+  stat_ellipse() +
+  xlab(pcoa1)+
+  ylab(pcoa2)+
+  theme(panel.grid =  element_blank())+
+  ggtitle(paste0(title_method, " - Tumor gemcitabine")) +
+  theme (axis.text=element_text(size=14),
+         axis.title=element_text(size=16,face="bold"),
+        legend.text = element_text(size = 12),
+        legend.title = element_blank())+
+  geom_text(data=annotations,aes(x=xpos,y=ypos,hjust=hjustvar,vjust=vjustvar,label=annotateText), size = 4.5, inherit.aes = FALSE)
+return(p1)
+}
+##### ---- Beta simple
+BetaPlot_Simple <- function(PhyloObjct, strata_f = NULL, type = NULL, title_method = "Original", dis_method = "bray", ordination_method = "PCoA"){
+  bray_dist = phyloseq::distance(PhyloObjct, method=dis_method)
+  ordination = ordinate(PhyloObjct, method=ordination_method, distance=bray_dist)
+
+  pcoa1 <- paste("PCoA 1 [", round(ordination[[3]]$Relative_eig[1], digits = 3)*100, "%]", sep = "")
+  pcoa2 <- paste("PCoA 2 [", round(ordination[[3]]$Relative_eig[2], digits = 3)*100, "%]", sep = "")
+
+##p.adonis <- adonis2(bray_dist ~ sample_data(PhyloObjct)$Treatment)
+
+
+
+
+p1 <- plot_ordination(PhyloObjct, ordination, color = strata_f, shape = type) +
+  geom_point(aes_string(colour = strata_f, shape = type), size = 3) +
+  #geom_text_repel(aes(label = id), size = 4) +
+  theme(aspect.ratio=1) +
+  theme_bw()+
+  scale_color_brewer(palette = "Set1")+
+  #stat_ellipse() +
+  xlab(pcoa1)+
+  ylab(pcoa2)+
+  theme(panel.grid =  element_blank())+
+  ggtitle(paste0(title_method, " - Tumor gemcitabine")) +
+  theme (axis.text=element_text(size=14),
+         axis.title=element_text(size=16,face="bold"),
+        legend.text = element_text(size = 12),
+        legend.title = element_blank())
+  # geom_text(data=annotations,aes(x=xpos,y=ypos,hjust=hjustvar,vjust=vjustvar,label=annotateText), size = 4.5, inherit.aes = FALSE)
+return(p1)
+}
+## ---- wrench normalization wrapper
+WrenchWrapper <- function(PhyloObjct, roundUp = F){
+  cnt_table <- PhyloObjct %>% otu_table()
+  group <- PhyloObjct %>% sample_data() %>% pull(Treatment)
+  w <- wrench(cnt_table, condition = group)
+  
+  deseq.obj <- DESeqDataSetFromMatrix(cnt_table %>% as.data.frame(), DataFrame(group), ~group)
+  DESeq2::sizeFactors(deseq.obj) <- w$nf
+  cnt_table_normalized <- DESeq2::counts(deseq.obj, normalized=TRUE)
+  if(roundUp){cnt_table_normalized <- cnt_table_normalized %>% round()}
+  return(phyloseq(otu_table(cnt_table_normalized, taxa_are_rows = T), tax_table(PhyloObjct %>% tax_table()), sample_data(PhyloObjct %>% sample_data())))
+}
+## MAAsLin2 Wrapper
+## Apply MaAslin2 for phyloseq object after decontam and normalized
+MaAsLin2_Wrapper <- function(PhyLoObj, OutDir){
+  ## Normalization: rarefying (rar), Wrench (wrench)
+  
+  df_data <- PhyLoObj %>% otu_table()  %>% t() %>% as.data.frame()
+  df_metadata <- PhyLoObj %>% sample_data() %>% as_tibble() %>% dplyr::select(barcode, Treatment) %>% as.data.frame()
+  row.names(df_metadata) <- df_metadata$barcode
+  fit.RmLowAbun.Rar <- Maaslin2(input_data = df_data,
+                              input_metadata = df_metadata,
+                              #output = "./MaAsLin2_OutDir/RmLowabun.Rar",
+                              output = OutDir,
+                              min_abundance = 0,
+                              min_prevalence = 0,
+                              normalization = "NONE",
+                              fixed_effects = c("Treatment"),
+                              reference = c("Treatment,ctrl"))
+}
+rarefy_even_depth_wrapper <- function(PhyLoObj, seed=711){
+  return(rarefy_even_depth(PhyLoObj, sample.size = PhyLoObj %>% sample_sums() %>% min(), rngseed = seed))
+}
+###---------------------------------------------------------------
+## plot MaAsLin2 results
+MaAslin2_plot <- function(Path2Tab, Tax_tab, title_method=""){
+  ## plot significant results
+  ## Read table
+  Tab <- read.table(Path2Tab, header = TRUE)
+  if(dim(Tab)[1]==0){return(NULL)}
+  Tab <- Tab %>% as_tibble() %>% 
+    mutate(TaxaID = substr(feature, 2, nchar(feature))) %>% 
+    left_join(., Tax_tab[, c("TaxaID", "species")], by = "TaxaID") %>% 
+    mutate(legend = paste0(TaxaID, ":", species))
+  
+  Tab$legend = factor(Tab$legend,levels=Tab$legend[order(Tab$coef)])
+  plt <- ggplot(Tab, aes(x=legend,y=coef,fill=coef>0))+
+    geom_col() + coord_flip()+
+    scale_fill_manual(values=c("blue","red"),
+      labels=c("negative","positive"))
+  plt <- plt + xlab("") +
+    ggtitle(paste0(title_method, " - MaAsLin2")) +
+    theme (axis.title=element_text(size=12,face="bold"),
+        legend.title = element_blank())
+  return(plt)
+}
+###---------------------------------------------------------------
+## plot ALDEx2 results
+ALDex2_plot <- function(x.all, Tax_tab, p_val_thres = 0.05, title_method=""){
+  Tab <- x.all %>% filter(we.ep <= p_val_thres) %>% 
+    rownames_to_column(var="TaxaID") %>% 
+    left_join(., Tax_tab[, c("TaxaID", "species")], by = "TaxaID") %>% 
+    mutate(legend = paste0(TaxaID, ":", species))
+  if(dim(Tab)[1]==0){return(NULL)}
+  Tab$legend = factor(Tab$legend,levels=Tab$legend[order(Tab$diff.btw)])
+  plt <- ggplot(Tab, aes(x=legend,y=diff.btw,fill=diff.btw>0))+
+    geom_col() + coord_flip()+
+    scale_fill_manual(values=c("blue","red"),
+      labels=c("negative","positive"))
+  plt <- plt + xlab("") +
+    ggtitle(paste0(title_method, " - ALDEx2")) +
+    theme (axis.title=element_text(size=12,face="bold"),
+        legend.title = element_blank())
+  return(plt)
+}
+```
+
+Edit sample data
+
+```{r}
+## add Experiment_ID : one of the following: FF_new, FF_old, FFPE
+## add Bulk_Tissue_ID : NA for other NCTs except parafin ctrl. other true sample must have one Bulk_Tissue_ID
+
+library(xlsx)
+write.xlsx(df_sampledata, "./raw_data/Bulk_FFPE/df_sampledata.xlsx")
+
+df_sampledata_new <- read.xlsx("./raw_data/Bulk_FFPE/df_sampledata.xlsx",1)
+df_sampledata_new <- df_sampledata_new %>% column_to_rownames("NA.")
+
+sample_data(PLS) <- sample_data(df_sampledata_new)
+saveRDS(PLS, "./raw_data/Bulk_FFPE/All.rds")
+df_sd <- sample_data(PLS_all)
+edi
+```
+
+Investigate original data without decontamination
+
+# Not Decontaminate
+
+```{r}
+PLS_all <- readRDS("./raw_data/Bulk_FFPE/All.rds")
+True.Samples <- PLS_all %>% subset_samples(true.control == "true")
+True.Samples %>% BetaPlot(strata_f = "Experiment_Type", title_method = "Beta diversity among different type of samples")
+True.Samples %>% BetaPlot_Simple(strata_f = "Bulk_Tissue_ID", type = "Experiment_Type", title_method = "Original - without decontamination process")
+```

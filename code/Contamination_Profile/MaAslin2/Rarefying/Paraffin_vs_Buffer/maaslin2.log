@@ -1,0 +1,837 @@
+2024-04-24 15:55:49.370034 INFO::Writing function arguments to log file
+2024-04-24 15:55:49.392094 DEBUG::Function arguments
+2024-04-24 15:55:49.39414 DEBUG::Output folder: ./MaAslin2/Rarefying/Paraffin_vs_Buffer
+2024-04-24 15:55:49.395769 DEBUG::Min Abundance: 0.000000
+2024-04-24 15:55:49.397331 DEBUG::Min Prevalence: 0.000000
+2024-04-24 15:55:49.398859 DEBUG::Normalization: NONE
+2024-04-24 15:55:49.400474 DEBUG::Transform: LOG
+2024-04-24 15:55:49.402036 DEBUG::Analysis method: LM
+2024-04-24 15:55:49.403722 DEBUG::Max significance: 0.250000
+2024-04-24 15:55:49.405322 DEBUG::Random effects:
+2024-04-24 15:55:49.406997 DEBUG::Fixed effects: sample_type
+2024-04-24 15:55:49.40885 DEBUG::Correction method: BH
+2024-04-24 15:55:49.410558 DEBUG::Standardize: TRUE
+2024-04-24 15:55:49.412209 DEBUG::Cores: 1
+2024-04-24 15:55:49.413779 INFO::Verifying options selected are valid
+2024-04-24 15:55:50.294017 INFO::Determining format of input files
+2024-04-24 15:55:50.299478 INFO::Input format is data samples as columns and metadata samples as rows
+2024-04-24 15:55:50.315971 DEBUG::Transformed data so samples are rows
+2024-04-24 15:55:50.319874 DEBUG::A total of 202 samples were found in both the data and metadata
+2024-04-24 15:55:50.321407 DEBUG::Reordering data/metadata to use same sample ordering
+2024-04-24 15:55:50.333792 INFO::Formula for fixed effects: expr ~  sample_type
+2024-04-24 15:55:50.339309 INFO::Filter data based on min abundance and min prevalence
+2024-04-24 15:55:50.435993 INFO::Total samples in data: 202
+2024-04-24 15:55:50.44013 INFO::Min samples required with min abundance for a feature not to be filtered: 0.000000
+2024-04-24 15:55:50.46132 INFO::Total filtered features: 0
+2024-04-24 15:55:50.465536 INFO::Filtered feature names from abundance and prevalence filtering:
+2024-04-24 15:55:51.123925 INFO::Total filtered features with variance filtering: 0
+2024-04-24 15:55:51.128837 INFO::Filtered feature names from variance filtering:
+2024-04-24 15:55:51.132776 INFO::Running selected normalization method: NONE
+2024-04-24 15:55:51.137304 INFO::Applying z-score to standardize continuous metadata
+2024-04-24 15:55:51.785276 INFO::Running selected transform method: LOG
+2024-04-24 15:55:51.825195 INFO::Running selected analysis method: LM
+2024-04-24 15:55:52.451496 INFO::Fitting model to feature number 1, X2093857
+2024-04-24 15:55:52.464898 INFO::Fitting model to feature number 2, X525919
+2024-04-24 15:55:52.472285 INFO::Fitting model to feature number 3, X2093742
+2024-04-24 15:55:52.479595 INFO::Fitting model to feature number 4, X360107
+2024-04-24 15:55:53.102361 INFO::Fitting model to feature number 5, X2725666
+2024-04-24 15:55:53.121823 INFO::Fitting model to feature number 6, X853
+2024-04-24 15:55:53.13065 INFO::Fitting model to feature number 7, X334413
+2024-04-24 15:55:53.139411 INFO::Fitting model to feature number 8, X2081703
+2024-04-24 15:55:53.147959 INFO::Fitting model to feature number 9, X54005
+2024-04-24 15:55:54.892165 INFO::Fitting model to feature number 10, X39488
+2024-04-24 15:55:54.906959 INFO::Fitting model to feature number 11, X54006
+2024-04-24 15:55:54.914825 INFO::Fitting model to feature number 12, X2479767
+2024-04-24 15:55:54.922707 INFO::Fitting model to feature number 13, X649756
+2024-04-24 15:55:54.930763 INFO::Fitting model to feature number 14, X39950
+2024-04-24 15:55:55.033308 INFO::Fitting model to feature number 15, X2582419
+2024-04-24 15:55:55.044762 INFO::Fitting model to feature number 16, X2161821
+2024-04-24 15:55:55.049458 INFO::Fitting model to feature number 17, X411470
+2024-04-24 15:55:55.054084 INFO::Fitting model to feature number 18, X2564099
+2024-04-24 15:55:55.05868 INFO::Fitting model to feature number 19, X562
+2024-04-24 15:55:55.063209 INFO::Fitting model to feature number 20, X1898203
+2024-04-24 15:55:55.072701 INFO::Fitting model to feature number 21, X515620
+2024-04-24 15:55:55.077328 INFO::Fitting model to feature number 22, X2507162
+2024-04-24 15:55:55.081954 INFO::Fitting model to feature number 23, X2109690
+2024-04-24 15:55:55.769314 INFO::Fitting model to feature number 24, X623
+2024-04-24 15:55:55.777875 INFO::Fitting model to feature number 25, X114527
+2024-04-24 15:55:55.791451 INFO::Fitting model to feature number 26, X347253
+2024-04-24 15:55:55.797147 INFO::Fitting model to feature number 27, X2086584
+2024-04-24 15:55:55.801655 INFO::Fitting model to feature number 28, X200
+2024-04-24 15:55:55.806157 INFO::Fitting model to feature number 29, X2724150
+2024-04-24 15:55:56.46572 INFO::Fitting model to feature number 30, X697329
+2024-04-24 15:55:56.480055 INFO::Fitting model to feature number 31, X185007
+2024-04-24 15:55:56.48779 INFO::Fitting model to feature number 32, X2107999
+2024-04-24 15:55:56.495604 INFO::Fitting model to feature number 33, X28037
+2024-04-24 15:55:56.503318 INFO::Fitting model to feature number 34, X301301
+2024-04-24 15:55:57.145955 INFO::Fitting model to feature number 35, X553973
+2024-04-24 15:55:57.157706 INFO::Fitting model to feature number 36, X33035
+2024-04-24 15:55:57.164516 INFO::Fitting model to feature number 37, X1550024
+2024-04-24 15:55:57.171314 INFO::Fitting model to feature number 38, X1308
+2024-04-24 15:55:57.178142 INFO::Fitting model to feature number 39, X1871021
+2024-04-24 15:55:57.184829 INFO::Fitting model to feature number 40, X1870984
+2024-04-24 15:55:57.194451 INFO::Fitting model to feature number 41, X283734
+2024-04-24 15:55:58.378354 INFO::Fitting model to feature number 42, X536231
+2024-04-24 15:55:58.386145 INFO::Fitting model to feature number 43, X2109687
+2024-04-24 15:55:58.393254 INFO::Fitting model to feature number 44, X1343
+2024-04-24 15:55:58.400753 INFO::Fitting model to feature number 45, X610130
+2024-04-24 15:55:58.412475 INFO::Fitting model to feature number 46, X33040
+2024-04-24 15:55:58.42138 INFO::Fitting model to feature number 47, X470
+2024-04-24 15:55:58.430836 INFO::Fitting model to feature number 48, X435590
+2024-04-24 15:55:58.440232 INFO::Fitting model to feature number 49, X1458465
+2024-04-24 15:55:58.449724 INFO::Fitting model to feature number 50, X2664291
+2024-04-24 15:55:58.46505 INFO::Fitting model to feature number 51, X299767
+2024-04-24 15:55:58.474296 INFO::Fitting model to feature number 52, X1282
+2024-04-24 15:55:58.483506 INFO::Fitting model to feature number 53, X565651
+2024-04-24 15:55:58.492435 INFO::Fitting model to feature number 54, X29388
+2024-04-24 15:55:58.501122 INFO::Fitting model to feature number 55, X2144175
+2024-04-24 15:55:58.515814 INFO::Fitting model to feature number 56, X1834196
+2024-04-24 15:55:58.62294 INFO::Fitting model to feature number 57, X158836
+2024-04-24 15:55:58.628504 INFO::Fitting model to feature number 58, X742737
+2024-04-24 15:55:58.633301 INFO::Fitting model to feature number 59, X29380
+2024-04-24 15:55:58.638075 INFO::Fitting model to feature number 60, X208479
+2024-04-24 15:55:58.647861 INFO::Fitting model to feature number 61, X2109688
+2024-04-24 15:55:58.652569 INFO::Fitting model to feature number 62, X1328
+2024-04-24 15:55:58.657338 INFO::Fitting model to feature number 63, X39778
+2024-04-24 15:55:58.662069 INFO::Fitting model to feature number 64, X29466
+2024-04-24 15:55:58.666747 INFO::Fitting model to feature number 65, X1596
+2024-04-24 15:55:59.318167 INFO::Fitting model to feature number 66, X1352
+2024-04-24 15:55:59.325709 INFO::Fitting model to feature number 67, X1303
+2024-04-24 15:55:59.332596 INFO::Fitting model to feature number 68, X712633
+2024-04-24 15:55:59.339493 INFO::Fitting model to feature number 69, X1194971
+2024-04-24 15:55:59.346324 INFO::Fitting model to feature number 70, X1283
+2024-04-24 15:55:59.356291 INFO::Fitting model to feature number 71, X29347
+2024-04-24 15:55:59.954601 INFO::Fitting model to feature number 72, X428406
+2024-04-24 15:55:59.961682 INFO::Fitting model to feature number 73, X1433513
+2024-04-24 15:55:59.96792 INFO::Fitting model to feature number 74, X1280
+2024-04-24 15:55:59.973958 INFO::Fitting model to feature number 75, X89152
+2024-04-24 15:55:59.982693 INFO::Fitting model to feature number 76, X1379
+2024-04-24 15:55:59.988631 INFO::Fitting model to feature number 77, X2610895
+2024-04-24 15:55:59.994635 INFO::Fitting model to feature number 78, X98228
+2024-04-24 15:56:00.63642 INFO::Fitting model to feature number 79, X2109691
+2024-04-24 15:56:00.645348 INFO::Fitting model to feature number 80, X621
+2024-04-24 15:56:00.655476 INFO::Fitting model to feature number 81, X1297617
+2024-04-24 15:56:00.662287 INFO::Fitting model to feature number 82, X1912856
+2024-04-24 15:56:00.669191 INFO::Fitting model to feature number 83, X1825069
+2024-04-24 15:56:00.676029 INFO::Fitting model to feature number 84, X76857
+2024-04-24 15:56:00.682952 INFO::Fitting model to feature number 85, X1296
+2024-04-24 15:56:01.25497 INFO::Fitting model to feature number 86, X1852373
+2024-04-24 15:56:01.265171 INFO::Fitting model to feature number 87, X292800
+2024-04-24 15:56:01.273429 INFO::Fitting model to feature number 88, X1812935
+2024-04-24 15:56:01.281643 INFO::Fitting model to feature number 89, X1398
+2024-04-24 15:56:01.289774 INFO::Fitting model to feature number 90, X102684
+2024-04-24 15:56:01.906597 INFO::Fitting model to feature number 91, X617123
+2024-04-24 15:56:01.911362 INFO::Fitting model to feature number 92, X1679721
+2024-04-24 15:56:01.915209 INFO::Fitting model to feature number 93, X28035
+2024-04-24 15:56:01.918723 INFO::Fitting model to feature number 94, X28132
+2024-04-24 15:56:01.922174 INFO::Fitting model to feature number 95, X368607
+2024-04-24 15:56:01.927684 INFO::Fitting model to feature number 96, X729
+2024-04-24 15:56:01.933608 INFO::Fitting model to feature number 97, X511691
+2024-04-24 15:56:01.941515 INFO::Fitting model to feature number 98, X1042156
+2024-04-24 15:56:02.575589 INFO::Fitting model to feature number 99, X1505
+2024-04-24 15:56:02.585204 INFO::Fitting model to feature number 100, X946333
+2024-04-24 15:56:02.596492 INFO::Fitting model to feature number 101, X287
+2024-04-24 15:56:02.603978 INFO::Fitting model to feature number 102, X545
+2024-04-24 15:56:02.610979 INFO::Fitting model to feature number 103, X13689
+2024-04-24 15:56:02.61904 INFO::Fitting model to feature number 104, X1032069
+2024-04-24 15:56:04.258466 INFO::Fitting model to feature number 105, X1335
+2024-04-24 15:56:04.278782 INFO::Fitting model to feature number 106, X693746
+2024-04-24 15:56:04.300672 INFO::Fitting model to feature number 107, X78535
+2024-04-24 15:56:04.312143 INFO::Fitting model to feature number 108, X1496
+2024-04-24 15:56:04.322388 INFO::Fitting model to feature number 109, X2599308
+2024-04-24 15:56:04.3319 INFO::Fitting model to feature number 110, X147802
+2024-04-24 15:56:04.346956 INFO::Fitting model to feature number 111, X1338
+2024-04-24 15:56:04.352781 INFO::Fitting model to feature number 112, X837
+2024-04-24 15:56:04.357932 INFO::Fitting model to feature number 113, X1160721
+2024-04-24 15:56:04.363508 INFO::Fitting model to feature number 114, X1177574
+2024-04-24 15:56:04.369439 INFO::Fitting model to feature number 115, X622
+2024-04-24 15:56:04.379632 INFO::Fitting model to feature number 116, X248315
+2024-04-24 15:56:04.385316 INFO::Fitting model to feature number 117, X360104
+2024-04-24 15:56:04.390599 INFO::Fitting model to feature number 118, X381
+2024-04-24 15:56:04.395463 INFO::Fitting model to feature number 119, X113107
+2024-04-24 15:56:04.400445 INFO::Fitting model to feature number 120, X55508
+2024-04-24 15:56:04.409935 INFO::Fitting model to feature number 121, X1313
+2024-04-24 15:56:04.493026 INFO::Fitting model to feature number 122, X39777
+2024-04-24 15:56:04.498655 INFO::Fitting model to feature number 123, X573
+2024-04-24 15:56:04.503575 INFO::Fitting model to feature number 124, X2044467
+2024-04-24 15:56:04.508587 INFO::Fitting model to feature number 125, X2021971
+2024-04-24 15:56:04.518046 INFO::Fitting model to feature number 126, X1888195
+2024-04-24 15:56:04.523302 INFO::Fitting model to feature number 127, X997877
+2024-04-24 15:56:04.528102 INFO::Fitting model to feature number 128, X28135
+2024-04-24 15:56:04.532885 INFO::Fitting model to feature number 129, X33033
+2024-04-24 15:56:04.537771 INFO::Fitting model to feature number 130, X46125
+2024-04-24 15:56:05.18307 INFO::Fitting model to feature number 131, X29581
+2024-04-24 15:56:05.18879 INFO::Fitting model to feature number 132, X350688
+2024-04-24 15:56:05.193449 INFO::Fitting model to feature number 133, X1134687
+2024-04-24 15:56:05.198657 INFO::Fitting model to feature number 134, X87541
+2024-04-24 15:56:05.204386 INFO::Fitting model to feature number 135, X29385
+2024-04-24 15:56:05.214639 INFO::Fitting model to feature number 136, X1408186
+2024-04-24 15:56:05.21998 INFO::Fitting model to feature number 137, X2382163
+2024-04-24 15:56:05.819386 INFO::Fitting model to feature number 138, X1305
+2024-04-24 15:56:05.832266 INFO::Fitting model to feature number 139, X119206
+2024-04-24 15:56:05.843536 INFO::Fitting model to feature number 140, X760570
+2024-04-24 15:56:05.859247 INFO::Fitting model to feature number 141, X321846
+2024-04-24 15:56:06.383587 INFO::Fitting model to feature number 142, X1404
+2024-04-24 15:56:06.476666 INFO::Fitting model to feature number 143, X28901
+2024-04-24 15:56:06.484781 INFO::Fitting model to feature number 144, X29382
+2024-04-24 15:56:06.492138 INFO::Fitting model to feature number 145, X203275
+2024-04-24 15:56:06.503103 INFO::Fitting model to feature number 146, X28116
+2024-04-24 15:56:06.508316 INFO::Fitting model to feature number 147, X889201
+2024-04-24 15:56:06.512445 INFO::Fitting model to feature number 148, X2696060
+2024-04-24 15:56:06.516913 INFO::Fitting model to feature number 149, X67780
+2024-04-24 15:56:07.12968 INFO::Fitting model to feature number 150, X584
+2024-04-24 15:56:07.136596 INFO::Fitting model to feature number 151, X34062
+2024-04-24 15:56:07.140484 INFO::Fitting model to feature number 152, X1440052
+2024-04-24 15:56:07.144574 INFO::Fitting model to feature number 153, X1613
+2024-04-24 15:56:07.148636 INFO::Fitting model to feature number 154, X267747
+2024-04-24 15:56:07.152587 INFO::Fitting model to feature number 155, X1587
+2024-04-24 15:56:07.159677 INFO::Fitting model to feature number 156, X1938606
+2024-04-24 15:56:07.163665 INFO::Fitting model to feature number 157, X747
+2024-04-24 15:56:07.167523 INFO::Fitting model to feature number 158, X208596
+2024-04-24 15:56:07.171477 INFO::Fitting model to feature number 159, X614
+2024-04-24 15:56:07.760187 INFO::Fitting model to feature number 160, X294
+2024-04-24 15:56:07.773293 INFO::Fitting model to feature number 161, X430522
+2024-04-24 15:56:07.781001 INFO::Fitting model to feature number 162, X358220
+2024-04-24 15:56:07.788461 INFO::Fitting model to feature number 163, X305
+2024-04-24 15:56:07.798681 INFO::Fitting model to feature number 164, X150055
+2024-04-24 15:56:08.384136 INFO::Fitting model to feature number 165, X537973
+2024-04-24 15:56:08.397897 INFO::Fitting model to feature number 166, X1307
+2024-04-24 15:56:08.405828 INFO::Fitting model to feature number 167, X28131
+2024-04-24 15:56:08.413016 INFO::Fitting model to feature number 168, X47917
+2024-04-24 15:56:08.42027 INFO::Fitting model to feature number 169, X51665
+2024-04-24 15:56:08.42756 INFO::Fitting model to feature number 170, X190721
+2024-04-24 15:56:09.034787 INFO::Fitting model to feature number 171, X278148
+2024-04-24 15:56:09.043105 INFO::Fitting model to feature number 172, X408
+2024-04-24 15:56:09.050842 INFO::Fitting model to feature number 173, X40214
+2024-04-24 15:56:09.059007 INFO::Fitting model to feature number 174, X1292
+2024-04-24 15:56:09.067553 INFO::Fitting model to feature number 175, X546
+2024-04-24 15:56:09.078994 INFO::Fitting model to feature number 176, X1290
+2024-04-24 15:56:09.693087 INFO::Fitting model to feature number 177, X28151
+2024-04-24 15:56:09.701761 INFO::Fitting model to feature number 178, X2748
+2024-04-24 15:56:09.710092 INFO::Fitting model to feature number 179, X1314884
+2024-04-24 15:56:09.718824 INFO::Fitting model to feature number 180, X29430
+2024-04-24 15:56:09.732287 INFO::Fitting model to feature number 181, X47770
+2024-04-24 15:56:10.325362 INFO::Fitting model to feature number 182, X33011
+2024-04-24 15:56:10.336208 INFO::Fitting model to feature number 183, X316
+2024-04-24 15:56:10.34487 INFO::Fitting model to feature number 184, X303
+2024-04-24 15:56:10.353112 INFO::Fitting model to feature number 185, X158627
+2024-04-24 15:56:10.366081 INFO::Fitting model to feature number 186, X1310
+2024-04-24 15:56:10.978928 INFO::Fitting model to feature number 187, X2714946
+2024-04-24 15:56:10.986582 INFO::Fitting model to feature number 188, X1054460
+2024-04-24 15:56:10.993995 INFO::Fitting model to feature number 189, X546269
+2024-04-24 15:56:11.001415 INFO::Fitting model to feature number 190, X981540
+2024-04-24 15:56:11.012517 INFO::Fitting model to feature number 191, X33945
+2024-04-24 15:56:11.017483 INFO::Fitting model to feature number 192, X315405
+2024-04-24 15:56:11.611227 INFO::Fitting model to feature number 193, X521095
+2024-04-24 15:56:11.616704 INFO::Fitting model to feature number 194, X29391
+2024-04-24 15:56:11.621647 INFO::Fitting model to feature number 195, X726
+2024-04-24 15:56:11.629022 INFO::Fitting model to feature number 196, X33025
+2024-04-24 15:56:11.63296 INFO::Fitting model to feature number 197, X490
+2024-04-24 15:56:11.637197 INFO::Fitting model to feature number 198, X1765049
+2024-04-24 15:56:11.641447 INFO::Fitting model to feature number 199, X908937
+2024-04-24 15:56:11.645637 INFO::Fitting model to feature number 200, X28141
+2024-04-24 15:56:11.652678 INFO::Fitting model to feature number 201, X488
+2024-04-24 15:56:11.656335 INFO::Fitting model to feature number 202, X1276282
+2024-04-24 15:56:12.249103 INFO::Fitting model to feature number 203, X84135
+2024-04-24 15:56:12.258019 INFO::Fitting model to feature number 204, X862968
+2024-04-24 15:56:12.266295 INFO::Fitting model to feature number 205, X550
+2024-04-24 15:56:12.279587 INFO::Fitting model to feature number 206, X1302
+2024-04-24 15:56:12.286597 INFO::Fitting model to feature number 207, X1266845
+2024-04-24 15:56:12.293484 INFO::Fitting model to feature number 208, X44008
+2024-04-24 15:56:12.893504 INFO::Fitting model to feature number 209, X417368
+2024-04-24 15:56:12.901369 INFO::Fitting model to feature number 210, X1296669
+2024-04-24 15:56:12.911629 INFO::Fitting model to feature number 211, X624
+2024-04-24 15:56:12.916585 INFO::Fitting model to feature number 212, X2025492
+2024-04-24 15:56:12.920616 INFO::Fitting model to feature number 213, X526944
+2024-04-24 15:56:12.924739 INFO::Fitting model to feature number 214, X223967
+2024-04-24 15:56:12.928859 INFO::Fitting model to feature number 215, X104955
+2024-04-24 15:56:12.934897 INFO::Fitting model to feature number 216, X712310
+2024-04-24 15:56:12.939234 INFO::Fitting model to feature number 217, X945021
+2024-04-24 15:56:12.943913 INFO::Fitting model to feature number 218, X2751
+2024-04-24 15:56:12.951132 INFO::Fitting model to feature number 219, X1484158
+2024-04-24 15:56:12.957008 INFO::Fitting model to feature number 220, X395495
+2024-04-24 15:56:12.967829 INFO::Fitting model to feature number 221, X639200
+2024-04-24 15:56:12.973878 INFO::Fitting model to feature number 222, X2728020
+2024-04-24 15:56:12.979997 INFO::Fitting model to feature number 223, X983917
+2024-04-24 15:56:13.583853 INFO::Fitting model to feature number 224, X866775
+2024-04-24 15:56:13.593468 INFO::Fitting model to feature number 225, X1660
+2024-04-24 15:56:13.605708 INFO::Fitting model to feature number 226, X28449
+2024-04-24 15:56:13.613972 INFO::Fitting model to feature number 227, X52773
+2024-04-24 15:56:13.621259 INFO::Fitting model to feature number 228, X535289
+2024-04-24 15:56:13.628551 INFO::Fitting model to feature number 229, X1016987
+2024-04-24 15:56:15.242921 INFO::Fitting model to feature number 230, X128944
+2024-04-24 15:56:15.260625 INFO::Fitting model to feature number 231, X824
+2024-04-24 15:56:15.27021 INFO::Fitting model to feature number 232, X546271
+2024-04-24 15:56:15.278817 INFO::Fitting model to feature number 233, X1326
+2024-04-24 15:56:15.28775 INFO::Fitting model to feature number 234, X727
+2024-04-24 15:56:15.297727 INFO::Fitting model to feature number 235, X671223
+2024-04-24 15:56:15.313948 INFO::Fitting model to feature number 236, X1768242
+2024-04-24 15:56:15.323967 INFO::Fitting model to feature number 237, X137591
+2024-04-24 15:56:15.333666 INFO::Fitting model to feature number 238, X693986
+2024-04-24 15:56:15.344078 INFO::Fitting model to feature number 239, X76731
+2024-04-24 15:56:15.35466 INFO::Fitting model to feature number 240, X76947
+2024-04-24 15:56:15.370755 INFO::Fitting model to feature number 241, X237258
+2024-04-24 15:56:15.378851 INFO::Fitting model to feature number 242, X487
+2024-04-24 15:56:15.384867 INFO::Fitting model to feature number 243, X492670
+2024-04-24 15:56:15.390731 INFO::Fitting model to feature number 244, X1549858
+2024-04-24 15:56:15.396485 INFO::Fitting model to feature number 245, X732
+2024-04-24 15:56:15.40661 INFO::Fitting model to feature number 246, X1884263
+2024-04-24 15:56:15.412004 INFO::Fitting model to feature number 247, X1523415
+2024-04-24 15:56:15.417211 INFO::Fitting model to feature number 248, X1560345
+2024-04-24 15:56:15.422507 INFO::Fitting model to feature number 249, X1423
+2024-04-24 15:56:15.428017 INFO::Fitting model to feature number 250, X2663009
+2024-04-24 15:56:15.439807 INFO::Fitting model to feature number 251, X539
+2024-04-24 15:56:15.533058 INFO::Fitting model to feature number 252, X1639
+2024-04-24 15:56:15.538682 INFO::Fitting model to feature number 253, X653931
+2024-04-24 15:56:15.544117 INFO::Fitting model to feature number 254, X152682
+2024-04-24 15:56:15.549638 INFO::Fitting model to feature number 255, X483
+2024-04-24 15:56:15.560289 INFO::Fitting model to feature number 256, X363952
+2024-04-24 15:56:16.261997 INFO::Fitting model to feature number 257, X1019
+2024-04-24 15:56:16.268706 INFO::Fitting model to feature number 258, X279238
+2024-04-24 15:56:16.273746 INFO::Fitting model to feature number 259, X1274
+2024-04-24 15:56:16.278852 INFO::Fitting model to feature number 260, X13690
+2024-04-24 15:56:16.28888 INFO::Fitting model to feature number 261, X738
+2024-04-24 15:56:16.293844 INFO::Fitting model to feature number 262, X335406
+2024-04-24 15:56:16.298848 INFO::Fitting model to feature number 263, X1029756
+2024-04-24 15:56:16.303598 INFO::Fitting model to feature number 264, X1583098
+2024-04-24 15:56:16.901511 INFO::Fitting model to feature number 265, X2040624
+2024-04-24 15:56:16.915171 INFO::Fitting model to feature number 266, X93064
+2024-04-24 15:56:16.922985 INFO::Fitting model to feature number 267, X1969806
+2024-04-24 15:56:16.93007 INFO::Fitting model to feature number 268, X41276
+2024-04-24 15:56:16.937207 INFO::Fitting model to feature number 269, X180282
+2024-04-24 15:56:16.944262 INFO::Fitting model to feature number 270, X378753
+2024-04-24 15:56:17.515623 INFO::Fitting model to feature number 271, X2711215
+2024-04-24 15:56:17.525054 INFO::Fitting model to feature number 272, X1609977
+2024-04-24 15:56:17.532663 INFO::Fitting model to feature number 273, X728
+2024-04-24 15:56:17.539953 INFO::Fitting model to feature number 274, X424800
+2024-04-24 15:56:17.547263 INFO::Fitting model to feature number 275, X1850238
+2024-04-24 15:56:17.558021 INFO::Fitting model to feature number 276, X1123269
+2024-04-24 15:56:18.32129 INFO::Fitting model to feature number 277, X190148
+2024-04-24 15:56:18.332005 INFO::Fitting model to feature number 278, X1355477
+2024-04-24 15:56:18.341151 INFO::Fitting model to feature number 279, X375
+2024-04-24 15:56:18.350111 INFO::Fitting model to feature number 280, X1926868
+2024-04-24 15:56:18.362827 INFO::Fitting model to feature number 281, X553814
+2024-04-24 15:56:18.371659 INFO::Fitting model to feature number 282, X1404367
+2024-04-24 15:56:18.380535 INFO::Fitting model to feature number 283, X2126319
+2024-04-24 15:56:18.390588 INFO::Fitting model to feature number 284, X420662
+2024-04-24 15:56:18.400774 INFO::Fitting model to feature number 285, X1245469
+2024-04-24 15:56:18.4173 INFO::Fitting model to feature number 286, X1325090
+2024-04-24 15:56:19.186123 INFO::Fitting model to feature number 287, X1736
+2024-04-24 15:56:19.194777 INFO::Fitting model to feature number 288, X108980
+2024-04-24 15:56:19.203154 INFO::Fitting model to feature number 289, X436515
+2024-04-24 15:56:19.211465 INFO::Fitting model to feature number 290, X29429
+2024-04-24 15:56:19.225863 INFO::Fitting model to feature number 291, X1219035
+2024-04-24 15:56:19.955706 INFO::Fitting model to feature number 292, X945844
+2024-04-24 15:56:19.962869 INFO::Fitting model to feature number 293, X929102
+2024-04-24 15:56:19.969739 INFO::Fitting model to feature number 294, X871742
+2024-04-24 15:56:19.976566 INFO::Fitting model to feature number 295, X568703
+2024-04-24 15:56:19.98635 INFO::Fitting model to feature number 296, X1707785
+2024-04-24 15:56:19.991847 INFO::Fitting model to feature number 297, X2045208
+2024-04-24 15:56:19.995341 INFO::Fitting model to feature number 298, X1141883
+2024-04-24 15:56:19.998895 INFO::Fitting model to feature number 299, X296591
+2024-04-24 15:56:20.002403 INFO::Fitting model to feature number 300, X2509614
+2024-04-24 15:56:20.007832 INFO::Fitting model to feature number 301, X2072590
+2024-04-24 15:56:20.011243 INFO::Fitting model to feature number 302, X1855823
+2024-04-24 15:56:20.014735 INFO::Fitting model to feature number 303, X2082386
+2024-04-24 15:56:20.019245 INFO::Fitting model to feature number 304, X1882682
+2024-04-24 15:56:20.023711 INFO::Fitting model to feature number 305, X225992
+2024-04-24 15:56:20.033051 INFO::Fitting model to feature number 306, X1852377
+2024-04-24 15:56:20.037684 INFO::Fitting model to feature number 307, X1247726
+2024-04-24 15:56:20.042321 INFO::Fitting model to feature number 308, X1367847
+2024-04-24 15:56:21.255494 INFO::Fitting model to feature number 309, X28090
+2024-04-24 15:56:21.726638 INFO::Fitting model to feature number 310, X1077935
+2024-04-24 15:56:21.737764 INFO::Fitting model to feature number 311, X713059
+2024-04-24 15:56:21.744897 INFO::Fitting model to feature number 312, X888057
+2024-04-24 15:56:21.752132 INFO::Fitting model to feature number 313, X2500532
+2024-04-24 15:56:21.759566 INFO::Fitting model to feature number 314, X29379
+2024-04-24 15:56:21.766993 INFO::Fitting model to feature number 315, X43675
+2024-04-24 15:56:21.777548 INFO::Fitting model to feature number 316, X1017
+2024-04-24 15:56:21.788513 INFO::Fitting model to feature number 317, X386
+2024-04-24 15:56:21.795822 INFO::Fitting model to feature number 318, X1905288
+2024-04-24 15:56:21.804312 INFO::Fitting model to feature number 319, X234267
+2024-04-24 15:56:21.812469 INFO::Fitting model to feature number 320, X488447
+2024-04-24 15:56:21.919951 INFO::Fitting model to feature number 321, X28450
+2024-04-24 15:56:21.92905 INFO::Fitting model to feature number 322, X95486
+2024-04-24 15:56:21.936342 INFO::Fitting model to feature number 323, X2082188
+2024-04-24 15:56:21.943709 INFO::Fitting model to feature number 324, X482957
+2024-04-24 15:56:21.950922 INFO::Fitting model to feature number 325, X2202827
+2024-04-24 15:56:21.964278 INFO::Fitting model to feature number 326, X57975
+2024-04-24 15:56:22.635223 INFO::Fitting model to feature number 327, X1673076
+2024-04-24 15:56:22.63963 INFO::Fitting model to feature number 328, X80869
+2024-04-24 15:56:22.643483 INFO::Fitting model to feature number 329, X337
+2024-04-24 15:56:22.647278 INFO::Fitting model to feature number 330, X588932
+2024-04-24 15:56:22.653745 INFO::Fitting model to feature number 331, X795665
+2024-04-24 15:56:22.657532 INFO::Fitting model to feature number 332, X1491
+2024-04-24 15:56:22.661435 INFO::Fitting model to feature number 333, X28104
+2024-04-24 15:56:22.665313 INFO::Fitting model to feature number 334, X82367
+2024-04-24 15:56:22.669193 INFO::Fitting model to feature number 335, X87883
+2024-04-24 15:56:22.675531 INFO::Fitting model to feature number 336, X2018065
+2024-04-24 15:56:22.679247 INFO::Fitting model to feature number 337, X34004
+2024-04-24 15:56:22.683012 INFO::Fitting model to feature number 338, X398578
+2024-04-24 15:56:22.686819 INFO::Fitting model to feature number 339, X402881
+2024-04-24 15:56:22.690649 INFO::Fitting model to feature number 340, X28038
+2024-04-24 15:56:22.696959 INFO::Fitting model to feature number 341, X204
+2024-04-24 15:56:22.700701 INFO::Fitting model to feature number 342, X1397
+2024-04-24 15:56:22.705529 INFO::Fitting model to feature number 343, X1270
+2024-04-24 15:56:22.710263 INFO::Fitting model to feature number 344, X1867715
+2024-04-24 15:56:22.714911 INFO::Fitting model to feature number 345, X279058
+2024-04-24 15:56:22.724734 INFO::Fitting model to feature number 346, X40324
+2024-04-24 15:56:23.340045 INFO::Fitting model to feature number 347, X1310165
+2024-04-24 15:56:23.348244 INFO::Fitting model to feature number 348, X596154
+2024-04-24 15:56:23.355557 INFO::Fitting model to feature number 349, X2490939
+2024-04-24 15:56:23.362391 INFO::Fitting model to feature number 350, X2065379
+2024-04-24 15:56:23.37204 INFO::Fitting model to feature number 351, X1545044
+2024-04-24 15:56:23.378698 INFO::Fitting model to feature number 352, X2725684
+2024-04-24 15:56:23.385309 INFO::Fitting model to feature number 353, X147645
+2024-04-24 15:56:24.041517 INFO::Fitting model to feature number 354, X864828
+2024-04-24 15:56:24.046284 INFO::Fitting model to feature number 355, X643561
+2024-04-24 15:56:24.052432 INFO::Fitting model to feature number 356, X1423723
+2024-04-24 15:56:24.055823 INFO::Fitting model to feature number 357, X13373
+2024-04-24 15:56:24.059327 INFO::Fitting model to feature number 358, X735
+2024-04-24 15:56:24.062821 INFO::Fitting model to feature number 359, X59814
+2024-04-24 15:56:24.066308 INFO::Fitting model to feature number 360, X861299
+2024-04-24 15:56:24.072112 INFO::Fitting model to feature number 361, X155892
+2024-04-24 15:56:24.07552 INFO::Fitting model to feature number 362, X407035
+2024-04-24 15:56:24.079244 INFO::Fitting model to feature number 363, X69665
+2024-04-24 15:56:24.083139 INFO::Fitting model to feature number 364, X128785
+2024-04-24 15:56:24.08674 INFO::Fitting model to feature number 365, X1842727
+2024-04-24 15:56:25.747055 INFO::Fitting model to feature number 366, X712357
+2024-04-24 15:56:25.754486 INFO::Fitting model to feature number 367, X365046
+2024-04-24 15:56:25.761174 INFO::Fitting model to feature number 368, X2499144
+2024-04-24 15:56:25.767998 INFO::Fitting model to feature number 369, X63
+2024-04-24 15:56:25.774668 INFO::Fitting model to feature number 370, X363835
+2024-04-24 15:56:25.784782 INFO::Fitting model to feature number 371, X1176536
+2024-04-24 15:56:25.791735 INFO::Fitting model to feature number 372, X47671
+2024-04-24 15:56:25.798468 INFO::Fitting model to feature number 373, X321327
+2024-04-24 15:56:25.805224 INFO::Fitting model to feature number 374, X549
+2024-04-24 15:56:25.812401 INFO::Fitting model to feature number 375, X272123
+2024-04-24 15:56:25.825788 INFO::Fitting model to feature number 376, X321984
+2024-04-24 15:56:25.830862 INFO::Fitting model to feature number 377, X2182384
+2024-04-24 15:56:25.835488 INFO::Fitting model to feature number 378, X417367
+2024-04-24 15:56:25.840097 INFO::Fitting model to feature number 379, X195105
+2024-04-24 15:56:25.844712 INFO::Fitting model to feature number 380, X2231055
+2024-04-24 15:56:25.854336 INFO::Fitting model to feature number 381, X1813821
+2024-04-24 15:56:25.858971 INFO::Fitting model to feature number 382, X292
+2024-04-24 15:56:25.863552 INFO::Fitting model to feature number 383, X2217913
+2024-04-24 15:56:25.868238 INFO::Fitting model to feature number 384, X95485
+2024-04-24 15:56:25.87288 INFO::Fitting model to feature number 385, X339670
+2024-04-24 15:56:25.882413 INFO::Fitting model to feature number 386, X1503055
+2024-04-24 15:56:25.887009 INFO::Fitting model to feature number 387, X1503054
+2024-04-24 15:56:26.018774 INFO::Fitting model to feature number 388, X488729
+2024-04-24 15:56:26.024126 INFO::Fitting model to feature number 389, X2303750
+2024-04-24 15:56:26.028912 INFO::Fitting model to feature number 390, X2571748
+2024-04-24 15:56:26.03856 INFO::Fitting model to feature number 391, X151783
+2024-04-24 15:56:26.043254 INFO::Fitting model to feature number 392, X60552
+2024-04-24 15:56:26.047846 INFO::Fitting model to feature number 393, X1825976
+2024-04-24 15:56:26.052421 INFO::Fitting model to feature number 394, X496014
+2024-04-24 15:56:26.057011 INFO::Fitting model to feature number 395, X418223
+2024-04-24 15:56:26.066548 INFO::Fitting model to feature number 396, X661478
+2024-04-24 15:56:26.673874 INFO::Fitting model to feature number 397, X257708
+2024-04-24 15:56:26.681004 INFO::Fitting model to feature number 398, X595537
+2024-04-24 15:56:26.687898 INFO::Fitting model to feature number 399, X908290
+2024-04-24 15:56:26.694449 INFO::Fitting model to feature number 400, X2057741
+2024-04-24 15:56:26.704234 INFO::Fitting model to feature number 401, X39960
+2024-04-24 15:56:26.708615 INFO::Fitting model to feature number 402, X363852
+2024-04-24 15:56:26.712092 INFO::Fitting model to feature number 403, X2488560
+2024-04-24 15:56:27.310761 INFO::Fitting model to feature number 404, X188932
+2024-04-24 15:56:27.318567 INFO::Fitting model to feature number 405, X1892855
+2024-04-24 15:56:27.328133 INFO::Fitting model to feature number 406, X203
+2024-04-24 15:56:27.332467 INFO::Fitting model to feature number 407, X157687
+2024-04-24 15:56:27.335934 INFO::Fitting model to feature number 408, X342113
+2024-04-24 15:56:27.339415 INFO::Fitting model to feature number 409, X505
+2024-04-24 15:56:27.342866 INFO::Fitting model to feature number 410, X1827469
+2024-04-24 15:56:27.348201 INFO::Fitting model to feature number 411, X1633
+2024-04-24 15:56:27.351547 INFO::Fitting model to feature number 412, X1469502
+2024-04-24 15:56:27.354872 INFO::Fitting model to feature number 413, X2479393
+2024-04-24 15:56:27.953699 INFO::Fitting model to feature number 414, X1329
+2024-04-24 15:56:27.959956 INFO::Fitting model to feature number 415, X270351
+2024-04-24 15:56:27.966068 INFO::Fitting model to feature number 416, X2202825
+2024-04-24 15:56:27.969549 INFO::Fitting model to feature number 417, X1170318
+2024-04-24 15:56:27.973065 INFO::Fitting model to feature number 418, X1252
+2024-04-24 15:56:27.976603 INFO::Fitting model to feature number 419, X2498451
+2024-04-24 15:56:27.980105 INFO::Fitting model to feature number 420, X2724619
+2024-04-24 15:56:27.985657 INFO::Fitting model to feature number 421, X42858
+2024-04-24 15:56:27.989218 INFO::Fitting model to feature number 422, X698761
+2024-04-24 15:56:27.992973 INFO::Fitting model to feature number 423, X2048897
+2024-04-24 15:56:27.996822 INFO::Fitting model to feature number 424, X2080419
+2024-04-24 15:56:28.562169 INFO::Fitting model to feature number 425, X1658665
+2024-04-24 15:56:28.574144 INFO::Fitting model to feature number 426, X1945662
+2024-04-24 15:56:28.581513 INFO::Fitting model to feature number 427, X674703
+2024-04-24 15:56:28.588861 INFO::Fitting model to feature number 428, X135740
+2024-04-24 15:56:28.596081 INFO::Fitting model to feature number 429, X316056
+2024-04-24 15:56:28.603086 INFO::Fitting model to feature number 430, X1416914
+2024-04-24 15:56:29.213599 INFO::Fitting model to feature number 431, X266
+2024-04-24 15:56:29.223407 INFO::Fitting model to feature number 432, X93219
+2024-04-24 15:56:29.231409 INFO::Fitting model to feature number 433, X1532023
+2024-04-24 15:56:29.239383 INFO::Fitting model to feature number 434, X2703789
+2024-04-24 15:56:29.24736 INFO::Fitting model to feature number 435, X33050
+2024-04-24 15:56:29.25826 INFO::Fitting model to feature number 436, X1515612
+2024-04-24 15:56:29.875814 INFO::Fitting model to feature number 437, X450851
+2024-04-24 15:56:29.883023 INFO::Fitting model to feature number 438, X2201350
+2024-04-24 15:56:29.889828 INFO::Fitting model to feature number 439, X1679497
+2024-04-24 15:56:29.896906 INFO::Fitting model to feature number 440, X1727164
+2024-04-24 15:56:29.906769 INFO::Fitting model to feature number 441, X2294119
+2024-04-24 15:56:29.912749 INFO::Fitting model to feature number 442, X314722
+2024-04-24 15:56:30.419808 INFO::Fitting model to feature number 443, X649638
+2024-04-24 15:56:30.50987 INFO::Fitting model to feature number 444, X2587858
+2024-04-24 15:56:30.517439 INFO::Fitting model to feature number 445, X1520
+2024-04-24 15:56:30.528229 INFO::Fitting model to feature number 446, X2175091
+2024-04-24 15:56:30.533183 INFO::Fitting model to feature number 447, X74329
+2024-04-24 15:56:30.537169 INFO::Fitting model to feature number 448, X1061
+2024-04-24 15:56:30.541394 INFO::Fitting model to feature number 449, X1499308
+2024-04-24 15:56:30.54546 INFO::Fitting model to feature number 450, X169480
+2024-04-24 15:56:30.552146 INFO::Fitting model to feature number 451, X2528642
+2024-04-24 15:56:30.556276 INFO::Fitting model to feature number 452, X643214
+2024-04-24 15:56:30.560488 INFO::Fitting model to feature number 453, X1874061
+2024-04-24 15:56:30.564423 INFO::Fitting model to feature number 454, X2547962
+2024-04-24 15:56:30.568406 INFO::Fitting model to feature number 455, X233795
+2024-04-24 15:56:30.574867 INFO::Fitting model to feature number 456, X286134
+2024-04-24 15:56:30.579124 INFO::Fitting model to feature number 457, X218034
+2024-04-24 15:56:30.583169 INFO::Fitting model to feature number 458, X83427
+2024-04-24 15:56:30.588276 INFO::Fitting model to feature number 459, X189668
+2024-04-24 15:56:30.593526 INFO::Fitting model to feature number 460, X237777
+2024-04-24 15:56:30.603846 INFO::Fitting model to feature number 461, X42895
+2024-04-24 15:56:31.221381 INFO::Fitting model to feature number 462, X71237
+2024-04-24 15:56:31.230357 INFO::Fitting model to feature number 463, X167973
+2024-04-24 15:56:31.238697 INFO::Fitting model to feature number 464, X83428
+2024-04-24 15:56:31.247783 INFO::Fitting model to feature number 465, X35783
+2024-04-24 15:56:31.258621 INFO::Fitting model to feature number 466, X167972
+2024-04-24 15:56:31.837547 INFO::Fitting model to feature number 467, X153152
+2024-04-24 15:56:31.851964 INFO::Fitting model to feature number 468, X208549
+2024-04-24 15:56:31.859359 INFO::Fitting model to feature number 469, X257462
+2024-04-24 15:56:31.866761 INFO::Fitting model to feature number 470, X267632
+2024-04-24 15:56:31.879782 INFO::Fitting model to feature number 471, X158754
+2024-04-24 15:56:32.48049 INFO::Fitting model to feature number 472, X293405
+2024-04-24 15:56:32.488564 INFO::Fitting model to feature number 473, X169976
+2024-04-24 15:56:32.495453 INFO::Fitting model to feature number 474, X199684
+2024-04-24 15:56:32.502406 INFO::Fitting model to feature number 475, X316087
+2024-04-24 15:56:32.512656 INFO::Fitting model to feature number 476, X640081
+2024-04-24 15:56:32.519679 INFO::Fitting model to feature number 477, X670307
+2024-04-24 15:56:33.13113 INFO::Fitting model to feature number 478, X717785
+2024-04-24 15:56:33.136211 INFO::Fitting model to feature number 479, X267629
+2024-04-24 15:56:33.141577 INFO::Fitting model to feature number 480, X269069
+2024-04-24 15:56:33.152119 INFO::Fitting model to feature number 481, X157278
+2024-04-24 15:56:33.157283 INFO::Fitting model to feature number 482, X292277
+2024-04-24 15:56:33.161223 INFO::Fitting model to feature number 483, X658225
+2024-04-24 15:56:33.165079 INFO::Fitting model to feature number 484, X74696
+2024-04-24 15:56:33.169008 INFO::Fitting model to feature number 485, X328225
+2024-04-24 15:56:33.174984 INFO::Fitting model to feature number 486, X663950
+2024-04-24 15:56:33.178646 INFO::Fitting model to feature number 487, X327691
+2024-04-24 15:56:33.757614 INFO::Fitting model to feature number 488, X1416806
+2024-04-24 15:56:33.763095 INFO::Fitting model to feature number 489, X1176533
+2024-04-24 15:56:33.76721 INFO::Fitting model to feature number 490, X41431
+2024-04-24 15:56:34.929374 INFO::Counting total values for each feature
+2024-04-24 15:56:34.973337 INFO::Writing filtered data to file ./MaAslin2/Rarefying/Paraffin_vs_Buffer/features/filtered_data.tsv
+2024-04-24 15:56:35.054619 INFO::Writing filtered, normalized data to file ./MaAslin2/Rarefying/Paraffin_vs_Buffer/features/filtered_data_norm.tsv
+2024-04-24 15:56:35.23266 INFO::Writing filtered, normalized, transformed data to file ./MaAslin2/Rarefying/Paraffin_vs_Buffer/features/filtered_data_norm_transformed.tsv
+2024-04-24 15:56:36.037663 INFO::Writing residuals to file ./MaAslin2/Rarefying/Paraffin_vs_Buffer/fits/residuals.rds
+2024-04-24 15:56:37.181199 INFO::Writing fitted values to file ./MaAslin2/Rarefying/Paraffin_vs_Buffer/fits/fitted.rds
+2024-04-24 15:56:37.192726 INFO::Writing all results to file (ordered by increasing q-values): ./MaAslin2/Rarefying/Paraffin_vs_Buffer/all_results.tsv
+2024-04-24 15:56:37.200008 INFO::Writing the significant results (those which are less than or equal to the threshold of 0.250000 ) to file (ordered by increasing q-values): ./MaAslin2/Rarefying/Paraffin_vs_Buffer/significant_results.tsv
+2024-04-24 15:56:37.205111 INFO::Writing heatmap of significant results to file: ./MaAslin2/Rarefying/Paraffin_vs_Buffer/heatmap.pdf
+2024-04-24 15:56:37.220015 INFO::Writing association plots (one for each significant association) to output folder: ./MaAslin2/Rarefying/Paraffin_vs_Buffer
+2024-04-24 15:56:37.233131 INFO::Plotting associations from most to least significant, grouped by metadata
+2024-04-24 15:56:37.236546 INFO::Plotting data for metadata number 1, sample_type
+2024-04-24 15:56:37.275288 INFO::Creating boxplot for categorical data, sample_type vs X93064
+2024-04-24 15:56:38.401458 INFO::Creating boxplot for categorical data, sample_type vs X2711215
+2024-04-24 15:56:38.576966 INFO::Creating boxplot for categorical data, sample_type vs X1560345
+2024-04-24 15:56:40.039102 INFO::Creating boxplot for categorical data, sample_type vs X2725666
+2024-04-24 15:56:40.86126 INFO::Creating boxplot for categorical data, sample_type vs X1523415
+2024-04-24 15:56:41.041315 INFO::Creating boxplot for categorical data, sample_type vs X1827469
+2024-04-24 15:56:41.800396 INFO::Creating boxplot for categorical data, sample_type vs X152682
+2024-04-24 15:56:42.545599 INFO::Creating boxplot for categorical data, sample_type vs X488447
+2024-04-24 15:56:44.054137 INFO::Creating boxplot for categorical data, sample_type vs X34062
+2024-04-24 15:56:44.88644 INFO::Creating boxplot for categorical data, sample_type vs X482957
+2024-04-24 15:56:45.038723 INFO::Creating boxplot for categorical data, sample_type vs X40324
+2024-04-24 15:56:45.748572 INFO::Creating boxplot for categorical data, sample_type vs X95486
+2024-04-24 15:56:45.903067 INFO::Creating boxplot for categorical data, sample_type vs X337
+2024-04-24 15:56:47.233463 INFO::Creating boxplot for categorical data, sample_type vs X13689
+2024-04-24 15:56:47.383284 INFO::Creating boxplot for categorical data, sample_type vs X292
+2024-04-24 15:56:48.754029 INFO::Creating boxplot for categorical data, sample_type vs X424800
+2024-04-24 15:56:48.922214 INFO::Creating boxplot for categorical data, sample_type vs X28450
+2024-04-24 15:56:50.472152 INFO::Creating boxplot for categorical data, sample_type vs X2217913
+2024-04-24 15:56:50.6296 INFO::Creating boxplot for categorical data, sample_type vs X1123269
+2024-04-24 15:56:51.369975 INFO::Creating boxplot for categorical data, sample_type vs X57975
+2024-04-24 15:56:52.070112 INFO::Creating boxplot for categorical data, sample_type vs X729
+2024-04-24 15:56:52.314028 INFO::Creating boxplot for categorical data, sample_type vs X29466
+2024-04-24 15:56:54.17976 INFO::Creating boxplot for categorical data, sample_type vs X190721
+2024-04-24 15:56:54.924785 INFO::Creating boxplot for categorical data, sample_type vs X712633
+2024-04-24 15:56:55.683315 INFO::Creating boxplot for categorical data, sample_type vs X653931
+2024-04-24 15:56:56.528946 INFO::Creating boxplot for categorical data, sample_type vs X2479767
+2024-04-24 15:56:56.878216 INFO::Creating boxplot for categorical data, sample_type vs X2082188
+2024-04-24 15:56:58.848238 INFO::Creating boxplot for categorical data, sample_type vs X335406
+2024-04-24 15:56:59.086768 INFO::Creating boxplot for categorical data, sample_type vs X1549858
+2024-04-24 15:57:00.394047 INFO::Creating boxplot for categorical data, sample_type vs X87883
+2024-04-24 15:57:01.232355 INFO::Creating boxplot for categorical data, sample_type vs X1303
+2024-04-24 15:57:01.996321 INFO::Creating boxplot for categorical data, sample_type vs X1016987
+2024-04-24 15:57:02.772511 INFO::Creating boxplot for categorical data, sample_type vs X649756
+2024-04-24 15:57:03.581636 INFO::Creating boxplot for categorical data, sample_type vs X33035
+2024-04-24 15:57:04.995545 INFO::Creating boxplot for categorical data, sample_type vs X28037
+2024-04-24 15:57:05.148236 INFO::Creating boxplot for categorical data, sample_type vs X41276
+2024-04-24 15:57:06.439473 INFO::Creating boxplot for categorical data, sample_type vs X853
+2024-04-24 15:57:06.607243 INFO::Creating boxplot for categorical data, sample_type vs X2564099
+2024-04-24 15:57:07.424889 INFO::Creating boxplot for categorical data, sample_type vs X74329
+2024-04-24 15:57:07.575361 INFO::Creating boxplot for categorical data, sample_type vs X411470
+2024-04-24 15:57:08.35676 INFO::Creating boxplot for categorical data, sample_type vs X2109690
+2024-04-24 15:57:09.184328 INFO::Creating boxplot for categorical data, sample_type vs X84135
+2024-04-24 15:57:10.561397 INFO::Creating boxplot for categorical data, sample_type vs X2081703
+2024-04-24 15:57:10.850202 INFO::Creating boxplot for categorical data, sample_type vs X1945662
+2024-04-24 15:57:12.743515 INFO::Creating boxplot for categorical data, sample_type vs X301301
+2024-04-24 15:57:14.159099 INFO::Creating boxplot for categorical data, sample_type vs X536231
+2024-04-24 15:57:14.421345 INFO::Creating boxplot for categorical data, sample_type vs X610130
+2024-04-24 15:57:15.677476 INFO::Creating boxplot for categorical data, sample_type vs X2303750
+2024-04-24 15:57:16.488508 INFO::Creating boxplot for categorical data, sample_type vs X488729
+2024-04-24 15:57:17.795116 INFO::Creating boxplot for categorical data, sample_type vs X54006
+2024-04-24 15:57:19.193959 INFO::Creating boxplot for categorical data, sample_type vs X13373
+2024-04-24 15:57:19.475374 INFO::Creating boxplot for categorical data, sample_type vs X39488
+2024-04-24 15:57:20.776776 INFO::Creating boxplot for categorical data, sample_type vs X1609977
+2024-04-24 15:57:21.016744 INFO::Creating boxplot for categorical data, sample_type vs X2093857
+2024-04-24 15:57:22.948736 INFO::Creating boxplot for categorical data, sample_type vs X1898203
+2024-04-24 15:57:23.134979 INFO::Creating boxplot for categorical data, sample_type vs X1313
+2024-04-24 15:57:24.524151 INFO::Creating boxplot for categorical data, sample_type vs X147645
+2024-04-24 15:57:24.809807 INFO::Creating boxplot for categorical data, sample_type vs X339670
+2024-04-24 15:57:26.066672 INFO::Creating boxplot for categorical data, sample_type vs X95485
+2024-04-24 15:57:26.865436 INFO::Creating boxplot for categorical data, sample_type vs X305
+2024-04-24 15:57:27.637673 INFO::Creating boxplot for categorical data, sample_type vs X2161821
+2024-04-24 15:57:28.400097 INFO::Creating boxplot for categorical data, sample_type vs X2500532
+2024-04-24 15:57:29.1839 INFO::Creating boxplot for categorical data, sample_type vs X360107
+2024-04-24 15:57:30.0041 INFO::Creating boxplot for categorical data, sample_type vs X39950
+2024-04-24 15:57:31.335182 INFO::Creating boxplot for categorical data, sample_type vs X428406
+2024-04-24 15:57:31.525193 INFO::Creating boxplot for categorical data, sample_type vs X693746
+2024-04-24 15:57:32.281781 INFO::Creating boxplot for categorical data, sample_type vs X29429
+2024-04-24 15:57:33.104355 INFO::Creating boxplot for categorical data, sample_type vs X1850238
+2024-04-24 15:57:33.306 INFO::Creating boxplot for categorical data, sample_type vs X398578
+2024-04-24 15:57:34.722124 INFO::Creating boxplot for categorical data, sample_type vs X1834196
+2024-04-24 15:57:34.883107 INFO::Creating boxplot for categorical data, sample_type vs X267747
+2024-04-24 15:57:36.276818 INFO::Creating boxplot for categorical data, sample_type vs X1379
+2024-04-24 15:57:37.15656 INFO::Creating boxplot for categorical data, sample_type vs X2109691
+2024-04-24 15:57:37.331175 INFO::Creating boxplot for categorical data, sample_type vs X1550024
+2024-04-24 15:57:38.067109 INFO::Creating boxplot for categorical data, sample_type vs X588932
+2024-04-24 15:57:38.909653 INFO::Creating boxplot for categorical data, sample_type vs X1673076
+2024-04-24 15:57:39.091816 INFO::Creating boxplot for categorical data, sample_type vs X47770
+2024-04-24 15:57:39.850978 INFO::Creating boxplot for categorical data, sample_type vs X515620
+2024-04-24 15:57:40.62774 INFO::Creating boxplot for categorical data, sample_type vs X208479
+2024-04-24 15:57:41.384544 INFO::Creating boxplot for categorical data, sample_type vs X1852373
+2024-04-24 15:57:42.199873 INFO::Creating boxplot for categorical data, sample_type vs X29391
+2024-04-24 15:57:42.353325 INFO::Creating boxplot for categorical data, sample_type vs X334413
+2024-04-24 15:57:43.047241 INFO::Creating boxplot for categorical data, sample_type vs X643561
+2024-04-24 15:57:43.204311 INFO::Creating boxplot for categorical data, sample_type vs X562
+2024-04-24 15:57:44.441587 INFO::Creating boxplot for categorical data, sample_type vs X1302
+2024-04-24 15:57:45.248358 INFO::Creating boxplot for categorical data, sample_type vs X2093742
+2024-04-24 15:57:45.410247 INFO::Creating boxplot for categorical data, sample_type vs X1503055
+2024-04-24 15:57:46.167852 INFO::Creating boxplot for categorical data, sample_type vs X2610895
+2024-04-24 15:57:46.994038 INFO::Creating boxplot for categorical data, sample_type vs X1176536
+2024-04-24 15:57:47.790281 INFO::Creating boxplot for categorical data, sample_type vs X2086584
+2024-04-24 15:57:49.096751 INFO::Creating boxplot for categorical data, sample_type vs X29581
+2024-04-24 15:57:49.263459 INFO::Creating boxplot for categorical data, sample_type vs X1503054
+2024-04-24 15:57:50.106809 INFO::Creating boxplot for categorical data, sample_type vs X60552
+2024-04-24 15:57:50.276849 INFO::Creating boxplot for categorical data, sample_type vs X1292
+2024-04-24 15:57:50.508664 INFO::Creating boxplot for categorical data, sample_type vs X1532023
+2024-04-24 15:57:52.219988 INFO::Creating boxplot for categorical data, sample_type vs X54005
+2024-04-24 15:57:52.519744 INFO::Creating boxplot for categorical data, sample_type vs X29347
+2024-04-24 15:57:54.244072 INFO::Creating boxplot for categorical data, sample_type vs X1871021
+2024-04-24 15:57:54.414129 INFO::Creating boxplot for categorical data, sample_type vs X726
+2024-04-24 15:57:55.714948 INFO::Creating boxplot for categorical data, sample_type vs X113107
+2024-04-24 15:57:55.874679 INFO::Creating boxplot for categorical data, sample_type vs X639200
+2024-04-24 15:57:57.276427 INFO::Creating boxplot for categorical data, sample_type vs X76731
+2024-04-24 15:57:57.430954 INFO::Creating boxplot for categorical data, sample_type vs X1367847
+2024-04-24 15:57:58.675511 INFO::Creating boxplot for categorical data, sample_type vs X2065379
+2024-04-24 15:57:59.52702 INFO::Creating boxplot for categorical data, sample_type vs X511691
+2024-04-24 15:57:59.721457 INFO::Creating boxplot for categorical data, sample_type vs X408
+2024-04-24 15:58:00.452309 INFO::Creating boxplot for categorical data, sample_type vs X1297617
+2024-04-24 15:58:00.687539 INFO::Creating boxplot for categorical data, sample_type vs X1938606
+2024-04-24 15:58:01.934797 INFO::Creating boxplot for categorical data, sample_type vs X596154
+2024-04-24 15:58:02.130735 INFO::Creating boxplot for categorical data, sample_type vs X553973
+2024-04-24 15:58:03.477592 INFO::Creating boxplot for categorical data, sample_type vs X2057741
+2024-04-24 15:58:03.625915 INFO::Creating boxplot for categorical data, sample_type vs X1352
+2024-04-24 15:58:04.907401 INFO::Creating boxplot for categorical data, sample_type vs X742737
+2024-04-24 15:58:05.106457 INFO::Creating boxplot for categorical data, sample_type vs X983917
+2024-04-24 15:58:05.862854 INFO::Creating boxplot for categorical data, sample_type vs X1077935
+2024-04-24 15:58:06.510017 INFO::Creating boxplot for categorical data, sample_type vs X2663009
+2024-04-24 15:58:06.670099 INFO::Creating boxplot for categorical data, sample_type vs X1160721
+2024-04-24 15:58:08.038208 INFO::Creating boxplot for categorical data, sample_type vs X2724150
+2024-04-24 15:58:08.33084 INFO::Creating boxplot for categorical data, sample_type vs X2571748
+2024-04-24 15:58:10.141298 INFO::Creating boxplot for categorical data, sample_type vs X697329
+2024-04-24 15:58:10.391142 INFO::Creating boxplot for categorical data, sample_type vs X292800
+2024-04-24 15:58:11.711584 INFO::Creating boxplot for categorical data, sample_type vs X28901
+2024-04-24 15:58:12.568142 INFO::Creating boxplot for categorical data, sample_type vs X28090
+2024-04-24 15:58:12.723683 INFO::Creating boxplot for categorical data, sample_type vs X674703
+2024-04-24 15:58:13.521381 INFO::Creating boxplot for categorical data, sample_type vs X342113
+2024-04-24 15:58:14.359369 INFO::Creating boxplot for categorical data, sample_type vs X2582419
+2024-04-24 15:58:14.554195 INFO::Creating boxplot for categorical data, sample_type vs X2018065
+2024-04-24 15:58:15.282968 INFO::Creating boxplot for categorical data, sample_type vs X1874061
+2024-04-24 15:58:16.53739 INFO::Creating boxplot for categorical data, sample_type vs X248315
+2024-04-24 15:58:17.318436 INFO::Creating boxplot for categorical data, sample_type vs X2748
+2024-04-24 15:58:18.081478 INFO::Creating boxplot for categorical data, sample_type vs X573
+2024-04-24 15:58:19.472785 INFO::Creating boxplot for categorical data, sample_type vs X223967
+2024-04-24 15:58:19.620393 INFO::Creating boxplot for categorical data, sample_type vs X1433513
+2024-04-24 15:58:20.426253 INFO::Creating boxplot for categorical data, sample_type vs X78535
+2024-04-24 15:58:20.626492 INFO::Creating boxplot for categorical data, sample_type vs X1042156
+2024-04-24 15:58:21.38365 INFO::Creating boxplot for categorical data, sample_type vs X1926868
+2024-04-24 15:58:22.220222 INFO::Creating boxplot for categorical data, sample_type vs X1310165
+2024-04-24 15:58:22.384118 INFO::Creating boxplot for categorical data, sample_type vs X185007
+2024-04-24 15:58:23.182904 INFO::Creating boxplot for categorical data, sample_type vs X180282
+2024-04-24 15:58:24.565754 INFO::Creating boxplot for categorical data, sample_type vs X2507162
+2024-04-24 15:58:24.716454 INFO::Creating boxplot for categorical data, sample_type vs X158754
+2024-04-24 15:58:25.500376 INFO::Creating boxplot for categorical data, sample_type vs X89152
+2024-04-24 15:58:26.857239 INFO::Creating boxplot for categorical data, sample_type vs X1912856
+2024-04-24 15:58:27.693138 INFO::Creating boxplot for categorical data, sample_type vs X1679721
+2024-04-24 15:58:28.476392 INFO::Creating boxplot for categorical data, sample_type vs X1305
+2024-04-24 15:58:29.296604 INFO::Creating boxplot for categorical data, sample_type vs X169976
+2024-04-24 15:58:29.464868 INFO::Creating boxplot for categorical data, sample_type vs X33025
+2024-04-24 15:58:30.333024 INFO::Creating boxplot for categorical data, sample_type vs X82367
+2024-04-24 15:58:30.540883 INFO::Creating boxplot for categorical data, sample_type vs X195105
+2024-04-24 15:58:31.921397 INFO::Creating boxplot for categorical data, sample_type vs X435590
+2024-04-24 15:58:32.088252 INFO::Creating boxplot for categorical data, sample_type vs X46125
+2024-04-24 15:58:33.447287 INFO::Creating boxplot for categorical data, sample_type vs X93219
+2024-04-24 15:58:33.60031 INFO::Creating boxplot for categorical data, sample_type vs X1679497
+2024-04-24 15:58:34.936645 INFO::Creating boxplot for categorical data, sample_type vs X270351
+2024-04-24 15:58:35.142455 INFO::Creating boxplot for categorical data, sample_type vs X28131
+2024-04-24 15:58:36.545488 INFO::Creating boxplot for categorical data, sample_type vs X34004
+2024-04-24 15:58:37.354651 INFO::Creating boxplot for categorical data, sample_type vs X871742
+2024-04-24 15:58:38.088125 INFO::Creating boxplot for categorical data, sample_type vs X267632
+2024-04-24 15:58:38.810294 INFO::Creating boxplot for categorical data, sample_type vs X1515612
+2024-04-24 15:58:39.6566 INFO::Creating boxplot for categorical data, sample_type vs X1276282
+2024-04-24 15:58:40.450315 INFO::Creating boxplot for categorical data, sample_type vs X2109688
+2024-04-24 15:58:40.642068 INFO::Creating boxplot for categorical data, sample_type vs X43675
+2024-04-24 15:58:41.545354 INFO::Creating boxplot for categorical data, sample_type vs X39778
+2024-04-24 15:58:42.545532 INFO::Creating boxplot for categorical data, sample_type vs X316087
+2024-04-24 15:58:42.83045 INFO::Creating boxplot for categorical data, sample_type vs X658225
+2024-04-24 15:58:44.100961 INFO::Creating boxplot for categorical data, sample_type vs X2490939
+2024-04-24 15:58:44.383375 INFO::Creating boxplot for categorical data, sample_type vs X945021
+2024-04-24 15:58:46.528024 INFO::Creating boxplot for categorical data, sample_type vs X663950
+2024-04-24 15:58:46.695554 INFO::Creating boxplot for categorical data, sample_type vs X1328
+2024-04-24 15:58:47.443559 INFO::Creating boxplot for categorical data, sample_type vs X1505
+2024-04-24 15:58:48.246962 INFO::Creating boxplot for categorical data, sample_type vs X2048897
+2024-04-24 15:58:49.716934 INFO::Creating boxplot for categorical data, sample_type vs X135740
+2024-04-24 15:58:50.463436 INFO::Creating boxplot for categorical data, sample_type vs X1458465
+2024-04-24 15:58:50.727804 INFO::Creating boxplot for categorical data, sample_type vs X525919
+2024-04-24 15:58:52.042236 INFO::Creating boxplot for categorical data, sample_type vs X28132
+2024-04-24 15:58:52.871167 INFO::Creating boxplot for categorical data, sample_type vs X29430
+2024-04-24 15:58:54.238586 INFO::Creating boxplot for categorical data, sample_type vs X732
+2024-04-24 15:58:54.39655 INFO::Creating boxplot for categorical data, sample_type vs X28135
+2024-04-24 15:58:55.711671 INFO::Creating boxplot for categorical data, sample_type vs X2587858
+2024-04-24 15:58:56.600723 INFO::Creating boxplot for categorical data, sample_type vs X292277
+2024-04-24 15:58:57.363252 INFO::Creating boxplot for categorical data, sample_type vs X1054460
+2024-04-24 15:58:58.129781 INFO::Creating boxplot for categorical data, sample_type vs X1469502
+2024-04-24 15:58:58.864466 INFO::Creating boxplot for categorical data, sample_type vs X293405
+2024-04-24 15:58:59.137158 INFO::Creating boxplot for categorical data, sample_type vs X114527
+2024-04-24 15:59:00.919908 INFO::Creating boxplot for categorical data, sample_type vs X83427
+2024-04-24 15:59:01.071827 INFO::Creating boxplot for categorical data, sample_type vs X417368
+2024-04-24 15:59:02.360422 INFO::Creating boxplot for categorical data, sample_type vs X670307
+2024-04-24 15:59:02.635264 INFO::Creating boxplot for categorical data, sample_type vs X866775
+2024-04-24 15:59:04.005591 INFO::Creating boxplot for categorical data, sample_type vs X360104
+2024-04-24 15:59:04.763628 INFO::Creating boxplot for categorical data, sample_type vs X2144175
+2024-04-24 15:59:05.574772 INFO::Creating boxplot for categorical data, sample_type vs X1496
+2024-04-24 15:59:06.762587 INFO::Creating boxplot for categorical data, sample_type vs X2714946
+2024-04-24 15:59:07.538818 INFO::Creating boxplot for categorical data, sample_type vs X795665
+2024-04-24 15:59:08.245297 INFO::Creating boxplot for categorical data, sample_type vs X1499308
+2024-04-24 15:59:09.014755 INFO::Creating boxplot for categorical data, sample_type vs X837
+2024-04-24 15:59:09.79938 INFO::Creating boxplot for categorical data, sample_type vs X29388
+2024-04-24 15:59:10.675028 INFO::Creating boxplot for categorical data, sample_type vs X488
+2024-04-24 15:59:10.841571 INFO::Creating boxplot for categorical data, sample_type vs X328225
+2024-04-24 15:59:11.682971 INFO::Creating boxplot for categorical data, sample_type vs X1219035
+2024-04-24 15:59:11.846623 INFO::Creating boxplot for categorical data, sample_type vs X487
+2024-04-24 15:59:12.593319 INFO::Creating boxplot for categorical data, sample_type vs X553814
+2024-04-24 15:59:13.434208 INFO::Creating boxplot for categorical data, sample_type vs X233795
+2024-04-24 15:59:13.625129 INFO::Creating boxplot for categorical data, sample_type vs X2201350
+2024-04-24 15:59:14.331078 INFO::Creating boxplot for categorical data, sample_type vs X550
+2024-04-24 15:59:15.124822 INFO::Creating boxplot for categorical data, sample_type vs X490
+2024-04-24 15:59:15.941487 INFO::Creating boxplot for categorical data, sample_type vs X1177574
+2024-04-24 15:59:17.258496 INFO::Creating boxplot for categorical data, sample_type vs X402881
+2024-04-24 15:59:17.451791 INFO::Creating boxplot for categorical data, sample_type vs X199684
+2024-04-24 15:59:18.203163 INFO::Creating boxplot for categorical data, sample_type vs X526944
+2024-04-24 15:59:19.026052 INFO::Creating boxplot for categorical data, sample_type vs X28449
+2024-04-24 15:59:19.192952 INFO::Creating boxplot for categorical data, sample_type vs X1404367
+2024-04-24 15:59:19.445415 INFO::Creating boxplot for categorical data, sample_type vs X33050
+2024-04-24 15:59:21.202753 INFO::Creating boxplot for categorical data, sample_type vs X889201
+2024-04-24 15:59:22.047351 INFO::Creating boxplot for categorical data, sample_type vs X208549
+2024-04-24 15:59:23.452713 INFO::Creating boxplot for categorical data, sample_type vs X417367
+2024-04-24 15:59:23.674862 INFO::Creating boxplot for categorical data, sample_type vs X327691
+2024-04-24 15:59:24.969831 INFO::Creating boxplot for categorical data, sample_type vs X981540
+2024-04-24 15:59:25.250102 INFO::Creating boxplot for categorical data, sample_type vs X218034
+2024-04-24 15:59:26.521039 INFO::Creating boxplot for categorical data, sample_type vs X1343
+2024-04-24 15:59:26.810631 INFO::Creating boxplot for categorical data, sample_type vs X760570
+2024-04-24 15:59:28.114018 INFO::Creating boxplot for categorical data, sample_type vs X1296669
+2024-04-24 15:59:28.830475 INFO::Creating boxplot for categorical data, sample_type vs X1884263
+2024-04-24 15:59:29.722101 INFO::Creating boxplot for categorical data, sample_type vs X888057
+2024-04-24 15:59:29.891077 INFO::Creating boxplot for categorical data, sample_type vs X1017
+2024-04-24 15:59:31.245958 INFO::Creating boxplot for categorical data, sample_type vs X286134
+2024-04-24 15:59:31.457356 INFO::Creating boxplot for categorical data, sample_type vs X237777
+2024-04-24 15:59:32.847347 INFO::Creating boxplot for categorical data, sample_type vs X2725684
+2024-04-24 15:59:33.003991 INFO::Creating boxplot for categorical data, sample_type vs X128944
+2024-04-24 15:59:34.330575 INFO::Creating boxplot for categorical data, sample_type vs X864828
+2024-04-24 15:59:34.609372 INFO::Creating boxplot for categorical data, sample_type vs X997877
+2024-04-24 15:59:36.537677 INFO::Creating boxplot for categorical data, sample_type vs X98228
+2024-04-24 15:59:37.989631 INFO::Creating boxplot for categorical data, sample_type vs X1613
+2024-04-24 15:59:38.808035 INFO::Creating boxplot for categorical data, sample_type vs X546
+2024-04-24 15:59:38.988453 INFO::Creating boxplot for categorical data, sample_type vs X1658665
+2024-04-24 15:59:39.808542 INFO::Creating boxplot for categorical data, sample_type vs X1290
+2024-04-24 15:59:40.000724 INFO::Creating boxplot for categorical data, sample_type vs X861299
+2024-04-24 15:59:40.676012 INFO::Creating boxplot for categorical data, sample_type vs X1423723
+2024-04-24 15:59:41.46183 INFO::Creating boxplot for categorical data, sample_type vs X624
+2024-04-24 15:59:42.313182 INFO::Creating boxplot for categorical data, sample_type vs X717785
+2024-04-24 15:59:43.63663 INFO::Creating boxplot for categorical data, sample_type vs X1587
+2024-04-24 15:59:43.842118 INFO::Creating boxplot for categorical data, sample_type vs X2382163
+2024-04-24 15:59:45.200842 INFO::Creating boxplot for categorical data, sample_type vs X74696
+2024-04-24 15:59:45.395954 INFO::Creating boxplot for categorical data, sample_type vs X549
+2024-04-24 15:59:46.68674 INFO::Creating boxplot for categorical data, sample_type vs X2528642
+2024-04-24 15:59:46.846363 INFO::Creating boxplot for categorical data, sample_type vs X87541
+2024-04-24 15:59:47.623739 INFO::Creating boxplot for categorical data, sample_type vs X189668
+2024-04-24 15:59:48.470069 INFO::Creating boxplot for categorical data, sample_type vs X29379
+2024-04-24 15:59:48.636473 INFO::Creating boxplot for categorical data, sample_type vs X257462
+2024-04-24 15:59:48.859887 INFO::Creating boxplot for categorical data, sample_type vs X381
+2024-04-24 15:59:50.667049 INFO::Creating boxplot for categorical data, sample_type vs X272123
+2024-04-24 15:59:51.448253 INFO::Creating boxplot for categorical data, sample_type vs X1892855
+2024-04-24 15:59:51.699935 INFO::Creating boxplot for categorical data, sample_type vs X1176533
+2024-04-24 15:59:53.57995 INFO::Creating boxplot for categorical data, sample_type vs X1397
+2024-04-24 15:59:53.755962 INFO::Creating boxplot for categorical data, sample_type vs X69665
+2024-04-24 15:59:54.590101 INFO::Creating boxplot for categorical data, sample_type vs X39777
+2024-04-24 15:59:54.779235 INFO::Creating boxplot for categorical data, sample_type vs X623
+2024-04-24 15:59:56.109625 INFO::Creating boxplot for categorical data, sample_type vs X420662
+2024-04-24 15:59:57.536082 INFO::Creating boxplot for categorical data, sample_type vs X35783
+2024-04-24 15:59:58.391318 INFO::Creating boxplot for categorical data, sample_type vs X314722
+2024-04-24 15:59:58.558352 INFO::Creating boxplot for categorical data, sample_type vs X2202825
+2024-04-24 15:59:59.32781 INFO::Creating boxplot for categorical data, sample_type vs X28141
+2024-04-24 16:00:00.043776 INFO::Creating boxplot for categorical data, sample_type vs X41431
+2024-04-24 16:00:00.867455 INFO::Creating boxplot for categorical data, sample_type vs X76857
+2024-04-24 16:00:01.675453 INFO::Creating boxplot for categorical data, sample_type vs X128785
+2024-04-24 16:00:02.904838 INFO::Creating boxplot for categorical data, sample_type vs X712310
+2024-04-24 16:00:03.178363 INFO::Creating boxplot for categorical data, sample_type vs X1325090
+2024-04-24 16:00:05.983167 INFO::Creating boxplot for categorical data, sample_type vs X55508
+2024-04-24 16:00:06.701025 INFO::Creating boxplot for categorical data, sample_type vs X621
+2024-04-24 16:00:07.423169 INFO::Creating boxplot for categorical data, sample_type vs X1029756
+2024-04-24 16:00:08.221036 INFO::Creating boxplot for categorical data, sample_type vs X735
+2024-04-24 16:00:08.974469 INFO::Creating boxplot for categorical data, sample_type vs X321327
+2024-04-24 16:00:09.753732 INFO::Creating boxplot for categorical data, sample_type vs X1245469
+2024-04-24 16:00:10.484418 INFO::Creating boxplot for categorical data, sample_type vs X153152
+2024-04-24 16:00:11.27681 INFO::Creating boxplot for categorical data, sample_type vs X158836
+2024-04-24 16:00:11.515951 INFO::Creating boxplot for categorical data, sample_type vs X28116
+2024-04-24 16:00:13.394909 INFO::Creating boxplot for categorical data, sample_type vs X671223
+2024-04-24 16:00:14.631299 INFO::Creating boxplot for categorical data, sample_type vs X29380
+2024-04-24 16:00:15.348184 INFO::Creating boxplot for categorical data, sample_type vs X614
+2024-04-24 16:00:16.118667 INFO::Creating boxplot for categorical data, sample_type vs X39960
+2024-04-24 16:00:16.889772 INFO::Creating boxplot for categorical data, sample_type vs X1765049
+2024-04-24 16:00:17.581693 INFO::Creating boxplot for categorical data, sample_type vs X1423
+2024-04-24 16:00:17.763446 INFO::Creating boxplot for categorical data, sample_type vs X407035
+2024-04-24 16:00:18.981451 INFO::Creating boxplot for categorical data, sample_type vs X1520
+2024-04-24 16:00:19.747809 INFO::Creating boxplot for categorical data, sample_type vs X296591
+2024-04-24 16:00:20.515352 INFO::Creating boxplot for categorical data, sample_type vs X1416806
+2024-04-24 16:00:21.292253 INFO::Creating boxplot for categorical data, sample_type vs X1338
+2024-04-24 16:00:22.570394 INFO::Creating boxplot for categorical data, sample_type vs X1870984
+2024-04-24 16:00:23.979802 INFO::Creating boxplot for categorical data, sample_type vs X1969806
+2024-04-24 16:00:24.78859 INFO::Creating boxplot for categorical data, sample_type vs X693986
+2024-04-24 16:00:25.605782 INFO::Creating boxplot for categorical data, sample_type vs X266
+2024-04-24 16:00:25.84824 INFO::Creating boxplot for categorical data, sample_type vs X565651
+2024-04-24 16:00:27.263973 INFO::Creating boxplot for categorical data, sample_type vs X200
+2024-04-24 16:00:28.173874 INFO::Creating boxplot for categorical data, sample_type vs X2231055
+2024-04-24 16:00:28.355963 INFO::Creating boxplot for categorical data, sample_type vs X2109687
+2024-04-24 16:00:29.882702 INFO::Creating boxplot for categorical data, sample_type vs X483
+2024-04-24 16:00:30.085576 INFO::Creating boxplot for categorical data, sample_type vs X535289
+2024-04-24 16:00:30.821213 INFO::Creating boxplot for categorical data, sample_type vs X28104
+2024-04-24 16:00:31.630757 INFO::Creating boxplot for categorical data, sample_type vs X584
+2024-04-24 16:00:33.062717 INFO::Creating boxplot for categorical data, sample_type vs X1825069
+2024-04-24 16:00:33.316167 INFO::Creating boxplot for categorical data, sample_type vs X1768242
+2024-04-24 16:00:35.213905 INFO::Creating boxplot for categorical data, sample_type vs X169480
+2024-04-24 16:00:35.411021 INFO::Creating boxplot for categorical data, sample_type vs X167972
+2024-04-24 17:11:07.2606 WARNING::Input is a matrix, passing through as.data.frame() .
